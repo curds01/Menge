@@ -36,9 +36,9 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 
 */
 
-
 #include "MengeCore/Orca/ORCAAgent.h"
 
+#include "MengeCore/Core.h"
 #include "MengeCore/Math/consts.h"
 #include "MengeCore/Orca/ORCASimulator.h"
 
@@ -127,27 +127,34 @@ namespace ORCA {
 		if (s < 0 && distSq1 <= radiusSq) {
 			/* Collision with left vertex. Ignore if non-convex. */
 			if ( p0Convex ) { 
-				line._point = Vector2(0.f,0.f);
-				line._direction = norm(Vector2(-relativePosition1.y(), relativePosition1.x()));
-				_orcaLines.push_back(line);
+			  // undo penetration in single time step
+			  float penetration = (_radius - sqrt(distSq1));// / Menge::SIM_TIME_STEP;
+			  Vector2 n = norm(Vector2(-relativePosition1.y(), relativePosition1.x()));
+			  line._point = Vector2(penetration * -n.y(), penetration * n.x());
+			  line._direction = n;
+			  _orcaLines.push_back(line);
 			}
 			return;
 		} else if (s > LENGTH && distSq2 <= radiusSq) {
 			/* Collision with right vertex. Ignore if non-convex 
 			* or if it will be taken care of by neighoring obstace */
-			if ( ( obst->_nextObstacle == 0x0 ) || ( p1Convex && det(relativePosition2,
-				obst->_nextObstacle->_unitDir) >= 0) ) { 
-				line._point = Vector2(0.f,0.f);
-				line._direction = norm(Vector2(-relativePosition2.y(), relativePosition2.x()));
-				_orcaLines.push_back(line);
+			if ( ( obst->_nextObstacle == 0x0 ) || 
+               ( p1Convex && det(relativePosition2, obst->_nextObstacle->_unitDir) >= 0) ) { 
+			  float penetration = (_radius - sqrt(distSq2));// / Menge::SIM_TIME_STEP;
+			  Vector2 n = norm(Vector2(-relativePosition2.y(), relativePosition2.x()));
+			  line._point = Vector2(penetration * -n.y(), penetration * n.x());
+			  line._direction = n;
+			  _orcaLines.push_back(line);
 			}
 			return;
 		} else if (s >= 0 && s < LENGTH && distSqLine <= radiusSq) {
 			/* Collision with obstacle segment. */
-			line._point = Vector2(0.f,0.f);
-			line._direction = -obstDir;
-			_orcaLines.push_back(line);
-			return;
+		  Vector2 n = -obstDir;
+		  float penetration = (_radius - sqrt(distSqLine));// / Menge::SIM_TIME_STEP;
+		  line._point = Vector2(0.1f * -n.y(), 0.1f * n.x());
+		  line._direction = n;
+		  _orcaLines.push_back(line);
+		  return;
 		} 
 
 		/* 
