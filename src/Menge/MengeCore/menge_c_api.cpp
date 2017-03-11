@@ -183,7 +183,7 @@ extern "C" {
 		assert( _simulator != 0x0 );
 		BaseAgent * agt = _simulator->getAgent( i );
 		if ( agt != 0x0 ) {
-			return agt->_radius;
+			return agt->getRadius();
 		}
 		return -1;
 	}

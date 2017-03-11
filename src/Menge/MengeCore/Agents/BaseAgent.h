@@ -40,6 +40,7 @@ namespace Menge {
 
 	namespace Agents {
 
+		class AgentSize;
 		class Obstacle;
 
 		/*!
@@ -103,7 +104,6 @@ namespace Menge {
 		 */
 		class MENGE_API BaseAgent : public ProximityQuery {
 		public:
-
 			/*!
 			 *	@brief		Default constructor.
 			 */
@@ -298,6 +298,8 @@ namespace Menge {
 			 */
 			size_t _id;
 
+		protected:
+
 			/*!
 			 *	@brief		The agent's radius.  
 			 *
@@ -309,6 +311,29 @@ namespace Menge {
 			 *	At a minimum, it is used to determine sideways clearance.
 			 */
 			float _radius;
+
+		public:
+			/*!
+			 *	@brief		Reports the agent's clearance "radius".  
+			 *
+			 *	This is the agent's half-width perpendicular to a forward direction of travel.
+			 *	For path planning, this is the mininum distance the agent center has to be from
+			 *	any obstacle.
+			 */
+			virtual float getClearanceRadius() const { return _radius; }
+
+			/*!
+			 *	@brief		Retrieves a size object for this agent.
+			 */
+			AgentSize * getSize() const;
+
+			/*!
+			 *	@brief		Sets the agent's size from the given size object.
+			 *
+			 *	@param		The size object used to set the agent's size.  The agent can/should
+			 *				confirm that the size object is of the appropriate type.
+			 */
+			void setSize( AgentSize * size );
 
 			/*!
 			 *	@brief  a set of velocity modifiers to be set with the agent. Allows for
@@ -413,6 +438,13 @@ namespace Menge {
 			 *              special conditions are met
 			 */
 			virtual float getMaxObstacleRange() { return _neighborDist * _neighborDist;};
+
+		protected:
+
+			/*!
+			 *	@brief		The minimum allowable radius.
+			 */
+			static const float MIN_RADIUS;
 		};
 	}	// namespace Agents
 }	// namespace Menge

@@ -120,6 +120,14 @@ namespace Menge {
 		virtual float newValue( float value, size_t agentID ) = 0;
 
 		/*!
+		 *	@brief		Special method for setting radius to allow for per agent type
+		 *				interpretations of radius.
+		 *
+		 *	@param		agent		The agent
+		 */
+		virtual float modifyRadius( Agents::BaseAgent * agent ) = 0;
+
+		/*!
 		 *	@brief		The generator for determining the operand value.
 		 */
 		Math::FloatGenerator * _operandGen;

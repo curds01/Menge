@@ -566,6 +566,7 @@ xcopy /y $(TargetPath) $(ExeDir)
     <ClInclude Include="$(SrcDir)\MengeCore\Agents\ProfileSelectors\profile_selector_random.h" />
     <ClInclude Include="$(SrcDir)\MengeCore\Agents\ProfileSelectors\profile_selector_weighted.h" />
     <ClInclude Include="$(SrcDir)\MengeCore\data_set_selector.h" />
+    <ClInclude Include="..\..\..\src\Menge\MengeCore\Agents\AgentSize.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="tinyxml_lib.vcxproj">

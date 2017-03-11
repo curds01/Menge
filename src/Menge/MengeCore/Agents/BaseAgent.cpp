@@ -40,6 +40,8 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 
 #include "MengeCore/Agents/Obstacle.h"
 
+#include <algorithm>
+
 namespace Menge {
 
 	namespace Agents {
@@ -48,6 +50,10 @@ namespace Menge {
 
 		////////////////////////////////////////////////////////////////
 		//					Implementation of BaseAgent
+		////////////////////////////////////////////////////////////////
+
+		const float BaseAgent::MIN_RADIUS = 0.01f;
+
 		////////////////////////////////////////////////////////////////
 
 		BaseAgent::BaseAgent() {
@@ -173,6 +179,30 @@ namespace Menge {
 
 		void BaseAgent::computeNewVelocity() {
 			throw AgentImplementationException();
+		}
+
+		////////////////////////////////////////////////////////////////
+
+		void BaseAgent::setRadius( float radius ) {
+			using std::max;
+			_radius = max( radius, MIN_RADIUS );
+		}
+
+		////////////////////////////////////////////////////////////////
+
+		void BaseAgent::offsetRadius( float offset ) {
+			using std::max;
+			float newRadius = _radius + offset;
+			_radius = max( newRadius, MIN_RADIUS );
+
+		}
+
+		////////////////////////////////////////////////////////////////
+
+		void BaseAgent::scaleRadius( float scale ) {
+			using std::max;
+			float newRadius = _radius * scale;
+			_radius = max( newRadius, MIN_RADIUS );
 		}
 
 		////////////////////////////////////////////////////////////////

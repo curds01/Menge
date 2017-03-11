@@ -195,7 +195,7 @@ namespace Menge {
 			agent->_prefSpeed = _prefSpeed->getValue();
 			agent->_maxNeighbors = _maxNeighbors->getValue();
 			agent->_neighborDist = _neighborDist->getValue();
-			agent->_radius = _radius->getValue();
+			agent->setRadius( _radius->getValue() );
 			agent->_maxAngVel = _maxAngVel->getValue();
 			agent->_obstacleSet = _obstacleSet;
 			agent->_priority = _priority;

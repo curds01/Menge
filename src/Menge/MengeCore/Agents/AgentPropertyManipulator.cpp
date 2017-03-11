@@ -126,8 +126,9 @@ namespace Menge {
 				agent->_priority = newValue( agent->_priority, agent->_id );
 				break;
 			case BFSM::RADIUS:
-				_originalMap[ agent->_id ] = agent->_radius;
-				agent->_radius = newValue( agent->_radius, agent->_id );
+				_originalMap[ agent->_id ] = agent->getRadius();
+				modifyRadius( agent );
+				//agent->_radius = newValue( agent->_radius, agent->_id );
 				break;
 		  case BFSM::NO_PROPERTY:
 				// No-op for NO_PROPERTY.

@@ -135,7 +135,8 @@ namespace GCF {
 		float _aMin;			
 
 		/*!
-		 *	@brief		The rate of change of the value for the radius along the agent's facing direction.
+		 *	@brief		The rate of change of the value for the radius along the agent's facing
+		 *				direction.
 		 */
 		float _aRate;			
 
@@ -145,7 +146,8 @@ namespace GCF {
 		float _bMax;			
 
 		/*!
-		 *	@brief		The rate of change of the value for the radius along the agent's perpendicular direction.
+		 *	@brief		The rate of change of the value for the radius along the agent's
+		 *				perpendicular direction.
 		 */
 		float _bGrowth;			
 	};
