@@ -19,6 +19,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MengeVis", "MengeVis.vcxpro
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MengeDocs", "MengeDocs.vcxproj", "{CF4FCEBB-1410-4BA7-A509-97E545ABC5D4}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gtest", "..\..\..\src\thirdParty\googletest\googletest\msvc\gtest.vcxproj", "{C8F6C172-56F2-4E76-B5FA-C3B423B31BE7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -84,6 +86,15 @@ Global
 		{CF4FCEBB-1410-4BA7-A509-97E545ABC5D4}.ReleaseST|Win32.ActiveCfg = Release|Win32
 		{CF4FCEBB-1410-4BA7-A509-97E545ABC5D4}.ReleaseST|Win32.Build.0 = Release|Win32
 		{CF4FCEBB-1410-4BA7-A509-97E545ABC5D4}.ReleaseST|x64.ActiveCfg = Release|Win32
+		{C8F6C172-56F2-4E76-B5FA-C3B423B31BE7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C8F6C172-56F2-4E76-B5FA-C3B423B31BE7}.Debug|Win32.Build.0 = Debug|Win32
+		{C8F6C172-56F2-4E76-B5FA-C3B423B31BE7}.Debug|x64.ActiveCfg = Debug|Win32
+		{C8F6C172-56F2-4E76-B5FA-C3B423B31BE7}.Release|Win32.ActiveCfg = Release|Win32
+		{C8F6C172-56F2-4E76-B5FA-C3B423B31BE7}.Release|Win32.Build.0 = Release|Win32
+		{C8F6C172-56F2-4E76-B5FA-C3B423B31BE7}.Release|x64.ActiveCfg = Release|Win32
+		{C8F6C172-56F2-4E76-B5FA-C3B423B31BE7}.ReleaseST|Win32.ActiveCfg = Release|Win32
+		{C8F6C172-56F2-4E76-B5FA-C3B423B31BE7}.ReleaseST|Win32.Build.0 = Release|Win32
+		{C8F6C172-56F2-4E76-B5FA-C3B423B31BE7}.ReleaseST|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
