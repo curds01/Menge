@@ -18,3 +18,4 @@ ipch/
 doc/output
 doc/tags
 examples/**/*.png
+*~
