@@ -19,9 +19,9 @@ namespace UPL {
 
 	////////////////////////////////////////////////////////////////
 
-	// mass = 80 Kg, arbitrary default value.
+	// mass = 1 Kg, arbitrary default value. The source paper seems to imply a unit mass.
 	Agent::Agent() : BaseAgent() {
-		_mass = 80.f;
+		_mass = 1.f;
 	}
 
 	////////////////////////////////////////////////////////////////
@@ -32,7 +32,7 @@ namespace UPL {
 	////////////////////////////////////////////////////////////////
 
 	void Agent::computeNewVelocity() {
-		Vector2 force( drivingForce());
+		Vector2 force( drivingForce() );
 		//std::cout << "Agent " << _id << " has " << _nearAgents.size() << " neighbors\n";
 		for ( size_t i = 0; i < _nearAgents.size(); ++i ) {
 			const BaseAgent * otherBase = _nearAgents[i].agent;

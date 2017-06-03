@@ -26,6 +26,7 @@
         <Karamouzas personal_space="0.69" anticipation="8" />
         <ORCA tau="3.0" tauObst="0.15" />
 		<PedVO factor="1.57" buffer="0.9" tau="3" tauObst="0.1" turningBias="1.0" />
+        <UPL mass="1" />
         <Zanlungo mass="80" orient_weight="0.75" />
 	</AgentProfile>
 

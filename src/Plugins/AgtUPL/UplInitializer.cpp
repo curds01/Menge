@@ -13,8 +13,8 @@ namespace UPL {
 	//			Implementation of UPL::AgentInitializer
 	////////////////////////////////////////////////////////////////
 
-	// Default values
-	const float MASS = 80.f;			///< The agent's default mass.
+  // mass = 1 Kg, arbitrary default value. The source paper seems to imply a unit mass.
+  const float MASS = 1;			///< The agent's default mass.
 	
 	////////////////////////////////////////////////////////////////
 
@@ -75,7 +75,7 @@ namespace UPL {
                                                                    TiXmlElement * node ) {
 		ParseResult result = IGNORED;
 		if ( propName == "mass" ) {
-			result = getFloatGenerator( _mass, node );
+      result = getFloatGenerator( _mass, node );
 		}
 
 		if ( result == FAILURE ) {

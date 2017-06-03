@@ -162,13 +162,13 @@ namespace UPL {
 	////////////////////////////////////////////////////////////////
 
 	void AgentContext::drawForce( const Agent * agt ) {
-		if ( _showForce && _selected ) {
+    if ( _showForce && _selected ) {
+      glPushMatrix();
+      // Draw driving force
+      glColor4f( 0.1f, 1.f, 0.1f, 1.f );
+      Vector2 driveForce( agt->drivingForce() );
+      drawForce( agt, driveForce, "D" );
 			if ( agt->_nearAgents.size() > 0 ) {
-				glPushMatrix();
-				// Draw driving force
-				glColor4f( 0.1f, 1.f, 0.1f, 1.f );
-				Vector2 driveForce( agt->drivingForce() );
-				drawForce( agt, driveForce, "D" );
 				// Draw repulsive forces
 				if ( _forceObject == 0 ) {
 					// draw forces for all agents
@@ -192,8 +192,8 @@ namespace UPL {
 					const Agents::Obstacle * obst = agt->getObstacle( -_forceObject - 1 );
 					singleObstacleForce( agt, obst, 0.f );
 				}
-				glPopMatrix();
-			}
+      }
+      glPopMatrix();
 		}
 	}
 

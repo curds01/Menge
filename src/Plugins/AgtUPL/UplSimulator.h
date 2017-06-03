@@ -81,7 +81,7 @@ namespace UPL {
 	protected:
 		friend class Agent;
 
-		/// The scaling constant k of the anticipatory law
+		/// The scaling constant k of the inter-agent force term.
 		static float _k;
 
 		/// The exponential cutoff term tau_0
