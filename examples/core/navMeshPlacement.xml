@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 
 <Project 
-	scene="navMeshPlacement/navMeshPlacementS.txt" 
-	behavior="navMeshPlacement/navMeshPlacementB.txt" 
-	view="navMeshPlacement/navMeshPlacementV.txt" 
+	scene="navMeshPlacement/navMeshPlacementS.xml" 
+	behavior="navMeshPlacement/navMeshPlacementB.xml" 
+	view="navMeshPlacement/navMeshPlacementV.xml" 
 	model="orca"
 	dumpPath="images"
 />

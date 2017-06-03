@@ -9,7 +9,8 @@
     <Johansson agent_scale="25" obstacle_scale="35" reaction_time="0.5" force_distance="0.15" stride_time="0.5" />
     <Karamouzas orient_weight="0.8" fov="200" reaction_time="0.4" wall_steepness="2" wall_distance="2" colliding_count="5" d_min="1" d_mid="8" d_max="10" agent_force="4" />
     <Zanlungo agent_scale="2000" obstacle_scale="4000" reaction_time="0.5" force_distance="0.005" />
-	<Dummy stddev="0.05" />
+	<UPL agent_scale="1.5" expCutoff="3.0" exponent="2" relaxTime="0.54" />
+    <Dummy stddev="0.05" />
 
     <AgentProfile name="group1" >
 		<Common max_angle_vel="360" max_neighbors="10" obstacleSet="1" neighbor_dist="5" r="0.19" class="1" pref_speed="1.04" max_speed="2" max_accel="5" priority="0.0"/>

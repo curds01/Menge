@@ -2,7 +2,8 @@
 <Experiment version="2.0">
     <SpatialQuery type="kd-tree" test_visibility="true" />
 	<Common time_step="0.1" />
-	<Helbing agent_scale="2000" obstacle_scale="4000" reaction_time="0.5" body_force="1200" friction="2400" force_distance="0.015" />
+	<UPL agent_scale="1.5" expCutoff="3.0" exponent="2" relaxTime="0.54" />
+    <Helbing agent_scale="2000" obstacle_scale="4000" reaction_time="0.5" body_force="1200" friction="2400" force_distance="0.015" />
     
     <AgentProfile name="zone1">
         <Common max_angle_vel="180" class="1" max_neighbors="10" obstacleSet="1" neighbor_dist="2.5" r="0.21" pref_speed="1.64" max_speed="2" max_accel="10" />

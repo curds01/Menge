@@ -5,6 +5,7 @@
     <Common time_step="0.1" />
     <GCF reaction_time="0.5" max_agent_dist="2" max_agent_force="3" agent_interp_width="0.1" agent_force_strength="0.35" />
     <Helbing agent_scale="2000" obstacle_scale="4000" reaction_time="0.5" body_force="1200" friction="2400" force_distance="0.015" />
+    <UPL agent_scale="1.5" expCutoff="3.0" exponent="2" relaxTime="0.54" />
     <Dummy stddev="0.05" />
 
 	<AgentProfile name="group1" >
