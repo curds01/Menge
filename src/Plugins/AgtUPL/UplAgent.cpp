@@ -3,7 +3,7 @@
 #include "MengeCore/Math/geomQuery.h"
 #include "MengeCore/Math/consts.h"
 
-namespace PowerLaw {
+namespace UPL {
 	using Menge::Agents::BaseAgent;
 	using Menge::Agents::Obstacle;
 	using Menge::Math::Vector2;
@@ -12,14 +12,14 @@ namespace PowerLaw {
 	const float EPS = 1e-7f;
 
 	////////////////////////////////////////////////////////////////
-	//					Implementation of PowerLaw::Agent
+	//					Implementation of UPL::Agent
 	////////////////////////////////////////////////////////////////
 
 	const std::string Agent::NAME = "upl";
 
 	////////////////////////////////////////////////////////////////
 
-	// mass = 80 Kg comes from PowerLaw's 2000 paper
+	// mass = 80 Kg, arbitrary default value.
 	Agent::Agent() : BaseAgent() {
 		_mass = 80.f;
 	}
@@ -33,7 +33,7 @@ namespace PowerLaw {
 
 	void Agent::computeNewVelocity() {
 		Vector2 force( drivingForce());
-		std::cout << "Agent " << _id << " has " << _nearAgents.size() << " neighbors\n";
+		//std::cout << "Agent " << _id << " has " << _nearAgents.size() << " neighbors\n";
 		for ( size_t i = 0; i < _nearAgents.size(); ++i ) {
 			const BaseAgent * otherBase = _nearAgents[i].agent;
 			const Agent * const other = static_cast< const Agent *>( otherBase );
@@ -83,7 +83,8 @@ namespace PowerLaw {
 			discr = sqrtf( discr );
 			const float t = ( b - discr ) / a;
 			if ( t > 0) {
-			  force = -k * (float)exp(-t / t0) * (v - (b * v - a * disp) / discr) / (a * powf(t, m)) * (m / t + 1 / t0);	      
+			  force = -k * (float)exp(-t / t0) * (v - (b * v - a * disp) / discr) / (a * powf(t, m)) *
+          (m / t + 1 / t0);	      
 			}
 		}
 		return force;
@@ -105,7 +106,10 @@ namespace PowerLaw {
 		// d_w < _radius ** 2.
 
 		// Agent is moving away from obstacle, already colliding or obstacle too far away
-		if (_vel * n_w < 0 || d_w == (_radius * _radius) || d_w > (_neighborDist * _neighborDist)) return Vector2(0.f,0.f);
+    if ( _vel * n_w < 0 || d_w == ( _radius * _radius ) ||
+         d_w >( _neighborDist * _neighborDist ) ) {
+      return Vector2( 0.f, 0.f );
+    }
 
 		// correct the radius, if the agent is already colliding	
 		const float radius = d_w < (_radius * _radius) ? sqrtf( d_w ) : _radius; 
@@ -229,4 +233,4 @@ namespace PowerLaw {
 
 	////////////////////////////////////////////////////////////////
 
-}	// namespace PowerLaw
+}	// namespace UPL

@@ -4,7 +4,7 @@
 #include <iomanip>
 #include <sstream>
 
-namespace PowerLaw {
+namespace UPL {
 
 	using Menge::Agents::BaseAgent;
 	using Menge::Agents::Obstacle;
@@ -15,12 +15,10 @@ namespace PowerLaw {
 	using MengeVis::SceneGraph::TextWriter;
 
 	////////////////////////////////////////////////////////////////
-	//			Implementation of PowerLawAgentContext
+	//			Implementation of UPL::AgentContext
 	////////////////////////////////////////////////////////////////
 
-	AgentContext::AgentContext(): BaseAgentContext(), _showForce(false),_forceObject(0)
-	{
-	}
+  AgentContext::AgentContext() : BaseAgentContext(), _showForce( false ), _forceObject( 0 )	{}
 
 	////////////////////////////////////////////////////////////////
 
@@ -48,7 +46,7 @@ namespace PowerLaw {
 					} else if ( e.key.keysym.sym == SDLK_UP ) {
 						if ( _showForce && _selected ) {
 							const Agent * agt = dynamic_cast< const Agent * >( _selected->getAgent() );
-							assert( agt != 0x0 && "PowerLaw context trying to work with a non helbing agent" );
+							assert( agt != 0x0 && "UPL context trying to work with a non-UPL agent" );
 							int NBRS = (int)agt->_nearAgents.size();
 							int OBST = (int)agt->_nearObstacles.size();
 							if ( NBRS | OBST ) {
@@ -66,7 +64,7 @@ namespace PowerLaw {
 					} else if ( e.key.keysym.sym == SDLK_DOWN ) {
 						if ( _showForce && _selected ) {
 							const Agent * agt = dynamic_cast< const Agent * >( _selected->getAgent() );
-							assert( agt != 0x0 && "PowerLaw context trying to work with a non helbing agent" );
+							assert( agt != 0x0 && "UPL context trying to work with a non-UPL agent" );
 							int NBRS = (int)agt->_nearAgents.size();
 							int OBST = (int)agt->_nearObstacles.size();
 							if ( NBRS | OBST ) {
@@ -94,7 +92,7 @@ namespace PowerLaw {
 		BaseAgentContext::update();
 		if ( _selected && _forceObject ) {
 			const Agent * agt = dynamic_cast< const Agent * >( _selected->getAgent() );
-			assert( agt != 0x0 && "PowerLaw context trying to work with a non helbing agent" );							
+			assert( agt != 0x0 && "UPL context trying to work with a non-UPL agent" );							
 			if ( _forceObject > 0 ) {
 				int NBR_COUNT = (int)agt->_nearAgents.size();
 				if ( _forceObject > NBR_COUNT ) {
@@ -114,10 +112,11 @@ namespace PowerLaw {
 	void AgentContext::draw3DGL( bool select ) {
 		BaseAgentContext::draw3DGL( select );
 		if ( !select && _selected ) {
-			glPushAttrib( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_ENABLE_BIT | GL_LINE_BIT | GL_POLYGON_BIT );
+			glPushAttrib( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_ENABLE_BIT | GL_LINE_BIT |
+                    GL_POLYGON_BIT );
 			glDepthMask( GL_FALSE );
 			const Agent * agt = dynamic_cast< const Agent * >( _selected->getAgent() );
-			assert( agt != 0x0 && "PowerLaw context trying to work with a non helbing agent" );
+			assert( agt != 0x0 && "UPL context trying to work with a non-UPL agent" );
 			drawForce( agt );
 			glPopAttrib();
 		}
@@ -134,7 +133,7 @@ namespace PowerLaw {
 		ss << "\nMass";
 		if ( _selected ) {
 			const Agent * agt = dynamic_cast< const Agent * >( _selected->getAgent() );
-			assert( agt != 0x0 && "PowerLaw context trying to work with a non helbing agent" );
+			assert( agt != 0x0 && "UPL context trying to work with a non-UPL agent" );
 			ss << " " << agt->_mass << " kg";
 		}
 		ss << "\n_________________________";
@@ -145,13 +144,13 @@ namespace PowerLaw {
 				ss << "\n     All forces";
 			} else if ( _forceObject > 0 ) {
 				const Agent * agt = dynamic_cast< const Agent * >( _selected->getAgent() );
-				assert( agt != 0x0 && "PowerLaw context trying to work with a non helbing agent" );
+				assert( agt != 0x0 && "UPL context trying to work with a non-UPL agent" );
 				const Agent * other = static_cast< const Agent *>( agt->getNeighbor( _forceObject - 1 ) );
 				float force = abs( agt->agentForce( other ) );
 				ss << "\n     Agent " << other->_id << ": " << force << " N";
 			} else if ( _forceObject < 0 ) {
 				const Agent * agt = dynamic_cast< const Agent * >( _selected->getAgent() );
-				assert( agt != 0x0 && "PowerLaw context trying to work with a non helbing agent" );
+				assert( agt != 0x0 && "UPL context trying to work with a non-UPL agent" );
 				const Agents::Obstacle * obst = agt->getObstacle( -_forceObject - 1 );
 				float force = abs( agt->obstacleForce( obst ) );
 				ss << "\n     Obstacle " << obst->_id << ": " << force << " N";
@@ -216,7 +215,8 @@ namespace PowerLaw {
 
 	////////////////////////////////////////////////////////////////
 
-	void AgentContext::singleObstacleForce( const Agent * agt, const Agents::Obstacle * obst, float thresh ) {
+	void AgentContext::singleObstacleForce( const Agent * agt, const Agents::Obstacle * obst,
+                                          float thresh ) {
 		Vector2 force = agt->obstacleForce( obst );
 		float forceMag = abs( force );
 		if ( forceMag > thresh ) {
@@ -244,7 +244,8 @@ namespace PowerLaw {
 
 	////////////////////////////////////////////////////////////////
 
-	void AgentContext::drawForce( const Agent * agt, const Vector2 & force, const std::string & label ) {
+	void AgentContext::drawForce( const Agent * agt, const Vector2 & force,
+                                const std::string & label ) {
 		// This is for printing force magnitude and source
 		const float FORCE_RADIUS = 4 * agt->_radius;
 		Vector2 forceEnd = norm( force ) * FORCE_RADIUS + agt->_pos;
@@ -262,4 +263,4 @@ namespace PowerLaw {
 		ss << abs( force ) << " N";
 		writeTextRadially( ss.str(), forceEnd, force, true );
 	}
-}	// namespace PowerLaw
+}	// namespace UPL

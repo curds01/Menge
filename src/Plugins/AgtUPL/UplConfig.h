@@ -21,44 +21,42 @@ pedestrian model, with permission of the authors.
 */
 
 /*!
- *	@file		PowerLawConfig.h
+ *	@file		  UplConfig.h
  *	@brief		Configures the shared library aspect of the includes.
  */
 
-#ifndef __POWERLAW_CONFIG_H__
-#define __POWERLAW_CONFIG_H__
-
-#define POWERLAW_EXPORT 1
+#ifndef __UPL_CONFIG_H__
+#define __UPL_CONFIG_H__
 
 // Now set up compiler-dependent export/import symbols
 
 #if defined(_MSC_VER)
 
-  #if defined( POWERLAW_STATICLIB )
-    #define POWERLAW_API
+  #if defined( UPL_STATICLIB )
+    #define UPL_API
   #else
-    #if defined( POWERLAW_EXPORT )
+    #if defined( UPL_EXPORT )
       // We are building the DLL, export the symbols tagged like this
-      #define POWERLAW_API __declspec(dllexport)
+      #define UPL_API __declspec(dllexport)
     #else
       // If we are consuming the DLL, import the symbols tagged like this
-      #define POWERLAW_API __declspec(dllimport)
+      #define UPL_API __declspec(dllimport)
     #endif
   #endif
 
 #elif defined(__GNUC__)
 
-  #if defined( POWERLAW_STATICLIB )
-    #define POWERLAW_API
+  #if defined( UPL_STATICLIB )
+    #define UPL_API
   #else
-    #if defined( POWERLAW_EXPORT )
-      #define POWERLAW_API __attribute__ ((visibility ("default")))
+    #if defined( UPL_EXPORT )
+      #define UPL_API __attribute__ ((visibility ("default")))
     #else
       // If you use -fvisibility=hidden in GCC, exception handling and RTTI
       // would break if visibility wasn't set during export _and_ import
       // because GCC would immediately forget all type infos encountered.
       // See http://gcc.gnu.org/wiki/Visibility
-      #define POWERLAW_API __attribute__ ((visibility ("default")))
+      #define UPL_API __attribute__ ((visibility ("default")))
     #endif
   #endif
 
@@ -68,4 +66,4 @@ pedestrian model, with permission of the authors.
 
 #endif	// Compiler-detection
 
-#endif // __POWERLAW_CONFIG_H__
+#endif // __UPL_CONFIG_H__

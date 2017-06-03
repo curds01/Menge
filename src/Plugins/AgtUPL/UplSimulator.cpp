@@ -1,7 +1,7 @@
 #include "UplSimulator.h"
 #include "MengeCore/Runtime/Utils.h"
 
-namespace PowerLaw {
+namespace UPL {
 
 	using Menge::toFloat;
 	using Menge::UtilException;
@@ -9,7 +9,7 @@ namespace PowerLaw {
 	using Menge::Agents::XMLParamException;
 
 	////////////////////////////////////////////////////////////////
-	//					Implementation of PowerLaw::Simulator
+	//					Implementation of UPL::Simulator
 	////////////////////////////////////////////////////////////////
 
 	// These values come directly from the Helbing 2000 paper
@@ -20,7 +20,8 @@ namespace PowerLaw {
 
 	////////////////////////////////////////////////////////////////
 
-	bool Simulator::setExpParam( const std::string & paramName, const std::string & value ) throw( XMLParamException ) {
+	bool Simulator::setExpParam( const std::string & paramName, const std::string & value )
+    throw( XMLParamException ) {
 		try {
 			if ( paramName == "agent_scale" ) {
 				_k = toFloat( value );
@@ -35,8 +36,10 @@ namespace PowerLaw {
 				return false;
 			}
 		} catch ( UtilException ) {
-			throw XMLParamException( std::string( "PowerLaw parameter \"") + paramName + std::string("\" value couldn't be converted to the correct type.  Found the value: " ) + value );
+			throw XMLParamException( std::string( "UPL parameter \"") + paramName +
+                               std::string("\" value couldn't be converted to the correct type.  "
+                               "Found the value: " ) + value );
 		}
 		return true;
 	}
-}	//namespace PowerLaw
+}	//namespace UPL

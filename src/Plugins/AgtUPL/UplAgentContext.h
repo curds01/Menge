@@ -1,11 +1,11 @@
 /*!
- *  @file       PowerLawAgentContext.h
+ *  @file       UplAgentContext.h
  *  @brief      A basic context for interacting with and displaying
- *				PowerLaw agent parameters
+ *				      Universal Power Law agent properties.
  */
 
-#ifndef __POWERLAW_AGENT_CONTEXT_H__
-#define __POWERLAW_AGENT_CONTEXT_H__
+#ifndef __UPL_AGENT_CONTEXT_H__
+#define __UPL_AGENT_CONTEXT_H__
 
 #include "UplAgent.h"
 #include "MengeCore/Agents/Obstacle.h"
@@ -13,12 +13,12 @@
 
 using namespace Menge;
 
-namespace PowerLaw {
+namespace UPL {
 	// forward declaration
 	class Agent;
 	/*!
 	 *	@brief		The context for displaying the computational aspects of the
-	 *				Zanlungo model (see Agents::PowerLaw::Agent).
+	 *				Universal Power Law model (see Upl::Agent).
 	 */
 	class AgentContext : public MengeVis::Runtime::BaseAgentContext {
 	public:
@@ -122,7 +122,8 @@ namespace PowerLaw {
 		 *	@param		obst		The obstacle imparting the force
 		 *	@param		thresh		The minimum force magnitude required to draw
 		 */
-		void singleObstacleForce( const Agent * agt, const Agents::Obstacle * obst, float thresh=0.5f );
+		void singleObstacleForce( const Agent * agt, const Agents::Obstacle * obst,
+                              float thresh=0.5f );
 
 		/*!
 		 *	@brief		Draws the given force on the given agent
@@ -132,8 +133,9 @@ namespace PowerLaw {
 		 *	@param		force		The force vector to draw
 		 *	@param		label		The label to apply to the force.
 		 */
-		void drawForce( const Agent * agt, const Menge::Math::Vector2 & force, const std::string & label );
+		void drawForce( const Agent * agt, const Menge::Math::Vector2 & force,
+                    const std::string & label );
 
 	};
-}	// namespace PowerLaw
-#endif	 // __POWERLAW_AGENT_CONTEXT_H__
+}	// namespace UPL
+#endif	 // __UPL_AGENT_CONTEXT_H__

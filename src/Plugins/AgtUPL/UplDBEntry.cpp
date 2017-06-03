@@ -3,12 +3,12 @@
 #include "UplInitializer.h"
 #include "MengeCore/Runtime/SimulatorDB.h"
 
-namespace PowerLaw {
+namespace UPL {
 
 	using Menge::Agents::SimulatorInterface;
 
 	/////////////////////////////////////////////////////////////////////////////
-	//                     Implementation of PowerLaw::DBEntry
+	//                     Implementation of UPL::DBEntry
 	/////////////////////////////////////////////////////////////////////////////
 
 	::std::string DBEntry::briefDescription() const {
@@ -41,4 +41,4 @@ namespace PowerLaw {
 
 	/////////////////////////////////////////////////////////////////////////////
  
-}	// namespace PowerLaw 
+}	// namespace UPL 

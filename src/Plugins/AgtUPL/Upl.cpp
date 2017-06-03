@@ -1,6 +1,6 @@
 /*!
- *	@file		PowerLaw.cpp  
- *	@brief		Plugin for helbing pedestrian.
+ *	@file		  Upl.cpp  
+ *	@brief		Plugin for Universal Power Law pedestrian.
  */
 
 #include "UplConfig.h"
@@ -18,7 +18,7 @@ extern "C" {
    *
    *	@returns	The name of the plug in.
    */
-  POWERLAW_API const char * getName() {
+  UPL_API const char * getName() {
 	return "Universal Power Law Pedestrian Model";
   }
 
@@ -27,7 +27,7 @@ extern "C" {
    *
    *	@returns	A description of the plugin.
    */
-  POWERLAW_API const char * getDescription() {
+  UPL_API const char * getDescription() {
 	return	"A pedestran plugin based on the model proposed in 2014 by Karamouzas et al.";
   }
 
@@ -36,8 +36,8 @@ extern "C" {
    *
    *	@param		engine		A pointer to the plugin engine.
    */
-  POWERLAW_API void registerCorePlugin( CorePluginEngine * engine ) {
-    engine->registerModelDBEntry( new PowerLaw::DBEntry() );
+  UPL_API void registerCorePlugin( CorePluginEngine * engine ) {
+    engine->registerModelDBEntry( new UPL::DBEntry() );
   }
 
   /*!
@@ -45,8 +45,8 @@ extern "C" {
    *
    *	@param		engine		A pointer to the vis engine.
    */
-  POWERLAW_API void registerVisPlugin( VisPluginEngine * engine ) {
-    engine->registerAgentContext( new PowerLaw::AgentContext() );
+  UPL_API void registerVisPlugin( VisPluginEngine * engine ) {
+    engine->registerAgentContext( new UPL::AgentContext() );
   }
 
 }

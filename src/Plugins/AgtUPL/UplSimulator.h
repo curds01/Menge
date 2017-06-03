@@ -20,13 +20,13 @@ pedestrian model, with permission of the authors.
   http://motion.cs.umn.edu/PowerLaw/
 */
 
-#ifndef __POWERLAW_SIMULATOR_H__
-#define __POWERLAW_SIMULATOR_H__
+#ifndef __UPL_SIMULATOR_H__
+#define __UPL_SIMULATOR_H__
 
 /*!
- *  @file       PowerLawSimulator.h
- *  @brief	Contains the PowerLaw::Simulator class. 
- *              Implements theuuniversal power law pedestrian model:
+ *  @file       UplSimulator.h
+ *  @brief	    Contains the Upl::Simulator class. 
+ *              Implements the Universal Power Law pedestrian model:
  *              Karamouzas et al, 2014        
  */
 
@@ -35,14 +35,14 @@ pedestrian model, with permission of the authors.
 #include "MengeCore/Agents/SimulatorBase.h"
 
 /*!
- *	@namespace    PowerLaw
- *	@brief	      The namespace for the PowerLaw pedestrian model.
- *                    Implements theuuniversal power law pedestrian model:
+ *	@namespace    UPL
+ *	@brief	      The namespace for the Universal Power Law pedestrian model.
+ *                    Implements the Universal Power Law pedestrian model:
  *                    Karamouzas et al, 2014        
  */
-namespace PowerLaw {
+namespace UPL {
 	/*!
-	 *  @brief      Defines the simulator operating on a PowerLaw::Agent.
+	 *  @brief      Defines the simulator operating on a UPL::Agent.
 	 */
 	class Simulator : public Menge::Agents::SimulatorBase< Agent > {
 	public:
@@ -75,7 +75,8 @@ namespace PowerLaw {
 		 *	@param			value			A string containing the value for the parameter.
 		 *	@returns		whether or not parameters were successfully set
 		 */
-		virtual bool setExpParam( const std::string & paramName, const std::string & value ) throw( Menge::Agents::XMLParamException );
+		virtual bool setExpParam( const std::string & paramName, const std::string & value )
+      throw( Menge::Agents::XMLParamException );
 
 	protected:
 		friend class Agent;
@@ -93,5 +94,5 @@ namespace PowerLaw {
 		static float _ksi;
 
 	};
-}	// namespace PowerLaw
-#endif	 // __POWERLAW_SIMULATOR_H__
+}	// namespace UPL
+#endif	 // __UPL_SIMULATOR_H__

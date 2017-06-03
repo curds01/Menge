@@ -1,17 +1,17 @@
 /*!
- *	@file		PowerLawDBEntry.h
- *	@brief		The simulator database entry for the PowerLaw 2000 pedestrian model.
+ *	@file		UplDBEntry.h
+ *	@brief		The simulator database entry for the Universal Power Law pedestrian model.
  */
 
-#ifndef __POWERLAW_DB_ENTRY_H__
-#define	__POWERLAW_DB_ENTRY_H__
+#ifndef __UPL_DB_ENTRY_H__
+#define	__UPL_DB_ENTRY_H__
 
 #include "Upl.h"
 #include "MengeCore/Runtime/SimulatorDBEntry.h"
 
-namespace PowerLaw {
+namespace UPL {
 	/*!
-	 *	@brief		The simulator database entry for the PowerLaw 2000 simulator.
+	 *	@brief		The simulator database entry for the Universal Power Law simulator.
 	 */
 	class DBEntry : public Menge::SimulatorDBEntry {
 	public:
@@ -68,6 +68,6 @@ namespace PowerLaw {
 		 */
 		virtual Menge::Agents::AgentInitializer * getAgentInitalizer() const;
 	};
-}	// namespace PowerLaw
+}	// namespace UPL
 
-#endif	// __POWERLAW_DB_ENTRY_H__
+#endif	// __UPL_DB_ENTRY_H__

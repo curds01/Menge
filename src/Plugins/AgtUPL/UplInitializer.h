@@ -22,17 +22,17 @@ pedestrian model, with permission of the authors.
 */
 
 /*!
- *	@file		PowerLawInitializer.h
- *	@brief		The AgentInitializer for the PowerLaw simulator.
+ *	@file		  UplInitializer.h
+ *	@brief		The AgentInitializer for the Universal Power Law simulator.
  */
-#ifndef __POWERLAW_INITIALIZER_H__
-#define	__POWERLAW_INITIALIZER_H__
+#ifndef __UPL_INITIALIZER_H__
+#define	__UPL_INITIALIZER_H__
 
 #include "MengeCore/Agents/AgentInitializer.h"
 
-namespace PowerLaw {
+namespace UPL {
 	/*!
-	 *	@brief		Class which determines the agent properties for each new PowerLaw agent.
+	 *	@brief		Class which determines the agent properties for each new Universal Power Law agent.
 	 */
   class AgentInitializer : public Menge::Agents::AgentInitializer {
 	public:
@@ -99,7 +99,7 @@ namespace PowerLaw {
 		 *	must override this function.  However, the overriden function must, in turn,
 		 *	call the parent class if it doesn't consider the tag relevant, giving the
 		 *	parent class a chance to determine if the tag is relevant.  This is the 
-		 *	mechanism by which derived classes will also benefit from the `<PowerLaw>`
+		 *	mechanism by which derived classes will also benefit from the `<UPL>`
 		 *	parameter set.
 		 *
 		 *	@param		tagName		The tag to test for relevancy.
@@ -121,7 +121,8 @@ namespace PowerLaw {
 		 *	@param			value			A string containing the value for the parameter.
 		 *	@returns		The result of the parse: failure, ignored, or accepted.
 		 */
-		virtual Menge::Agents::AgentInitializer::ParseResult setFromXMLAttribute( const ::std::string & paramName, const ::std::string & value );
+		virtual Menge::Agents::AgentInitializer::ParseResult setFromXMLAttribute(
+      const ::std::string & paramName, const ::std::string & value );
 
 		/*!
 		 *	@brief		Process the given <Property .../> tag.  
@@ -146,7 +147,6 @@ namespace PowerLaw {
 		 */
 		Menge::Math::FloatGenerator * _mass;			
 	};
-}	// namespace PowerLaw
+}	// namespace UPL
 
-
-#endif	// __POWERLAW_INITIALIZER_H__
+#endif	// __UPL_INITIALIZER_H__

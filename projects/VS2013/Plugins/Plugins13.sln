@@ -1,5 +1,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AgtKaramouzas", "AgtKaramouzas.vcxproj", "{4AF6F39F-2653-4E7E-AF2E-EFD37B1C1AD4}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AgtDummy", "AgtDummy.vcxproj", "{77BE22D2-25E3-4025-8512-9BB5015ED73F}"
@@ -21,6 +23,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StressGas", "StressGas.vcxproj", "{0D2D751B-24DD-457D-BDDD-46EDB597E006}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AgtGCF", "AgtGCF.vcxproj", "{E75202E3-D161-435D-8250-F7D8D850D2BF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AgtUpl", "AgtUpl.vcxproj", "{4175BDF4-7F30-4C9F-B5EB-3D701A6B14CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -164,6 +168,18 @@ Global
 		{E75202E3-D161-435D-8250-F7D8D850D2BF}.ReleaseST|Win32.Build.0 = Release|Win32
 		{E75202E3-D161-435D-8250-F7D8D850D2BF}.ReleaseST|x64.ActiveCfg = Release|x64
 		{E75202E3-D161-435D-8250-F7D8D850D2BF}.ReleaseST|x64.Build.0 = Release|x64
+		{4175BDF4-7F30-4C9F-B5EB-3D701A6B14CD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4175BDF4-7F30-4C9F-B5EB-3D701A6B14CD}.Debug|Win32.Build.0 = Debug|Win32
+		{4175BDF4-7F30-4C9F-B5EB-3D701A6B14CD}.Debug|x64.ActiveCfg = Debug|x64
+		{4175BDF4-7F30-4C9F-B5EB-3D701A6B14CD}.Debug|x64.Build.0 = Debug|x64
+		{4175BDF4-7F30-4C9F-B5EB-3D701A6B14CD}.Release|Win32.ActiveCfg = Release|Win32
+		{4175BDF4-7F30-4C9F-B5EB-3D701A6B14CD}.Release|Win32.Build.0 = Release|Win32
+		{4175BDF4-7F30-4C9F-B5EB-3D701A6B14CD}.Release|x64.ActiveCfg = Release|x64
+		{4175BDF4-7F30-4C9F-B5EB-3D701A6B14CD}.Release|x64.Build.0 = Release|x64
+		{4175BDF4-7F30-4C9F-B5EB-3D701A6B14CD}.ReleaseST|Win32.ActiveCfg = Release|Win32
+		{4175BDF4-7F30-4C9F-B5EB-3D701A6B14CD}.ReleaseST|Win32.Build.0 = Release|Win32
+		{4175BDF4-7F30-4C9F-B5EB-3D701A6B14CD}.ReleaseST|x64.ActiveCfg = Release|x64
+		{4175BDF4-7F30-4C9F-B5EB-3D701A6B14CD}.ReleaseST|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

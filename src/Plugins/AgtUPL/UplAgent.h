@@ -22,20 +22,20 @@ pedestrian model, with permission of the authors.
 */
 
 /*!
- *	@file		PowerLawAgent.h
+ *	@file		  UplAgent.h
  *	@brief		The agent specification for the pedestrian model based
- *			on the universal power law pedestrian model.
+ *			      on the Universal Power Law pedestrian model.
  *                      Karamouzas et al, 2014        
  */
 
-#ifndef __POWERLAW_AGENT_H__
-#define	__POWERLAW_AGENT_H__
+#ifndef __UPL_AGENT_H__
+#define	__UPL_AGENT_H__
 
 #include "MengeCore/Agents/BaseAgent.h"
 
-namespace PowerLaw {
+namespace UPL {
 	/*!
-	 *	@brief		Agent definition for the PowerLaw pedestrian model.
+	 *	@brief		Agent definition for the Universal Power Law pedestrian model.
 	 */
 	class Agent : public Menge::Agents::BaseAgent {
 	public:
@@ -96,6 +96,6 @@ namespace PowerLaw {
 		 */
 		float		_mass;
 	};
-}	// namespace PowerLaw
+}	// namespace UPL
 
-#endif  // __POWERLAW_AGENT_H__
+#endif  // __UPL_AGENT_H__

@@ -1,12 +1,12 @@
 /*!
- *	@file		PowerLaw.h
- *	@brief		The definition of the PowerLaw pedestrian plug-in
+ *	@file		Upl.h
+ *	@brief		The definition of the universal power law pedestrian plug-in.
  */
 
-#ifndef __POWERLAW_H__
-#define __POWERLAW_H__
+#ifndef __UPL_H__
+#define __UPL_H__
 
 #include "UplAgent.h"
 #include "UplSimulator.h"
 
-#endif	//__POWERLAW_H__
+#endif	//__UPL_H__
