@@ -165,7 +165,7 @@ namespace UPL {
 		o_temp = o2_temp - o1_temp;
 
 		D_temp = det(_vel, o_temp);
-		if ( D_temp > EPS ) {
+		if ( fabs(D_temp) > EPS ) {
 			float inverseDet = 1.0f / D_temp;	
 			float t = det(o_temp, _pos - o1_temp) * inverseDet;
 			float s = det(_vel, _pos - o1_temp) * inverseDet;
@@ -184,7 +184,7 @@ namespace UPL {
 		o_temp = o2_temp - o1_temp;
 
 		D_temp = det(_vel, o_temp);
-		if (D_temp > EPS) {
+    if ( fabs( D_temp ) > EPS ) {
 			float inverseDet = 1.0f / D_temp;	
 			float t = det(o_temp, _pos - o1_temp) * inverseDet;
 			float s = det(_vel,_pos - o1_temp) * inverseDet;
