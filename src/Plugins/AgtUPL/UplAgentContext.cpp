@@ -168,31 +168,29 @@ namespace UPL {
       glColor4f( 0.1f, 1.f, 0.1f, 1.f );
       Vector2 driveForce( agt->drivingForce() );
       drawForce( agt, driveForce, "D" );
-			if ( agt->_nearAgents.size() > 0 ) {
-				// Draw repulsive forces
-				if ( _forceObject == 0 ) {
-					// draw forces for all agents
-					const int NBRS = (int)agt->_nearAgents.size();
-					for ( int i = 0; i < NBRS; ++i ) {
-						const Agent * other = static_cast< const Agent *>( agt->getNeighbor( i ) );
-						singleAgentForce( agt, other );
-					}
-					// draw forces for all obstacles
-					const int OBSTS = (int)agt->_nearObstacles.size();
-					for ( int i = 0; i < OBSTS; ++i ) {
-						const Agents::Obstacle * obst = agt->getObstacle( i );
-						singleObstacleForce( agt, obst );
-					}
-				} else if ( _forceObject > 0 ) {
-					// single agent
-					const Agent * other = static_cast< const Agent *>( agt->getNeighbor( _forceObject - 1 ) );
-					singleAgentForce( agt, other, 0.f );
-				} else {	
-					// draw obstacle
-					const Agents::Obstacle * obst = agt->getObstacle( -_forceObject - 1 );
+			// Draw repulsive forces
+			if ( _forceObject == 0 ) {
+				// draw forces for all agents
+				const int NBRS = (int)agt->_nearAgents.size();
+				for ( int i = 0; i < NBRS; ++i ) {
+					const Agent * other = static_cast< const Agent *>( agt->getNeighbor( i ) );
+					singleAgentForce( agt, other );
+				}
+				// draw forces for all obstacles
+        const int OBSTS = (int)agt->_nearObstacles.size();
+        for ( int i = 0; i < OBSTS; ++i ) {
+					const Agents::Obstacle * obst = agt->getObstacle( i );
 					singleObstacleForce( agt, obst, 0.f );
 				}
-      }
+			} else if ( _forceObject > 0 ) {
+				// single agent
+				const Agent * other = static_cast< const Agent *>( agt->getNeighbor( _forceObject - 1 ) );
+				singleAgentForce( agt, other, 0.f );
+			} else {	
+				// draw obstacle
+				const Agents::Obstacle * obst = agt->getObstacle( -_forceObject - 1 );
+				singleObstacleForce( agt, obst, 0.f );
+			}
       glPopMatrix();
 		}
 	}
