@@ -92,10 +92,77 @@ namespace UPL {
 	////////////////////////////////////////////////////////////////
 
 	Vector2 Agent::obstacleForce( const Obstacle * obst ) const {
-		Vector2 force(0.0f, 0.0f);
-    Vector2 nearPt;	// set by distanceSqToPoint
+    Vector2 force( 0.0f, 0.0f );
+#if 0
+    Vector2 p0 = obst->getP0();
+    Vector2 pos_relative = _pos - p0;
+    Vector2 n = obst->normal();
+
+    // Negative *convergence* speed means the agent is moving away.
+    float converge_speed = -_vel * n;
+
+    if ( pos_relative * n < 0 || converge_speed <= 0 ) {
+      // The agent center is already inside the obstacle or the agent is moving away; generate no
+      // force.
+      return force;
+    }
+
+    // Global constants
+    const float k = Simulator::_k;
+    const float t0 = Simulator::_t0;
+    const float m = Simulator::_m;
+
+    // Agent's center is "outside"; determine which feature is nearest.
+    float dot_product = pos_relative * obst->_unitDir;
+    if ( dot_product >= 0 && dot_product < obst->_length ) {
+      // Closest to the line segment.
+      Vector2 point_on_segment = p0 + dot_product * obst->_unitDir;
+      Vector2 w = _pos - point_on_segment;
+      const float dist_sq = w * w;
+      // The obstacle is too far away.
+      if ( dist_sq > _neighborDist * _neighborDist ) return force;
+      const float dist = dist_sq < _radius * _radius ? 0 : sqrtf(dist_sq) - _radius;
+      const float t = dist / converge_speed;
+      if ( t > 0 ) force = k * (float)exp( -t / t0 ) / powf( t, m ) * ( m / t + 1 / t0 ) * n;
+    } else {
+      // Closest to an end point; calculate relative to the nearest point.
+      float a = _vel * _vel;
+      if ( a > EPS ) {
+        Vector2 w;
+        if ( dot_product > obst->_length ) {
+          // Closest to the circle at p1. Rely on the *other* obstacle that shares this point to
+          // compute the force.
+          return force;
+          //w = obst->getP1() - _pos;
+        } else if ( dot_product < 0 ) {
+          // Closest to the circle at p0.
+          w = p0 - _pos;
+        }
+        const float dist_sq = w * w;
+        // The obstacle is too far away.
+        if ( dist_sq > _neighborDist * _neighborDist ) return force;
+        float radius_sq = _radius * _radius;
+        radius_sq = dist_sq < radius_sq ? dist_sq : radius_sq;
+        float b = w * _vel;
+        float c = dist_sq - radius_sq;
+        float discr = b * b - a * c;
+        if ( discr > .0f ) {
+          float discr_root = sqrtf( discr );
+          const float t = ( b - discr_root ) / a;
+          if ( t > 0 ) {
+            // NOTE: discCollision can only be set to *true* if a > EPS. This is valid.
+            force = -k * (float)exp( -t / t0 ) *
+              ( _vel - ( b * _vel - a * w ) / discr_root ) /
+              ( a * powf( t, m ) ) * ( m / t + 1 / t0 );
+          }
+        }
+      }
+    }
+    return force;
+#else
+		Vector2 nearPt;	// set by distanceSqToPoint
 		float d_w;	// set by distanceSqToPoint
-		if ( obst->distanceSqToPoint( _pos, nearPt, d_w ) == Obstacle::LAST ) return Vector2(0.f,0.f);
+		if ( obst->distanceSqToPoint( _pos, nearPt, d_w ) == Obstacle::LAST ) return force;
 		Vector2 n_w = nearPt - _pos;
 
     // Agent is moving away from obstacle or obstacle too far away
@@ -115,7 +182,8 @@ namespace UPL {
 		float b_temp, discr_temp, c_temp, D_temp;
 		Vector2 w_temp, w, o1_temp, o2_temp, o_temp, o, w_o;
 
-		// time-to-collision with disc_1 of the capped rectangle (capsule)
+		// time-to-collision with disc_1 of the capped rectangle (capsule). Don't bother testing
+    // disc_2; it will be covered by the adjacent obstacle.
     if ( a > EPS ) {
       w_temp = obst->getP0() - _pos;
       b_temp = w_temp * _vel;
@@ -134,23 +202,23 @@ namespace UPL {
         }
       }
 
-      // time-to-collision with disc_2 of the capsule
-      w_temp = obst->getP1() - _pos;
-      b_temp = w_temp * _vel;
-      c_temp = w_temp * w_temp - ( radius * radius );
-      discr_temp = b_temp * b_temp - a * c_temp;
-      if ( discr_temp > .0f ) {
-        discr_temp = sqrtf( discr_temp );
-        const float t = ( b_temp - discr_temp ) / a;
-        if ( t > 0 && t < t_min ) {
-          t_min = t;
-          b = b_temp;
-          discr = discr_temp;
-          w = w_temp;
-          c = c_temp;
-          discCollision = true;
-        }
-      }
+      //// time-to-collision with disc_2 of the capsule
+      //w_temp = obst->getP1() - _pos;
+      //b_temp = w_temp * _vel;
+      //c_temp = w_temp * w_temp - ( radius * radius );
+      //discr_temp = b_temp * b_temp - a * c_temp;
+      //if ( discr_temp > .0f ) {
+      //  discr_temp = sqrtf( discr_temp );
+      //  const float t = ( b_temp - discr_temp ) / a;
+      //  if ( t > 0 && t < t_min ) {
+      //    t_min = t;
+      //    b = b_temp;
+      //    discr = discr_temp;
+      //    w = w_temp;
+      //    c = c_temp;
+      //    discCollision = true;
+      //  }
+      //}
     }
 
 		// time-to-collision with segment_1 of the capsule
@@ -172,7 +240,9 @@ namespace UPL {
 			}
 		}
 
-		// time-to-collision with segment_2 of the capsule
+    // This should never happen; if I'm properly "outside" the obstacle, the offset curve in the
+    // normal direction should always be closer.
+		//// time-to-collision with segment_2 of the capsule
 		o1_temp = obst->getP0() - radius * obst->normal();
 		o2_temp = obst->getP1() - radius * obst->normal();
 		o_temp = o2_temp - o1_temp;
@@ -183,6 +253,7 @@ namespace UPL {
 			float t = det(o_temp, _pos - o1_temp) * inverseDet;
 			float s = det(_vel,_pos - o1_temp) * inverseDet;
 			if ( t > 0 && s >= 0 && s <= 1 && t < t_min ) {
+        std::cout << "Agent " << _id << " used the far segment at " << Menge::SIM_TIME << "\n";
 				t_min = t;
 				o = o_temp;
 				w_o = _pos - o1_temp;
@@ -206,6 +277,7 @@ namespace UPL {
 		}
 
 		return force;
+#endif
 	}
 
 	////////////////////////////////////////////////////////////////

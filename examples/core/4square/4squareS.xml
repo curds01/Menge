@@ -49,7 +49,7 @@
 					displace_dist="u" displace_min="0.0" displace_max="0.25"
 					/>
 	</AgentGroup>
-    
+
     <AgentGroup>
         <ProfileSelector type="const" name="group2" />
 		<StateSelector type="const" name="Walk" />
@@ -82,7 +82,7 @@
 					displace_dist="u" displace_min="0.0" displace_max="0.25"
 					/>
     </AgentGroup>
-	
+
     <ObstacleSet type="explicit" class="1"> 
           <Obstacle closed="1"  >
             <Vertex p_x = "1.333" p_y = "1.333"/>
