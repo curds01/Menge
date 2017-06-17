@@ -87,12 +87,12 @@ namespace UPL {
 		/// The exponential cutoff term tau_0
 		static float _t0;
 
+    // TODO: Remove this; I'm limiting this to 2 in this model
 		/// The exponent of the power law (m = 2 in our analysis)
 		static float _m;
 
 		/// Relaxation time for the driving force
 		static float _ksi;
-
 	};
 }	// namespace UPL
 #endif	 // __UPL_SIMULATOR_H__

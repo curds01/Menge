@@ -6,6 +6,7 @@
 namespace UPL {
 	using Menge::Agents::BaseAgent;
 	using Menge::Agents::Obstacle;
+  using Menge::Math::sqr;
 	using Menge::Math::Vector2;
 	using Menge::INFTY;
 
@@ -51,43 +52,33 @@ namespace UPL {
 
 	////////////////////////////////////////////////////////////////
 
-	Vector2 Agent::agentForce( const Agent * other ) const {
-		// TODO: address right of way
+  Vector2 Agent::agentForce( const Agent * other ) const {
+    // TODO: address right of way
 
-		//What should be global variables
+    Vector2 force( 0.0f, 0.0f );
+    Vector2 x = other->_pos - _pos;
+    const float dist_sqd = x * x;
 
-		//Local Variables
-		Vector2 force(0.0f, 0.0f);
-		Vector2 disp =  other->_pos - _pos;
-		const float dispSq = disp * disp; // disp.Length() * disp.Length();
-		float radiusSq = _radius + other->_radius;
-		radiusSq *= radiusSq;
+    // Too far away to impart a force.
+    if ( dist_sqd > sqr( _neighborDist ) ) return force;
 
-		// if agents are actually colliding use their separation distance 
-		if (dispSq < radiusSq) {
-			radiusSq = other->_radius + _radius - disp.Length();
-			radiusSq *= radiusSq;
-		}
- 
-		const float k = Simulator::_k;
-		const float t0 = Simulator::_t0;
-		const float m = Simulator::_m;
+    const Vector2 v = _vel - other->_vel;
+    // Diverging; no force necessary.
+    if ( v * x < 0 ) return force;
 
-		const Vector2 v = _vel - other->_vel;
-		const float a = v * v;
-		const float b = disp * v;	
-		const float c = dispSq - radiusSq;
-		float discr = b * b - a * c;
-		if ( discr > .0f && abs( a ) > EPS ) {
-			discr = sqrtf( discr );
-			const float t = ( b - discr ) / a;
-			if ( t > 0) {
-			  force = -k * (float)exp(-t / t0) * (v - (b * v - a * disp) / discr) / (a * powf(t, m)) *
-          (m / t + 1 / t0);	      
-			}
-		}
-		return force;
-	}
+    // TODO: This is dissatisfying; the more the agents collide, the less they are penalized.
+    float radius_sqd = sqr( _radius + other->_radius );
+    if ( radius_sqd > dist_sqd ) {
+      radius_sqd = sqr( other->_radius + _radius - x.Length() );
+    }
+
+    Vector2 gradient;
+    float t = getDiskGradient( x, radius_sqd, v, &gradient );
+    if ( t > 0 ) {
+      force = forceMagnitude( t, v ) * gradient;
+    }
+    return force;
+  }
 
 	////////////////////////////////////////////////////////////////
 
@@ -296,8 +287,35 @@ namespace UPL {
 			v._x *=  mult;
 			v._y *=  mult;
 		}
-	}
+  }
+
+  ////////////////////////////////////////////////////////////////
+
+  float Agent::getDiskGradient( const Vector2& center, float rad_sqd, const Vector2& v,
+                                Vector2* grad ) const {
+    grad->set( 0.f, 0.f );
+    const float a = v * v;
+    if ( a > EPS ) {
+      const float b = center * v;
+      const float c = center * center - rad_sqd;
+      const float discr = b * b - a * c;
+      if ( discr > 0.f ) {
+        const float d = sqrtf( discr );
+        grad->set( v - ( b * v - a * center ) / d );
+        return ( b - d ) / a;
+      }
+    }
+    return -1;
+  }
 
 	////////////////////////////////////////////////////////////////
+
+  float Agent::forceMagnitude( float tau, const Vector2& v ) const {
+    const float k = Simulator::_k;
+    const float t0 = Simulator::_t0;
+
+    // NOTE: The paper advocates t^2, so that's what is used here.
+    return -k * (float)exp( -tau / t0 ) / ( ( v * v ) * tau * tau ) * ( 2 / tau + 1 / t0 );
+  }
 
 }	// namespace UPL

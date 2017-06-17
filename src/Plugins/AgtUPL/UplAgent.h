@@ -85,11 +85,32 @@ namespace UPL {
 		Menge::Math::Vector2 drivingForce() const;
 
 		/*!
-                 *  @brief Caps the magnitude of a vector to a maximum value. 
-                 *  @param force A force vector
+     *  @brief Caps the magnitude of a vector to a maximum value. 
+     *  @param force A force vector
 		 *  @param maxValue The maximum magnitude of the force.
 		 */
-		void  clamp(Menge::Math::Vector2 &v, float maxValue) ;
+		void clamp(Menge::Math::Vector2 &v, float maxValue);
+
+    /*!
+     *  @brief  Reports the gradient (w.r.t. position) of the time to collision between a point
+     *          and a disk.
+     *  @param c          The center of the disk (relative to the query point).
+     *  @param rad_sqd    The squared radius of the disk.
+     *  @param v          The velocity of the point (relative to the disk).
+     *  @param grad       The value of the gradient is written to this member.
+     *  @returns          The time to collision; non-negative numbers imply no collision and no 
+     *                    gradient.
+     */
+    float getDiskGradient( const Menge::Math::Vector2& c, float rad_sqd, 
+                           const Menge::Math::Vector2& v, Menge::Math::Vector2* grad ) const;
+
+    /*!
+     *  @brief    Given the positive time to collision tau, reports the force magnitude scalar
+     *            based on the power law definition and global parameters.
+     *  @param  tau   The positive time to collision (this is *not* checked).
+     *  @param  v     The relative velocity between the two objects.
+     */
+    float forceMagnitude( float tau, const Menge::Math::Vector2& v ) const;
 
 		/*!
 		 *	@brief		The mass of the agent
