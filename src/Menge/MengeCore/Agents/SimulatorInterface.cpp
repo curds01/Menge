@@ -169,6 +169,17 @@ namespace Menge {
 		}
 
 		////////////////////////////////////////////////////////////////////////////
+
+    SCBWriter* SimulatorInterface::setScbWriter( SCBWriter* new_writer, bool delete_old ) {
+      SCBWriter * old_writer = nullptr;
+      if ( delete_old && _scbWriter ) {
+        delete _scbWriter;
+      } else {
+        old_writer = _scbWriter;
+      }
+      _scbWriter = new_writer;
+      return old_writer;
+    }
 		
 	}	// namespace Agents
 }	// namespace Menge

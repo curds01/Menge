@@ -269,6 +269,27 @@ namespace Menge {
 			 */
 			bool setOutput( const std::string & outFileName, const std::string & scbVersion );
 
+      /*!
+       *  @brief    Returns a pointer to the current scb writer -- may be null.
+       */
+      SCBWriter* getScbWriter() { return _scbWriter; }
+
+      /*!
+       *  @brief    Sets the new scb writer.
+       *
+       *  Optionally deletes the current scb writer (if it exists). If `delete_old` is true, this
+       *  method will delete the previously existing scb writer (and return nullptr). If it is
+       *  false, it returns a pointer to the current scb writer and it is the callers
+       *  responsibility to delete the old writer (if non-null).
+       *
+       *  @param  new_writer  A pointer to the new writer. The SimulationInterface takes ownership
+       *                      of the writer.
+       *  @param  delete_old  If true, the previous writer is destroyed. Otherwise, a pointer to
+       *                      the writer is returned and, if non-null, the caller is responsible
+       *                      for deleting it.
+       */
+      SCBWriter* setScbWriter( SCBWriter* new_writer, bool delete_old = true );
+
 		protected:
 
 			/*!
