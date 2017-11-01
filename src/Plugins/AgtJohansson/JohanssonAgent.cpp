@@ -1,9 +1,9 @@
-/*
+﻿/*
 
 License
 
 Menge
-Copyright � and trademark � 2012-14 University of North Carolina at Chapel Hill. 
+Copyright © and trademark ™ 2012-14 University of North Carolina at Chapel Hill. 
 All rights reserved.
 
 Permission to use, copy, modify, and distribute this software and its documentation 
@@ -68,6 +68,24 @@ namespace Johansson {
 		const float STEP_TIME = Simulator::STRIDE_TIME;
 		float B = Simulator::FORCE_DISTANCE;
 
+		// The equation from the paper is as follows (with alpha and beta substituted for i and j):
+		//
+		// fᵢⱼ = A⋅wᵢⱼ⋅exp(-bᵢⱼ/B)⋅(‖dᵢⱼ‖+‖dᵢⱼ - yᵢⱼ‖)/(2bᵢ)⋅½(dᵢⱼ/‖dᵢⱼ‖ + (dᵢⱼ - yᵢⱼ)/‖dᵢⱼ - yᵢⱼ‖)
+		//
+		//   Where:
+		//		dᵢⱼ = rᵢ - rⱼ
+		//		yᵢⱼ = vⱼ⋅Δt⋅eᵢⱼ, 
+		//		eᵢ = "direction of motion of pedestrian i"
+		//		wᵢⱼ = λᵢ + (1 - λᵢ)⋅½(1 + cos(eᵢ⋅d̂ᵢⱼ)), a directional scale factor
+		//		2⋅bᵢⱼ = √((‖dᵢⱼ‖+‖dᵢⱼ - yᵢⱼ‖)²-(vⱼ⋅Δt)²)
+		//
+		//	Maps to the following variables:
+		//		A = Simulator::AGENT_SCALE
+		//		wᵢⱼ = w_ij
+		//		λᵢ = _dirWeight
+		//		B = Simulator::FORCE_DISTANCE
+		//		eᵢ = 
+
 		// driving force
 		Vector2 force( ( _velPref.getPreferredVel() - _vel ) / TAU );
 		// agent forces
@@ -76,22 +94,23 @@ namespace Johansson {
 			const BaseAgent * otherBase = _nearAgents[i].agent;
 			const Agent * const other = static_cast< const Agent *>( otherBase );
 
-			Vector2 relPos = _pos - other->_pos;
-			float dist = abs( relPos );
-			Vector2 relDir = relPos / dist;
+			Vector2 d_ij = _pos - other->_pos;
+			float dist = abs( d_ij );
+			Vector2 relDir = d_ij / dist;
 			// directional weight of force
 			
 			float cosTheta = relDir * _orient;
-			float magnitude = A * ( _dirWeight + (1.f - _dirWeight) * ( 1 + cosTheta ) * 0.5f );
+			float w_ij = _dirWeight + (1.f - _dirWeight) * (1 + cosTheta) * 0.5f;
+			float magnitude = A * w_ij;
 
 			// elliptical term
 			Vector2 stepOffset = other->_vel * STEP_TIME;
-			Vector2 relPosOffset = relPos - stepOffset;
+			Vector2 relPosOffset = d_ij - stepOffset;
 			float relPosOffsetDist = abs( relPosOffset );
 			float term1 = dist + relPosOffsetDist;
 			float offsetDistSq = absSq( stepOffset );
-			float b = 0.5f * sqrtf( term1 * term1 - offsetDistSq );
-			float twoB = 2.f * b;
+			float twoB = sqrtf( term1 * term1 - offsetDistSq );
+			float b = twoB / 2.f;
 			// Extra magnitude scaling term
 			magnitude *= term1 / twoB;
 			magnitude *= expf( -b / B );
@@ -109,8 +128,8 @@ namespace Johansson {
 				 Obstacle::LAST ) continue;
 			float dist = sqrtf( distSq );
 
-			Vector2 relPos = _pos - nearPt;
-			Vector2 relDir = relPos / dist;
+			Vector2 d_ij = _pos - nearPt;
+			Vector2 relDir = d_ij / dist;
 			// directional weight of force
 			
 			float cosTheta = relDir * _orient;

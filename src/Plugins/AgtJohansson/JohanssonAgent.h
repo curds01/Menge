@@ -18,7 +18,12 @@
 
 /*!
  *	@file		JohanssonAgent.h
- *	@brief		Definition of Johansson 2007 agent.
+ *	@brief		Definition of 
+ *	A. Johansson, D. Helbing and P. K. Shukla (2007) 
+ *	Specification of the social force pedestrian model by evolutionary adjustment to video tracking
+ *  data. Advances in Complex Systems 10, 271-288
+ * 
+ * This implementaiton reflects the Elliptical Specifcation I variant.
  */
 
 #ifndef __JOHANSSON_AGENT_H__
