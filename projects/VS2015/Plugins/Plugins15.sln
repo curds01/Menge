@@ -24,6 +24,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StressGas", "StressGas.vcxp
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AgtGCF", "AgtGCF.vcxproj", "{E75202E3-D161-435D-8250-F7D8D850D2BF}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Mixed", "Mixed.vcxproj", "{0E3AC7B7-74F7-40F4-8DE1-94339F8B5706}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -166,6 +168,18 @@ Global
 		{E75202E3-D161-435D-8250-F7D8D850D2BF}.ReleaseST|Win32.Build.0 = Release|Win32
 		{E75202E3-D161-435D-8250-F7D8D850D2BF}.ReleaseST|x64.ActiveCfg = Release|x64
 		{E75202E3-D161-435D-8250-F7D8D850D2BF}.ReleaseST|x64.Build.0 = Release|x64
+		{0E3AC7B7-74F7-40F4-8DE1-94339F8B5706}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0E3AC7B7-74F7-40F4-8DE1-94339F8B5706}.Debug|Win32.Build.0 = Debug|Win32
+		{0E3AC7B7-74F7-40F4-8DE1-94339F8B5706}.Debug|x64.ActiveCfg = Debug|x64
+		{0E3AC7B7-74F7-40F4-8DE1-94339F8B5706}.Debug|x64.Build.0 = Debug|x64
+		{0E3AC7B7-74F7-40F4-8DE1-94339F8B5706}.Release|Win32.ActiveCfg = Release|Win32
+		{0E3AC7B7-74F7-40F4-8DE1-94339F8B5706}.Release|Win32.Build.0 = Release|Win32
+		{0E3AC7B7-74F7-40F4-8DE1-94339F8B5706}.Release|x64.ActiveCfg = Release|x64
+		{0E3AC7B7-74F7-40F4-8DE1-94339F8B5706}.Release|x64.Build.0 = Release|x64
+		{0E3AC7B7-74F7-40F4-8DE1-94339F8B5706}.ReleaseST|Win32.ActiveCfg = Release|Win32
+		{0E3AC7B7-74F7-40F4-8DE1-94339F8B5706}.ReleaseST|Win32.Build.0 = Release|Win32
+		{0E3AC7B7-74F7-40F4-8DE1-94339F8B5706}.ReleaseST|x64.ActiveCfg = Release|x64
+		{0E3AC7B7-74F7-40F4-8DE1-94339F8B5706}.ReleaseST|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

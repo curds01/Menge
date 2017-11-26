@@ -1,0 +1,70 @@
+This branch is a prototype branch
+
+The goal is to create a system that will:
+   - Read trajectories from a file (at a specified frame rate)
+   - In addition, any *extra* agents will be subject to regular planning (but respond to the scripted agents)
+   - Able to specify how many *extra* agents should be allowed.
+   - All unused agents (scripted + allowed) go into a purgatory zone.
+
+Implementation
+  - I need a velocity modifier-task combo
+    - The task is responsible reading the file and determining:
+      - Which agents from the set are being driven
+      - What their current trajectory is
+      - Activating/deactivating scripted agents
+    - The velocity modifier sets the velocity of the task-dictated agents to the task-dictated velocities.
+    - Agents get activated/deactivated via events
+    	- There will be three states? (Specified in the declaration of the task)
+	  - Active state - agents in this state receive velocities from the task
+	    - Entering the state has the following changes
+	      - max neighbors set to zero
+	      - priority set to state-configured value (nomianlly greater than "normal" agents).
+	      - teleport to the head of the trajectory.
+            - VelocityComponent can simply be the zero goal.
+	  - Inactive state
+	    - Agents have zero neighbors, zero velocity, identity goal (go nowhere, do nothing).
+	  - Final state 
+	    - agents should only be put here because there are no more scripted trajectories/all of the scripted trajectories have completed.
+	      - if *all* of the non-scripted agents are placed in a sub-graph that is marked globally final, the simulation will naturally end when the scripted agents are placed in the final state).
+        - I need an agent-state event where I can mark the targets.  
+	  - two events, one to activate, one to deactivate
+	  - The task will simply configure the event *targets* to include those agents that are being activated/de-activated.
+
+Task
+	- Owns the pool of agents
+		- Parameters
+			- Define the class serving as agents for the pool
+			- Define the resource shared by task, event, and velocity component
+		- Preparation
+			- Needs to be able to "finalize" the agents available to the pool
+				- ideally, tasks finalize, alternatively, this has a flag that determines if it has happened before the first evaluation.
+			- Long run, this would have to have a chance to handle addition/removal of agents
+		- Task execusion
+			- Decouple *what* the trajectories are from pool management and interface
+			- The easiest thing to do is provide an interface that implementations can *call*
+				- essentially: restoreAgent, retireAgent, setVelocity
+			- In my case, I'll embed it in hard-coded trajectories per agent.
+
+Resource
+
+Events
+
+VelocityModifier
+
+************ ALTERNATE ARCHITECTURE ***************
+
+Action and Transition Conditions
+
+1. All driven agents start in a holding state
+2. There is a transition from the holding state to the driven state -- custom transition
+   1. The transition *condition* is based on a value in the shared resource - the task updates, the 
+      transition reads it.
+3. The driven state has a "driven init" custom *Action*.
+   1. The action sets the initial position/velocity as well as configuring neighbor counts, etc.
+      (actually, neighbor counts should be configured to zero).
+   2. It reads the position/velocity from the shared resource.
+4. There is a transition from driven to holding (possibly same transition? Possibly different?)
+    - different would introduce more overhead
+	- However, each one would be *much* simpler.
+
+	
