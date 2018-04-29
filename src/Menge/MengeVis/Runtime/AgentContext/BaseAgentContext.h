@@ -66,7 +66,7 @@ class MENGEVIS_API BaseAgentContext : public SceneGraph::SelectContext {
   /*!
    *	@brief		Give the context the opportunity to respond to a keyboard
    *				event.
-   *
+
    *	@param		e		The SDL event with the keyboard event data.
    *	@returns	A ContextResult instance reporting if the event was handled and
    *				if redrawing is necessary.
@@ -75,7 +75,7 @@ class MENGEVIS_API BaseAgentContext : public SceneGraph::SelectContext {
 
   /*!
    *	@brief		The draw function for the context.
-   *
+
    *	@param		vWidth		The width of the viewport (in pixels).
    *	@param		vHeight		The height of the viewport (in pixels).
    */
@@ -83,18 +83,18 @@ class MENGEVIS_API BaseAgentContext : public SceneGraph::SelectContext {
 
   /*!
    *	@brief		Sets the agent for this context.
-   *
+
    *	This method works in conjunction with the VisElementDatabase. When this
    *	visualization element is triggered, the database will supply the triggering
    *	element.
-   *
+
    *	@param		agent		The agent to interact with.
    */
   virtual void setElement(const VisAgent* agent) { _selected = agent; }
 
   /*!
   *	@brief		Returns the name of the context for display.
-  *
+
   *	@returns		The name of this context.
   */
   virtual std::string contextName() const { return "BaseAgent"; }
@@ -109,7 +109,7 @@ class MENGEVIS_API BaseAgentContext : public SceneGraph::SelectContext {
   /*!
   *	@brief		Creates a formatted string to be printed in the context
   *				for a particular agent
-  *
+
   *	@param		agent		The agent whose data is to be displayed.
   *	@returns	A formatted string for display in the context's 2D gui.
   */
@@ -118,7 +118,7 @@ class MENGEVIS_API BaseAgentContext : public SceneGraph::SelectContext {
  protected:
   /*!
    *	@brief		Draw context elements into the 3D world.
-   *
+
    *	@param		select		Defines if the drawing is being done for selection
    *							purposes (true) or visualization (false).
    */

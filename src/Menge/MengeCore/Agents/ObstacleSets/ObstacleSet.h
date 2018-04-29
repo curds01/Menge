@@ -46,7 +46,7 @@ class MENGE_API ObstacleSetException : public virtual MengeException {
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   ObstacleSetException(const std::string& s) : MengeException(s) {}
@@ -65,7 +65,7 @@ class MENGE_API ObstacleSetFatalException : public ObstacleSetException,
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   ObstacleSetFatalException(const std::string& s)
@@ -74,7 +74,7 @@ class MENGE_API ObstacleSetFatalException : public ObstacleSetException,
 
 /*!
  *	@brief		The base class for obstacle set definitions
- *
+
  *    This is an abstract class defining the functions of an obstacle set in Menge
  *    Obstacle sets must be able to provide a count of Obstacles in their definition
  *    and pass those obstacles on to the SpatialQuery
@@ -98,14 +98,14 @@ class MENGE_API ObstacleSet : public Element {
  public:
   /*!
    *	@brief		Reports the number of obstacles in the set.
-   *
+
    *	@returns	The number of obstacles in this set.
    */
   virtual size_t obstacleCount() = 0;
 
   /*!
    *	@brief		Returns the ith obstacle.
-   *
+
    *	@param		i		The index of the requested obstacle.
    *	@returns	A pointer to the corresponding Obstacle instance.
    *	@throws		ObstacleSetException if the index, i, is invalid.
@@ -114,14 +114,14 @@ class MENGE_API ObstacleSet : public Element {
 
   /*!
    *	@brief		Sets the class of this obstacle set.
-   *
+
    *	@param		cl		the class id to which the obstacle set belongs.
    */
   virtual void setClass(size_t cl) { _class = cl; };
 
   /*!
    *	@brief		Gets the class of this obstacle set.
-   *
+
    *	@returns	The class id to which the obstacle set belongs.
    */
   virtual size_t getClass() { return _class; };
@@ -129,7 +129,7 @@ class MENGE_API ObstacleSet : public Element {
  protected:
   /*!
    *	@brief		The class for the obstacles in this set.
-   *
+
    *				This works with the BaseAgent::_obstacleSet member
    *				to determine which obstacles affect an agent.
    */

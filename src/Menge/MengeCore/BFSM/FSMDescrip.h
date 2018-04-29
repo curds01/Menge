@@ -71,12 +71,12 @@ class FSMDescrip {
 
   /*!
    *	@brief		Instantiates a state based on the description.
-   *
+
    *	This is a behavior operation, because the behavior is responsible for:
    *		- tracking its states by name,
    *		- confirming no State name conflicts, and
    *		- connecting states with transitions.
-   *
+
    *	@param		sData		The description of the state to create.
    *	@returns	A pointer to the created state.  If there are two states with the same
    *				name *in this behavior*, NULL is returned.
@@ -85,7 +85,7 @@ class FSMDescrip {
 
   /*!
    *	@brief		Initializes the configuration from an xml file.
-   *
+
    *	@param		xmlName		The path to the xml file containing the behavior
    *							specification.
    *	@param		verbose		Dictates whether the parsing is verbose.
@@ -95,7 +95,7 @@ class FSMDescrip {
 
   /*!
    *	@brief		Creates an FSM instance from the config file.
-   *
+
    *	@param		fsmDescrip	The behavior configuration description.
    *	@param		sim			An instance of the simulator.
    *	@param		VERBOSE		Dictates whether the construction process is verbose (true)
@@ -106,7 +106,7 @@ class FSMDescrip {
   /*!
    *	@brief		Friend operator for printing the behavior configuration to an output
    *				stream.
-   *
+
    *	@param		out				The logger.
    *	@param		fsmDescrip		A behavior configuration to write to the stream.
    *	@returns	The provided output stream.
@@ -116,7 +116,7 @@ class FSMDescrip {
  protected:
   /*!
    *	@brief		Adds the transition(s) associated with the given name.
-   *
+
    *	@param		name		The name of the state from which the transition
    *							originates.  Alternatively, a comma-separated
    *list.

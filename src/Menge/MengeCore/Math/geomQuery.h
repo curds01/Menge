@@ -36,10 +36,10 @@ namespace Menge {
 namespace Math {
 /*!
  *	@brief		Computes the time to collision between a ray and a circle
- *
+
  *				This is a special-case test.  It assumes the ray originates
  *				from the origin of the world.
- *
+
  *	@param		dir			A vector in R2 describing the direction (from the
  *origin)
  *							of the ray.  (Does not need to be
@@ -52,7 +52,7 @@ MENGE_API float rayCircleTTC(const Vector2& dir, const Vector2& center, float ra
 
 /*!
  *	@brief		Perform spherical linear interpolation between two vectors
- *
+
  *	@param		t			The blend parameter.  T lies in the interval [0, 1]
  *	@param		p0			The first vector to interpolate (assumes ||p0|| =
  *1.0.

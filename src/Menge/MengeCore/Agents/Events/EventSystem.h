@@ -87,10 +87,10 @@ class MENGE_API EventSystem {
 
   /*!
    *	@brief		Adds an event to the system.
-   *
+
    *	The system becomes the owner of the event and will take responsibility
    *	for deleting it.
-   *
+
    *	@param		evt		The event to add to the system.
    */
   void addEvent(Event* evt) { _events.push_back(evt); }
@@ -110,7 +110,7 @@ class MENGE_API EventSystem {
    *
    *	@param		node		    The node containing the event system description.
    *	@param		behaveFldr	The folder containing the behavior specification. All event paths are
-                            defined relative to this folder.
+   *                        defined relative to this folder.
    *	@returns	True if parsing was successful, false otherwise.
    */
   bool parseEvents(TiXmlElement* node, const std::string& behaveFldr);
@@ -119,7 +119,7 @@ class MENGE_API EventSystem {
    *	@brief		Registers an external event trigger with the system. Any
    *	external event trigger that is not added explicitly will not be
    *	available to external systems upon query.
-   *
+
    *	@param		trigger		The external event trigger to add to the system.
    *	@throws		An event exception if the trigger does not have a unique name.
    *	@see listExternalTriggers()
@@ -129,7 +129,7 @@ class MENGE_API EventSystem {
   /*!
    *	@brief		Provides the names of the external events registered with the
    *	event system.
-   *
+
    *	@returns	The list of trigger names.
    */
   std::vector<std::string> listExternalTriggers() const;
@@ -137,7 +137,7 @@ class MENGE_API EventSystem {
   /*!
    *	@brief		Activate the external event trigger indicated by name.
    *	If the name doesn't refer to a known external trigger, no action will be taken.
-   *
+
    *	@param name		The name of the trigger to activate.
    *	@returns	True if the trigger is activated.
    */
@@ -146,7 +146,7 @@ class MENGE_API EventSystem {
   /*!
    *	@brief		Causes an event exception to be thrown based on the
    *				the system's tolerance for event configuration errors.
-   *
+
    *	@param		msg			The event associated with the problem.
    *	@throws		EventException if the system is *not* conservative; i.e.,
    *				configuration errors will be noted, but simulation will
@@ -158,7 +158,7 @@ class MENGE_API EventSystem {
   /*!
    *	@brief		Global variable to indicate how event configuration errors
    *				should be handled.
-   *
+
    *	If true, event configuration errors result in fatal exceptions, if false
    *	they are merely warnings.
    */

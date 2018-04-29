@@ -47,7 +47,7 @@ class MENGE_API ResourceManager {
  public:
   /*!
    *	@brief		Retrieve a resource from the manager.
-   *
+
    *	@param		fileName	The name of the file associated with the resource.
    *	@param		reader		Pointer to a function for parsing the given file and
    *							producing a resource instance.
@@ -75,7 +75,7 @@ class MENGE_API ResourceManager {
 
   /*!
    *	@brief		Remove the given resource
-   *
+
    *	@param		rsrc		A pointer to the resource to remove.
    *	@returns	True if the pointer is successfully removed, false otherwise.
    *				It can fail if the resource doesn't belong to the manager or

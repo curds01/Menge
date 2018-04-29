@@ -59,7 +59,7 @@ class MENGEVIS_API ImageData : public ManagedData {
 
   /*!
    *	@brief		Initializes the image system.
-   *
+
    *	Must be called before images can be used. Essentially, it calls the
    *	SDL Image initialization
    */
@@ -82,21 +82,21 @@ class MENGEVIS_API ImageData : public ManagedData {
 
   /*!
    *	@brief		Returns the width of the image (in pixels).
-   *
+
    *	@returns	The width of the image (in pixels).
    */
   int getWidth() const { return _img->w; }
 
   /*!
    *	@brief		Returns the height of the image (in pixels).
-   *
+
    *	@returns	The height of the image (in pixels).
    */
   int getHeight() const { return _img->h; }
 
   /*!
    *	@brief		Reports the bits per pixel.
-   *
+
    *	@returns	Either 24 or 32, depending on whether the image has an
    *				alpha channel (32) or not (24).
    */
@@ -119,7 +119,7 @@ class MENGEVIS_API ImageData : public ManagedData {
 
   /*!
    *	@brief		Loads the image from a file (specified by name)
-   *
+
    *	@param		fileName	The path to a valid image file.
    *	@returns	A pointer to the underlying ImageData.  If there is an
    *				error, NULL is returned.
@@ -128,7 +128,7 @@ class MENGEVIS_API ImageData : public ManagedData {
 
   /*!
    *	@brief		Returns the red channel of the image at the given pixel.
-   *
+
    *	@param		x		The x-coordinate of the pixel.
    *	@param		y		The y-coordinate of the pixel.
    *  @returns	the red channel of the image at the given pixel.
@@ -159,7 +159,7 @@ class MENGEVIS_API Image : public ManagedDataWrapper<ImageData> {
  public:
   /*!
    *	@brief		Construtor.
-   *
+
    *	@param		data	An instance of ImageData.
    */
   Image(ImageData* data);
@@ -176,21 +176,21 @@ class MENGEVIS_API Image : public ManagedDataWrapper<ImageData> {
 
   /*!
    *	@brief			Returns the image data.
-   *
+
    *	@returns		A const pointer to the underlying image data.
    */
   const ImageData* data() const { return _data; }
 
   /*!
    *	@brief		Returns the width of the image (in pixels).
-   *
+
    *	@returns	The width of the image (in pixels).
    */
   int getWidth() const { return _data->getWidth(); }
 
   /*!
    *	@brief		Returns the height of the image (in pixels).
-   *
+
    *	@returns	The height of the image (in pixels).
    */
   int getHeight() const { return _data->getHeight(); }
@@ -198,7 +198,7 @@ class MENGEVIS_API Image : public ManagedDataWrapper<ImageData> {
 
 /*!
  *	@brief		Given a filename, returns a pointer to an Image with that data.
- *
+
  *	@param		fileName		The unique path to the image.
  *	@returns	A pointer to an Image instance.  If there is a problem loading
  *				the image, NULL is returned.  The caller is responsible for

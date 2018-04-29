@@ -36,7 +36,7 @@ namespace BFSM {
 
 /*!
  *	@brief		The definition of the "auto" condition.
- *
+
  *	The auto condition always evaluates to true.  It can be used
  *	to automatically progress from one state to another -- or as a default
  *	case when multiple transitions are possible and the transition with
@@ -47,7 +47,7 @@ class MENGE_API AutoCondition : public Condition {
  public:
   /*!
    *	@brief		The AutoCondition is always met -- it is a tautology.
-   *
+
    *	@param		agent		The agent to test the transition for.
    *	@param		goal		The agent's goal (although this may be ignored).
    *	@returns	True if the condition has been met, false otherwise.
@@ -56,9 +56,9 @@ class MENGE_API AutoCondition : public Condition {
 
   /*!
    *	@brief		Create a copy of this condition.
-   *
+
    *	It is the responsibility of the caller to delete the object.
-   *
+
    *	@returns:	A "deep copy" of this condition - such that there is no shared
    *				objects between this and its copy.
    */
@@ -74,19 +74,19 @@ class MENGE_API AutoCondFactory : public ConditionFactory {
  public:
   /*!
    *	@brief		The name of the action.
-   *
+
    *	The action's name must be unique among all registered actions.
    *	Each action factory must override this function.
-   *
+
    *	@returns	A string containing the unique action name.
    */
   virtual const char* name() const { return "auto"; }
 
   /*!
    *	@brief		A description of the action.
-   *
+
    *	Each action factory must override this function.
-   *
+
    *	@returns	A string containing the action description.
    */
   virtual const char* description() const {
@@ -97,12 +97,12 @@ class MENGE_API AutoCondFactory : public ConditionFactory {
  protected:
   /*!
    *	@brief		Create an instance of this class's condition.
-   *
+
    *	All ConditionFactory sub-classes must override this by creating (on the heap)
    *	a new instance of its corresponding condition type.  The various field values
    *	of the instance will be set in a subsequent call to ConditionFactory::setFromXML.
    *	The caller of this function takes ownership of the memory.
-   *
+
    *	@returns		A pointer to a newly instantiated Condition class.
    */
   virtual Condition* instance() const { return new AutoCondition(); }

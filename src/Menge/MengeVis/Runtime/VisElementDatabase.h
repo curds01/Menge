@@ -37,7 +37,7 @@ namespace MengeVis {
 namespace Runtime {
 /*!
  *	@brief		The base functionality of an visualization element database.
- *
+
  *	It maps simulation elements to visualization artifacts. Visualization elements provide
  *	a unique identifer that can be used to determine if there is a bespoke implementation of
  *	visualization element.
@@ -47,14 +47,14 @@ class VisElementDB {
  public:
   /*!
    *	@brief		Reports the number of registered visualization element types.
-   *
+
    *	@returns	The number of registered target factories.
    */
   static inline size_t count() { return _visElements.size(); }
 
   /*!
    *	@brief		Returns an instance of the corresponding visualization element.
-   *
+
    *	@param		element		The element to to provide a visual element for.
    *	@returns	A pointer to a compatible visualization element, targeted to the given
    *				@p element.  Guaranteed to return a non-null pointer.
@@ -89,14 +89,14 @@ class VisElementDB {
 
   /*!
    *	@brief		Returns the default visual element for this type visual element.
-   *
+
    *	@returns	An instance of the default element.
    */
   static VisElement* getDefaultElement();
 
   /*!
    *	@brief		Adds the built-in factories to the database.
-   *
+
    *	Sub-classes will specialize this function to add the built-in factory
    *	types.
    */
@@ -104,11 +104,11 @@ class VisElementDB {
 
   /*!
    *	@brief		Adds a new visualization element for elements with the given name.
-   *
+
    *	The database takes ownership of the data pointed to. To be added, the `element`
    *	name must be unique relative all previously defined visualization elements *in this
    *	database*.  If the `visElement` cannot be added, it will be deleted.
-   *
+
    *	@param		visElement		The visualization element for the named element
    *type.
    *	@returns	True if the visualization element is successfully added.
@@ -131,7 +131,7 @@ class VisElementDB {
 
   /*!
    *	@brief		Returns the name of the element type managed by this database.
-   *
+
    *  @returns    the name of the element managed by this database
    */
   static std::string getElementName();

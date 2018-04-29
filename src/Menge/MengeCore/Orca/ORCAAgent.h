@@ -59,7 +59,7 @@ class MENGE_API Agent : public Menge::Agents::BaseAgent {
 
   /*!
    *	@brief			Based on the neighbors, computes the ORCA lines
-   *
+
    *	@returns		The total number of obstacle lines
    */
   size_t computeORCALines();
@@ -100,7 +100,7 @@ class MENGE_API Agent : public Menge::Agents::BaseAgent {
    *	@brief		Constructs an ORCA line for the given obstacle
    *				under the assumption that the agent is on its right side.
    *				If appropriate, it adds the obstacle to the set of orca lines.
-   *
+
    *	@param		obstNbrID		The index of the near-by obstacle to test.
    *	@param		invTau			1 / _timeHorizonObst - the inverse of the
    *								time horizon for obstacles.
@@ -113,7 +113,7 @@ class MENGE_API Agent : public Menge::Agents::BaseAgent {
  *  @brief      Solves a one-dimensional linear program on a specified line
  *              subject to linear constraints defined by lines and a circular
  *              constraint.
- *
+
  *  @param      lines         Lines defining the linear constraints.
  *  @param      lineNo        The specified line constraint.
  *  @param      radius        The radius of the circular constraint.
@@ -129,7 +129,7 @@ bool linearProgram1(const std::vector<Menge::Math::Line>& lines, size_t lineNo, 
 /*!
  *  @brief      Solves a two-dimensional linear program subject to linear
  *              constraints defined by lines and a circular constraint.
- *
+
  *  @param      lines         Lines defining the linear constraints.
  *  @param      radius        The radius of the circular constraint.
  *  @param      optVelocity   The optimization velocity.
@@ -144,7 +144,7 @@ size_t linearProgram2(const std::vector<Menge::Math::Line>& lines, float radius,
 /*!
  *  @brief      Solves a two-dimensional linear program subject to linear
  *              constraints defined by lines and a circular constraint.
- *
+
  *  @param      lines         Lines defining the linear constraints.
  *  @param      numObstLines  Count of obstacle lines.
  *  @param      beginLine     The line on which the 2-d linear program failed.

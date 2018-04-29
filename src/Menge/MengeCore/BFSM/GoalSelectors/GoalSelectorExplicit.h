@@ -49,7 +49,7 @@ class MENGE_API ExplicitGoalSelector : public GoalSelector {
 
   /*!
    *	@brief		Interface function for acquiring per-agent goals.
-   *
+
    *	@param		agent		The agent for whom a goal is extracted.
    *	@returns	A pointer to a goal.
    *	// TODO: Figure out who owns this goal.
@@ -58,24 +58,24 @@ class MENGE_API ExplicitGoalSelector : public GoalSelector {
 
   /*!
    *	@brief		Gives the instance the opportunity to set the goal set.
-   *
+
    *	This does nothing for instances which don't require a goal set.  Otherwise,
    *	it extracts its required goal set.
-   *
+
    *	@param		goalSets	A mapping from goal set identifier to goal set pointers.
    */
   void setGoalSet(std::map<size_t, GoalSet*>& goalSets);
 
   /*!
    *	@brief		Sets the goal set identifier.
-   *
+
    *	@param		id		The goal set's id that belongs to this selector.
    */
   void setGoalSetID(size_t id) { _goalSetID = id; }
 
   /*!
    *	@brief		Sets the goal identifier.
-   *
+
    *	@param		id		The goal's id that belongs to this selector.
    */
   void setGoalID(size_t id) { _goalID = id; }
@@ -110,19 +110,19 @@ class MENGE_API ExplicitGoalSelectorFactory : public GoalSelectorFactory {
 
   /*!
    *	@brief		The name of the goal selector type.
-   *
+
    *	The goal selector's name must be unique among all registered goal selectors.
    *	Each goal selector factory must override this function.
-   *
+
    *	@returns	A string containing the unique goal selector name.
    */
   virtual const char* name() const { return "explicit"; }
 
   /*!
    *	@brief		A description of the goal selector.
-   *
+
    *	Each goal selector factory must override this function.
-   *
+
    *	@returns	A string containing the goal selector description.
    */
   virtual const char* description() const {
@@ -133,7 +133,7 @@ class MENGE_API ExplicitGoalSelectorFactory : public GoalSelectorFactory {
  protected:
   /*!
    *	@brief		Create an instance of this class's goal selector.
-   *
+
    *	@returns		A pointer to a newly instantiated GoalSelector class.
    */
   GoalSelector* instance() const { return new ExplicitGoalSelector(); }
@@ -141,7 +141,7 @@ class MENGE_API ExplicitGoalSelectorFactory : public GoalSelectorFactory {
   /*!
    *	@brief		Given a pointer to a GoalSelector instance, sets the appropriate fields
    *				from the provided XML node.
-   *
+
    *	@param		selector	A pointer to the goal whose attributes are to be set.
    *	@param		node		The XML node containing the goal selector attributes.
    *	@param		behaveFldr	The path to the behavior file.  If the goal selector

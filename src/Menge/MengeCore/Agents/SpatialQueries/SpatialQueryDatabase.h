@@ -19,7 +19,7 @@
 /*!
  *	@file		SpatialQueryDatabase.h
  *	@brief		Central database for querying available spatial query implementations.
- *
+
  *	For spatial queries to be used in simulation, they must register
  *	themselves into the SpatialQueryDatabase.  This is done via the PluginEngine.
  */

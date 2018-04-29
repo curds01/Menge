@@ -19,7 +19,7 @@
 /*!
  *	@file		ElevationDatabase.h
  *	@brief		Central database for querying available elevation implementations.
- *
+
  *	For elevations to be used in simulation, they must register
  *	themselves into the ElevationDatabase.  This is done via the PluginEngine.
  */

@@ -48,11 +48,11 @@ class MENGEVIS_API GoalVCContext : public VelCompContext {
 
   /*!
    *	@brief		Sets the agent for this context.
-   *
+
    *	This method works in conjunction with the VisElementDatabase. When this
    *	visualization element is triggered, the database will supply the triggering
    *	element.
-   *
+
    *	@param		vc		The velocity component to interact with.
    */
   virtual void setElement(const Menge::BFSM::VelComponent* vc);
@@ -67,7 +67,7 @@ class MENGEVIS_API GoalVCContext : public VelCompContext {
   /*!
    *	@brief		Provides a string to be printed in the display as a UI element
    *				detailing velocity component information.
-   *
+
    *	@param		indent		An optional string representing indentation to be
    *							applied to the text.  It is prefixed at the
    *start
@@ -78,9 +78,9 @@ class MENGEVIS_API GoalVCContext : public VelCompContext {
 
   /*!
    *	@brief		Draw context elements into the 3D world.
-   *
+
    *	This should never be called in select mode.
-   *
+
    *	@param		agt			The particular agent for which the FSM is being
    *visualized.
    *	@param		goal		The agent's goal (although this may be ignored).

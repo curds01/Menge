@@ -53,7 +53,7 @@ namespace VCContext {
 
 /*!
  *	@brief		Base context for finite state machine velocity components.
- *
+
  *	This differs from the standard scene graph context by being dependent on an input
  *	agent.
  */
@@ -93,11 +93,11 @@ class MENGEVIS_API VelCompContext : public SceneGraph::Context {
 
   /*!
    *	@brief		Sets the agent for this context.
-   *
+
    *	This method works in conjunction with the VisElementDatabase. When this
    *	visualization element is triggered, the database will supply the triggering
    *	element.
-   *
+
    *	@param		vc		The velocity component to interact with.
    */
   virtual void setElement(const Menge::BFSM::VelComponent* vc) { _vc = vc; }
@@ -105,7 +105,7 @@ class MENGEVIS_API VelCompContext : public SceneGraph::Context {
   /*!
    *	@brief		Provides a string to be printed in the display as a UI element
    *				detailing velocity component information.
-   *
+
    *	@param		indent		An optional string representing indentation to be
    *							applied to the text. It is prefixed at the start
    *of
@@ -116,9 +116,9 @@ class MENGEVIS_API VelCompContext : public SceneGraph::Context {
 
   /*!
    *	@brief		Draw context elements into the 3D world.
-   *
+
    *	This should never be called in select mode.
-   *
+
    *	@param		agt			The particular agent for which the FSM is being
    *							visualized.
    *	@param		goal		The agent's goal (although this may be ignored).
@@ -129,7 +129,7 @@ class MENGEVIS_API VelCompContext : public SceneGraph::Context {
  protected:
   /*!
    *	@brief		Draws the preferred velocity in a consistent way
-   *
+
    *	@param		pVel		The preferred velocity of the agent computed by the vel
    *							component.
    *	@param		pos			The position of the velocity vector's origin.
@@ -140,7 +140,7 @@ class MENGEVIS_API VelCompContext : public SceneGraph::Context {
 
   /*!
    *	@brief		Draws the 2d goal point in a consistent manner
-   *
+
    *	@param		goalPoint		The position of the agent's goal
    *	@param		agent			The agent
    */
@@ -148,7 +148,7 @@ class MENGEVIS_API VelCompContext : public SceneGraph::Context {
 
   /*!
    *	@brief		Draws the 3d goal point in a consistent manner
-   *
+
    *	@param		agtRadius		The agent's radius
    *	@param		goalPoint		The position of the goal
    */

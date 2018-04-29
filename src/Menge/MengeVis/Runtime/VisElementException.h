@@ -35,7 +35,7 @@ class MENGEVIS_API VisElementException : public virtual Menge::MengeException {
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   VisElementException(const std::string& s) : Menge::MengeException(s) {}
@@ -54,7 +54,7 @@ class MENGEVIS_API VisElementFatalException : public VisElementException,
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   VisElementFatalException(const std::string& s)

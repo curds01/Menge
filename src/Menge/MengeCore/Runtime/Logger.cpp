@@ -202,7 +202,7 @@ void Logger::writeTail() {
 
 /*!
  *	@brief		Simple helper function for doing text search and replace
- *
+
  *	@param		source		The string to change.
  *	@param		find		The sub-strings to find and replace in the main string.
  *	@param		replace		The sub-string to input into the main string.

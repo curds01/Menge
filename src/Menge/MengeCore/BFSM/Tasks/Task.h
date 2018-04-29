@@ -54,7 +54,7 @@ class TaskException : public virtual MengeException {
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   TaskException(const std::string& s) : MengeException(s) {}
@@ -73,7 +73,7 @@ class TaskFatalException : public TaskException, public MengeFatalException {
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   TaskFatalException(const std::string& s)
@@ -82,7 +82,7 @@ class TaskFatalException : public TaskException, public MengeFatalException {
 
 /*!
  *	@brief	Interface for basic FSM task.
- *
+
  *			Tasks must implement three functions: doWork, toString, and
  *			isEquivalent.  Tasks' doWork functions are evaluated at the
  *			beginning of each FSM evaluation per time step.
@@ -97,10 +97,10 @@ class MENGE_API Task : public Element {
  public:
   /*!
    *	@brief		The work performed by the task.
-   *
+
    *	@param		fsm		The behavior finite state machine on which the task
    *						is performed.
-   *
+
    *	@throws		A TaskException if there was some non-fatal error
    *				in execution.  It should be logged.
    *	@throws		A TaskFatalException if there is a fatal error that
@@ -110,20 +110,20 @@ class MENGE_API Task : public Element {
 
   /*!
    *	@brief		String representation of the task
-   *
+
    *	TODO: Determine when this is used.
-   *
+
    *	@returns	A string containing task information.
    */
   virtual std::string toString() const = 0;
 
   /*!
    *	@brief		Reports if this task is "equivalent" to the given task.
-   *
+
    *				This makes it possible for a task to be redundantly added
    *				to the fsm without fear of duplication as the equivalent
    *				duplicates will be culled.
-   *
+
    *	@param		task		The task to test against this one.
    *	@returns	A boolean reporting if the two tasks are equivalent (true)
    *				or unique (false).
@@ -133,7 +133,7 @@ class MENGE_API Task : public Element {
 
 /*!
  *	@brief		Parses a TinyXML element containing a task specification
- *
+
  *	@param		node			The TinyXML element
  *	@param		behaveFldr		The folder in which the behavior is defined -- all
  *								resources are defined relative to this

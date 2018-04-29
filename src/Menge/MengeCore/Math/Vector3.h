@@ -64,7 +64,7 @@ class MENGE_API Vector3d {
 
   /*!
    *	@brief		Constructor with arguments
-   *
+
    *	@param		x		The vector's x-component.
    *	@param		y		The vector's y-component.
    *	@param		z		The vector's z-component.
@@ -73,7 +73,7 @@ class MENGE_API Vector3d {
 
   /*!
    *	@brief		Copy constructor
-   *
+
    *	@param		v		The vector to copy from.
    */
   inline Vector3d(const Vector3d& v) : _x(v._x), _y(v._y), _z(v._z) {}
@@ -82,28 +82,28 @@ class MENGE_API Vector3d {
 
   /*!
    *	@brief		Get the x-value
-   *
+
    *	@returns	The x-value.
    */
   inline Type x() const { return _x; }
 
   /*!
    *	@brief		Get the y-value
-   *
+
    *	@returns	The y-value.
    */
   inline Type y() const { return _y; }
 
   /*!
    *	@brief		Get the z-value
-   *
+
    *	@returns	The z-value.
    */
   inline Type z() const { return _z; }
 
   /*!
    *	@brief		Set the x- and y-values from scalar values
-   *
+
    *	@param		x		The value for the x-component
    *	@param		y		The value for the y-component
    *	@param		z		The value for the z-component
@@ -116,7 +116,7 @@ class MENGE_API Vector3d {
 
   /*!
    *	@brief		Set the x-, y- and z-values from a vector
-   *
+
    *	@param		v		The vector containing the  newvalues
    */
   inline void set(const Vector3d& v) {
@@ -127,28 +127,28 @@ class MENGE_API Vector3d {
 
   /*!
    *	@brief		Set the x-value
-   *
+
    *	@param		x		The x-value.
    */
   inline void setX(Type x) { _x = x; }
 
   /*!
    *	@brief		Set the y-value
-   *
+
    *	@param		y		The y-value.
    */
   inline void setY(Type y) { _y = y; }
 
   /*!
    *	@brief		Set the z-value
-   *
+
    *	@param		z		The z-value.
    */
   inline void setZ(Type z) { _z = z; }
 
   /*!
    *	@brief		Index-style access to vector components
-   *
+
    *	@param		i		The index of the desired component.
    *						Sould be in the range [0, 2].
    *	@returns	The ith component of the vector.
@@ -160,7 +160,7 @@ class MENGE_API Vector3d {
 
   /*!
    *	@brief		Index-style access to vector components as a reference
-   *
+
    *	@param		i		The index of the desired component.
    *						Sould be in the range [0, 2].
    *	@returns	A reference to the ith component of the vector.
@@ -180,7 +180,7 @@ class MENGE_API Vector3d {
   /*!
    *	@brief		Vector negation.  Creates a new vector which is the
    *				negation of this vector
-   *
+
    *	@returns	The vector in the opposite direction of this vector
    */
   inline Vector3d<Type> operator-() const { return Vector3d<Type>(-_x, -_y, -_z); }
@@ -188,7 +188,7 @@ class MENGE_API Vector3d {
   /*!
    *  @brief		Computes the dot product of this vector with the
    *				given vector.
-   *
+
    *  @param		v		The with which the
    *                       dot product should be computed.
    *  @returns		The dot product of this vector with the given vector
@@ -198,7 +198,7 @@ class MENGE_API Vector3d {
   /*!
    *  @brief		Computes the scalar multiplication of this
    *				vector with the given scalar value.
-   *
+
    *  @param		s               The scalar value
    *  @returns		The scalar multiplication of this vector
    *				with a specified scalar value.
@@ -208,7 +208,7 @@ class MENGE_API Vector3d {
   /*!
    *  @brief		Computes the scalar division of this
    *				vector with the given scalar value.
-   *
+
    *  @param		s               The scalar value
    *  @returns		The scalar division of this vector
    *				with a specified scalar value.
@@ -221,7 +221,7 @@ class MENGE_API Vector3d {
   /*!
    *  @brief		Computes the vector sum of this vector with
    *				the given vector.
-   *
+
    *  @param		v				The second operand.
    *  @returns		The vector sum of this vector with the
    *				given vector.
@@ -233,7 +233,7 @@ class MENGE_API Vector3d {
   /*!
    *  @brief		Computes the vector difference of this vector with
    *				the given vector.
-   *
+
    *  @param		v				The second operand.
    *  @returns		The vector difference of this vector with the
    *				given vector.
@@ -245,7 +245,7 @@ class MENGE_API Vector3d {
   /*!
    *  @brief		Reports if this vector is the same as the given
    *				vector.
-   *
+
    *  @param		v				The second operand.
    *  @returns		True if the vectors are exactly identical, False
    *				otherwise
@@ -255,7 +255,7 @@ class MENGE_API Vector3d {
   /*!
    *  @brief		Reports if this vector is the different from the given
    *				vector.
-   *
+
    *  @param		v				The second operand.
    *  @returns		True if the vectors are at all different,
    *				false otherwise
@@ -266,7 +266,7 @@ class MENGE_API Vector3d {
 
   /*!
    *	@brief		Perform in-place scalar multiplication on this vector.
-   *
+
    *	@param		s			The scalar mutliplicand.
    *	@return		A reference to the vector.
    */
@@ -279,7 +279,7 @@ class MENGE_API Vector3d {
 
   /*!
    *	@brief		Perform in-place scalar division on this vector.
-   *
+
    *	@param		s			The scalar divisor.
    *	@return		A reference to the vector.
    */
@@ -293,7 +293,7 @@ class MENGE_API Vector3d {
 
   /*!
    *	@brief		Perform in-place vector addition on this vector.
-   *
+
    *	@param		v			The second vector operand.
    *	@return		A reference to the vector.
    */
@@ -306,7 +306,7 @@ class MENGE_API Vector3d {
 
   /*!
    *	@brief		Perform in-place vector subtraction on this vector.
-   *
+
    *	@param		v			The second vector operand.
    *	@return		A reference to the vector.
    */
@@ -343,7 +343,7 @@ class MENGE_API Vector3d {
   /*!
    *	@brief		Adds in a scaled version of another vector
    *					this += s * v
-   *
+
    *	@param		s			The scale factor for the vector v
    *	@param		v			The vector to scale
    */
@@ -357,7 +357,7 @@ class MENGE_API Vector3d {
 
   /*!
    *	@brief		Rotate the vector around the x axis
-   *
+
    *	@param		angle		The amoutn of rotations (in radians)
    *	@returns	The rotated vector
    */
@@ -369,7 +369,7 @@ class MENGE_API Vector3d {
 
   /*!
    *	@brief		Rotate the vector around the y axis
-   *
+
    *	@param		angle		The amoutn of rotations (in radians)
    *	@returns	The rotated vector
    */
@@ -381,7 +381,7 @@ class MENGE_API Vector3d {
 
   /*!
    *	@brief		Rotate the vector around the z axis
-   *
+
    *	@param		angle		The amoutn of rotations (in radians)
    *	@returns	The rotated vector
    */
@@ -393,7 +393,7 @@ class MENGE_API Vector3d {
 
   /*!
    *	@brief		Rotate the vector around an arbitrary vector
-   *
+
    *	@param		angle		The amoutn of rotations (in radians)
    *	@param		v			The axis of rotation - it should be normalized
    *	@returns	The rotated vector
@@ -415,7 +415,7 @@ class MENGE_API Vector3d {
 
   /*!
    *	@brief		Rotate the vector around an arbitrary vector - change the vector in place
-   *
+
    *	@param		angle		The amoutn of rotations (in radians)
    *	@param		v			The axis of rotation - it should be normalized
    */
@@ -440,7 +440,7 @@ class MENGE_API Vector3d {
 
   /*!
    *	@brief		Compute the magnitude (aka length) of the vector
-   *
+
    *	@returns	The magnitude of the vector.
    */
   inline Type Length() const { return sqrt(_x * _x + _y * _y + _z * _z); }
@@ -448,7 +448,7 @@ class MENGE_API Vector3d {
   /*!
    *	@brief		Cross product of this vector with the given vector
    *				this x v
-   *
+
    *	@param		v		The second opearand.
    *	@returns	The vector representing the cross product of this with v.
    */
@@ -458,7 +458,7 @@ class MENGE_API Vector3d {
 
   /*!
    *	@brief		Compute the distance from this vector to another point
-   *
+
    *	@param		p			The point whose distance from this vector
    *							(interpreted as a point) is to be computed
    *	@returns	The distance between this vector and p.
@@ -472,7 +472,7 @@ class MENGE_API Vector3d {
 
   /*!
    *	@brief		Compute the distance from this vector to another point
-   *
+
    *	@param		x			The x-value of the other point.
    *	@param		y			The y-value of the other point.
    *	@param		z			The z-value of the other point.
@@ -487,7 +487,7 @@ class MENGE_API Vector3d {
 
   /*!
    *	@brief		Compute the squared-distance from this vector to another point
-   *
+
    *	@param		p			The point whose distance from this vector
    *							(interpreted as a point) is to be computed
    *	@returns	The squared-distance between this vector and p.
@@ -501,7 +501,7 @@ class MENGE_API Vector3d {
 
   /*!
    *	@brief		Compute the squared-distance from this vector to another point
-   *
+
    *	@param		x			The x-value of the other point.
    *	@param		y			The y-value of the other point.
    *	@param		z			The z-value of the other point.
@@ -532,7 +532,7 @@ class MENGE_API Vector3d {
  private:
   /*!
    *	@brief		Rotate a 2D vector.
-   *
+
    *	@param		angle		The amount of rotation (in radians).
    *	@param		x			The x-component of the vector.
    *	@param		y			The y-component of the vector.
@@ -562,7 +562,7 @@ typedef Vector3d<float> Vector3;
 
 /*!
  *  @brief      Computes the left scalar multiplication of a scalar and 2d vector.
- *
+
  *  @param      s               The scalar value with which the scalar
  *                              multiplication should be computed.
  *  @param      v          The two-dimensional vector with which the scalar
@@ -583,7 +583,7 @@ MATHEXTERN template MENGE_API Vector3d<float> operator*(float s, const Vector3d<
 
 /*!
  *  @brief      Inserts the specified two-dimensional vector into the logger.
- *
+
  *  @param      logger          The logger into which the two-dimensional
  *                              vector should be inserted.
  *  @param      v				The two-dimensional vector which to insert into
@@ -599,7 +599,7 @@ inline MENGE_API Logger& operator<<(Logger& logger, const Vector3d<Type>& v) {
 /*!
  *  @brief      Inserts the specified two-dimensional vector into the specified
  *              output stream.
- *
+
  *  @param      os              The output stream into which the two-dimensional
  *                              vector should be inserted.
  *  @param      v				The two-dimensional vector which to insert into
@@ -620,7 +620,7 @@ MATHEXTERN template MENGE_API Logger& operator<<(Logger& os, const Vector3d<floa
 
 /*!
  *  @brief      Computes the length of a specified two-dimensional vector.
- *
+
  *  @param      v				The two-dimensional vector whose length is to be
  *                              computed.
  *  @returns    The length of the two-dimensional vector.
@@ -639,7 +639,7 @@ MATHEXTERN template MENGE_API float abs(const Vector3d<float>& v);
 /*!
  *  @brief      Computes the squared length of a specified two-dimensional
  *              vector.
- *
+
  *  @param      v				The two-dimensional vector whose squared length
  *                              is to be computed.
  *  @returns    The squared length of the two-dimensional vector.
@@ -658,7 +658,7 @@ MATHEXTERN template MENGE_API float absSq(const Vector3d<float>& v);
 /*!
  *  @brief      Computes the normalization of the specified two-dimensional
  *              vector.
- *
+
  *  @param      vector          The two-dimensional vector whose normalization
  *                              is to be computed.
  *  @returns    The normalization of the two-dimensional vector.
@@ -684,7 +684,7 @@ MATHEXTERN template MENGE_API Vector3d<float> norm(const Vector3d<float>& vector
 
 /*!
  *  @brief	Determines if two vectors are equal to within a threshhold
- *
+
  *  @param	v1		The first of two-dimensional vectors to be compared
  *  @param	v2		The second of two-dimensional vectors to be compared
  *  @param	threshSqd		The squared threshhold to test against

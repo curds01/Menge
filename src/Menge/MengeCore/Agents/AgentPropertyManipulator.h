@@ -40,10 +40,10 @@ class BaseAgent;
 
 /*!
  *	@brief		Helper function for parsing property actions
- *
+
  *	It converts the xml string indicating the property to an
  *	enumerated value
- *
+
  *	@param		opName		The name of the operand as specified in the
  *							xml specification.
  *	@returns	The corresponding enumeration.  If there is no corresponding
@@ -76,24 +76,24 @@ class MENGE_API AgentPropertyManipulator : public Element {
   /*!
    *	@brief		Applies the manipulation to the given agent, storing
    *				the previous state for restoration.
-   *
+
    *	@param		agent		The agent to manipulate.
    */
   void manipulate(Agents::BaseAgent* agent);
 
   /*!
    *	@brief		Restores the agent's previous value.
-   *
+
    *	If there is no previous value for the provided agent, nothing
    *	happens.
-   *
+
    *	@param		agent		The agent whose property value should be restored.
    */
   void restore(Agents::BaseAgent* agent);
 
   /*!
    *	@brief		Sets the generator for the manipulator.
-   *
+
    *	@param		gen		The generator to assign to this manipulator.
    *						Any previous generator will be destroyed and
    *						it is assumed that the generator is *not* shared
@@ -103,7 +103,7 @@ class MENGE_API AgentPropertyManipulator : public Element {
 
   /*!
    *	@brief		Sets the property operand.
-   *
+
    *	@param		prop		The property to operate on.
    */
   void setProperty(BFSM::PropertyOperand prop) { _property = prop; }
@@ -111,7 +111,7 @@ class MENGE_API AgentPropertyManipulator : public Element {
  protected:
   /*!
    *	@brief		Computes the new property value given the original property value.
-   *
+
    *	@param		value		The original value of the property.
    *	@param		agentID		The identifier for the agent.
    *	@returns	The new value.
@@ -150,7 +150,7 @@ class MENGE_API SetPropertyManipulator : public AgentPropertyManipulator {
  protected:
   /*!
    *	@brief		Computes the new property value given the original property value.
-   *
+
    *	@param		value		The original value of the property.
    *	@param		agentID		The identifier for the agent.
    *	@returns	The new value.
@@ -169,7 +169,7 @@ class MENGE_API OffsetPropertyManipulator : public AgentPropertyManipulator {
  protected:
   /*!
    *	@brief		Computes the new property value given the original property value.
-   *
+
    *	@param		value		The original value of the property.
    *	@param		agentID		The identifier for the agent.
    *	@returns	The new value.
@@ -188,7 +188,7 @@ class MENGE_API ScalePropertyManipulator : public AgentPropertyManipulator {
  protected:
   /*!
    *	@brief		Computes the new property value given the original property value.
-   *
+
    *	@param		value		The original value of the property.
    *	@param		agentID		The identifier for the agent.
    *	@returns	The new value.

@@ -48,7 +48,7 @@ namespace Agents {
  *	The "front" of the region lies on the x-axis and the left and right sides extend
  *	into the positive y-direction.  The alignment of the rectangular region relative
  *	to the anchor point depends on the AnchorAlignEnum value.
- *
+
  *	The hexagonal grid lattice size is based on the target average density.  The lattice
  *	points are placed to achieve that average density.  The lattice will either be aligned
  *	with the x-axis or the y-axis, depending on the LatticeRowEnum value.
@@ -64,6 +64,7 @@ namespace Agents {
  *			>
  *		</Generator>
  *  @endcode
+ *
  *
  *	The various parameters have the following interpretation:
  *		- `anchor_x` and `anchor_y` represent the *anchor* point of the local
@@ -84,9 +85,9 @@ namespace Agents {
  *			differ.  If the given population number doesn't exactly fill up all rows
  *			of the lattice, agents will be added to create a "complete" lattice.
  *		- `rotation` rotates the rectangle off of the world axes the given number of
- **degrees*.
+ *      *degrees*.
  *			This parameter is optional and, if excluded, defaults to a zero-degree
- *rotation.
+ *      rotation.
  *			The rotation is counter-clockwise for positive values of rotation.
  */
 class MENGE_API HexLatticeGenerator : public AgentGenerator {
@@ -115,14 +116,14 @@ class MENGE_API HexLatticeGenerator : public AgentGenerator {
 
   /*!
    *	@brief		Reports the number of agents created.
-   *
+
    *	@returns	The number of agents this generator creates.
    */
   virtual size_t agentCount() { return _totalPop; }
 
   /*!
    *	@brief		Sets the ith position to the given agent.
-   *
+
    *	@param		i		The index of the requested position in the sequence.
    *	@param		agt		A pointer to the agent whose position is to be set.
    *	@throws		AgentGeneratorException if the index, i, is invalid.
@@ -131,7 +132,7 @@ class MENGE_API HexLatticeGenerator : public AgentGenerator {
 
   /*!
    *	@brief		Sets the properties of the generator
-   *
+
    *	@param		anchor				The anchor position of the lattice.
    *	@param		align				The target alignment.
    *	@param		dir					The desired row direction.
@@ -145,7 +146,7 @@ class MENGE_API HexLatticeGenerator : public AgentGenerator {
 
   /*!
    *	@brief		Sets the lattice rotation.
-   *
+
    */
   void setRotationDeg(float angle);
 
@@ -216,19 +217,19 @@ class MENGE_API HexLatticeGeneratorFactory : public AgentGeneratorFactory {
 
   /*!
    *	@brief		The name of the generator type.
-   *
+
    *	The generator's name must be unique among all registered agent generator
    *	components. Each agent generator factory must override this function.
-   *
+
    *	@returns	A string containing the unique elevation name.
    */
   virtual const char* name() const { return "hex_lattice"; }
 
   /*!
    *	@brief		A description of the agent generator.
-   *
+
    *	Each agent generator factory must override this function.
-   *
+
    *	@returns	A string containing the agent generator description.
    */
   virtual const char* description() const {
@@ -239,13 +240,13 @@ class MENGE_API HexLatticeGeneratorFactory : public AgentGeneratorFactory {
  protected:
   /*!
    *	@brief		Create an instance of this class's agent generator implementation.
-   *
+
    *	All AgentGeneratorFactory sub-classes must override this by creating (on the heap)
    *	a new instance of its corresponding generator type.  The various field values
    *	of the instance will be set in a subsequent call to
    *	AgentGeneratorFactory::setFromXML. The caller of this function takes ownership of
    *	the memory.
-   *
+
    *	@returns		A pointer to a newly instantiated EleAgentGenerator class.
    */
   AgentGenerator* instance() const { return new HexLatticeGenerator(); }
@@ -253,13 +254,13 @@ class MENGE_API HexLatticeGeneratorFactory : public AgentGeneratorFactory {
   /*!
    *	@brief		Given a pointer to a Goal Selector instance, sets the appropriate
    *				fields from the provided XML node.
-   *
+
    *	It is assumed that the value of the `type` attribute is this Goal Selector's type.
    *	(i.e. GoalSelectorFactory::thisFactory has already been called and returned true.)
    *	If sub-classes of GoalSelectorFactory introduce *new* GoalSelector parameters, then
    *	the sub-class should override this method but explicitly call the parent class's
    *	version.
-   *
+
    *	@param		gen				A pointer to the goal selector whose attributes are
    *to
    *								be set.

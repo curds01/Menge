@@ -51,13 +51,13 @@ class MENGE_API GoalFactory : public ElementFactory<Goal> {
   /*!
    *	@brief		Given a pointer to a Goal instance, sets the appropriate fields
    *				from the provided XML node.
-   *
+
    *	It is assumed that the value of the `type` attribute is this Goal's type.
    *	(i.e. GoalFactory::thisFactory has already been called and returned true.)
    *	If sub-classes of GoalFactory introduce *new* Goal parameters, then the
    *	sub-class should override this method but explicitly call the parent class's
    *	version.
-   *
+
    *	@param		goal			A pointer to the goal whose attributes are to be
    *set.
    *	@param		node			The XML node containing the goal attributes.

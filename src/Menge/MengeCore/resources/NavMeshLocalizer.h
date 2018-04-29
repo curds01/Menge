@@ -58,7 +58,7 @@ class MENGE_API NavMeshLocation {
   /*!
    *	@brief		Constructor
    *				Initializes the location to being a node id.
-   *
+
    *	@param		nodeID		The identifier of a nav mesh node.
    */
   NavMeshLocation(unsigned int nodeID) : _nodeID(nodeID), _hasPath(false) {}
@@ -67,7 +67,7 @@ class MENGE_API NavMeshLocation {
    *	@brief		Constructor
    *				Initializes the location to being a path.
    *				The NavMeshLocation takes responsibility for deleting the path.
-   *
+
    *	@param		path		A pointer to a path.  This class takes responsibility
    *							for freeing the memory.
    */
@@ -75,7 +75,7 @@ class MENGE_API NavMeshLocation {
 
   /*!
    *	@brief		Sets the current position to being a node.
-   *
+
    *	@param		nodeID		The identifier of the navigation mesh node
    *							for the location. If the location was
    *previously
@@ -90,7 +90,7 @@ class MENGE_API NavMeshLocation {
 
   /*!
    *	@brief		Reports the node the agent is currently in.
-   *
+
    *	@returns	The index of the node associated with this location.
    *				If the location is not on a node, PortalPath::NO_NODE is returned.
    */
@@ -98,7 +98,7 @@ class MENGE_API NavMeshLocation {
 
   /*!
    *	@brief		Sets the current position to being the given path.
-   *
+
    *	@param		path		The path for defining the current location.
    *							The locator takes responsibility for deleting
    *the
@@ -108,14 +108,14 @@ class MENGE_API NavMeshLocation {
 
   /*!
    *	@brief		Reports if the location is a path.
-   *
+
    *	@returns	True if the location is a path, false if a node.
    */
   inline bool isPath() const { return _hasPath; }
 
   /*!
    *	@brief		Reports if the location is a node.
-   *
+
    *	@returns	True if the location is a node, false if a path.
    */
   inline bool isNode() const { return !_hasPath; }
@@ -170,7 +170,7 @@ class MENGE_API NavMeshLocalizer : public Resource {
  public:
   /*!
    *	@brief		Constructor
-   *
+
    *	@param		name		The name of the underlying navigation mesh.
    */
   NavMeshLocalizer(const std::string& name);
@@ -191,7 +191,7 @@ class MENGE_API NavMeshLocalizer : public Resource {
 
   /*!
    *	@brief		Reports the node the agent is currently in.
-   *
+
    *	@param		agent		The agent whose position relative to the nav
    *							mesh is returned.
    *	@returns	The index of the node associated with this location.
@@ -202,7 +202,7 @@ class MENGE_API NavMeshLocalizer : public Resource {
 
   /*!
   *	@brief		Reports the first node in the given group which contains the agent.
-  *
+
   *	@param		agent		The agent whose position relative to the nav
   *							mesh is returned.
   *	@param		grpName		The name of the group to search for a polygon containing the
@@ -219,7 +219,7 @@ class MENGE_API NavMeshLocalizer : public Resource {
 
   /*!
    *	@brief		Reports the node with the highest elevation for the given point.
-   *
+
    *	@param		p		The point to test against the mesh.
    *	@returns	The index of the node associated with this location.
    *				If the location is not on a node, NavMeshLocation::NO_NODE is
@@ -229,7 +229,7 @@ class MENGE_API NavMeshLocalizer : public Resource {
 
   /*!
    *	@brief		Returns the NavMeshNode of the given id.
-   *
+
    *	@param		i			The index of the desired mesh node.
    *	@returns	A copy the specified mesh node.
    */
@@ -237,7 +237,7 @@ class MENGE_API NavMeshLocalizer : public Resource {
 
   /*!
    *	@brief		Retrieves the path for the given agent.
-   *
+
    *	@param		id			The identifier for the agent.
    *	@returns	A pointer to the PortalPath for the agent.  If the agent is not currently
    *				following a path, NULL is returned.
@@ -246,7 +246,7 @@ class MENGE_API NavMeshLocalizer : public Resource {
 
   /*!
    *	@brief		Sets the path for the given agent.
-   *
+
    *	@param		agentID		The index of the agent for whom the path is set.
    *	@param		path		The path for the agent.
    */
@@ -254,14 +254,14 @@ class MENGE_API NavMeshLocalizer : public Resource {
 
   /*!
    *	@brief		Clears the path for the given agent.
-   *
+
    *	@param		agentID		The index of the agent whose path is to be cleared.
    */
   void clearPath(size_t agentID);
 
   /*!
    *	@brief		Sets the location of the agent to be anode
-   *
+
    *	@param		agentID		The index of the agent to update.
    *	@param		nodeID		The index of the node.
    */
@@ -269,7 +269,7 @@ class MENGE_API NavMeshLocalizer : public Resource {
 
   /*!
    *	@brief		Sets the tracking status of the localizer to all agents.
-   *
+
    *				By default, the localizer only tracks agents on paths.
    *				Calling this function will cause all agents to be tracked,
    *				even if they are not currently following navigation mesh
@@ -279,7 +279,7 @@ class MENGE_API NavMeshLocalizer : public Resource {
 
   /*!
    *	@brief		Updates the location of the agent relative to the nav mesh.
-   *
+
    *	@param		agent		The agent whose location is updated.
    *	@param		force		Force causes the update regardless of whether
    *							the localizer is set to track all or not.
@@ -290,21 +290,21 @@ class MENGE_API NavMeshLocalizer : public Resource {
 
   /*!
    *	@brief		Set the path planner for the localizer.
-   *
+
    *	@param		planner		The path planner.
    */
   void setPlanner(PathPlanner* planner) { _planner = planner; }
 
   /*!
    *	@brief		Get the planner for the localizer.
-   *
+
    *	@returns	A pointer to the planner
    */
   PathPlanner* getPlanner() { return _planner; }
 
   /*!
    *	@brief		Returns the occupant set for the given node
-   *
+
    *	@param		nodeID		The index of the desired node.
    *	@returns	A pointer to the OccupantSet of the given node.
    */
@@ -312,14 +312,14 @@ class MENGE_API NavMeshLocalizer : public Resource {
 
   /*!
    *	@brief		Returns a const pointer to the underlying navigation mesh
-   *
+
    *	@returns	The pointer to the navigation mesh.
    */
   const NavMeshPtr getNavMesh() const { return _navMesh; }
 
   /*!
    *	@brief		Returns a pointer to the underlying navigation mesh
-   *
+
    *	@returns	The pointer to the navigation mesh.
    */
   NavMeshPtr getNavMesh() { return _navMesh; }
@@ -330,11 +330,11 @@ class MENGE_API NavMeshLocalizer : public Resource {
 
   /*!
    *	@brief		Parses a navigation mesh localizer definition and returns a pointer to it.
-   *
+
    *	This function works in conjunction with the ResourceManager.  That is why it
    *	returns a pointer, not to a NavMeshLocalizer, but to a Resource.  The
    *	ResourceManager uses it to load and instantiate NavMeshLocalizer instances.
-   *
+
    *	@param		fileName		The path to the file containing the NavMesh
    *								definition.
    *	@returns	A pointer to the new NavMeshLocalizer (if the file is valid), NULL if
@@ -389,7 +389,7 @@ class MENGE_API NavMeshLocalizer : public Resource {
 
   /*!
    *	@brief		Determines which node an agent is in without previous knowledge
-   *
+
    *	@param		p				Given the initial position, returns the node
    *								this point lies on (with the highest
    *elevation).
@@ -408,7 +408,7 @@ class MENGE_API NavMeshLocalizer : public Resource {
 
   /*!
    *	@brief		Finds the node a point lies in within a particular polygon group.
-   *
+
    *	@param		p			The point to test.
    *	@param		grpName		The name of the group to search in.
    *	@param		searchAll	If true, not finding the point in the requested group
@@ -422,10 +422,10 @@ class MENGE_API NavMeshLocalizer : public Resource {
 
   /*!
    *	@brief		Searches the nodes in the given range for a projection of p.
-   *
+
    *	Searches a contiguous range [start, stop) of node ids for projection of p.
    *	The first node that "contains" p is returned.  Otherwise "NO_NODE".
-   *
+
    *	@param		p			The point to test.
    *	@param		start		The identifier of the first node to search for.
    *	@param		stop		The identifier of the last (inclusive)
@@ -436,7 +436,7 @@ class MENGE_API NavMeshLocalizer : public Resource {
 
   /*!
    *	@brief		Determines if the point is in a neighboring node to the given node
-   *
+
    *	@param		node			The navigation mesh node whose neighbors
    *								need to be tested.
    *	@param		p				The point to test against the neighboring
@@ -455,7 +455,7 @@ typedef ResourcePtr<NavMeshLocalizer> NavMeshLocalizerPtr;
 
 /*!
  *	@brief		Loads the navigation mesh of the given name
- *
+
  *	@param		fileName		The name of the file containing the navigation
  *								mesh definition.
  *	@param		usePlanner		Indicates if a planner is required (true) or not

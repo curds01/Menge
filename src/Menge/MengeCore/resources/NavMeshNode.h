@@ -60,7 +60,7 @@ class MENGE_API NavMeshNode {
 
   /*!
    *	@brief		Sets the node identifier.
-   *
+
    *	@param		id		The identifier to set this node to.
    */
   void setID(unsigned int id) { _id = id; }
@@ -72,21 +72,21 @@ class MENGE_API NavMeshNode {
 
   /*!
    *	@brief		Sets the node's center value.
-   *
+
    *	@param		c		The point value to set.
    */
   inline void setCenter(const Math::Vector2& c) { _center.set(c); }
 
   /*!
    *	@brief		Reports the center (centroid) of the node's polygon.
-   *
+
    *	@returns	The position of the polygon's centroid.
    */
   Math::Vector2 getCenter() const { return _center; }
 
   /*!
    *	@brief		Reports the center (centroid) of the node's polygon.
-   *
+
    *	@returns	The position of the polygon's centroid.
    */
   Math::Vector3 getCenter3D() const {
@@ -95,7 +95,7 @@ class MENGE_API NavMeshNode {
 
   /*!
    *	@brief		Returns the number of vertices in the node's polygon.
-   *
+
    *	@returns	The number of vertices in the polygon.
    */
   size_t getVertexCount() const { return _poly._vertCount; }
@@ -104,7 +104,7 @@ class MENGE_API NavMeshNode {
    *	@brief		Sets this node's polygon to the given vertex array.
    *				The polygon can then evaluate its indices with respect to
    *				this array of vertex values.
-   *
+
    *	@param		vertices	An array of Vector2's defining the
    *							polygon vertices.
    */
@@ -112,7 +112,7 @@ class MENGE_API NavMeshNode {
 
   /*!
    *	@brief		Gets the index of the ith vertex in this node's polygon
-   *
+
    *	@param		i		The local index of the vertex in the node's polygon.
    *	@returns	The global index in the navigation mesh of the ith vertex
    *				in this node's polygon.
@@ -121,14 +121,14 @@ class MENGE_API NavMeshNode {
 
   /*!
    *	@brief		Returns the number of obstacles connected to this node.
-   *
+
    *	@returns	The number of obtacles in on this node.
    */
   size_t getObstacleCount() const { return _obstCount; }
 
   /*!
    *	@brief		Returns a const pointer to the ith obstacle in the node.
-   *
+
    *	@param		i		The local index of the desired obstacle.
    *	@returns	A const pointer to the ith obstacle.
    */
@@ -136,7 +136,7 @@ class MENGE_API NavMeshNode {
 
   /*!
    *	@brief		Returns a const pointer to the ith obstacle in the node.
-   *
+
    *	@param		i		The local index of the desired obstacle.
    *	@returns	A pointer to the ith obstacle.
    */
@@ -149,7 +149,7 @@ class MENGE_API NavMeshNode {
 
   /*!
    *	@brief		Returns a pointer to the ith neighbor.
-   *
+
    *	@param		i		The index of the neighboring node to retrieve.
    *						The index is defined in the range [0, N-1], where
    *						this node has N neighbors.
@@ -159,14 +159,14 @@ class MENGE_API NavMeshNode {
 
   /*!
    *	@brief		Reports the number of edges on the node.
-   *
+
    *	@returns	The number of edges.
    */
   size_t getEdgeCount() const { return _edgeCount; }
 
   /*!
    *	@brief		Retrieves the ith edge connected to this node.
-   *
+
    *	@param		i		The local index of the desired edge.
    *	@returns	A pointer to the ith edge.
    */
@@ -174,7 +174,7 @@ class MENGE_API NavMeshNode {
 
   /*!
    *	@brief		Retrieves a const pointer to the ith edge connected to this node.
-   *
+
    *	@param		i		The local index of the desired edge.
    *	@returns	A pointer to the ith edge.
    */
@@ -183,7 +183,7 @@ class MENGE_API NavMeshNode {
   /*!
    *	@brief		Returns the pointer to the edge connecting this node
    *				with the node whose identifier is given.
-   *
+
    *	@param		nodeID		The id of the desired adjacent node.
    *	@returns	The pointer to the edge connecting the two nodes.
    *				If the nodes are not connected, NULL is returned.
@@ -192,7 +192,7 @@ class MENGE_API NavMeshNode {
 
   /*!
    *	@brief		Reports if the given point is inside the polygon
-   *
+
    *	@param		point		The point to test.
    *	@returns	A boolean reporting if the point lies inside the polygon
    *				(true) or outside (false ).
@@ -203,7 +203,7 @@ class MENGE_API NavMeshNode {
   /*!
    *	@brief		Sets the node properties from a node definition
    *				in the given ascii file stream.
-   *
+
    *	@param		f		The input file stream.
    *	@returns	A boolean indicating successful parsing (true) or failure
    *				(false).

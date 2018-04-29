@@ -57,14 +57,14 @@ class MENGE_API ListObstacleSet : public ObstacleSet {
  public:
   /*!
    *	@brief		Reports the number of obstacles in the set
-   *
+
    *	@returns	The number of obstacles in this set
    */
   virtual size_t obstacleCount() { return _obstacles.size(); }
 
   /*!
    *	@brief		Get the ith obstacle.
-   *
+
    *	@param		i		The index of the requested obstacle.
    *	@returns	The Obstacle object
    *	@throws		ObstacleSetException if the index, i, is invalid.
@@ -73,7 +73,7 @@ class MENGE_API ListObstacleSet : public ObstacleSet {
 
   /*!
    *	@brief		Adds an obstacle  to the generator
-   *
+
    *	@param		o		The Obstacle Object to be added
    *	@returns	true if the obstacle was added successfully
    *	@throws		ObstacleSetException if the obstacle is malformed
@@ -82,7 +82,7 @@ class MENGE_API ListObstacleSet : public ObstacleSet {
 
   /*!
    *	@brief		Adds an obstacle  to the generator from a list of vertices
-   *
+
    *	@param		o 		ObstacleVertexList struct representing the incoming obstacle
    *	@returns	true if the obstacle was added successfully
    *	@throws		ObstacleSetException if the obstacle is malformed

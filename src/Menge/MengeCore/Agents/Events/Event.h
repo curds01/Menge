@@ -42,9 +42,9 @@ class EventSystem;
 /*!
  *	@brief		Parses the xml specification of an event and returns a parsed
  *				event.
- *
+
  *	The event instance will still need to be finalized.
- *
+
  *	@param		node		The tiny xml node containing the event specification.
  *	@param		specFldr	The path to the specification file.  All external
  *							resource references in the spec file are defined
@@ -59,7 +59,7 @@ Event* parseEvent(TiXmlElement* node, const std::string& specFldr);
 
 /*!
  *	@brief		The definition of a Menge event.
- *
+
  *	An event is defined by two components: a trigger, and a list of event *responses*.
  *	The trigger defines the circumstances which cause the event to "fire".
  *	The event can have multiple respones registered.  When the event fires,
@@ -69,7 +69,7 @@ class Event {
  public:
   /*!
    *	@brief		Constructor.
-   *
+
    *	@param		name		The name of the event.
    */
   Event(const std::string& name);
@@ -82,7 +82,7 @@ class Event {
   /*!
    *	@brief		Allows the event to finish initializing itself from its
    *				parsed state to its running state.
-   *
+
    *	@throws		EventFatalException if the event system has conservative
    *				configuration and there is a problem in the event specification.
    */

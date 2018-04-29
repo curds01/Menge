@@ -45,7 +45,7 @@ class MENGE_API PathPlannerException : public virtual MengeException {
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   PathPlannerException(const std::string& s) : MengeException(s) {}
@@ -64,7 +64,7 @@ class MENGE_API PathPlannerFatalException : public PathPlannerException,
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   PathPlannerFatalException(const std::string& s)
@@ -117,7 +117,7 @@ class MENGE_API PathPlanner {
  public:
   /*!
    *	@brief		Constructor.
-   *
+
    *	@param		ptr			A resource pointer to the nav mesh the
    *							planner uses.
    */
@@ -130,7 +130,7 @@ class MENGE_API PathPlanner {
 
   /*!
    *	@brief		Returns a route between the two specified nodes.
-   *
+
    *	@param		startID		The index of the navigation mesh node at
    *							which the route starts.
    *	@param		endID		The index of the navigation mesh node at
@@ -146,7 +146,7 @@ class MENGE_API PathPlanner {
   /*!
    *	@brief		Computes a route (and adds it to the cache) between start
    *				and end with the minimum clearance given.
-   *
+
    *	@param		startID		The index of the navigation mesh node at
    *							which the route starts.
    *	@param		endID		The index of the navigation mesh node at
@@ -162,7 +162,7 @@ class MENGE_API PathPlanner {
    *	@brief		Compute's "h" for the A* algorithm.  H is the estimate of the
    *				cost of a node to a goal point.  In this case, simply Euclidian
    *				distance.
-   *
+
    *	@param		node		The estimated cost from the given node to the goal point.
    *	@param		goal		The goal point.
    *	@returns	The h-value.
@@ -171,7 +171,7 @@ class MENGE_API PathPlanner {
 
   /*!
    *	@brief		Cache the given route going from start to goal
-   *
+
    *	Caching the route saves the solution for an agent from startID to endID with the
    *	provided minimum width.  This route may be identical to a route that was found for
    *	a larger agent.  If the previous agent was sufficiently large, a recomputation was
@@ -179,7 +179,7 @@ class MENGE_API PathPlanner {
    *	is the same as the old path.  In this case, the two routes are merged and a pointer
    *	to the merged route is returned.  If this route is uniquely superior, then pointer
    *	provided as input will be returned.
-   *
+
    *	@param		startID		The index of the start node.
    *	@param		endID		The index of the end node.
    *	@param		route		The route between them.
@@ -207,7 +207,7 @@ class MENGE_API PathPlanner {
 
   /*!
    *	@brief		Initializes the heap memory
-   *
+
    *	@param		nodeCount		The number of nodes for which to initialize memory.
    */
   void initHeapMemory(size_t nodeCount);

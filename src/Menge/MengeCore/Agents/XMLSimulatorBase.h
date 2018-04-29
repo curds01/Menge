@@ -20,11 +20,11 @@
  *  @file       XMLSimulatorBase.h
  *  @brief      The set of operations used by SimXMLLoader to apply
  *				XML-parsed experiment specification to a simulator.
- *
+
  *	In order to use the SimXMLLoader class to read XML files and set parameters
  *	The simulator must extend this abstract class and implement the given
  *	virtual functions.
- *
+
  */
 
 #ifndef __XML_SIMULATOR_BASE__
@@ -65,7 +65,7 @@ class MENGE_API XMLParamException : public virtual MengeException {
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   XMLParamException(const std::string& s) : MengeException(s) {}
@@ -84,7 +84,7 @@ class XMLParamFatalException : public XMLParamException, public MengeFatalExcept
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   XMLParamFatalException(const std::string& s)
@@ -94,11 +94,11 @@ class XMLParamFatalException : public XMLParamException, public MengeFatalExcept
 /*!
  *	@brief		The base class for extracting simulator settings from the XML
  *				specification.
- *
+
  *	In order to use the SimXMLLoader class to read XML files and set parameters
  *	The simulator must extend this abstract class and implement the given
  *	virtual functions.
- *
+
  *	A "target"-specific parameter refers to the simulator type.  In other words,
  *	If a simulator expects particular parameters, there should be a tag with
  *	the target name and a list of parameter values.  The functionality of this
@@ -118,10 +118,10 @@ class MENGE_API XMLSimulatorBase {
 
   /*!
    *	@brief		Reports if there are any target-specific *experiment* parameters.
-   *
+
    *	The default case is to assume that the simulator *does* have particular
    *	parameters.
-   *
+
    *	@returns	True if this simulator has target-specific *experiment* parameters,
    *				false otherwise.
    */
@@ -130,10 +130,10 @@ class MENGE_API XMLSimulatorBase {
   /*!
    *	@brief		Given the name of a tag which is the child of \<Experiment\>,
    *				reports if it contains target-specific experiment parameters.
-   *
+
    *	It is guaranteed that the labels "AgentSet" and "Obstacle" will never
    *	be given as input.
-   *
+
    *	@param			tagName			The name of the candidate experiment XML
    *tag.
    *	@returns	True if the given tag corresponds to the unique tag defined
@@ -145,11 +145,11 @@ class MENGE_API XMLSimulatorBase {
   /*!
    *	@brief		Given the name of the xml param and its string value,
    *				sets the parameter in the simulator.
-   *
+
    *	Common parameters and target-specific parameters will be passed into this function.
    *	It is the responsibility of the programmer to make sure the default case of
    *	any parameter should fall through to the SimulatorBase::setExpParam function.
-   *
+
    *	@param		paramName		The name of the XML parameter.
    *	@param		value			The string representation of the parameter value.
    *								It is the responsibility of the particular sub-class
@@ -166,10 +166,10 @@ class MENGE_API XMLSimulatorBase {
   /*!
    *	@brief		Add an agent with specified position to the simulator whose properties
    *				are defined by the given agent initializer.
-   *
+
    *	It uses the agent initializer to define the values of the remaining agent
    *	parameters.
-   *
+
    *	@param		pos			The 2d vector representing the agent's position
    *	@param		agentInit	The AgentInitializer necessary to parse AgentSet properties
    *	@returns	A pointer to the agent (if initialization was succesful) or NULL if
@@ -179,35 +179,35 @@ class MENGE_API XMLSimulatorBase {
 
   /*!
    *	@brief		Set the elevation instance of the simulator
-   *
+
    *	@param		elevation		The elevation object.
    */
   virtual void setElevationInstance(Elevation* elevation) = 0;
 
   /*!
    *	@brief		Reports if the elevation has been set.
-   *
+
    *	@returns	True if the elevation has been set, false otherwise.
    */
   virtual bool hasElevation() const = 0;
 
   /*!
    *	@brief		Sets the spatial query instance of the simulator.
-   *
+
    *	@param		spatialQuery	The spatial query object.
    */
   virtual void setSpatialQuery(SpatialQuery* spatialQuery) = 0;
 
   /*!
    *	@brief		Gets the spatial query instance of the simulator.
-   *
+
    *	@returns    pointer to The spatial query object.
    */
   virtual SpatialQuery* getSpatialQuery() = 0;
 
   /*!
    *	@brief		Reports if the spatial query has been set.
-   *
+
    *	@returns	True if the elevation has been set, false otherwise.
    */
   virtual bool hasSpatialQuery() const = 0;
@@ -225,7 +225,7 @@ class MENGE_API XMLSimulatorBase {
 
   /*!
    *	@brief		Returns a pointer to the simulator's initial state.
-   *
+
    *	@returns	A pointer to the intial state.
    */
   SimulatorState* getInitialState() { return _initState; }

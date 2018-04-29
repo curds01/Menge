@@ -45,16 +45,16 @@ class MENGE_API ConstStateSelector : public StateSelector {
 
   /*!
    *	@brief		Provides the name of a state.
-   *
+
    *	Ths must be overriden by child classes.
-   *
+
    *	@returns:		The name of the state.
    */
   virtual std::string getState() { return _stateName; }
 
   /*!
    *	@brief		Sets the name of the state.
-   *
+
    *	@param		name		The name of the selector's state.
    */
   void setStateName(const std::string& name) { _stateName = name; }
@@ -80,19 +80,19 @@ class MENGE_API ConstStateSelectorFactory : public StateSelectorFactory {
 
   /*!
    *	@brief		The name of the state selector type.
-   *
+
    *	The state selector's name must be unique among all registered state selector
    *	elements. Each state selector factory must override this function.
-   *
+
    *	@returns	A string containing the unique state selector name.
    */
   virtual const char* name() const { return "const"; }
 
   /*!
    *	@brief		A description of the state selector.
-   *
+
    *	Each state selector factory must override this function.
-   *
+
    *	@returns	A string containing the state selector description.
    */
   virtual const char* description() const {
@@ -102,13 +102,13 @@ class MENGE_API ConstStateSelectorFactory : public StateSelectorFactory {
  protected:
   /*!
    *	@brief		Create an instance of this class's state selector implementation.
-   *
+
    *	All StateSelectorFactory sub-classes must override this by creating (on the heap)
    *	a new instance of its corresponding selector type.  The various field values
    *	of the instance will be set in a subsequent call to
    *	StateSelectorFactory::setFromXML. The caller of this function takes ownership of
    *	the memory.
-   *
+
    *	@returns		A pointer to a newly instantiated StateSelector class.
    */
   StateSelector* instance() const { return new ConstStateSelector(); }
@@ -116,13 +116,13 @@ class MENGE_API ConstStateSelectorFactory : public StateSelectorFactory {
   /*!
    *	@brief		Given a pointer to a StateSelector instance, sets the appropriate
    *				fieldsfrom the provided XML node.
-   *
+
    *	It is assumed that the value of the `type` attribute is this StateSelector's type.
    *	(i.e. StateSelectorFactory::thisFactory has already been called and returned true.)
    *	If sub-classes of StateSelectorFactory introduce *new* StateSelector parameters,
    *	then the sub-class should override this method but explicitly call the parent
    *	class's version.
-   *
+
    *	@param		sel				A pointer to the state selector whose attributes are
    *to
    *								be set.

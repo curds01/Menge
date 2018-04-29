@@ -51,7 +51,7 @@ class MENGE_API SpaceCondition : public Condition {
 
   /*!
    *	@brief		Copy Constructor.
-   *
+
    *	@param		cond		The condition to copy from.
    */
   SpaceCondition(const SpaceCondition& cond);
@@ -65,7 +65,7 @@ class MENGE_API SpaceCondition : public Condition {
  public:
   /*!
    *	@brief		The AutoCondition is always met -- it is a tautology.
-   *
+
    *	@param		agent		The agent to test the transition for.
    *	@param		goal		The agent's goal (although this may be ignored).
    *	@returns	True if the condition has been met, false otherwise.
@@ -77,9 +77,9 @@ class MENGE_API SpaceCondition : public Condition {
  protected:
   /*!
    *	@brief		Determines if a point is inside the test region.
-   *
+
    *	Purely a virtual function.  Derived transitions must override this function.
-   *
+
    *	@param		pt		The point to test w.r.t. the transition region.
    *	@returns	True if the transition region contains the given point.
    */
@@ -108,13 +108,13 @@ class MENGE_API SpaceCondFactory : public ConditionFactory {
   /*!
    *	@brief		Given a pointer to an Condition instance, sets the appropriate fields
    *				from the provided XML node.
-   *
+
    *	It is assumed that the value of the `type` attribute is this Tarnsitions's type.
    *	(i.e. ConditionFactory::thisFactory has already been called and returned true.)
    *	If sub-classes of ConditionFactory introduce *new* Condition parameters, then the
    *	sub-class should override this method but explicitly call the parent class's
    *	version.
-   *
+
    *	@param		condition		A pointer to the condition whose attributes are to
    *be
    *								set.
@@ -140,7 +140,7 @@ class MENGE_API SpaceCondFactory : public ConditionFactory {
 
 /*!
  *	@brief		A transition based on spatial relationship with a circle.
- *
+
  *	The agent will transition when it reaches the relationship (inside or outside)
  *	to the defined circle.
  */
@@ -153,16 +153,16 @@ class MENGE_API CircleCondition : public SpaceCondition, public CircleShape {
 
   /*!
    *	@brief		Copy Constructor.
-   *
+
    *	@param		cond		The condition to copy from.
    */
   CircleCondition(const CircleCondition& cond);
 
   /*!
    *	@brief		Create a copy of this condition.
-   *
+
    *	It is the responsibility of the caller to delete the object.
-   *
+
    *	@returns:	A "deep copy" of this condition - such that there is no shared
    *				objects between this and its copy.
    */
@@ -171,7 +171,7 @@ class MENGE_API CircleCondition : public SpaceCondition, public CircleShape {
  protected:
   /*!
    *	@brief		Determines if a point is inside the test region.
-   *
+
    *	@param		pt		The point to test w.r.t. the transition region.
    *	@returns	True if the transition region contains the given point.
    */
@@ -190,19 +190,19 @@ class MENGE_API CircleCondFactory : public SpaceCondFactory {
 
   /*!
    *	@brief		The name of the action.
-   *
+
    *	The action's name must be unique among all registered actions.
    *	Each action factory must override this function.
-   *
+
    *	@returns	A string containing the unique action name.
    */
   virtual const char* name() const { return "circle"; }
 
   /*!
    *	@brief		A description of the action.
-   *
+
    *	Each action factory must override this function.
-   *
+
    *	@returns	A string containing the action description.
    */
   virtual const char* description() const {
@@ -214,12 +214,12 @@ class MENGE_API CircleCondFactory : public SpaceCondFactory {
  protected:
   /*!
    *	@brief		Create an instance of this class's condition.
-   *
+
    *	All ConditionFactory sub-classes must override this by creating (on the heap)
    *	a new instance of its corresponding condition type.  The various field values
    *	of the instance will be set in a subsequent call to ConditionFactory::setFromXML.
    *	The caller of this function takes ownership of the memory.
-   *
+
    *	@returns		A pointer to a newly instantiated Action class.
    */
   virtual Condition* instance() const { return new CircleCondition(); }
@@ -227,13 +227,13 @@ class MENGE_API CircleCondFactory : public SpaceCondFactory {
   /*!
    *	@brief		Given a pointer to an Condition instance, sets the appropriate fields
    *				from the provided XML node.
-   *
+
    *	It is assumed that the value of the `type` attribute is this Tarnsitions's type.
    *	(i.e. ConditionFactory::thisFactory has already been called and returned true.)
    *	If sub-classes of ConditionFactory introduce *new* Condition parameters, then the
    *	sub-class should override this method but explicitly call the parent class's
    *	version.
-   *
+
    *	@param		condition		A pointer to the condition whose attributes are to
    *be
    *								set.
@@ -270,7 +270,7 @@ class MENGE_API CircleCondFactory : public SpaceCondFactory {
 /*!
  *	@brief		A transition based on spatial relationship with an axis-aligned bounding
  *				box (AABB).
- *
+
  *	The agent will transition when it reaches the relationship (inside or outside)
  *	to the defined axis-aligned bounding box (AABB).
  */
@@ -283,16 +283,16 @@ class MENGE_API AABBCondition : public SpaceCondition, public AABBShape {
 
   /*!
    *	@brief		Copy Constructor.
-   *
+
    *	@param		cond		The condition to copy from.
    */
   AABBCondition(const AABBCondition& cond);
 
   /*!
    *	@brief		Create a copy of this condition.
-   *
+
    *	It is the responsibility of the caller to delete the object.
-   *
+
    *	@returns:	A "deep copy" of this condition - such that there is no shared
    *				objects between this and its copy.
    */
@@ -301,7 +301,7 @@ class MENGE_API AABBCondition : public SpaceCondition, public AABBShape {
  protected:
   /*!
    *	@brief		Determines if a point is inside the test region.
-   *
+
    *	@param		pt		The point to test w.r.t. the transition region.
    *	@returns	True if the transition region contains the given point.
    */
@@ -320,19 +320,19 @@ class MENGE_API AABBCondFactory : public SpaceCondFactory {
 
   /*!
    *	@brief		The name of the action.
-   *
+
    *	The action's name must be unique among all registered actions.
    *	Each action factory must override this function.
-   *
+
    *	@returns	A string containing the unique action name.
    */
   virtual const char* name() const { return "AABB"; }
 
   /*!
    *	@brief		A description of the action.
-   *
+
    *	Each action factory must override this function.
-   *
+
    *	@returns	A string containing the action description.
    */
   virtual const char* description() const {
@@ -344,12 +344,12 @@ class MENGE_API AABBCondFactory : public SpaceCondFactory {
  protected:
   /*!
    *	@brief		Create an instance of this class's condition.
-   *
+
    *	All ConditionFactory sub-classes must override this by creating (on the heap)
    *	a new instance of its corresponding condition type.  The various field values
    *	of the instance will be set in a subsequent call to ConditionFactory::setFromXML.
    *	The caller of this function takes ownership of the memory.
-   *
+
    *	@returns		A pointer to a newly instantiated Action class.
    */
   virtual Condition* instance() const { return new AABBCondition(); }
@@ -357,13 +357,13 @@ class MENGE_API AABBCondFactory : public SpaceCondFactory {
   /*!
    *	@brief		Given a pointer to an Condition instance, sets the appropriate fields
    *				from the provided XML node.
-   *
+
    *	It is assumed that the value of the `type` attribute is this Tarnsitions's type.
    *	(i.e. ConditionFactory::thisFactory has already been called and returned true.)
    *	If sub-classes of ConditionFactory introduce *new* Condition parameters, then the
    *	sub-class should override this method but explicitly call the parent class's
    *	version.
-   *
+
    *	@param		condition		A pointer to the condition whose attributes are to
    *be
    *								set.
@@ -405,7 +405,7 @@ class MENGE_API AABBCondFactory : public SpaceCondFactory {
 /*!
  *	@brief		A transition based on spatial relationship with an oriented bounding
  *				box (OBB).
- *
+
  *	The agent will transition when it reaches the relationship (inside or outside)
  *	to the defined oriented bounding box (OBB).
  */
@@ -418,16 +418,16 @@ class MENGE_API OBBCondition : public SpaceCondition, public OBBShape {
 
   /*!
    *	@brief		Copy Constructor.
-   *
+
    *	@param		cond		The condition to copy from.
    */
   OBBCondition(const OBBCondition& cond);
 
   /*!
    *	@brief		Create a copy of this condition.
-   *
+
    *	It is the responsibility of the caller to delete the object.
-   *
+
    *	@returns:	A "deep copy" of this condition - such that there is no shared
    *				objects between this and its copy.
    */
@@ -436,7 +436,7 @@ class MENGE_API OBBCondition : public SpaceCondition, public OBBShape {
  protected:
   /*!
    *	@brief		Determines if a point is inside the test region.
-   *
+
    *	@param		pt		The point to test w.r.t. the transition region.
    *	@returns	True if the transition region contains the given point.
    */
@@ -455,19 +455,19 @@ class MENGE_API OBBCondFactory : public SpaceCondFactory {
 
   /*!
    *	@brief		The name of the action.
-   *
+
    *	The action's name must be unique among all registered actions.
    *	Each action factory must override this function.
-   *
+
    *	@returns	A string containing the unique action name.
    */
   virtual const char* name() const { return "OBB"; }
 
   /*!
    *	@brief		A description of the action.
-   *
+
    *	Each action factory must override this function.
-   *
+
    *	@returns	A string containing the action description.
    */
   virtual const char* description() const {
@@ -479,12 +479,12 @@ class MENGE_API OBBCondFactory : public SpaceCondFactory {
  protected:
   /*!
    *	@brief		Create an instance of this class's condition.
-   *
+
    *	All ConditionFactory sub-classes must override this by creating (on the heap)
    *	a new instance of its corresponding condition type.  The various field values
    *	of the instance will be set in a subsequent call to ConditionFactory::setFromXML.
    *	The caller of this function takes ownership of the memory.
-   *
+
    *	@returns		A pointer to a newly instantiated Action class.
    */
   virtual Condition* instance() const { return new OBBCondition(); }
@@ -492,13 +492,13 @@ class MENGE_API OBBCondFactory : public SpaceCondFactory {
   /*!
    *	@brief		Given a pointer to an Condition instance, sets the appropriate fields
    *				from the provided XML node.
-   *
+
    *	It is assumed that the value of the `type` attribute is this Tarnsitions's type.
    *	(i.e. ConditionFactory::thisFactory has already been called and returned true.)
    *	If sub-classes of ConditionFactory introduce *new* Condition parameters, then the
    *	sub-class should override this method but explicitly call the parent class's
    *	version.
-   *
+
    *	@param		condition		A pointer to the condition whose attributes are to
    *be
    *								set.

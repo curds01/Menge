@@ -60,7 +60,7 @@ class MENGE_API GoalSelectorException : public virtual MengeException {
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   GoalSelectorException(const std::string& s) : MengeException(s) {}
@@ -79,7 +79,7 @@ class GoalSelectorFatalException : public GoalSelectorException, public MengeFat
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   GoalSelectorFatalException(const std::string& s)
@@ -108,12 +108,12 @@ class MENGE_API GoalSelector : public Element {
   /*!
    *	@brief		Uses the goal selector to assign a goal to the
    *				given agent.
-   *
+
    *	This is the main interface for assiging goals to agents (while
    *	maintaing bookkeping for capacity and persistence.)  It calls
    *	the GoalSelector::getGoal method to actually determine which
    *	goal is to be assigned.
-   *
+
    *	@param		agent		The agent for whom a goal is assigned.
    *	@returns	A pointer to the assigned goal.
    */
@@ -122,12 +122,12 @@ class MENGE_API GoalSelector : public Element {
   /*!
    *	@brief		Informs the goal selector that the agent is done with
    *				the goal.
-   *
+
    *	The behavior of this function depends on the persistence of the
    *	goal selector.  If the goal selector is persistent, the goal will
    *	not actually be *freed* and capacity will remain as indicated.
    *	If it is not persistent, the goal's capacity will be freed up.
-   *
+
    *	@param		agent		The agent who is finished using the goal.
    *	@param		goal		The goal the agent was previously assigned.
    */
@@ -135,7 +135,7 @@ class MENGE_API GoalSelector : public Element {
 
   /*!
    *	@brief		Interface function for acquiring per-agent goals.
-   *
+
    *	@param		agent		The agent for whom a goal is extracted.
    *	@returns	A pointer to a goal.
    *	// TODO: Figure out who owns this goal.
@@ -144,24 +144,24 @@ class MENGE_API GoalSelector : public Element {
 
   /*!
    *	@brief		Gives the instance the opportunity to set the goal set.
-   *
+
    *	This does nothing for instances which don't require a goal set.  Otherwise,
    *	it extracts its required goal set.
-   *
+
    *	@param		goalSets	A mapping from goal set identifier to goal set pointers.
    */
   virtual void setGoalSet(std::map<size_t, GoalSet*>& goalSets) {}
 
   /*!
    *	@brief		Sets the persistence of the goal.
-   *
+
    *	@param		state		The new persistence state.
    */
   inline void setPersistence(bool state) { _persistent = state; }
 
   /*!
    *	@brief		Reports the persistence of the goal.
-   *
+
    *	@returns	True if the goal selector is persistent, false otherwise.
    */
   inline bool getPersistence() const { return _persistent; }
@@ -170,7 +170,7 @@ class MENGE_API GoalSelector : public Element {
   /*!
    *	@brief		Allows the goal selector to lock any resources it
    *				requires.
-   *
+
    *	This is primarily here so that GoalSelectors which use shared
    *	resources have a chance to lock them (see SetGoalSelector).
    *	A call to lockResources should always be followed by a call
@@ -181,14 +181,14 @@ class MENGE_API GoalSelector : public Element {
   /*!
    *	@brief		Allows the goal selector to release previously locked
    *				resources.
-   *
+
    *	Should be used in conjunction with lockResources.
    */
   virtual void releaseResources() {}
 
   /*!
    *	@brief		Determines if the GoalSelector maintains persistent goals.
-   *
+
    *	If the goal selector is persistent, it means that when an agent leaves the
    *	state with the corresponding goal selector, the goal is not released and
    *	if the agent returns to the state, it receives its previous goal.
@@ -213,7 +213,7 @@ class MENGE_API GoalSelector : public Element {
 
 /*!
  *	@brief		Parses a TinyXML element containing a goal selector specification
- *
+
  *	@param		node			The TinyXML element
  *	@param		behaveFldr		The folder in which the behavior is defined -- all
  *								resources are defined relative to this

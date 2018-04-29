@@ -61,14 +61,14 @@ class MENGE_API ExplicitGenerator : public AgentGenerator {
 
   /*!
    *	@brief		Reports the number of agents created.
-   *
+
    *	@returns	The number of agents this generator creates.
    */
   virtual size_t agentCount() { return _positions.size(); }
 
   /*!
    *	@brief		Sets the ith position to the given agent.
-   *
+
    *	@param		i		The index of the requested position in the sequence.
    *	@param		agt		A pointer to the agent whose position is to be set.
    *	@throws		AgentGeneratorException if the index, i, is invalid.
@@ -77,7 +77,7 @@ class MENGE_API ExplicitGenerator : public AgentGenerator {
 
   /*!
    *	@brief		Adds a position to the generator
-   *
+
    *	@param		p		The position to add.
    */
   void addPosition(const Vector2& p);
@@ -98,19 +98,19 @@ class MENGE_API ExplicitGeneratorFactory : public AgentGeneratorFactory {
  public:
   /*!
    *	@brief		The name of the generator type.
-   *
+
    *	The generator's name must be unique among all registered agent generator
    *	components. Each agent generator factory must override this function.
-   *
+
    *	@returns	A string containing the unique elevation name.
    */
   virtual const char* name() const { return "explicit"; }
 
   /*!
    *	@brief		A description of the agent generator.
-   *
+
    *	Each agent generator factory must override this function.
-   *
+
    *	@returns	A string containing the agent generator description.
    */
   virtual const char* description() const {
@@ -121,13 +121,13 @@ class MENGE_API ExplicitGeneratorFactory : public AgentGeneratorFactory {
  protected:
   /*!
    *	@brief		Create an instance of this class's agent generator implementation.
-   *
+
    *	All AgentGeneratorFactory sub-classes must override this by creating (on the heap)
    *	a new instance of its corresponding generator type.  The various field values
    *	of the instance will be set in a subsequent call to
    *	AgentGeneratorFactory::setFromXML. The caller of this function takes ownership of
    *	the memory.
-   *
+
    *	@returns		A pointer to a newly instantiated EleAgentGenerator class.
    */
   AgentGenerator* instance() const { return new ExplicitGenerator(); }
@@ -135,13 +135,13 @@ class MENGE_API ExplicitGeneratorFactory : public AgentGeneratorFactory {
   /*!
    *	@brief		Given a pointer to a Goal Selector instance, sets the appropriate
    *				fields from the provided XML node.
-   *
+
    *	It is assumed that the value of the `type` attribute is this Goal Selector's type.
    *	(i.e. GoalSelectorFactory::thisFactory has already been called and returned true.)
    *	If sub-classes of GoalSelectorFactory introduce *new* GoalSelector parameters, then
    *	the sub-class should override this method but explicitly call the parent class's
    *	version.
-   *
+
    *	@param		gen				A pointer to the goal selector whose attributes are
    *to
    *								be set.
@@ -159,7 +159,7 @@ class MENGE_API ExplicitGeneratorFactory : public AgentGeneratorFactory {
 
   /*!
    *	@brief		Parses an agent position from an \<Agent\> tag.
-   *
+
    *	@param		node		The XML node containing the agent definition.
    *	@returns	The 2D point defined in the \<Agent\> tag.
    *	@throws		AgentGeneratorException is the agent tag doesn't provide the required data.

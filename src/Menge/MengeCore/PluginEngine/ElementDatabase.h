@@ -36,10 +36,10 @@ namespace Menge {
 
 /*!
  *	@brief		The base functionality of an element database.
- *
+
  *	Queries for parsing element XML and instantiating the appropriate elements
  *	for the finite state machine pass through the appropriate element database.
- *
+
  *	For plug-in-compatible elements, they should have their own database and
  *	factory.  For simplicity, they should sub-class a specialization of this template.
  */
@@ -48,16 +48,16 @@ class ElementDB {
  public:
   /*!
    *	@brief		Reports the number of registered target factories.
-   *
+
    *	@returns	The number of registered target factories.
    */
   static inline size_t count() { return _factories.size(); }
 
   /*!
    *	@brief		Returns an instance of the TransitionTarget defined in the XML node.
-   *
+
    *	The caller is responsible for deleting the TransitionTarget instance.
-   *
+
    *	@param		node		The tinyxml node holding the TransitionTarget definition.
    *	@param		behaveFldr	The path to the behavior file.  If the transition references
    *							resources in the file system, it should be defined
@@ -111,7 +111,7 @@ class ElementDB {
 
   /*!
    *	@brief		Adds the built-in factories to the database.
-   *
+
    *	Sub-classes will specialize this function to add the built-in factory
    *	types.
    */
@@ -119,12 +119,12 @@ class ElementDB {
 
   /*!
    *	@brief		Adds a new Target factory to the database.
-   *
+
    *	The database takes ownership of the data pointed to.
    *	To be added, the new factory must have a unique name to all
    *	previous actions.  If the factory *cannot* be added, it will
    *	be deleted.
-   *
+
    *	@param		factory		A pointer to the factory to add.
    *	@returns	True if the factory is successfully added, false othrewise.
    */
@@ -152,7 +152,7 @@ class ElementDB {
 
   /*!
    *	@brief		Returns the name of the element managed by this database.
-   *
+
    *  @returns    the name of the element managed by this database
    */
   static std::string getElementName();

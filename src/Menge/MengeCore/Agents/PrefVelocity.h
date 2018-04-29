@@ -32,7 +32,7 @@ namespace Agents {
 
 /*!
  *	@brief		The definition of a preferred velocity.
- *
+
  *	The preferred velocity is actually a space of velocities defined
  *	by two things:
  *		- a preferred speed
@@ -40,7 +40,7 @@ namespace Agents {
  *	The span of directions represents a contiguous set of directions which
  *	can be considered topologically equivalent with respect to the agent
  *	reaching its goal.
- *
+
  *	For example, the shortest path may require an agent to pass down a hall way,
  *	but whether the agent walks down the left, middle, or side is irrelevant -- all
  *	three will get the agent to its final goal with negligible difference.
@@ -54,7 +54,7 @@ class MENGE_API PrefVelocity {
 
   /*!
    *	@brief		Constructor for setting a span of a single direction.
-   *
+
    *	@param		dir		The single direction.
    *	@param		speed	The preferred speed.
    *	@param		target	The target point from which the preferred direction arises.
@@ -63,7 +63,7 @@ class MENGE_API PrefVelocity {
 
   /*!
    *	@brief		Constructor for setting a full span.
-   *
+
    *	@param		left	The "left"-most extent of the span (see _left).
    *	@param		right	The "right"-most extent of the span (see _right).
    *	@param		pref	The preferred direction (see _preferred).
@@ -75,14 +75,14 @@ class MENGE_API PrefVelocity {
 
   /*!
    *	@brief		Copy constructor.
-   *
+
    *	@param		vel		An instance of preferred velocity.
    */
   PrefVelocity(const PrefVelocity& vel);
 
   /*!
    *	@brief		Assignment operator
-   *
+
    *	@param		vel		Another instance of PrefVelocity whose values will be copied into
    *this.
    *	@returns	A reference to this preferred velocity.
@@ -91,21 +91,21 @@ class MENGE_API PrefVelocity {
 
   /*!
    *	@brief		Returns the left extent of the span.
-   *
+
    *	@returns	The left extent.
    */
   inline Math::Vector2 getLeft() const { return _left; }
 
   /*!
    *	@brief		Returns the right extent of the span.
-   *
+
    *	@returns	The right extent.
    */
   inline Math::Vector2 getRight() const { return _right; }
 
   /*!
    *	@brief		Returns the preferred *direction* of the span.
-   *
+
    *	@returns	The preferred direction.
    */
   inline Math::Vector2 getPreferred() const { return _preferred; }
@@ -113,7 +113,7 @@ class MENGE_API PrefVelocity {
   /*!
    *	@brief		Returns the preferred *velocity" of the span.
    *				This is the preferred direction at the velocity's speed.
-   *
+
    *	@returns	A vector pointing in the preferred direction at the
    *				given speed.
    */
@@ -121,42 +121,42 @@ class MENGE_API PrefVelocity {
 
   /*!
    *	@brief		Returns the speed of the preferred velocity.
-   *
+
    *	@returns	The speed of the preferred velocity.
    */
   inline float getSpeed() const { return _speed; }
 
   /*!
    *	@brief		Sets the speed.
-   *
+
    *	@param		speed	The speed.
    */
   inline void setSpeed(float speed) { _speed = speed; }
 
   /*!
    *	@brief		Sets the preferred velocity to be a single velocity.
-   *
+
    *	@param		dir		The single preferred direction.
    */
   inline void setSingle(const Math::Vector2& dir) { _left = _preferred = _right = dir; }
 
   /*!
    *	@brief		Gets the target of the preferred velocity.
-   *
+
    *	@returns	A singe point in space which corresponds to the preferred direction.
    */
   inline Math::Vector2 getTarget() const { return _target; }
 
   /*!
    *	@brief		Sets the target of the preferred velocity.
-   *
+
    *	@param		target		The preferred velocity's target.
    */
   inline void setTarget(const Math::Vector2& target) { _target = target; }
 
   /*!
    *	@brief		Sets the preferred velocity span.
-   *
+
    *	@param		left		The direction of the left-most extent of the arc.
    *	@param		right		The direction of the right-most extent of the arc.
    *	@param		preferred	The single most-preferred direction in the span.
@@ -167,7 +167,7 @@ class MENGE_API PrefVelocity {
   /*!
    *	@brief		Reports if the arc spans more than a single direction (by reporting
    *				whether the arc has area.)
-   *
+
    *	@returns	A boolean indicating if the span has area (i.e. spans
    *				more than a single direction.
    */

@@ -56,7 +56,7 @@ class MENGE_API GoalSet {
 
   /*!
    *	@brief		Add the given goal with the given id to the set.
-   *
+
    *	@param		id		The id for the given goal.
    *	@param		goal	The goal to add to the set.
    *	@returns	A boolean reporting succes on adding the goal.  If the id does not
@@ -71,10 +71,10 @@ class MENGE_API GoalSet {
   /*!
    *	@brief		Returns the goal with the given user-defined identifier.
    *				This is the identifier given the behavior specification.
-   *
+
    *	This operation is not thread-safe.  It should only be used in a context
    *	that is known to be "safe".
-   *
+
    *	@param		id		The identifier of the desired goal.
    *	@returns	A pointer to the desired goal.
    *				If the goal doesn't exist, NULL is returned.
@@ -85,10 +85,10 @@ class MENGE_API GoalSet {
   /*!
    *	@brief		Returns the goal with the given user-defined identifier.
    *				This is the identifier given the behavior specification.
-   *
+
    *	This operation is thread-safe.  But it should not be called in the
    *	same thread that has already called GoalSet::lockRead.
-   *
+
    *	@param		id		The identifier of the desired goal.
    *	@returns	A pointer to the desired goal.
    *				If the goal doesn't exist, NULL is returned.
@@ -100,10 +100,10 @@ class MENGE_API GoalSet {
    *	@brief		Returns the ith *available* goal (doesn't necessarily correlate
    *				with the user-defined identifier).  Merely the order in which
    *				the goals are ordered in the set.
-   *
+
    *	This operation is not thread-safe.  It should only be used in a context
    *	that is known to be "safe".
-   *
+
    *	@param		i		The ith goal in the set -- order is undefined.
    *	@returns	A pointer to the desired goal.
    *				NULL is returned if the index exceeds the number of *available*
@@ -115,10 +115,10 @@ class MENGE_API GoalSet {
    *	@brief		Returns the ith *available* goal (doesn't necessarily correlate
    *				with the user-defined identifier).  Merely the order in which
    *				the goals are ordered in the set.
-   *
+
    *	This operation is thread-safe.  But it should not be called in the
    *	same thread that has already called GoalSet::lockRead.
-   *
+
    *	@param		i		The ith goal in the set -- order is undefined.
    *	@returns	A pointer to the desired goal.
    *				NULL is returned if the index exceeds the number of *available*
@@ -128,28 +128,28 @@ class MENGE_API GoalSet {
 
   /*!
    *	@brief		Reports the number of goals in the set.  *Not* thread safe.
-   *
+
    *	@returns	The number of goals in the set.
    */
   size_t size() const { return _goalIDs.size(); }
 
   /*!
    *	@brief		Reports the number of goals in the set.  Thread safe version.
-   *
+
    *	@returns	The number of goals in the set.
    */
   size_t sizeConcurrent() const;
 
   /*!
    *	@brief		Select a goal randomly from the set with all having equal probability.
-   *
+
    *	@returns	A pointer to the randomly selected goal
    */
   Goal* getRandomGoal();
 
   /*!
    *	@brief		Select a goal randomly, based on the relative weights of the goals.
-   *
+
    *	@returns	A pointer to the randomly selected goal
    */
   Goal* getRandomWeightedGoal();

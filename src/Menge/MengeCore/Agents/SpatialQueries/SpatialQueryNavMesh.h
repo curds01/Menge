@@ -58,7 +58,7 @@ class MENGE_API NavMeshSpatialQuery : public SpatialQuery {
   /*!
    *  @brief      Allows the spatial query structure to update its
    *				knowledge of the agent positions.
-   *
+
    *				This happens by the NavMeshLocalizer as an FSM task.
    */
   virtual void updateAgents() {}
@@ -71,7 +71,7 @@ class MENGE_API NavMeshSpatialQuery : public SpatialQuery {
 
   /*!
    *  @brief      performs an agent based proximity query
-   *
+
    *  @param      query           a pointer to the proximity query to be performed
    *  @param      rangeSq           the range to search (extracted and mutable)
    */
@@ -114,14 +114,14 @@ class MENGE_API NavMeshSpatialQuery : public SpatialQuery {
 
   /*!
    *	@brief		Sets the navigation mesh localizer pointer.
-   *
+
    *	@param		nml		The managed pointer to the navigation mesh localizer.
    */
   void setNavMeshLocalizer(const NavMeshLocalizerPtr& nml) { _localizer = nml; }
 
   /*!
    *	@brief		Returns a pointer to the nav mesh localizer task.
-   *
+
    *	@returns		A pointer to the nav mesh localizer task.  It is the responsibility
    *					of the caller to free the memory of the provided task by
    *					calling its destroy method.
@@ -156,20 +156,20 @@ class MENGE_API NavMeshSpatialQueryFactory : public SpatialQueryFactory {
 
   /*!
    *	@brief		The name of the spatial query implemenation.
-   *
+
    *	The spatial query's name must be unique among all registered
    *	spatial query components.  Each spatial query factory must override
    *	this function.
-   *
+
    *	@returns	A string containing the unique spatial query name.
    */
   virtual const char* name() const { return "nav_mesh"; }
 
   /*!
    *	@brief		A description of the spatial query.
-   *
+
    *	Each spatial query factory must override this function.
-   *
+
    *	@returns	A string containing the spatial query description.
    */
   virtual const char* description() const {
@@ -179,13 +179,13 @@ class MENGE_API NavMeshSpatialQueryFactory : public SpatialQueryFactory {
  protected:
   /*!
    *	@brief		Create an instance of this class's spatial query implementation.
-   *
+
    *	All SpatialQueryFactory sub-classes must override this by creating (on the heap)
    *	a new instance of its corresponding spatial query type.  The various field values
    *	of the instance will be set in a subsequent call to
    *	SpatialQueryFactory::setFromXML. The caller of this function takes ownership of the
    *	memory.
-   *
+
    *	@returns		A pointer to a newly instantiated SpatialQuery class.
    */
   SpatialQuery* instance() const { return new NavMeshSpatialQuery(); }
@@ -193,13 +193,13 @@ class MENGE_API NavMeshSpatialQueryFactory : public SpatialQueryFactory {
   /*!
    *	@brief		Given a pointer to an SpatialQuery instance, sets the appropriate
    *				fields from the provided XML node.
-   *
+
    *	It is assumed that the value of the `type` attribute is this SpatialQuery's type.
    *	(i.e. SpatialQueryFactory::thisFactory has already been called and returned true.)
    *	If sub-classes of SpatialQueryFactory introduce *new* SpatialQuery parameters,
    *	then the sub-class should override this method but explicitly call the parent
    *	class's version.
-   *
+
    *	@param		sq			A pointer to the spatial query whose attributes are to
    *be
    *							set.

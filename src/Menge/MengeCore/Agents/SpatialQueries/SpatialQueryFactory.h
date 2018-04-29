@@ -50,13 +50,13 @@ class MENGE_API SpatialQueryFactory : public ElementFactory<SpatialQuery> {
   /*!
    *	@brief		Given a pointer to a SpatialQuery instance, sets the appropriate fields
    *				from the provided XML node.
-   *
+
    *	It is assumed that the value of the `type` attribute is this SpatialQuery's type.
    *	(i.e. SpatialQueryFactory::thisFactory has already been called and returned true.)
    *	If sub-classes of SpatialQueryFactory introduce *new* SpatialQuery parameters, then
    *	the sub-class should override this method but explicitly call the parent class's
    *	version.
-   *
+
    *	@param		sQuery			A pointer to the spatial query whose attributes are
    *to
    *								be set.

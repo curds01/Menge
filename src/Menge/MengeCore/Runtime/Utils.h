@@ -51,7 +51,7 @@ class UtilException : public virtual MengeException {
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   UtilException(const std::string& s) : MengeException(s) {}
@@ -70,7 +70,7 @@ class UtilFatalException : public UtilException, public MengeFatalException {
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   UtilFatalException(const std::string& s)
@@ -79,7 +79,7 @@ class UtilFatalException : public UtilException, public MengeFatalException {
 
 /*!
  *	@brief	Converts a string to a float.
- *
+
  *	@param		value		A string representing a float value.
  *	@throws		A UtilException if the string is improperly formatted.
  *	@returns		The float representation of the value held in the string.
@@ -88,7 +88,7 @@ MENGE_API float toFloat(const std::string& value) throw(UtilException);
 
 /*!
  *	@brief	Converts a string to an int.
- *
+
  *	@param		value		A string representing a int value.
  *	@throws		A UtilException if the string is improperly formatted.
  *	@returns	The int representation of the value held in the string.
@@ -97,7 +97,7 @@ MENGE_API int toInt(const std::string& value) throw(UtilException);
 
 /*!
  *	@brief	Converts a string to a size_t.
- *
+
  *	@param		value		A string representing a size_t value.
  *	@throws		A UtilException if the string is improperly formatted.
  *	@returns		The size_t representation of the value held in the string.

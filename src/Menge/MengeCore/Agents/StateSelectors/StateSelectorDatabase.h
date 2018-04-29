@@ -19,7 +19,7 @@
 /*!
  *	@file		StateSelectorDatabase.h
  *	@brief		Central database for querying available profile selector implementations.
- *
+
  *	For profile selectors to be used in simulation, they must register
  *	themselves into the ProfileSelectorDatabase.  This is done via the PluginEngine.
  */

@@ -43,7 +43,7 @@ class MENGE_API Line {
 
   /*!
    *	@brief		Explicit constructor.
-   *
+
    *	@param		p		A point on the line.
    *	@param		d		A unit-length vector defining the direction of the line.
    *						the line is defined by p + dt, where t in the range
@@ -53,7 +53,7 @@ class MENGE_API Line {
 
   /*!
    *	@brief		Returns the nearest point on the line to p
-   *
+
    *	@param		p			The point to which we want to find
    *							the nearest point.
    *	@returns	A point on the line that is closest to p.

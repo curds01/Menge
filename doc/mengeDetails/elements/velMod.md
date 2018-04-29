@@ -26,7 +26,7 @@ Multiple velocity modifiers can be provided.  For example, an agent profile coul
 		<VelModifer type="firstMod" ... />
 		<VelModifer type="secondMod" ... />
 	</AgentProfile>
-	
+
 In this case, the velocity modifiers are composed in the order given:
 
 \image html specification/velMod_doubleEval.png

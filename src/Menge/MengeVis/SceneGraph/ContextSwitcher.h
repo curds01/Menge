@@ -53,7 +53,7 @@ class MENGEVIS_API ContextSwitcher : public Context {
 
   /*!
    *	@brief		Add a context and it's "hotkey"
-   *
+
    *	@param		context		The context to add.
    *	@param		key			The key which activates the context.
    */
@@ -61,7 +61,7 @@ class MENGEVIS_API ContextSwitcher : public Context {
 
   /*!
    *	@brief		Switch to the indicated context.
-   *
+
    *	@param		context		The newly active context.
    *	@returns	A boolean reporting if a change is actually made (true)
    *				or not (false).
@@ -76,7 +76,7 @@ class MENGEVIS_API ContextSwitcher : public Context {
 
   /*!
    *	@brief		The draw function for the context.
-   *
+
    *	@param		vWidth		The width of the viewport (in pixels).
    *	@param		vHeight		The height of the viewport (in pixels).
    */
@@ -85,7 +85,7 @@ class MENGEVIS_API ContextSwitcher : public Context {
   /*!
    *	@brief		Performs selection based on a click on screen space.
    *				Uses the OpenGL selection mechanism.
-   *
+
    *	@param		scene			The scene to select in.
    *	@param		camera			The camera.
    *	@param		vWidth			The width of the viewport.
@@ -106,7 +106,7 @@ class MENGEVIS_API ContextSwitcher : public Context {
   /*!
    *	@brief		Give the context the opportunity to respond to a mouse
    *				event.
-   *
+
    *	@param		e		The SDL event with the mouse event data.
    *	@returns	A ContextResult instance reporting if the event was handled and
    *				if redrawing is necessary.
@@ -116,7 +116,7 @@ class MENGEVIS_API ContextSwitcher : public Context {
   /*!
    *	@brief		Give the context the opportunity to respond to a keyboard
    *				event.
-   *
+
    *	@param		e		The SDL event with the keyboard event data.
    *	@returns	A ContextResult instance reporting if the event was handled and
    *				if redrawing is necessary.

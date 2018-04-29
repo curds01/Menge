@@ -44,7 +44,7 @@ namespace Menge {
 
 		/*!
 		 *	@brief		Base context for finite state machine velocity modifiers.
-		 *
+
 		 *	This differs from the standard scene graph context by being
 		 *	dependent on an input agent.  
 		 */
@@ -57,14 +57,14 @@ namespace Menge {
 
 			/*!
 			 *	@brief		This supplants the destructor.
-			 *
+
 			 *	In order to preserve potential problems in windows when
 			 *	dlls do not share the same c-runtime library, the destructor
 			 *	is held to be private.  To garbage collect an Velmodifier,
 			 *	the destroy method should be called (which in turn, will call
 			 *	the destructor from its own memory space, averting run-time
 			 *  crashes).
-			 *
+
 			 *	Once this has been called, the VelModifier no longer exists.  Calling
 			 *	methods or accessing members will produce indetermine behavior 
 			 *	(most likely errors).
@@ -81,7 +81,7 @@ namespace Menge {
 			/*!
 			 *	@brief		Provides a string to be printed in the display as a UI element
 			 *				detailing velocity modifier information.
-			 *
+
 			 *	@param		indent		An optional string representing indentation to be
 			 *							applied to the text.  It is prefixed at the start
 			 *							of each line.
@@ -91,9 +91,9 @@ namespace Menge {
 
 			/*!
 			 *	@brief		Draw context elements into the 3D world.
-			 *
+
 			 *	This should never be called in select mode.
-			 *
+
 			 *	@param		agt			The particular agent for which the FSM is being visualized.
 			 */
 			virtual void draw3DGL( const Agents::BaseAgent * agt){}

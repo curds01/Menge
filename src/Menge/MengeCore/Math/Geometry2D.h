@@ -40,7 +40,7 @@ namespace Math {
 
 /*!
  *	@brief		Abstract 2d Geometry class for FSM queries.
- *
+
  *	Supports queries to determine if points lie inside/outside a particular
  *	shape.
  */
@@ -59,7 +59,7 @@ class MENGE_API Geometry2D {
   /*!
    *	@brief		Determine if the point is inside the shape based on
    *				the instance properties.
-   *
+
    *	@param		pt		The point to test.
    *	@returns	True if the point is inside the shape, false otherwise.
    */
@@ -69,7 +69,7 @@ class MENGE_API Geometry2D {
    *	@brief		Determine if the point is inside the shape, not located at the
    *				instance value, but at the given position.  Definition of "at the
    *				given position" is defined by each shape.
-   *
+
    *	@param		pt		The point to test.
    *	@param		pos		The "position" of the shape.
    *	@returns	True if the point is inside the shape, false otherwise.
@@ -78,7 +78,7 @@ class MENGE_API Geometry2D {
 
   /*!
    *	@brief		Reports the *squared* distance from the given point to the goal.
-   *
+
    *	@param		pt			The query point.
    *	@returns	The squared distance from the point to the goal.
    */
@@ -87,26 +87,26 @@ class MENGE_API Geometry2D {
   /*!
    *	@brief		Set the preferred velocity directions w.r.t. the goal: left, right, and
    *				preferred.
-   *
+
    *	The Agents::PrefVelocity class represents a span of velocities that will reach the
    *	goal. For a goal that covers a 2D region, the directions in the
    *	Agents::PrefVelocity should span the arc subtended by the goal from the query
    *	point's perspective.  Furthermore, it should have sufficient clearance for a disk
    *	with the given radius to pass through. This should be overridden by subclasses to
    *	account for their unique geometry.
-   *
+
    *	The arc subtends an angle formed by a cone.  The apex of the cone is at the point
    *	`q`. The legs of the cone move from the apex in directions _towards_ the goal.
    *  The legs bound the minkowski _difference_ of the goal geometry with a circle of
    *	radius `r`.  In other words, the cone subtends the region such that if the _center_
    *  of a disk of radius `r` were in that region, the whole disk would be contained in
    *  the geometry region.
-   *
+
    *	There is a degenerate case when the cone apex, `q`, lies _inside_ the goal
    *	geometry. Directions are now ill-defined.  The geometry will assign the _zero_
    *  vectors to the three directions (left, right, and preferred). The target point
    *  will be `q`.
-   *
+
    *	@param		q				The query point.
    *	@param		r				The radius of clearance.
    *	@param		directions		An instance of Agents::PrefVelocity.
@@ -118,14 +118,14 @@ class MENGE_API Geometry2D {
   /*!
    *	@brief		Returns the closest "target" point in the goal to the given
    *				query point.
-   *
+
    *	A "valid" target point is the nearest point to the query point that is sufficiently
    *	inside the goal region that a disk with the given radius is completely inside the
    *	goal. It need not be literally the *best* value, an approximation is sufficient.
-   *
+
    *	In the case where the goal region is too small to hold the agent, then the
    *	"deepest" point in the region is a good approximation.
-   *
+
    *	@param		q		The query point.
    *	@param		r		The radius of clearance.
    *	@returns	A 2D position representing the target point.
@@ -152,21 +152,21 @@ class MENGE_API PointShape : public Geometry2D {
 
   /*!
    *	@brief		Constructor
-   *
+
    *	@param		pos		The position of the point.
    */
   PointShape(const Vector2& pos) : Geometry2D(), _position(pos) {}
 
   /*!
    *	@brief		Copy constructor
-   *
+
    *	@param		shape		The shape to copy from.
    */
   PointShape(const PointShape& shape);
 
   /*!
    *	@brief		Initializes this shape as an translated version of the input shape.
-   *
+
    *	@param		shape		The shape to copy from.
    *	@param		offset		The displacement from this point to the new.
    */
@@ -174,7 +174,7 @@ class MENGE_API PointShape : public Geometry2D {
 
   /*!
    *	@brief		Construct an offset version of this shape.
-   *
+
    *	@param		pt		The offset value.
    *	@returns	A new PointShape offset from this one by the vector pt.
    */
@@ -189,7 +189,7 @@ class MENGE_API PointShape : public Geometry2D {
 
   /*!
    *	@brief		Reports the point position.
-   *
+
    *	@returns	The point position.
    */
   const Vector2& getPosition() const { return _position; }
@@ -197,7 +197,7 @@ class MENGE_API PointShape : public Geometry2D {
   /*!
    *	@brief		Determine if the point is inside the shape based on
    *				the instance properties.
-   *
+
    *	@param		pt		The point to test.
    *	@returns	True if the point is inside the shape, false otherwise.
    */
@@ -223,14 +223,14 @@ class MENGE_API PointShape : public Geometry2D {
   /*!
    *	@brief		Set the preferred velocity directions w.r.t. the goal: left, right, and
    *				preferred.
-   *
+
    *	The Agents::PrefVelocity class represents a span of velocities that will reach the
    *	goal. For a goal that covers a 2D region, the directions in the
    *	Agents::PrefVelocity should span the arc subtended by the goal from the query
    *	point's perspective.  Furthermore, it should have sufficient clearance for a disk
    *	with the given radius to pass through. This should be overridden by subclasses to
    *	account for their unique geometry.
-   *
+
    *	@param		q				The query point.
    *	@param		r				The radius of clearance.
    *	@param		directions		An instance of Agents::PrefVelocity.
@@ -242,14 +242,14 @@ class MENGE_API PointShape : public Geometry2D {
   /*!
    *	@brief		Returns the closest "target" point in the goal to the given
    *				query point.
-   *
+
    *	A "valid" target point is the nearest point to the query point that is sufficiently
    *	inside the goal region that a disk with the given radius is completely inside the
    *	goal. It need not be literally the *best* value, an approximation is sufficient.
-   *
+
    *	In the case where the goal region is too small to hold the agent, then the
    *	"deepest" point in the region is a good approximation.
-   *
+
    *	@param		q		The query point.
    *	@param		r		The radius of clearance.
    *	@returns	A 2D position representing the target point.
@@ -278,7 +278,7 @@ class MENGE_API CircleShape : public Geometry2D {
 
   /*!
    *	@brief		Constructor
-   *
+
    *	@param		center		The position of the circle's center.
    *	@param		radius		The radius of the circle.
    */
@@ -287,14 +287,14 @@ class MENGE_API CircleShape : public Geometry2D {
 
   /*!
    *	@brief		Copy constructor
-   *
+
    *	@param		shape		The shape to copy from.
    */
   CircleShape(const CircleShape& shape);
 
   /*!
    *	@brief		Initializes this shape as an translated version of the input shape.
-   *
+
    *	@param		shape		The shape to copy from.
    *	@param		offset		defines an offset from the copied CircleShape for the new
    *							CircleShape center
@@ -303,7 +303,7 @@ class MENGE_API CircleShape : public Geometry2D {
 
   /*!
    *	@brief		Construct an offset version of this shape.
-   *
+
    *	@param		pt		The offset value.
    *	@returns	A new CircleShape offset from this one by the vector pt.
    */
@@ -311,35 +311,35 @@ class MENGE_API CircleShape : public Geometry2D {
 
   /*!
    *	@brief		Reports the circle's radius.
-   *
+
    *	@returns	The circle's radius.
    */
   float getRadius() const { return _radius; }
 
   /*!
    *	@brief		Sets the radius of the circle.
-   *
+
    *	@param		radius		The circle's radius.
    */
   void setRadius(float radius) { _radius = radius; }
 
   /*!
    *	@brief		Reports the circle's center.
-   *
+
    *	@returns	The circle center.
    */
   const Vector2& getCenter() const { return _center; }
 
   /*!
    *	@brief		Sets the center of the circle.
-   *
+
    *	@param		center		The circle's center.
    */
   void setCenter(const Vector2& center) { _center.set(center); }
 
   /*!
    *	@brief		Sets the properties of the circle.
-   *
+
    *	@param		center		The circle's center.
    *	@param		radius		The circle's radius.
    */
@@ -351,7 +351,7 @@ class MENGE_API CircleShape : public Geometry2D {
   /*!
    *	@brief		Determine if the point is inside the shape based on
    *				the instance properties.
-   *
+
    *	@param		pt		The point to test.
    *	@returns	True if the point is inside the shape, false otherwise.
    */
@@ -360,7 +360,7 @@ class MENGE_API CircleShape : public Geometry2D {
   /*!
    *	@brief		Determine if the point is inside a circle, centered on the
    *				given position.
-   *
+
    *	@param		pt		The point to test.
    *	@param		pos		The position of the circle's center.
    *	@returns	True if the point is inside the shape, false otherwise.
@@ -369,7 +369,7 @@ class MENGE_API CircleShape : public Geometry2D {
 
   /*!
    *	@brief		Reports the *squared* distance from the given point to the goal.
-   *
+
    *	@param		pt			The query point.
    *	@returns	The squared distance from the point to the goal.
    */
@@ -378,14 +378,14 @@ class MENGE_API CircleShape : public Geometry2D {
   /*!
    *	@brief		Set the preferred velocity directions w.r.t. the goal: left, right, and
    *				preferred.
-   *
+
    *	The Agents::PrefVelocity class represents a span of velocities that will reach the
    *	goal. For a goal that covers a 2D region, the directions in the
    *	Agents::PrefVelocity should span the arc subtended by the goal from the query
    *	point's perspective.  Furthermore, it should have sufficient clearance for a disk
    *	with the given radius to pass through. This should be overridden by subclasses to
    *	account for their unique geometry.
-   *
+
    *	@param		q				The query point.
    *	@param		r				The radius of clearance.
    *	@param		directions		An instance of Agents::PrefVelocity.
@@ -397,14 +397,14 @@ class MENGE_API CircleShape : public Geometry2D {
   /*!
    *	@brief		Returns the closest "target" point in the goal to the given
    *				query point.
-   *
+
    *	A "valid" target point is the nearest point to the query point that is sufficiently
    *	inside the goal region that a disk with the given radius is completely inside the
    *	goal. It need not be literally the *best* value, an approximation is sufficient.
-   *
+
    *	In the case where the goal region is too small to hold the agent, then the
    *	"deepest" point in the region is a good approximation.
-   *
+
    *	@param		q		The query point.
    *	@param		r		The radius of clearance.
    *	@returns	A 2D position representing the target point.
@@ -442,7 +442,7 @@ class MENGE_API AABBShape : public Geometry2D {
 
   /*!
    *	@brief		Constructor
-   *
+
    *	@param		minPt		The minimum values of the bounding box along
    *							the x- and y-axes, respectively.
    *	@param		maxPt		The maximum values of the bounding box along
@@ -452,14 +452,14 @@ class MENGE_API AABBShape : public Geometry2D {
 
   /*!
    *	@brief		Copy constructor
-   *
+
    *	@param		shape		The shape to copy from.
    */
   AABBShape(const AABBShape& shape);
 
   /*!
    *	@brief		Initializes this shape as an translated version of the input shape.
-   *
+
    *	@param		shape		The shape to copy from.
    *	@param		offset		defines an offset from the copied AABBShape for the new
    *							AABBShape.
@@ -468,7 +468,7 @@ class MENGE_API AABBShape : public Geometry2D {
 
   /*!
    *	@brief		Construct an offset version of this shape.
-   *
+
    *	@param		pt		The offset value.
    *	@returns	A new AABBShape offset from this one by the vector pt.
    */
@@ -477,7 +477,7 @@ class MENGE_API AABBShape : public Geometry2D {
   /*!
    *	@brief		Determine if the point is inside the shape based on
    *				the instance properties.
-   *
+
    *	@param		pt		The point to test.
    *	@returns	True if the point is inside the shape, false otherwise.
    */
@@ -486,7 +486,7 @@ class MENGE_API AABBShape : public Geometry2D {
   /*!
    *	@brief		Determine if the point is inside a AABB, centered on the
    *				given position.
-   *
+
    *	@param		pt		The point to test.
    *	@param		pos		The position of the circle.
    *	@returns	True if the point is inside the shape, false otherwise.
@@ -495,28 +495,28 @@ class MENGE_API AABBShape : public Geometry2D {
 
   /*!
    *	@brief		Reports the box's size (width by height)
-   *
+
    *	@returns	The box size.
    */
   const Vector2 getSize() const { return _maxPt - _minPt; }
 
   /*!
    *	@brief		Reports the box's maximal point (in x & y directions).
-   *
+
    *	@returns	The box's maximal extents.
    */
   const Vector2& getMaxPoint() const { return _maxPt; }
 
   /*!
    *	@brief		Reports the box's minimal point (in x & y directions).
-   *
+
    *	@returns	The box's minimal extents.
    */
   const Vector2& getMinPoint() const { return _minPt; }
 
   /*!
    *	@brief		Sets the extent of the AABB.
-   *
+
    *	@param		minPt		The minimum point (along the x- and y-axes).
    *	@param		maxPt		The maximum point (along the x- and y-axes).
    */
@@ -524,17 +524,17 @@ class MENGE_API AABBShape : public Geometry2D {
 
   /*!
    *	@brief		Sets the size of the AABB.
-   *
+
    *	It implicitly changes the maximum extent of the box, keeping the
    *	minimum point where it is.
-   *
+
    *	@param		size		The width and height of the box.
    */
   void setSize(const Vector2& size);
 
   /*!
    *	@brief		Reports the *squared* distance from the given point to the goal.
-   *
+
    *	@param		pt			The query point.
    *	@returns	The squared distance from the point to the goal.
    */
@@ -543,14 +543,14 @@ class MENGE_API AABBShape : public Geometry2D {
   /*!
    *	@brief		Set the preferred velocity directions w.r.t. the goal: left, right, and
    *				preferred.
-   *
+
    *	The Agents::PrefVelocity class represents a span of velocities that will reach the
    *	goal. For a goal that covers a 2D region, the directions in the
    *	Agents::PrefVelocity should span the arc subtended by the goal from the query
    *	point's perspective.  Furthermore, it should have sufficient clearance for a disk
    *	with the given radius to pass through. This should be overridden by subclasses to
    *	account for their unique geometry.
-   *
+
    *	@param		q				The query point.
    *	@param		r				The radius of clearance.
    *	@param		directions		An instance of Agents::PrefVelocity.
@@ -562,14 +562,14 @@ class MENGE_API AABBShape : public Geometry2D {
   /*!
    *	@brief		Returns the closest "target" point in the goal to the given
    *				query point.
-   *
+
    *	A "valid" target point is the nearest point to the query point that is sufficiently
    *	inside the goal region that a disk with the given radius is completely inside the
    *	goal. It need not be literally the *best* value, an approximation is sufficient.
-   *
+
    *	In the case where the goal region is too small to hold the agent, then the
    *	"deepest" point in the region is a good approximation.
-   *
+
    *	@param		q		The query point.
    *	@param		r		The radius of clearance.
    *	@returns	A 2D position representing the target point.
@@ -612,7 +612,7 @@ class MENGE_API OBBShape : public Geometry2D {
 
   /*!
    *	@brief		Constructor
-   *
+
    *	@param		pivot		The minimum values of the unrotated bounding box along
    *							the x- and y-axes, respectively.  The bounding
    *box
@@ -625,14 +625,14 @@ class MENGE_API OBBShape : public Geometry2D {
 
   /*!
    *	@brief		Copy constructor
-   *
+
    *	@param		shape		The shape to copy from.
    */
   OBBShape(const OBBShape& shape);
 
   /*!
    *	@brief		Initializes this shape as an translated version of the input shape.
-   *
+
    *	@param		shape		The shape to copy from.
    *	@param		offset		offset vector from the copied shape
    */
@@ -640,7 +640,7 @@ class MENGE_API OBBShape : public Geometry2D {
 
   /*!
    *	@brief		Construct an offset version of this shape.
-   *
+
    *	@param		pt		The offset value.
    *	@returns	A new OBBShape offset from this one by the vector pt.
    */
@@ -649,7 +649,7 @@ class MENGE_API OBBShape : public Geometry2D {
   /*!
    *	@brief		Determine if the point is inside the shape based on
    *				the instance properties.
-   *
+
    *	@param		pt		The point to test.
    *	@returns	True if the point is inside the shape, false otherwise.
    */
@@ -658,7 +658,7 @@ class MENGE_API OBBShape : public Geometry2D {
   /*!
    *	@brief		Determine if the point is inside a OBB, centered on the
    *				given position.
-   *
+
    *	@param		pt		The point to test.
    *	@param		pos		The position of the circle.
    *	@returns	True if the point is inside the shape, false otherwise.
@@ -667,7 +667,7 @@ class MENGE_API OBBShape : public Geometry2D {
 
   /*!
    *	@brief		Sets the extent of the OBB.
-   *
+
    *	@param		pivot		The pivot point of the OBB
    *	@param		width		The width of the unrotated box (length along the x-axis).
    *	@param		height		The width of the unrotated box (length along the x-axis).
@@ -677,25 +677,25 @@ class MENGE_API OBBShape : public Geometry2D {
 
   /*!
    *	@brief		Sets the size of the OBB.
-   *
+
    *	The pivot point and angle remain unchanged.
-   *
+
    *	@param		size		The width and height of the box.
    */
   void setSize(const Vector2& size) { _size.set(size); }
 
   /*!
    *	@brief		Sets the angle of the OBB.
-   *
+
    *	The pivot point and size remain unchanged.
-   *
+
    *	@param		angle		The angle (in radians) the OBB is rotated around its pivot.
    */
   void setAngle(float angle);
 
   /*!
    *	@brief		Reports the *squared* distance from the given point to the goal.
-   *
+
    *	@param		pt			The query point.
    *	@returns	The squared distance from the point to the goal.
    */
@@ -704,14 +704,14 @@ class MENGE_API OBBShape : public Geometry2D {
   /*!
    *	@brief		Set the preferred velocity directions w.r.t. the goal: left, right, and
    *				preferred.
-   *
+
    *	The Agents::PrefVelocity class represents a span of velocities that will reach the
    *	goal. For a goal that covers a 2D region, the directions in the
    *	Agents::PrefVelocity should span the arc subtended by the goal from the query
    *	point's perspective.  Furthermore, it should have sufficient clearance for a disk
    *	with the given radius to pass through. This should be overridden by subclasses to
    *	account for their unique geometry.
-   *
+
    *	@param		q				The query point.
    *	@param		r				The radius of clearance.
    *	@param		directions		An instance of Agents::PrefVelocity.
@@ -723,14 +723,14 @@ class MENGE_API OBBShape : public Geometry2D {
   /*!
    *	@brief		Returns the closest "target" point in the goal to the given
    *				query point.
-   *
+
    *	A "valid" target point is the nearest point to the query point that is sufficiently
    *	inside the goal region that a disk with the given radius is completely inside the
    *	goal. It need not be literally the *best* value, an approximation is sufficient.
-   *
+
    *	In the case where the goal region is too small to hold the agent, then the
    *	"deepest" point in the region is a good approximation.
-   *
+
    *	@param		q		The query point.
    *	@param		r		The radius of clearance.
    *	@returns	A 2D position representing the target point.
@@ -864,14 +864,14 @@ class MENGE_API OBBShape : public Geometry2D {
 
   /*!
    *	@brief		Returns the size of the obb (w, h)
-   *
+
    *	@returns	The box's size.
    */
   const Vector2& getSize() const { return _size; }
 
   /*!
    *	@brief		Return the pivot point of the obb.
-   *
+
    *	@returns	The box's pivot.
    */
   const Vector2& getPivot() const { return _pivot; }
@@ -911,11 +911,11 @@ class MENGE_API OBBShape : public Geometry2D {
  *				definition of a known Geoemtry2D instance -- instantiating the shape
  *if
  *				possible.
- *
+
  *	@param [in,out]	node  	The node containing xml attributes.
  *	@param 		  	prefix	(Optional) A prefix that can be pre-pended to the shape
  *							attribute names.
- *
+
  *	@return	Null if it fails, else the new geometry.  The caller is responsible for
  *			destroying the instance.
  */
@@ -923,11 +923,11 @@ MENGE_API Geometry2D* createGeometry(TiXmlElement* node, const std::string& pref
 
 /**
  *	@brief	Creates a point from the attributes of an XML element.
- *
+
  *	@param [in,out]	node  	The node containing xml attributes.
  *	@param 		  	prefix	(Optional) A prefix that can be pre-pended to the shape
  *							attribute names.
- *
+
  *	@return	Null if it fails, else the new point.  The caller is responsible for destroying
  *  		the instance.
  */
@@ -935,11 +935,11 @@ MENGE_API PointShape* createPoint(TiXmlElement* node, const std::string& prefix 
 
 /**
  *	@brief	Creates a circle from the attributes of an XML element.
- *
+
  *	@param [in,out]	node  	The node containing xml attributes.
  *	@param 		  	prefix	(Optional) A prefix that can be pre-pended to the shape
  *							attribute names.
- *
+
  *	@return	Null if it fails, else the new circle.  The caller is responsible for
  *  		destroying the instance.
  */
@@ -947,11 +947,11 @@ MENGE_API CircleShape* createCircle(TiXmlElement* node, const std::string& prefi
 
 /**
  *	@brief	Creates an axis-aligned bounding box from the attributes of an XML element.
- *
+
  *	@param [in,out]	node  	The node containing xml attributes.
  *	@param 		  	prefix	(Optional) A prefix that can be pre-pended to the shape
  *							attribute names.
- *
+
  *  @return	Null if it fails, else the new AABB.  The caller is responsible for destroying
  *  		the instance.
  */
@@ -959,11 +959,11 @@ MENGE_API AABBShape* createAABB(TiXmlElement* node, const std::string& prefix = 
 
 /**
  *  @brief	Creates an oriented bounding box (OBB) from the attributes of an XML element.
- *
+
  *	@param [in,out]	node  	The node containing xml attributes.
  *	@param 		  	prefix	(Optional) A prefix that can be pre-pended to the shape
  *							attribute names.
- *
+
  *  @return	Null if it fails, else the new OBB.  The caller is responsible for destroying
  *  		the instance.
  */

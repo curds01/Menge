@@ -45,7 +45,7 @@ class MENGE_API WayPortal {
  public:
   /*!
    *	@brief		Constructor
-   *
+
    *	@param		edge		The NavigationMeshEdge which serves as the
    *							immediate goal for this WayPortal.
    *	@param		nodeID		The nav mesh node that an agent should be in
@@ -57,7 +57,7 @@ class MENGE_API WayPortal {
 
   /*!
    *	@brief		Retrives the left physical vertex of the portal.
-   *
+
    *	@returns	The position of the left physical vertex, as viewed
    *				from inside _nodeID.
    */
@@ -65,7 +65,7 @@ class MENGE_API WayPortal {
 
   /*!
    *	@brief		Retrives the position in the portal offset from the left physical vertex.
-   *
+
    *	@param		offset		The distance offset from the left physical vertex.
    *	@returns	The position offset from the left physical vertex, as viewed
    *				from inside _nodeID.
@@ -76,7 +76,7 @@ class MENGE_API WayPortal {
 
   /*!
    *	@brief		Retrives the right physical vertex of the portal.
-   *
+
    *	@returns	The position of the right physical vertex, as viewed
    *				from inside _nodeID.
    */
@@ -84,7 +84,7 @@ class MENGE_API WayPortal {
 
   /*!
    *	@brief		Retrives the position in the portal offset from the right physical vertex.
-   *
+
    *	@param		offset		The distance offset from the right physical vertex.
    *	@returns	The position offset from the right physical vertex, as viewed
    *				from inside _nodeID.
@@ -95,10 +95,10 @@ class MENGE_API WayPortal {
 
   /*!
    *	@brief		Computes the intersection point of the given line with this portal.
-   *
+
    *	This algorithm ASSUMES that the line DOES intersect the portal.  The behavior is undefined
    *	if they don't intersect.
-   *
+
    *	@param		point			A point on the line to test.
    *	@param		dir				A direction vector defining the position of the
    *line.
@@ -108,7 +108,7 @@ class MENGE_API WayPortal {
 
   /*!
    *	@brief		Sets the directions on the preferred velocity based on the wayportal.
-   *
+
    *	@param		pos			The position of the agent.
    *	@param		radius		The radius of the agent.
    *	@param		dir			Preferred direction of the agent.  Direction is NOT assumed

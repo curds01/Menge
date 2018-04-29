@@ -19,7 +19,7 @@
 /*!
  *	@file		EventTargetDB.h
  *	@brief		Central database for querying available event target implementations.
- *
+
  *	For event targets to be used in simulation, they must register
  *	themselves into the EventTargetDB.  This is done via the PluginEngine.
  */

@@ -40,7 +40,7 @@ class MENGE_API EventException : public virtual MengeException {
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   EventException(const std::string& s) : MengeException(s) {}
@@ -58,7 +58,7 @@ class MENGE_API EventFatalException : public EventException, public MengeFatalEx
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   EventFatalException(const std::string& s)

@@ -65,7 +65,7 @@ namespace Math {
 
 /*!
  *	@brief		The global seed for the number generators.
- *
+
  *	If the seed is zero, the number generators will get a
  *	unique seed based on the system clock.  If it is non-zero
  *	they will get this seed (unless they locally override it
@@ -92,7 +92,7 @@ void setDefaultGeneratorSeed(int seed) { GLOBAL_SEED = seed; }
 /*!
  *	@brief		Based on the default seed state, return a random
  *				generator seed.
- *
+
  *	@returns	A seed for a number generator.
  */
 int getDefaultSeed() {

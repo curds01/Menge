@@ -19,7 +19,7 @@
 /*!
  *	@file	SimulatorDB.h
  *	@brief	Central database for querying available pedestrian models.
- *
+
  *	The SimulatorDB provides the mechanism by which new simulation models
  *	can easily be registered and their run-time properties queried by the
  *	main program.
@@ -55,7 +55,7 @@ class MENGE_API SimDBException : public virtual MengeException {
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   SimDBException(const std::string& s) : MengeException(s) {}
@@ -73,7 +73,7 @@ class MENGE_API SimDBFatalException : public SimDBException, public MengeFatalEx
 
   /*!
 *	@brief		Constructor with message.
-*
+
 *	@param		s		The exception-specific message.
 */
   SimDBFatalException(const std::string& s)
@@ -91,7 +91,7 @@ typedef std::vector<SimulatorDBEntry*> EntryList;
 
 /*!
  *	@brief		The simulator database class.
- *
+
  *	The main executable program relies on the simulator database to
  *	know what models are available for simulation.  Furthermore, it
  *	uses the database to instantiate the appropriate types as well.
@@ -110,7 +110,7 @@ class MENGE_API SimulatorDB {
 
   /*!
    *	@brief		Reports the number of registered pedestrian models.
-   *
+
    *	@returns	The number of pedestrian models.
    */
   inline size_t modelCount() const { return _entries.size(); }
@@ -118,7 +118,7 @@ class MENGE_API SimulatorDB {
   /*!
    *	@brief		Gets a formatted list of valid command-line
    *				parameters for all registered simulators.
-   *
+
    *	@returns	A formatted list of all registered simulators'
    *				command-line parameter names,
    *				e.g., model1, model2, ..., and modelN.
@@ -133,7 +133,7 @@ class MENGE_API SimulatorDB {
   /*!
    *	@brief		Formats all brief descriptions into a single
    *				string.
-   *
+
    *	@returns	A formatted string consisting of all model's and
    *				their brief descriptions.
    */
@@ -148,7 +148,7 @@ class MENGE_API SimulatorDB {
   /*!
    *	@brief		Formats all long descriptions into a single
    *				string.
-   *
+
    *	@returns	A formatted string consisting of all model's and
    *				their long descriptions.
    */
@@ -162,10 +162,10 @@ class MENGE_API SimulatorDB {
 
   /*!
    *	@brief		Returns the database entry for the given command line parameter.
-   *
+
    *	It returns the database entry with a command line parameter value that is the
    *	same as the provided string.  The test is case <i>in</i>sensitive.
-   *
+
    *	@param		modelName		The command-line parameter for the desired
    *pedestrian
    *								model.
@@ -176,11 +176,11 @@ class MENGE_API SimulatorDB {
 
   /*!
    *	@brief		Registers a database entry.
-   *
+
    *	The registration is only valid if the entry's commandLineName is unique
    *	(see SimulatorDBEntry::commandLineName).  If the given entry
    *	duplicates a previous entry, the pointer is deleted.
-   *
+
    *	@param		entry		A pointer to the entry to register.
    *	@returns	The same pointer (if valid, null if invalid).
    */
@@ -189,7 +189,7 @@ class MENGE_API SimulatorDB {
  private:
   /*!
    *	@brief		Returns the static list of entries.
-   *
+
    *	This is part of C++ voodoo to make static registration of pedestrian
    *	models possible and "easy".
    */

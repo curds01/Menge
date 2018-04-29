@@ -53,7 +53,7 @@ class MENGE_API NavMeshObstacle : public Agents::Obstacle {
   /*!
    *	@brief		Sets the obstacle properties from an obstacle definition
    *				in the given ascii file stream.
-   *
+
    *	@param		f			The input file stream.
    *	@param		vertices	The array of vertices into which the definition
    *							indexes.
@@ -64,7 +64,7 @@ class MENGE_API NavMeshObstacle : public Agents::Obstacle {
 
   /*!
    *	@brief		Retrieve the nav mesh node to which this obstacle is adjacent.
-   *
+
    *	@returns	A pointer to the node.
    */
   inline const NavMeshNode* getNode() const { return _node; }

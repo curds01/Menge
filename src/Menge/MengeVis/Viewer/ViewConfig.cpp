@@ -62,7 +62,7 @@ namespace Viewer {
 
 /*!
  *	@brief		Streaming output operator to display camera specification.
- *
+
  *	@param		out			The output stream to which to write the view
  *configuration.
  *	@param		camParam	The camera parameters to convert to a string.
@@ -82,7 +82,7 @@ Logger& operator<<(Logger& out, const CameraParam& camParam) {
 
 /*!
  *	@brief		Streaming output operator to display light specification.
- *
+
  *	@param		out				The output stream to which to write the view
  *configuration.
  *	@param		lightParam		The light parameters to convert to a string.

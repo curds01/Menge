@@ -51,7 +51,7 @@ class MENGE_API RoadMapPath {
  public:
   /*!
    *	@brief		Constructor
-   *
+
    *	@param		pointCount		The number of waypoints in the path.
    */
   RoadMapPath(size_t pointCount);
@@ -63,7 +63,7 @@ class MENGE_API RoadMapPath {
 
   /*!
    *	@brief		Sets the position of the ith waypoint.
-   *
+
    *	@param		i		The index of the waypoint.
    *	@param		pos		The location of the ith waypoint.
    */
@@ -71,14 +71,14 @@ class MENGE_API RoadMapPath {
 
   /*!
    *	@brief		Sets the ultimate goal.
-   *
+
    *	@param		goal		The ultimate goal
    */
   inline void setGoalPos(const BFSM::Goal* goal) { _goal = goal; }
 
   /*!
    *  @brief      Sets the direction of the preferred velocity (and target).
-   *
+
    *  @param      agent     The agent to compute the preferred direciton for.
    *  @param      pVel      The preferred velocity to set.
    *  @returns    false if the preferred velocity could not be set and the agent
@@ -88,7 +88,7 @@ class MENGE_API RoadMapPath {
 
   /*!
    *	@brief		Reports the number of waypoints in the path.
-   *
+
    *	@returns	The number of way points.  This does *not* include the final
    *				goal point.  So, at its simplest, this could be zero.
    */
@@ -96,10 +96,10 @@ class MENGE_API RoadMapPath {
 
   /*!
    *	@brief		Returns the position of the ith waypoint.
-   *
+
    *	The index i is only validated in debug mode with an assertion.
    *	The ultimate goal is not included in the count.
-   *
+
    *	@param		i		The index of the desired waypoint.
    *	@returns	The position of the ith waypoint.
    */
@@ -107,14 +107,14 @@ class MENGE_API RoadMapPath {
 
   /*!
    *	@brief		Returns the ultimate goal.
-   *
+
    *	@returns	A pointer to the ultimate goal.
    */
   const BFSM::Goal* getGoal() const { return _goal; }
 
   /*!
    *	@brief		Returns the current target waypoint index
-   *
+
    *	@returns	The index of the target waypoint.
    */
   inline size_t getTargetID() const { return _targetID; }

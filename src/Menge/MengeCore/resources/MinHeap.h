@@ -36,14 +36,14 @@ namespace Menge {
  *				The heap needs to be able to restructure itself because
  *				the values of nodes IN the heap can change due to
  *				the A* algorithm.
- *
+
  *				Also tracks all of the A* data.
  */
 class AStarMinHeap {
  public:
   /*!
    *	@brief		Constructor.
-   *
+
    *	@param		heap		A pointer to a block of memory to be used for the heap
    *							for N nav mesh nodes.
    *	@param		data		A pointer to a block of memory to be used for the A* data
@@ -58,28 +58,28 @@ class AStarMinHeap {
 
   /*!
    *	@brief		Reports if the heap is empty.
-   *
+
    *	@returns	True if the heap is empty, false if it is not.
    */
   bool empty() const { return _nextFree == 0; }
 
   /*!
    *	@brief		Extract the minimum keyed value.
-   *
+
    *	@returns	The index of the nav mesh node with the minimum keyed value.
    */
   unsigned int pop();
 
   /*!
    *	@brief		Insert a new value into the heap.
-   *
+
    *	@param		x		The index of the node to insert.
    */
   void push(unsigned int x);
 
   /*!
    *	@brief		Set the g-value for the given node.
-   *
+
    *	@param		node		The nav mesh node index for which the g-value is to be set.
    *	@param		value		The g-value for the given node.
    */
@@ -87,7 +87,7 @@ class AStarMinHeap {
 
   /*!
    *	@brief		Retrieve the g-value for the given node.
-   *
+
    *	@param		node		The nav mesh node index whose g-value is to be retrieved.
    *	@returns	The g-value of the indexed node.
    */
@@ -95,7 +95,7 @@ class AStarMinHeap {
 
   /*!
    *	@brief		Set the h-value for the given node.
-   *
+
    *	@param		node		The nav mesh node index for which the h-value is to be set.
    *	@param		value		The h-value for the given node.
    */
@@ -103,7 +103,7 @@ class AStarMinHeap {
 
   /*!
    *	@brief		Retrieve the h-value for the given node.
-   *
+
    *	@param		node		The nav mesh node index whose h-value is to be retrieved.
    *	@returns	The h-value of the indexed node.
    */
@@ -111,7 +111,7 @@ class AStarMinHeap {
 
   /*!
    *	@brief		Set the f-value for the given node.
-   *
+
    *	@param		node		The nav mesh node index for which the f-value is to be set.
    *	@param		value		The f-value for the given node.
    */
@@ -124,7 +124,7 @@ class AStarMinHeap {
 
   /*!
    *	@brief		Retrieve the f-value for the given node.
-   *
+
    *	@param		node		The nav mesh node index whose f-value is to be retrieved.
    *	@returns	The f-value of the indexed node.
    */
@@ -132,7 +132,7 @@ class AStarMinHeap {
 
   /*!
    *	@brief		Change the f-value for the given node in the heap.
-   *
+
    *	@param		node		The node whose f-value is to change.
    *	@param		value		The new f-value.
    */
@@ -140,7 +140,7 @@ class AStarMinHeap {
 
   /*!
    *	@brief		Reports if the node has been visited.
-   *
+
    *	@param		node		The index of the nav mesh node to test.
    *	@returns	True if the node has been visited, false otherwise.
    */
@@ -148,7 +148,7 @@ class AStarMinHeap {
 
   /*!
    *	@brief		Reports if the node is currently in the heap.
-   *
+
    *	@param		node		The index of the nav mesh node to test.
    *	@returns	True if the node is in the heap, false otherwise.
    */
@@ -156,7 +156,7 @@ class AStarMinHeap {
 
   /*!
    *	@brief		Sets the node from which this node was reached.
-   *
+
    *	@param		dst		The index of the nav mesh node reached.
    *	@param		src		The index of the nav mesh node from which dst was reached.
    */
@@ -164,7 +164,7 @@ class AStarMinHeap {
 
   /*!
    *	@brief		Report the node from which this node was reached.
-   *
+
    *	@param		dst		The index of the nav mesh node reached.
    *	@returns	The index of the nav mesh node from which dst was reached.
    */
@@ -173,7 +173,7 @@ class AStarMinHeap {
  protected:
   /*!
    *	@brief		Resets the heap and all data.
-   *
+
    *	@param		N		The number of nodes in the nav mesh.
    */
   void initialize(size_t N);

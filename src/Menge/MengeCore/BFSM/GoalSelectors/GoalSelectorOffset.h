@@ -53,7 +53,7 @@ class MENGE_API OffsetGoalSelector : public GoalSelector {
  public:
   /*!
    *	@brief		Interface function for acquiring per-agent goals.
-   *
+
    *	@param		agent		The agent for whom a goal is extracted.
    *	@returns	A pointer to a goal.
    *	// TODO: Figure out who owns this goal.
@@ -62,10 +62,10 @@ class MENGE_API OffsetGoalSelector : public GoalSelector {
 
   /*!
    *	@brief		Set the 2D number distribution for the goal selector.
-   *
+
    *	The goal selector takes ownership of the provided 2D number generator
    *	and will delete it upon its own destruction.
-   *
+
    *	@param		gen		A pointer to the 2D generator.
    */
   void setDistribution(Vec2DGenerator* gen) { _2DVel = gen; }
@@ -89,19 +89,19 @@ class MENGE_API OffsetGoalSelectorFactory : public GoalSelectorFactory {
 
   /*!
    *	@brief		The name of the goal selector type.
-   *
+
    *	The goal selector's name must be unique among all registered goal selectors.
    *	Each goal selector factory must override this function.
-   *
+
    *	@returns	A string containing the unique goal selector name.
    */
   virtual const char* name() const { return "offset"; }
 
   /*!
    *	@brief		A description of the goal selector.
-   *
+
    *	Each goal selector factory must override this function.
-   *
+
    *	@returns	A string containing the goal selector description.
    */
   virtual const char* description() const {
@@ -112,7 +112,7 @@ class MENGE_API OffsetGoalSelectorFactory : public GoalSelectorFactory {
  protected:
   /*!
    *	@brief		Create an instance of this class's goal selector.
-   *
+
    *	@returns		A pointer to a newly instantiated GoalSelector class.
    */
   GoalSelector* instance() const { return new OffsetGoalSelector(); }
@@ -120,7 +120,7 @@ class MENGE_API OffsetGoalSelectorFactory : public GoalSelectorFactory {
   /*!
    *	@brief		Given a pointer to a GoalSelector instance, sets the appropriate fields
    *				from the provided XML node.
-   *
+
    *	@param		selector	A pointer to the goal whose attributes are to be set.
    *	@param		node		The XML node containing the goal selector attributes.
    *	@param		behaveFldr	The path to the behavior file.  If the goal selector

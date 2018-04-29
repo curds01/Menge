@@ -37,7 +37,7 @@ class BaseAgent;
 
 /*!
  *	@brief		The base class for all event targets.
- *
+
  *	An event target defines the operand of an event effect.
  *	i.e., if the event effect defines how things change, the target
  *	defines which elements undergo the effect.
@@ -52,7 +52,7 @@ class MENGE_API EventTarget : public Element {
   /*!
    *	@brief		Allows the event target to finish initializing itself from its
    *				parsed state to its running state.
-   *
+
    *	@throws		EventException if there is a problem finalizing.
    */
   virtual void finalize() {}
@@ -60,7 +60,7 @@ class MENGE_API EventTarget : public Element {
   /*!
    *	@brief		Gives the target a chance to update its knowledge of the
    *				target entities.
-   *
+
    *	If a sub-class needs to do particular computation to evaluate the target,
    *	it should be implemented here.
    */

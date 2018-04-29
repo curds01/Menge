@@ -36,7 +36,7 @@ namespace BFSM {
  *	@brief		The mirror goal selector makes a goal by reflecting the agent's
  *				position around the world's origin.  The reflection across the x-
  *				and y-axes can be individually specified.
- *
+
  *	Setting the mirror settings to *not* reflect over either axis is akin to creating
  *	the IdentityGoalSelector.
  */
@@ -49,7 +49,7 @@ class MENGE_API MirrorGoalSelector : public GoalSelector {
 
   /*!
    *	@brief		Interface function for acquiring per-agent goals.
-   *
+
    *	@param		agent		The agent for whom a goal is extracted.
    *	@returns	A pointer to a goal.
    *	// TODO: Figure out who owns this goal.
@@ -58,7 +58,7 @@ class MENGE_API MirrorGoalSelector : public GoalSelector {
 
   /*!
    *	@brief		Sets the mirroring of the goal selector.
-   *
+
    *	@param		mirrorX		Determines if the position is mirrored over the x-axis.
    *	@param		mirrorY		Determines if the position is mirrored over the y-axis.
    */
@@ -69,28 +69,28 @@ class MENGE_API MirrorGoalSelector : public GoalSelector {
 
   /*!
    *	@brief		Sets the x-mirroring of the goal selector.
-   *
+
    *	@param		mirror		Determines if the position is mirrored over the axis.
    */
   inline void setMirrorX(bool mirror) { _mirrorX = mirror; }
 
   /*!
    *	@brief		Sets the y-mirroring of the goal selector.
-   *
+
    *	@param		mirror		Determines if the position is mirrored over the axis.
    */
   inline void setMirrorY(bool mirror) { _mirrorY = mirror; }
 
   /*!
    *	@brief		Returns the mirror x state.
-   *
+
    *	@returns	The mirror x state of the selector.
    */
   inline bool getMirrorX() const { return _mirrorX; }
 
   /*!
    *	@brief		Returns the mirror y state.
-   *
+
    *	@returns	The mirror y state of the selector.
    */
   inline bool getMirrorY() const { return _mirrorY; }
@@ -121,19 +121,19 @@ class MENGE_API MirrorGoalSelectorFactory : public GoalSelectorFactory {
 
   /*!
    *	@brief		The name of the goal selector type.
-   *
+
    *	The goal selector's name must be unique among all registered goal selectors.
    *	Each goal selector factory must override this function.
-   *
+
    *	@returns	A string containing the unique goal selector name.
    */
   virtual const char* name() const { return "mirror"; }
 
   /*!
    *	@brief		A description of the goal selector.
-   *
+
    *	Each goal selector factory must override this function.
-   *
+
    *	@returns	A string containing the goal selector description.
    */
   virtual const char* description() const {
@@ -145,7 +145,7 @@ class MENGE_API MirrorGoalSelectorFactory : public GoalSelectorFactory {
  protected:
   /*!
    *	@brief		Create an instance of this class's goal selector.
-   *
+
    *	@returns		A pointer to a newly instantiated GoalSelector class.
    */
   GoalSelector* instance() const { return new MirrorGoalSelector(); }
@@ -153,7 +153,7 @@ class MENGE_API MirrorGoalSelectorFactory : public GoalSelectorFactory {
   /*!
    *	@brief		Given a pointer to a GoalSelector instance, sets the appropriate fields
    *				from the provided XML node.
-   *
+
    *	@param		selector	A pointer to the goal whose attributes are to be set.
    *	@param		node		The XML node containing the goal selector attributes.
    *	@param		behaveFldr	The path to the behavior file.  If the goal selector

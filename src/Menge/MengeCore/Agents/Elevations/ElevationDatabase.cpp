@@ -48,7 +48,7 @@ namespace Menge {
 // Specialization
 /*!
  *	@brief		Reports the database name.
- *
+
  *	@returns	The string representation of the database name.
  */
 template <>

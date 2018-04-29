@@ -61,5 +61,6 @@ bool ActionFactory::setFromXML(Action* action, TiXmlElement* node,
 
   return true;
 }
+
 }  // namespace BFSM
 }  // namespace Menge

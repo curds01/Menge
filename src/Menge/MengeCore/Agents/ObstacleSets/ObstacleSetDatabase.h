@@ -19,7 +19,7 @@
 /*!
  *	@file		ObstacleSetDatabase.h
  *	@brief		Central database for querying available obstacle set implementations.
- *
+
  *	For obstacle sets to be used in simulation, they must register
  *	themselves into the ObstacleSetDB.  This is done via the PluginEngine.
  */

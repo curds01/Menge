@@ -53,7 +53,7 @@ struct NearAgent {
 
   /*!
    * @brief		Constructor
-   *
+
    * @param		sqdDist			The squared distance of the agent from a test point.
    * @param		agt				The agent.
    */
@@ -76,7 +76,7 @@ struct NearObstacle {
 
   /*!
    * @brief		Constructor
-   *
+
    * @param		sqdDist		The squared distance of the obstacle from a test point.
    * @param		obs			The obstacle.
    */

@@ -38,7 +38,7 @@ namespace Agents {
  *	@brief		Definition of an agent generator class which produces agents based on
  *				the positions of intersections on a lattice--one agent per
  *intersection.
- *
+
  *	To specify an rectangular grid generator, use the following syntax:
  *
  *  @code{xml}
@@ -51,6 +51,7 @@ namespace Agents {
  *		</Generator>
  *  @endcode
  *
+
  *	The various parameters have the following interpretation:
  *		- `anchor_x` and `anchor_y` represent the *anchor* point of a rectangular
  *			area.  All other parameters are defined relative to this point.
@@ -75,14 +76,14 @@ class MENGE_API RectGridGenerator : public AgentGenerator {
 
   /*!
    *	@brief		Reports the number of agents created.
-   *
+
    *	@returns	The number of agents this generator creates.
    */
   virtual size_t agentCount() { return _xCount * _yCount; }
 
   /*!
    *	@brief		Sets the ith position to the given agent.
-   *
+
    *	@param		i		The index of the requested position in the sequence.
    *	@param		agt		A pointer to the agent whose position is to be set.
    *	@throws		AgentGeneratorException if the index, i, is invalid.
@@ -91,35 +92,35 @@ class MENGE_API RectGridGenerator : public AgentGenerator {
 
   /*!
    *	@brief		Sets the anchor position.
-   *
+
    *	@param		p		The anchor position.
    */
   void setAnchor(const Vector2& p) { _anchor.set(p); }
 
   /*!
    *	@brief		Sets the offset value.
-   *
+
    *	@param		o		The offset value.
    */
   void setOffset(const Vector2& o) { _offset.set(o); }
 
   /*!
    *	@brief		Sets the number of agents in the local x-direction.
-   *
+
    *	@param		count		The count of agents.
    */
   void setXCount(size_t count) { _xCount = count; }
 
   /*!
    *	@brief		Sets the number of agents in the local y-direction.
-   *
+
    *	@param		count		The count of agents.
    */
   void setYCount(size_t count) { _yCount = count; }
 
   /*!
    *	@brief		Sets the number of agents in the local x- and y-directions.
-   *
+
    *	@param		xCount		The count of agents in the x-direction.
    *	@param		yCount		The count of agents in the y-direction.
    */
@@ -130,7 +131,7 @@ class MENGE_API RectGridGenerator : public AgentGenerator {
 
   /*!
    *	@brief		Sets the lattice rotation.
-   *
+
    *	@param		angle		The rotation angle (in degrees).
    */
   void setRotationDeg(float angle);
@@ -185,19 +186,19 @@ class MENGE_API RectGridGeneratorFactory : public AgentGeneratorFactory {
 
   /*!
    *	@brief		The name of the generator type.
-   *
+
    *	The generator's name must be unique among all registered agent generator
    *	components. Each agent generator factory must override this function.
-   *
+
    *	@returns	A string containing the unique elevation name.
    */
   virtual const char* name() const { return "rect_grid"; }
 
   /*!
    *	@brief		A description of the agent generator.
-   *
+
    *	Each agent generator factory must override this function.
-   *
+
    *	@returns	A string containing the agent generator description.
    */
   virtual const char* description() const {
@@ -207,13 +208,13 @@ class MENGE_API RectGridGeneratorFactory : public AgentGeneratorFactory {
  protected:
   /*!
    *	@brief		Create an instance of this class's agent generator implementation.
-   *
+
    *	All AgentGeneratorFactory sub-classes must override this by creating (on the heap)
    *	a new instance of its corresponding generator type.  The various field values
    *	of the instance will be set in a subsequent call to
    *	AgentGeneratorFactory::setFromXML. The caller of this function takes ownership of
    *	the memory.
-   *
+
    *	@returns		A pointer to a newly instantiated EleAgentGenerator class.
    */
   AgentGenerator* instance() const { return new RectGridGenerator(); }
@@ -221,13 +222,13 @@ class MENGE_API RectGridGeneratorFactory : public AgentGeneratorFactory {
   /*!
    *	@brief		Given a pointer to a Goal Selector instance, sets the appropriate
    *				fields from the provided XML node.
-   *
+
    *	It is assumed that the value of the `type` attribute is this Goal Selector's type.
    *	(i.e. GoalSelectorFactory::thisFactory has already been called and returned true.)
    *	If sub-classes of GoalSelectorFactory introduce *new* GoalSelector parameters, then
    *	the sub-class should override this method but explicitly call the parent class's
    *	version.
-   *
+
    *	@param		gen				A pointer to the goal selector whose attributes are
    *to
    *								be set.

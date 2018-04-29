@@ -37,7 +37,7 @@ class MENGEVIS_API VisObstacle : public SceneGraph::GLNode {
  public:
   /*!
    *	@brief		Constructor.
-   *
+
    *	@param		p0		The first end point of the line segment.
    *	@param		p1		The second end point of the line segment.
    */
@@ -45,7 +45,7 @@ class MENGEVIS_API VisObstacle : public SceneGraph::GLNode {
 
   /*!
    *	@brief		Draws the object into the OpenGL context.
-   *
+
    *	@param		select		Determines if the object is being drawn
    *							in a selection context (true) or visualization
    *(false).

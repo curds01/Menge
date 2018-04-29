@@ -67,7 +67,7 @@ struct ObstacleTreeNode {
 
 /*!
  *  @brief      Defines an obstacle <i>k</i>d-tree.
- *
+
  *	This structure will create a static <i>k</i>d-tree node on the provided
  *	set of obstacles.  It will modify the obstacles in that some obstacles
  *	may be cut.
@@ -99,7 +99,7 @@ class MENGE_API ObstacleKDTree {
   /*!
    *  @brief      Queries the visibility between two points within a
    *              specified radius.
-   *
+
    *  @param      q1              The first point between which visibility is
    *                              to be tested.
    *  @param      q2              The second point between which visibility is
@@ -114,7 +114,7 @@ class MENGE_API ObstacleKDTree {
  protected:
   /*!
    *  @brief      Does the full work of constructing the <i>k</i>d-tree.
-   *
+
    *	@param		obstacles		The set of obstacles to construct this tree around
    *	@returns	The root of the ObstacleKDTree for this set of obstacles
    */
@@ -123,7 +123,7 @@ class MENGE_API ObstacleKDTree {
   /*!
    *  @brief      Computes the obstacle neighbors of the specified point by doing a
    *				recursive search.
-   *
+
    *  @param      query           a pointer to the query being performed.
    *	@param		pt				the starting point from the query
    *  @param      rangeSq         The squared range around the agent.
@@ -136,7 +136,7 @@ class MENGE_API ObstacleKDTree {
   /*!
    *	@brief		Perform the work, recursively, to determine if q1 can see q2, w.r.t.
    *				the obstacles.
-   *
+
    *	@param		q1				The originating position.
    *	@param		q2				The target position.
    *	@param		radius			The radius within which visibility is to be tested.
@@ -159,7 +159,7 @@ class MENGE_API ObstacleKDTree {
 
   /*!
    *	@brief			The set of obstacles managed by this query structure.
-   *
+
    *	This is *not* necessarily the same as the obstacles assigned.
    *	The set of obstacles can change as some obstacles may be sub-divided
    *	during the spatial decomposition.  This needs to be corrected.

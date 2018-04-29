@@ -52,7 +52,7 @@ class MENGEVIS_API MengeContext : public SceneGraph::SelectContext {
  public:
   /*!
    *	@brief		Constructor.
-   *
+
    *	@param		sim		The simulator the context will interact with.
    */
   MengeContext(Menge::Agents::SimulatorInterface* sim);
@@ -65,7 +65,7 @@ class MENGEVIS_API MengeContext : public SceneGraph::SelectContext {
   /*!
    *	@brief		Give the context the opportunity to respond to a keyboard
    *				event.
-   *
+
    *	@param		e		The SDL event with the keyboard event data.
    *	@returns	A ContextResult instance reporting if the event was handled and
    *				if redrawing is necessary.
@@ -74,7 +74,7 @@ class MENGEVIS_API MengeContext : public SceneGraph::SelectContext {
 
   /*!
    *	@brief		The draw function for the context.
-   *
+
    *	@param		vWidth		The width of the viewport (in pixels).
    *	@param		vHeight		The height of the viewport (in pixels).
    */
@@ -83,7 +83,7 @@ class MENGEVIS_API MengeContext : public SceneGraph::SelectContext {
   /*!
    *	@brief		Performs selection based on a click on screen space.
    *				Uses the OpenGL selection mechanism.
-   *
+
    *	@param		scene			The scene to select in.
    *	@param		camera			The camera.
    *	@param		vWidth			The width of the viewport.
@@ -104,7 +104,7 @@ class MENGEVIS_API MengeContext : public SceneGraph::SelectContext {
  protected:
   /*!
    *	@brief		Draw UI elements into the context.
-   *
+
    *	@param		vWidth		The width of the viewport (in pixels).
    *	@param		vHeight		The height of the viewport (in pixels).
    *	@param		select		Defines if the drawing is being done for selection
@@ -115,7 +115,7 @@ class MENGEVIS_API MengeContext : public SceneGraph::SelectContext {
   /*!
    *	@brief		Causes the context to update its state based on the current
    *				selected state.
-   *
+
    *	@returns	True if the update caused the context to change what it operates on.
    */
   bool updateSelected();

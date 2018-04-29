@@ -45,7 +45,7 @@ class MENGE_API ResourceException : public virtual MengeException {
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   ResourceException(const std::string& s) : MengeException(s) {}
@@ -63,7 +63,7 @@ class MENGE_API ResourceFatalException : public ResourceException, public MengeF
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   ResourceFatalException(const std::string& s)
@@ -72,7 +72,7 @@ class MENGE_API ResourceFatalException : public ResourceException, public MengeF
 
 /*!
  *	@brief		Basic class for managing on-disk resources.
- *
+
  *	This is for data structures that are defined in files but may be used
  *	by multiple entities.  This prevents unnecessary loading and duplication
  *	and allows for centralized memory management.
@@ -81,23 +81,23 @@ class MENGE_API Resource {
  public:
   /*!
    *	@brief		Constructor.
-   *
+
    *	This does not initialize the data structure.  It merely registers the resource.
-   *
+
    *	@param		fileName		The path to the on-disk resource.
    */
   Resource(const std::string& fileName) : _fileName(fileName), _refCount(0) {}
 
   /*!
    *	@brief		This supplants the destructor.
-   *
+
    *	In order to preserve potential problems in windows when
    *	dlls do not share the same c-runtime library, the destructor
    *	is held to be private.  To garbage collect a Resource,
    *	the destroy method should be called (which in turn, will call
    *	the destructor from its own memory space, averting run-time
    *  crashes).
-   *
+
    *	Once this has been called, the Resource no longer exists.  Calling
    *	methods or accessing members will produce indetermine behavior
    *	(most likely errors).
@@ -113,17 +113,17 @@ class MENGE_API Resource {
  public:
   /*!
    *	@brief		Return the file name for this resource.
-   *
+
    *	@returns	The file name associated with this resource.
    */
   const std::string& getName() const { return _fileName; }
 
   /*!
    *	@brief		Increment references to the managed data.
-   *
+
    *	Any object that carries a pointer to managed data should call this function
    *	when acquiring and storing a pointer to that data.
-   *
+
    *	@returns	The total number of references.
    */
   int incRef() {
@@ -135,11 +135,11 @@ class MENGE_API Resource {
 
   /*!
    *	@brief		Decrement references to the managed data.
-   *
+
    *	Any object that carries a pointer to managed data should call this function
    *	upon destruction (thereby removing its reference from the managed data's reference
    *	count.
-   *
+
    *	@returns	The number of remaining references.
    */
   int decRef() {
@@ -151,11 +151,11 @@ class MENGE_API Resource {
 
   /*!
    *	@brief		Reports if the data is referenced.
-   *
+
    *	Any object that carries a pointer to managed data, after dereferencing itself
    *	upon destruction, should determine if it is no longer referenced and delete
    *	the object if this function returns true.  NOTE: this is not thread-safe.
-   *
+
    *	@returns	True if the underlying managed data is no longer referenced, false
    *				otherwise.
    */
@@ -200,7 +200,7 @@ class ResourcePtr {
  public:
   /*!
    *	@brief		Constructor.
-   *
+
    *	@param		rsrc		A pointer to the underlying data
    */
   ResourcePtr(Rsrc* rsrc = 0x0) : _data(rsrc) {
@@ -209,7 +209,7 @@ class ResourcePtr {
 
   /*!
    *	@brief		Copy constructor.
-   *
+
    *	@param		rPtr		A resource pointer to the underlying data.
    */
   ResourcePtr(const ResourcePtr<Rsrc>& rPtr) : _data(rPtr._data) {
@@ -230,7 +230,7 @@ class ResourcePtr {
 
   /*!
    *	@brief		Assignment operator
-   *
+
    *	@param		ptr		A resource pointer to the underlying data.
    *	@returns	this object, having replaced
    */
@@ -248,7 +248,7 @@ class ResourcePtr {
 
   /*!
    *	@brief		The indirection operator.
-   *
+
    *	@returns		Returns a pointer to the underlying data
    */
   Rsrc* operator->() const { return _data; }
@@ -256,7 +256,7 @@ class ResourcePtr {
   /*!
    *	@brief		Reports if to Resource pointers (of the same type) refer
    *				to the same data.
-   *
+
    *	@param		ptr		A pointer of the same type.
    *	@returns	True if the underlying data is the same in each pointer
    */
@@ -264,7 +264,7 @@ class ResourcePtr {
 
   /**
    *	@brief		Reports if the resource pointer contains data.
-   *
+
    *	@returns	True if there is data contained in the pointer.
    */
   bool hasData() const { return _data != 0x0; }

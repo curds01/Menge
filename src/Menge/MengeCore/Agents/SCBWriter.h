@@ -49,7 +49,7 @@ class MENGE_API SCBException : public virtual Menge::MengeException {
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   SCBException(const std::string& s) : Menge::MengeException(s) {}
@@ -67,7 +67,7 @@ class MENGE_API SCBFatalException : public SCBException, public Menge::MengeFata
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   SCBFatalException(const std::string& s)
@@ -88,7 +88,7 @@ class MENGE_API SCBVersionException : public SCBFatalException {
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   SCBVersionException(const std::string& s) : SCBFatalException(s) {}
@@ -108,7 +108,7 @@ class MENGE_API SCBFileException : public SCBException {
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   SCBFileException(const std::string& s) : SCBException(s) {}
@@ -128,7 +128,7 @@ class SCBWriter {
  public:
   /*!
    *	@brief		Constructor for SCBWriter
-   *
+
    *	@param		pathName		The path for the desired output file.
    *	@param		version			A string representing the version to write out.
    *	@param		sim				A pointer to the simulator to process
@@ -147,7 +147,7 @@ class SCBWriter {
 
   /*!
    *	@brief		Writes the current frame of the stored simulator to the file.
-   *
+
    *	@param		fsm		A pointer to the simulator's fsm
    */
   void writeFrame(BFSM::FSM* fsm);
@@ -178,7 +178,7 @@ class SCBWriter {
    *	@brief		Confirms that the given version is valid.
    *				Function has side-effects.  This must be called for the SCBWriter to
    *				work.
-   *
+
    *	@param		version		A string of the format "major"."minor" (e.g., 2.1)
    *							for the desired output format.
    *	@returns	A boolean reporting if the version is valid (true) or invalid (false).
@@ -223,7 +223,7 @@ class SCBFrameWriter {
 
   /*!
    *	@brief		Function to write current frame's state to the file.
-   *
+
    *	@param		file		The file object to write to.
    *	@param		sim			A pointer to the simulator.
    *	@param		fsm			A pointer to the behavior fsm for the simulator.
@@ -235,7 +235,7 @@ class SCBFrameWriter {
 
 /*!
  *	@brief		Writer for version 1.0
- *
+
  *				The data for an agent consists of:
  *					4-byte float x-pos
  *					4-byte float y-pos
@@ -250,7 +250,7 @@ class SCBFrameWriter1_0 : public SCBFrameWriter {
 
 /*!
  *	@brief		Writer for version 2.0
- *
+
  *				The data for an agent consists of:
  *					4-byte float x-pos
  *					4-byte float y-pos
@@ -265,7 +265,7 @@ class SCBFrameWriter2_0 : public SCBFrameWriter {
 
 /*!
  *	@brief		Writer for version 2.1
- *
+
  *				The data for an agent consists of:
  *					4-byte float x-pos
  *					4-byte float y-pos
@@ -283,7 +283,7 @@ class SCBFrameWriter2_1 : public SCBFrameWriter {
 
 /*!
  *	@brief		Writer for version 2.2
- *
+
  *				The data for an agent consists of:
  *					4-byte float x-pos
  *					4-byte float y-pos
@@ -309,7 +309,7 @@ class SCBFrameWriter2_2 : public SCBFrameWriter {
 
 /*!
  *	@brief		Writer for version 2.3
- *
+
  *				The data for an agent consists of:
  *					4-byte float x-pos
  *					4-byte float y-pos
@@ -329,7 +329,7 @@ class SCBFrameWriter2_3 : public SCBFrameWriter {
 
 /*!
  *	@brief		Writer for version 2.4
- *
+
  *				The data for an agent consists of:
  *					4-byte float x-pos
  *					4-byte float y-pos (elevation)

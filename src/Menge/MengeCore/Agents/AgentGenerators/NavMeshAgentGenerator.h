@@ -41,7 +41,7 @@ namespace Agents {
  *	@brief		Definition of agent generator class which produces agents based on
  *				explicit enumeration of agent positions in an XML file and defines
  *				their placement on a navigation mesh.
- *
+
  *	To specify an navigation mesh generator, use the following syntax:
  *
  *  @code{xml}
@@ -53,6 +53,7 @@ namespace Agents {
  *		</Genrator>
  *  @endcode
  *
+
  *	The `nav_mesh_explicit` is related to the @ref ExplicitGenerator.  Each agent's initial
  *  2D position is explicitly enumerated.  However, that position may project onto multiple
  *  locations on the navigation mesh.  The NavMeshGenerator class allows for specifying
@@ -61,7 +62,7 @@ namespace Agents {
  *		- `file_name`: the relative path to the navigation mesh specification.
  *		- `group_name`: the name of a polygon group specified in the navigation mesh
  *			defined in `file_name`.
- *
+
  *  @sa NavMesh
  */
 class MENGE_API NavMeshGenerator : public AgentGenerator {
@@ -73,14 +74,14 @@ class MENGE_API NavMeshGenerator : public AgentGenerator {
 
   /*!
    *	@brief		Reports the number of agents created.
-   *
+
    *	@returns	The number of agents this generator creates.
    */
   virtual size_t agentCount() { return _positions.size(); }
 
   /*!
   *	@brief		Get the position of the ith agent.
-  *
+
   *	@param		i		The index of the requested agent.
   *	@param		agt		A pointer to the ith agent whose position is to be set.
   *	@throws		AgentGeneratorException if the index, i, is invalid.
@@ -89,28 +90,28 @@ class MENGE_API NavMeshGenerator : public AgentGenerator {
 
   /*!
    *	@brief		Adds a position to the generator
-   *
+
    *	@param		p		The position to add.
    */
   void addPosition(const Vector2& p);
 
   /*!
   *	@brief		Sets the navigation mesh pointer.
-  *
+
   *	@param		nm		The managed pointer to the navigation mesh.
   */
   void setNavMesh(const NavMeshPtr& nm) { _navMesh = nm; }
 
   /*!
    *	@brief		Sets the generators navigation mesh polygon group name.
-   *
+
    *	@param		name		The name of the navigation mesh polygon group.
    */
   void setGroupname(const std::string& name) { _groupName = name; }
 
   /*!
   *	@brief		Sets the navigation mesh localizer pointer.
-  *
+
   *	@param		nml		The managed pointer to the navigation mesh localizer.
   */
   void setNavMeshLocalizer(const NavMeshLocalizerPtr& nml) { _localizer = nml; }
@@ -134,7 +135,7 @@ class MENGE_API NavMeshGenerator : public AgentGenerator {
 
   /*!
    *	@brief		The group name to place the agent onto in the navigaiton mesh.
-   *
+
    *	If an empty string, the highest polygon will be used.
    */
   std::string _groupName;
@@ -154,19 +155,19 @@ class MENGE_API NavMeshGeneratorFactory : public AgentGeneratorFactory {
 
   /*!
    *	@brief		The name of the generator type.
-   *
+
    *	The generator's name must be unique among all registered agent generator components.
    *	Each agent generator factory must override this function.
-   *
+
    *	@returns	A string containing the unique elevation name.
    */
   virtual const char* name() const { return "nav_mesh_explicit"; }
 
   /*!
    *	@brief		A description of the agent generator.
-   *
+
    *	Each agent generator factory must override this function.
-   *
+
    *	@returns	A string containing the agent generator description.
    */
   virtual const char* description() const {
@@ -178,13 +179,13 @@ class MENGE_API NavMeshGeneratorFactory : public AgentGeneratorFactory {
  protected:
   /*!
    *	@brief		Create an instance of this class's agent generator implementation.
-   *
+
    *	All AgentGeneratorFactory sub-classes must override this by creating (on the heap)
    *	a new instance of its corresponding generator type.  The various field values
    *	of the instance will be set in a subsequent call to
    *	AgentGeneratorFactory::setFromXML. The caller of this function takes ownership of
    *	the memory.
-   *
+
    *	@returns		A pointer to a newly instantiated EleAgentGenerator class.
    */
   AgentGenerator* instance() const { return new NavMeshGenerator(); }
@@ -192,13 +193,13 @@ class MENGE_API NavMeshGeneratorFactory : public AgentGeneratorFactory {
   /*!
    *	@brief		Given a pointer to a Goal Selector instance, sets the appropriate
    *				fields from the provided XML node.
-   *
+
    *	It is assumed that the value of the `type` attribute is this Goal Selector's type.
    *	(i.e. GoalSelectorFactory::thisFactory has already been called and returned true.)
    *	If sub-classes of GoalSelectorFactory introduce *new* GoalSelector parameters, then
    *	the sub-class should override this method but explicitly call the parent class's
    *	version.
-   *
+
    *	@param		gen				A pointer to the goal selector whose attributes are
    *to
    *								be set.
@@ -216,7 +217,7 @@ class MENGE_API NavMeshGeneratorFactory : public AgentGeneratorFactory {
 
   /*!
    *	@brief		Parses an agent position from an \<Agent\> tag.
-   *
+
    *	@param		node		The XML node containing the agent definition.
    *	@returns	The 2D point defined in the \<Agent\> tag.
    *	@throws		AgentGeneratorException is the agent tag doesn't provide the required

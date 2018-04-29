@@ -44,13 +44,13 @@ class MENGE_API EventTriggerFactory : public ElementFactory<EventTrigger> {
   /*!
   *	@brief		Given a pointer to an EventTrigger instance, sets the appropriate fields
   *				from the provided XML node.
-  *
+
   *	It is assumed that the value of the `type` attribute is this EventTrigger's type.
   *	(i.e. EventTrigger::thisFactory has already been called and returned true.)
   *	If sub-classes of EventTriggerFactory introduce *new* EventTrigger parameters, then the
   *	sub-class should override this method but explicitly call the parent class's
   *	version.
-  *
+
   *	@param		trigger		A pointer to the event trigger whose attributes are to be
   *set.
   *	@param		node		The XML node containing the event trigger attributes.

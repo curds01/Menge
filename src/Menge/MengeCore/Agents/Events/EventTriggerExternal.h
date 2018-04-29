@@ -32,13 +32,13 @@ class ExternalEvtTriggerFactory;
 
 /*!
  *	@brief	The class for events that get triggered by code external to the simulator.
- *
+
  *	This class is the mechanism through which larger systems can influence the simulation.
  *	External code can gain access to external triggers and aribtrarily "activate" them.
  *	At the next event evaluation (at the beginning of a time step), an activated trigger
  *	will have considered its condition to be met and the event response indicated for
  *	the event will be applied to the simulator. The activated state is cleared.
- *
+
  *	@see EventSystem
  */
 class MENGE_API ExternalEvtTrigger : public EventTrigger {
@@ -59,9 +59,9 @@ class MENGE_API ExternalEvtTrigger : public EventTrigger {
  protected:
   /*!
    *	@brief		Evaluates the condition to see if it has been met.
-   *
+
    *	This must be implemented by all sub-classes.
-   *
+
    *	@returns		True if the condition has been met, false otherwise.
    */
   bool testCondition() override { return _isActive; }
@@ -93,19 +93,19 @@ class MENGE_API ExternalEvtTriggerFactory : public EventTriggerFactory {
 
   /*!
    *	@brief		The name of the trigger type.
-   *
+
    *	The trigger's name must be unique among all registered triggers.
    *	Each trigger factory must override this function.
-   *
+
    *	@returns	A string containing the unique trigger name.
    */
   virtual const char* name() const { return "external"; }
 
   /*!
    *	@brief		A description of the event trigger.
-   *
+
    *	Each trigger factory must override this function.
-   *
+
    *	@returns	A string containing the trigger description.
    */
   virtual const char* description() const {
@@ -116,12 +116,12 @@ class MENGE_API ExternalEvtTriggerFactory : public EventTriggerFactory {
  protected:
   /*!
    *	@brief		Create an instance of this class's event trigger implementation.
-   *
+
    *	All EventTriggerFactory sub-classes must override this by creating (on the heap)
    *	a new instance of its corresponding trigger type.  The various field values
    *	of the instance will be set in a subsequent call to EventTriggerFactory::setFromXML.
    *	The caller of this function takes ownership of the memory.
-   *
+
    *	@returns		A pointer to a newly instantiated EventTrigger class.
    */
   EventTrigger* instance() const { return new ExternalEvtTrigger(); }
@@ -129,13 +129,13 @@ class MENGE_API ExternalEvtTriggerFactory : public EventTriggerFactory {
   /*!
    *	@brief		Given a pointer to an EventTrigger instance, sets the appropriate fields
    *				from the provided XML node.
-   *
+
    *	It is assumed that the value of the `type` attribute is this EventTrigger's type.
    *	(i.e. EventTrigger::thisFactory has already been called and returned true.)
    *	If sub-classes of EventTriggerFactory introduce *new* EventTrigger parameters, then the
    *	sub-class should override this method but explicitly call the parent class's
    *	version.
-   *
+
    *	@param		trigger		A pointer to the event trigger whose attributes are to be
    *set.
    *	@param		node		The XML node containing the event trigger attributes.

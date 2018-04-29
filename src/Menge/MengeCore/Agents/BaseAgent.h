@@ -54,7 +54,7 @@ class MENGE_API AgentException : public virtual MengeException {
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   AgentException(const std::string& s) : MengeException(s) {}
@@ -72,7 +72,7 @@ class MENGE_API AgentFatalException : public AgentException, public MengeFatalEx
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   AgentFatalException(const std::string& s)
@@ -91,7 +91,7 @@ class MENGE_API AgentImplementationException : public AgentFatalException {
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   AgentImplementationException(const std::string& s) : AgentFatalException(s) {}
@@ -110,7 +110,7 @@ class MENGE_API BaseAgent : public ProximityQuery {
 
   /*!
    *	@brief		Initializes the agent
-   *
+
    *	Subclasses should call their parent's implementation of initialize.
    */
   virtual void initialize();
@@ -118,24 +118,24 @@ class MENGE_API BaseAgent : public ProximityQuery {
   /*!
    *  @brief      Updates the two-dimensional position and two-dimensional
    *              velocity of this agent.
-   *
+
    *	@param		timeStep		The time step that will be taken.
    */
   void update(float timeStep);
 
   /*!
    *	@brief		Updates the orientation.
-   *
+
    *	This is guaranteed to be called after the current velocity and position have been
    *	integrated.
-   *
+
    *	@param		timeStep		The duration of the simulation time step.
    */
   virtual void updateOrient(float timeStep);
 
   /*!
    *	@brief		Method for sub-classes to perform additional update work
-   *
+
    *	This is the last thing called by the update method.  When this is called,
    *	position, velocity, and orientation will be updated in the base agent
    *	class.
@@ -145,11 +145,11 @@ class MENGE_API BaseAgent : public ProximityQuery {
   /*!
    *	@brief		Given preferred velocity and neighboring agents and obstacles
    *				compute a new velocity.
-   *
+
    *	This should be overriden by child classes to give unique behaviors.
    *	Each pedestrian model is uniquely defined by how it computes its new
    *	velocity and this is the critical class.
-   *
+
    *	Trying to instantiate a BaseAgent will cause an exception to be thrown
    *	when calling this function.
    */
@@ -157,7 +157,7 @@ class MENGE_API BaseAgent : public ProximityQuery {
 
   /*!
    *	@brief			Returns a pointer to the neighbor with given index
-   *
+
    *	@param			idx		The index of the desired agent.  This index is *not*
    *							validated.
    *	@returns		Pointer to the neighboring agent.
@@ -166,7 +166,7 @@ class MENGE_API BaseAgent : public ProximityQuery {
 
   /*!
    *	@brief			Returns a pointer to the obstacle with given index
-   *
+
    *	@param			idx		The index of the desired obstacle.  This index is
    **not*
    *							validated.
@@ -176,14 +176,14 @@ class MENGE_API BaseAgent : public ProximityQuery {
 
   /*!
    *	@brief			set the agents preferred velocity to the input velocity.
-   *
+
    *	@param			velocity to be applied to the agent.
    */
   void setPreferredVelocity(PrefVelocity& velocity);
 
   /*!
    *	@brief		Add an velocity modifier to the agent
-   *
+
    *	@param		v		The modifier to add
    */
   void addVelModifier(BFSM::VelModifier* v);
@@ -229,7 +229,7 @@ class MENGE_API BaseAgent : public ProximityQuery {
 
   /*!
    *	@brief		The new velocity computed in computeNewVelocity.
-   *
+
    *	This exists to allow the agents to be updated
    *	in parallel while preserving order-of-evaluation independence.
    */
@@ -238,7 +238,7 @@ class MENGE_API BaseAgent : public ProximityQuery {
   /*!
    *	@brief		The orientation vector (the direction the agent is facing which is not
    *				necessarily the same direction as the instantaneous velocity.
-   *
+
    *	Not all pedestrian models require orientation in their calculation of a new
    *	velocity.  However, by introducing the property here, we accomplish two things:
    *		- All agents which *do* require orientation can update their orientation
@@ -269,7 +269,7 @@ class MENGE_API BaseAgent : public ProximityQuery {
 
   /*!
    *	@brief		The population class for this agent.
-   *
+
    *	Used to define behavior and visualization properties.
    */
   size_t _class;
@@ -277,7 +277,7 @@ class MENGE_API BaseAgent : public ProximityQuery {
   /*!
    *	@brief		A mask indicating the obstacles with compatible ids which
    *				this agent can see.
-   *
+
    *	This is a bitwise mask such that if
    *	the ith bit is 1, obstacles with id 2^i are visible.
    */
@@ -285,7 +285,7 @@ class MENGE_API BaseAgent : public ProximityQuery {
 
   /*!
    *	@brief		The priority of each agent.
-   *
+
    *	The relative priority of agents determines aspects of their interaction behavior.
    */
   float _priority;
@@ -297,12 +297,12 @@ class MENGE_API BaseAgent : public ProximityQuery {
 
   /*!
    *	@brief		The agent's radius.
-   *
+
    *	If the agent is represented as a circle, then this is simply
    *	the circle's radius.  If the agent is represented as an ellipse,
    *	then this is the radius perpendicular to the orientation.
    *	Other geometries should provide their own interpretation.
-   *
+
    *	At a minimum, it is used to determine sideways clearance.
    */
   float _radius;
@@ -310,13 +310,13 @@ class MENGE_API BaseAgent : public ProximityQuery {
   /*!
    *	@brief  a set of velocity modifiers to be set with the agent. Allows for
    *			intermediate velocity changes
-   *
+
    */
   std::vector<BFSM::VelModifier*> _velModifiers;
 
   /*!
    *	@brief		The nearby agents to which the agent should respond.
-   *
+
    *	Each pair consists of distance between the agent positions, squared
    *	and the pointer to the neigboring agent.
    */
@@ -324,7 +324,7 @@ class MENGE_API BaseAgent : public ProximityQuery {
 
   /*!
    *	@brief		The nearby obstacles to which the agent should respond.
-   *
+
    *	Each pair consists of distance between agent position and wall, squared
    *	and the pointer to the wall.
    */
@@ -333,7 +333,7 @@ class MENGE_API BaseAgent : public ProximityQuery {
   /*!
    *  @brief      Inserts an agent neighbor into the set of neighbors of
    *              this agent.
-   *
+
    *  @param      agent           A pointer to the agent to be inserted.
    *  @param      distSq         the distance to the indicated agent
    */
@@ -342,7 +342,7 @@ class MENGE_API BaseAgent : public ProximityQuery {
   /*!
    *  @brief      Inserts a static obstacle neighbor into the set of neighbors
    *              of this agent.
-   *
+
    *  @param      obstacle        a pointer to the obstacle to be inserted
    *  @param      distSq         the distance to the indicated obstacle
    */
@@ -351,7 +351,7 @@ class MENGE_API BaseAgent : public ProximityQuery {
   // TODO: Ultimately, this should go into an intention filter and not the agent itself
   /*!
    *	@brief		Sets the density sensitivity parameters.
-   *
+
    *	@param		stride		The stride factor.  The physical component capturing height
    *							and the physical relationship between speed and
    *stride
@@ -370,7 +370,7 @@ class MENGE_API BaseAgent : public ProximityQuery {
 
   /*!
    *  @brief      Filters an agent and determines if it needs to be in the near set.
-   *
+
    *  @param      agent		The agent to consider.
    *  @param      distance	The distance to the agent.
    */
@@ -378,7 +378,7 @@ class MENGE_API BaseAgent : public ProximityQuery {
 
   /*!
    *  @brief      Filters an obstacle and determines if it needs to be in the near set.
-   *
+
    *  @param      obstacle	The obstacle to consider.
    *  @param      distance	The distance to the obstacle.
    */
@@ -386,7 +386,7 @@ class MENGE_API BaseAgent : public ProximityQuery {
 
   /*!
    *  @brief      Gets the start point for the query.
-   *
+
    *  @returns    The query point for this filter.
    */
   virtual Math::Vector2 getQueryPoint() { return _pos; };
@@ -395,7 +395,7 @@ class MENGE_API BaseAgent : public ProximityQuery {
    *  @brief      updates the max agent query range if conditions inside the filter are
    *              met typically, we don't shrink the query range until the result set is
    *				full.
-   *
+
    *	@returns	The Max query range. Typically this is the initial range unless some
    *              special conditions are met
    */
@@ -405,7 +405,7 @@ class MENGE_API BaseAgent : public ProximityQuery {
    *  @brief      updates the max query obstacle range if conditions inside the filter
    *              are met. typically, we don't shrink the query range until the result
    *				set is full.
-   *
+
    *	@returns	The Max query range. Typically this is the initial range unless some
    *              special conditions are met
    */

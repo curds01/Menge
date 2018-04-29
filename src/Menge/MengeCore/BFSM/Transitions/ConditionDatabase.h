@@ -19,7 +19,7 @@
 /*!
  *	@file		ConditionDatabase.h
  *	@brief		Central database for querying available behavior conditions.
- *
+
  *	For conditions to be used in the finite state machine, they must register
  *	themselves into the ConditionDatabase.  This is done via the PluginEngine.
  */

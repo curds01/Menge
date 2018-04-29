@@ -81,7 +81,7 @@ VelModifier* ScaleVelModifier::copy() const { return new ScaleVelModifier(_scale
 		/////////////////////////////////////////////////////////////////////
 		//				Implementation of ScaleVMContext
 		/////////////////////////////////////////////////////////////////////
-		
+
 		ScaleVMContext::ScaleVMContext(ScaleVelModifier *vm):VelModContext(), _vm(vm) {
 		};
 

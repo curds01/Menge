@@ -56,7 +56,7 @@ std::string ORCATypeAgentContext<PedVO::Agent>::getElementName() const {
 
 /*!
 *	@brief		Draw the optimized velocity for the current set of orca lines
-*
+
 *	@param		agent		A pointer to the agent for which the velocity is drawn
 *							computeNewVelocity will be called on the
 *agent
@@ -92,7 +92,7 @@ inline void ORCATypeAgentContext<PedVO::Agent>::drawOptVelocity(PedVO::Agent* ag
 
 /*!
 *	@brief		Draws the given ORCA line for the given agent
-*
+
 *	@param		agent		A pointer to the agent to whom this line applies
 *	@param		line		The actual line
 *	@param		isAgent		A boolean reporting if the orca line comes from an agent.

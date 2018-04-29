@@ -62,7 +62,7 @@ class MENGE_API Vector2d {
 
   /*!
    *	@brief		Constructor with arguments
-   *
+
    *	@param		x		The x-value of the vector.
    *	@param		y		The y-value of the vector.
    */
@@ -70,7 +70,7 @@ class MENGE_API Vector2d {
 
   /*!
    *	@brief		Copy constructor
-   *
+
    *	@param		v		The vector to copy from.
    */
   inline Vector2d(const Vector2d& v) : _x(v._x), _y(v._y) {}
@@ -79,21 +79,21 @@ class MENGE_API Vector2d {
 
   /*!
    *	@brief		Get the x-value
-   *
+
    *	@returns	The x-value of the vector.
    */
   inline Type x() const { return _x; }
 
   /*!
    *	@brief		Get the y-value
-   *
+
    *	@returns	The y-value of the vector.
    */
   inline Type y() const { return _y; }
 
   /*!
    *	@brief		Set the x- and y-values from scalar values
-   *
+
    *	@param		x		The value for the x-component
    *	@param		y		The value for the y-component
    */
@@ -104,7 +104,7 @@ class MENGE_API Vector2d {
 
   /*!
    *	@brief		Set the x- and y-values from a vector
-   *
+
    *	@param		v		The vector containing the x- and y-values
    */
   inline void set(const Vector2d& v) {
@@ -114,14 +114,14 @@ class MENGE_API Vector2d {
 
   /*!
    *	@brief		Set the x-value
-   *
+
    *	@param		x		The x-value.
    */
   inline void setX(Type x) { _x = x; }
 
   /*!
    *	@brief		Set the y-value
-   *
+
    *	@param		y		The y-value.
    */
   inline void setY(Type y) { _y = y; }
@@ -136,7 +136,7 @@ class MENGE_API Vector2d {
   /*!
    *	@brief		Vector negation.  Creates a new vector which is the
    *				negation of this vector
-   *
+
    *	@returns	The vector in the opposite direction of this vector
    */
   inline Vector2d<Type> operator-() const { return Vector2d<Type>(-_x, -_y); }
@@ -144,7 +144,7 @@ class MENGE_API Vector2d {
   /*!
   *  @brief		Computes the dot product of this vector with the
   *				given vector.
-  *
+
   *  @param		v		The two-dimensional vector with which the
   *                       dot product should be computed.
   *  @returns		The dot product of this two-dimensional vector with the
@@ -155,7 +155,7 @@ class MENGE_API Vector2d {
   /*!
   *  @brief		Computes the scalar multiplication of this
   *				vector with the given scalar value.
-  *
+
   *  @param		s               The scalar value
   *  @returns		The scalar multiplication of this vector
   *				with the specified scalar value.
@@ -165,7 +165,7 @@ class MENGE_API Vector2d {
   /*!
   *  @brief		Computes the scalar division of this
   *				vector with the given scalar value.
-  *
+
   *  @param		s               The scalar value
   *  @returns		The scalar division of this vector
   *				with the specified scalar value.
@@ -178,7 +178,7 @@ class MENGE_API Vector2d {
   /*!
   *  @brief		Computes the vector sum of this vector with
   *				the given vector.
-  *
+
   *  @param		v				The second operand.
   *  @returns		The vector sum of this vector with the
   *				given vector.
@@ -190,7 +190,7 @@ class MENGE_API Vector2d {
   /*!
   *  @brief		Computes the vector difference of this vector with
   *				the given vector.
-  *
+
   *  @param		v				The second operand.
   *  @returns		The vector difference of this vector with the
   *				given vector.
@@ -202,7 +202,7 @@ class MENGE_API Vector2d {
   /*!
   *  @brief		Reports if this vector is the same as the given
   *				vector.
-  *
+
   *  @param		v				The second operand.
   *  @returns		True if the vectors are exactly identical, False
   *				otherwise
@@ -212,7 +212,7 @@ class MENGE_API Vector2d {
   /*!
   *  @brief		Reports if this vector is the different from the given
   *				vector.
-  *
+
   *  @param		v				The second operand.
   *  @returns		True if the vectors are at all different,
   *				false otherwise
@@ -223,7 +223,7 @@ class MENGE_API Vector2d {
 
   /*!
    *	@brief		Perform in-place scalar multiplication on this vector.
-   *
+
    *	@param		s			The scalar mutliplicand.
    *	@return		A reference to the vector.
    */
@@ -235,7 +235,7 @@ class MENGE_API Vector2d {
 
   /*!
    *	@brief		Perform in-place scalar division on this vector.
-   *
+
    *	@param		s			The scalar divisor.
    *	@return		A reference to the vector.
    */
@@ -248,7 +248,7 @@ class MENGE_API Vector2d {
 
   /*!
    *	@brief		Perform in-place vector addition on this vector.
-   *
+
    *	@param		v			The second vector operand.
    *	@return		A reference to the vector.
    */
@@ -260,7 +260,7 @@ class MENGE_API Vector2d {
 
   /*!
    *	@brief		Perform in-place vector subtraction on this vector.
-   *
+
    *	@param		v			The second vector operand.
    *	@return		A reference to the vector.
    */
@@ -295,14 +295,14 @@ class MENGE_API Vector2d {
 
   /*!
    *	@brief		Compute the magnitude (aka length) of the vector
-   *
+
    *	@returns	The magnitude of the vector.
    */
   inline Type Length() const { return sqrt(_x * _x + _y * _y); }
 
   /*!
    *	@brief		Compute the distance from this vector to another point
-   *
+
    *	@param		p			The point whose distance from this vector
    *							(interpreted as a point) is to be computed
    *	@returns	The distance between this vector and p.
@@ -315,7 +315,7 @@ class MENGE_API Vector2d {
 
   /*!
    *	@brief		Compute the distance from this vector to another point
-   *
+
    *	@param		x			The x-value of the other point.
    *	@param		y			The y-value of the other point.
    *	@returns	The distance between this vector and (x, y).
@@ -328,7 +328,7 @@ class MENGE_API Vector2d {
 
   /*!
    *	@brief		Compute the squared-distance from this vector to another point
-   *
+
    *	@param		p			The point whose distance from this vector
    *							(interpreted as a point) is to be computed
    *	@returns	The squared-distance between this vector and p.
@@ -341,7 +341,7 @@ class MENGE_API Vector2d {
 
   /*!
    *	@brief		Compute the squared-distance from this vector to another point
-   *
+
    *	@param		x			The x-value of the other point.
    *	@param		y			The y-value of the other point.
    *	@returns	The squared-distance between this vector and (x, y).
@@ -378,7 +378,7 @@ typedef Vector2d<float> Vector2;
 
 /*!
  *  @brief      Computes the left scalar multiplication of a scalar and 2d vector.
- *
+
  *  @param      s               The scalar value with which the scalar
  *                              multiplication should be computed.
  *  @param      v          The two-dimensional vector with which the scalar
@@ -399,7 +399,7 @@ MATHEXTERN template MENGE_API Vector2d<float> operator*(float s, const Vector2d<
 
 /*!
  *  @brief      Inserts the specified two-dimensional vector into the logger.
- *
+
  *  @param      logger          The logger into which the two-dimensional
  *                              vector should be inserted.
  *  @param      v				The two-dimensional vector which to insert into
@@ -415,7 +415,7 @@ inline MENGE_API Logger& operator<<(Logger& logger, const Vector2d<Type>& v) {
 /*!
  *  @brief      Inserts the specified two-dimensional vector into the specified
  *              output stream.
- *
+
  *  @param      os              The output stream into which the two-dimensional
  *                              vector should be inserted.
  *  @param      v				The two-dimensional vector which to insert into
@@ -436,7 +436,7 @@ MATHEXTERN template MENGE_API Logger& operator<<(Logger& os, const Vector2d<floa
 
 /*!
  *  @brief      Computes the length of a specified two-dimensional vector.
- *
+
  *  @param      v				The two-dimensional vector whose length is to be
  *                              computed.
  *  @returns    The length of the two-dimensional vector.
@@ -455,7 +455,7 @@ MATHEXTERN template MENGE_API float abs(const Vector2d<float>& v);
 /*!
  *  @brief      Computes the squared length of a specified two-dimensional
  *              vector.
- *
+
  *  @param      v				The two-dimensional vector whose squared length
  *                              is to be computed.
  *  @returns    The squared length of the two-dimensional vector.
@@ -474,7 +474,7 @@ MATHEXTERN template MENGE_API float absSq(const Vector2d<float>& v);
 /*!
  *  @brief      Computes the determinant of a two-dimensional square matrix with
  *              rows consisting of the specified two-dimensional vectors.
- *
+
  *  @param      v1				The top row of the two-dimensional square
  *                              matrix.
  *  @param      v2				The bottom row of the two-dimensional square
@@ -495,7 +495,7 @@ MATHEXTERN template MENGE_API float det(const Vector2d<float>& v1, const Vector2
 /*!
  *  @brief      Computes the normalization of the specified two-dimensional
  *              vector.
- *
+
  *  @param      vector          The two-dimensional vector whose normalization
  *                              is to be computed.
  *  @returns    The normalization of the two-dimensional vector.
@@ -521,7 +521,7 @@ MATHEXTERN template MENGE_API Vector2d<float> norm(const Vector2d<float>& vector
 
 /*!
  *  @brief	Determines if two vectors are equal to within a threshhold
- *
+
  *  @param	v1				The first of two-dimensional vectors to be compared
  *  @param	v2				The second of two-dimensional vectors to be compared
  *  @param	threshSqd		The squared threshhold to test against

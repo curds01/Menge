@@ -161,7 +161,7 @@ void Agent::obstacleLine(size_t obstNbrID, const float invTau, bool flip) {
   /*!
    *	These booleans short-cut the later code in which we make sure a leg direction does not
    *	cut into a "neighboring" obstacle.
-   *
+
    *	In the case where the agent is "obliquely viewing" the obstacle near the left or right
    *	edge, we end up testing one of the legs against obstacle 1 itself.  However, by
    *	definition, we know that both legs lie outside of the obstacle.

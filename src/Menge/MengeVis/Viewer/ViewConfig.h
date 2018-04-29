@@ -126,7 +126,7 @@ class CameraParam {
 
   /*!
    *	@brief		The camera's projection type (perspective or orthographic).
-   *
+
    *	@see		SceneGraph::GLCamera
    */
   SceneGraph::GLCamera::ProjectionType _projType;
@@ -209,7 +209,7 @@ class LightParam {
 
 /*!
  *	@brief		The specification of an OpenGL GLViewer for a scene
- *
+
  *	@see	GLViewer
  */
 class MENGEVIS_API ViewConfig {
@@ -226,7 +226,7 @@ class MENGEVIS_API ViewConfig {
 
   /*!
    *	@brief		Parses the XML configuration file.
-   *
+
    *	@param		fileName		The name of the view configuration file to parse.
    *	@returns	A boolean reporting success (true) or failure (false).
    */
@@ -244,7 +244,7 @@ class MENGEVIS_API ViewConfig {
 
   /*!
    *	@brief		Set the camera properties based on the configuration
-   *
+
    *	@param		camera		The camera to set
    *	@param		i			The index of the camera
    */
@@ -252,7 +252,7 @@ class MENGEVIS_API ViewConfig {
 
   /*!
    *	@brief		Sets the vector of cameras based on the camera specifications
-   *
+
    *	@param		cameras		A vector to populate with cameras.  Any pre-existing cameras
    *							will be deleted.
    */
@@ -260,7 +260,7 @@ class MENGEVIS_API ViewConfig {
 
   /*!
    *	@brief		Set the light properties based on the configuration
-   *
+
    *	@param		light		The light to set
    *	@param		i			The index of the light specification to apply
    */
@@ -268,7 +268,7 @@ class MENGEVIS_API ViewConfig {
 
   /*!
    *	@brief		Sets the vector of lights based on the light specifications
-   *
+
    *	@param		lights		A vector to populate with lights.  Any pre-existing lights
    *							will be deleted.
    */
@@ -327,7 +327,7 @@ class MENGEVIS_API ViewConfig {
 
 /*!
  *	@brief		Streaming output operator to display configuration specification.
- *
+
  *	@param		out		The output stream to which to write the view configuration.
  *	@param		cfg		The configuration to convert to a string.
  *	@returns	The output stream.

@@ -41,7 +41,7 @@ class MENGE_API PortalRoute {
  public:
   /*!
    *	@brief		Constructor
-   *
+
    *	@param		start		The index of the start node of the route.
    *	@param		end			The index of the end node of the rotue.
    */
@@ -54,28 +54,28 @@ class MENGE_API PortalRoute {
 
   /*!
    *	@brief		Returns the identifier for the first node on the route.
-   *
+
    *	@returns	The first node's index.
    */
   inline unsigned int getStartNode() const { return _startNode; }
 
   /*!
    *	@brief		Returns the identifier for the destination node on the route.
-   *
+
    *	@returns	The destination node's index.
    */
   inline unsigned int getEndNode() const { return _endNode; }
 
   /*!
    *	@brief		Reports the number of portals on the route.
-   *
+
    *	@returns	The number of portals on the route.
    */
   inline size_t getPortalCount() const { return _portals.size(); }
 
   /*!
    *	@brief		Reports the node for the ith portal.
-   *
+
    *	@param		i		The index of the portal.
    *	@returns	The index of the node the agent should be in when moving
    *				toward the ith portal.
@@ -84,7 +84,7 @@ class MENGE_API PortalRoute {
 
   /*!
    *	@brief		Gets the ith portal.
-   *
+
    *	@param		i		The path-local index of the portal.
    *	@returns	A pointer to the ith portal.
    */
@@ -92,7 +92,7 @@ class MENGE_API PortalRoute {
 
   /*!
    *	@brief		Gets a const version of the ith portal.
-   *
+
    *	@param		i		The path-local index of the portal.
    *	@returns	A pointer to the ith portal.
    */
@@ -100,7 +100,7 @@ class MENGE_API PortalRoute {
 
   /*!
    *	@brief		Appends a way portal to the path.
-   *
+
    *	@param		edge		The edge forming the portal
    *	@param		node		The node in which the agent should be traveling
    *							toward the edge
@@ -109,10 +109,10 @@ class MENGE_API PortalRoute {
 
   /*!
    *	@brief		Reports if the two routes have the same envelope.
-   *
+
    *	Two routes are equivalent if they have the same sequence of nav mesh nodes.
    *	It is assumed that they have the same start and end nodes.
-   *
+
    *	@param		route		The route to compare with this.
    *	@returns	True if the two routes are equivalent.  False otherwise.
    */

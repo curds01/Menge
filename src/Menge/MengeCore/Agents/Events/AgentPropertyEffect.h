@@ -38,7 +38,7 @@ class BaseAgent;
 
 /*!
  *	@brief		The base class event effect changes agent properties.
- *
+
  *	This is an abstract class and must be sub-classed.  To create different
  *	types of event effects, simply specialize this templated class with
  *	a different type of AgentPropertyManipulator.
@@ -59,10 +59,10 @@ class MENGE_API AgentPropertyEffect : public AgentEventEffect {
  protected:
   /*!
    *	@brief		The actual work of the effect.
-   *
+
    *	Sub-classes should implement this.  It is the action to be taken for each
    *	agent.
-   *
+
    *	@param		agent		The agent to operate on.
    */
   virtual void agentEffect(Agents::BaseAgent* agent) { _manip.manipulate(agent); }
@@ -93,13 +93,13 @@ class MENGE_API AgentPropertyEffectFactory : public EventEffectFactory {
   /*!
    *	@brief		Given a pointer to an AgentPropertyEffect instance, sets the appropriate
    *				fields from the provided XML node.
-   *
+
    *	It is assumed that the value of the `type` attribute is this AgentPropertyEffect's
    *	type. (i.e. EventEffectFactory::thisFactory has already been called and returned true.)
    *	If sub-classes of EventEffectFactory introduce *new* EventEffect parameters, then the
    *	sub-class should override this method but explicitly call the parent class's
    *	version.
-   *
+
    *	@param		effect		A pointer to the effect whose attributes are to be set.
    *	@param		node		The XML node containing the event effect attributes.
    *	@param		behaveFldr	The path to the behavior file.  If the action references
@@ -158,19 +158,19 @@ class MENGE_API SetAgentPropertyEffectFactory
  public:
   /*!
    *	@brief		The name of the effect.
-   *
+
    *	The effect's name must be unique among all registered effect.
    *	Each effect factory must override this function.
-   *
+
    *	@returns	A string containing the unique effect name.
    */
   virtual const char* name() const { return "set_agent_property"; }
 
   /*!
    *	@brief		A description of the effect.
-   *
+
    *	Each effect factory must override this function.
-   *
+
    *	@returns	A string containing the effect description.
    */
   virtual const char* description() const {
@@ -180,12 +180,12 @@ class MENGE_API SetAgentPropertyEffectFactory
  protected:
   /*!
    *	@brief		Create an instance of this class's effect.
-   *
+
    *	All EventEffectFactory sub-classes must override this by creating (on the heap)
    *	a new instance of its corresponding event effect type.  The various field values
    *	of the instance will be set in a subsequent call to EventEffectFactory::setFromXML.
    *	The caller of this function takes ownership of the memory.
-   *
+
    *	@returns		A pointer to a newly instantiated EventEffect class.
    */
   EventEffect* instance() const { return new AgentPropertyEffect<SetPropertyManipulator>(); }
@@ -201,19 +201,19 @@ class MENGE_API OffsetAgentPropertyEffectFactory
  public:
   /*!
    *	@brief		The name of the effect.
-   *
+
    *	The effect's name must be unique among all registered effect.
    *	Each effect factory must override this function.
-   *
+
    *	@returns	A string containing the unique effect name.
    */
   virtual const char* name() const { return "offset_agent_property"; }
 
   /*!
    *	@brief		A description of the effect.
-   *
+
    *	Each effect factory must override this function.
-   *
+
    *	@returns	A string containing the effect description.
    */
   virtual const char* description() const {
@@ -223,12 +223,12 @@ class MENGE_API OffsetAgentPropertyEffectFactory
  protected:
   /*!
    *	@brief		Create an instance of this class's effect.
-   *
+
    *	All EventEffectFactory sub-classes must override this by creating (on the heap)
    *	a new instance of its corresponding event effect type.  The various field values
    *	of the instance will be set in a subsequent call to EventEffectFactory::setFromXML.
    *	The caller of this function takes ownership of the memory.
-   *
+
    *	@returns		A pointer to a newly instantiated EventEffect class.
    */
   EventEffect* instance() const { return new AgentPropertyEffect<OffsetPropertyManipulator>(); }
@@ -244,19 +244,19 @@ class MENGE_API ScaleAgentPropertyEffectFactory
  public:
   /*!
    *	@brief		The name of the effect.
-   *
+
    *	The effect's name must be unique among all registered effect.
    *	Each effect factory must override this function.
-   *
+
    *	@returns	A string containing the unique effect name.
    */
   virtual const char* name() const { return "scale_agent_property"; }
 
   /*!
    *	@brief		A description of the effect.
-   *
+
    *	Each effect factory must override this function.
-   *
+
    *	@returns	A string containing the effect description.
    */
   virtual const char* description() const {
@@ -266,12 +266,12 @@ class MENGE_API ScaleAgentPropertyEffectFactory
  protected:
   /*!
    *	@brief		Create an instance of this class's effect.
-   *
+
    *	All EventEffectFactory sub-classes must override this by creating (on the heap)
    *	a new instance of its corresponding event effect type.  The various field values
    *	of the instance will be set in a subsequent call to EventEffectFactory::setFromXML.
    *	The caller of this function takes ownership of the memory.
-   *
+
    *	@returns		A pointer to a newly instantiated EventEffect class.
    */
   EventEffect* instance() const { return new AgentPropertyEffect<ScalePropertyManipulator>(); }

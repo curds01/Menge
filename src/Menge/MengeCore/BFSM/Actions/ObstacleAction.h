@@ -48,7 +48,7 @@ class ObstacleActFactory;
 
 /*!
  *	@brief		The base class for modifying agent obstacle sets.
- *
+
  *	This is an abstract class and must be sub-classed.
  */
 class MENGE_API ObstacleAction : public Action {
@@ -66,7 +66,7 @@ class MENGE_API ObstacleAction : public Action {
   /*!
    *	@brief		Upon entering the state, this is called -- it is the main work
    *				of the action.
-   *
+
    *	@param		agent		The agent to act on.
    */
   virtual void onEnter(Agents::BaseAgent* agent);
@@ -76,14 +76,14 @@ class MENGE_API ObstacleAction : public Action {
  protected:
   /*!
    *	@brief		The work to do upon state exit.
-   *
+
    *	@param		agent		The agent to act on.
    */
   virtual void resetAction(Agents::BaseAgent* agent);
 
   /*!
    *	@brief		Computes the new property value given the original property value.
-   *
+
    *	@param		value		The original obstacle set value.
    *	@returns	The new value.
    */
@@ -110,7 +110,7 @@ class MENGE_API ObstacleAction : public Action {
 
 /*!
  *	@brief		Factory for the ObstacleAction.
- *
+
  *	This is still an abstract class because it doesn't define the
  *	name or description.  Nor does it define instance.
  */
@@ -125,13 +125,13 @@ class MENGE_API ObstacleActFactory : public ActionFactory {
   /*!
    *	@brief		Given a pointer to an Action instance, sets the appropriate fields
    *				from the provided XML node.
-   *
+
    *	It is assumed that the value of the `type` attribute is this Action's type.
    *	(i.e. ActionFactory::thisFactory has already been called and returned true.)
    *	If sub-classes of ActionFactory introduce *new* Action parameters, then the
    *	sub-class should override this method but explicitly call the parent class's
    *	version.
-   *
+
    *	@param		action		A pointer to the action whose attributes are to be set.
    *	@param		node		The XML node containing the action attributes.
    *	@param		behaveFldr	The path to the behavior file.  If the action references
@@ -160,7 +160,7 @@ class MENGE_API RemoveObstacleSetAction : public ObstacleAction {
  public:
   /*!
    *	@brief		Computes the new property value given the original property value.
-   *
+
    *	@param		value		The original obstacle set value.
    *	@returns	The new value.
    */
@@ -181,19 +181,19 @@ class MENGE_API RemoveObstacleActFactory : public ObstacleActFactory {
 
   /*!
    *	@brief		The name of the action.
-   *
+
    *	The action's name must be unique among all registered actions.
    *	Each action factory must override this function.
-   *
+
    *	@returns	A string containing the unique action name.
    */
   virtual const char* name() const { return "remove_obstacle"; }
 
   /*!
    *	@brief		A description of the action.
-   *
+
    *	Each action factory must override this function.
-   *
+
    *	@returns	A string containing the action description.
    */
   virtual const char* description() const {
@@ -203,12 +203,12 @@ class MENGE_API RemoveObstacleActFactory : public ObstacleActFactory {
  protected:
   /*!
    *	@brief		Create an instance of this class's action.
-   *
+
    *	All ActionFactory sub-classes must override this by creating (on the heap)
    *	a new instance of its corresponding action type.  The various field values
    *	of the instance will be set in a subsequent call to ActionFactory::setFromXML.
    *	The caller of this function takes ownership of the memory.
-   *
+
    *	@returns		A pointer to a newly instantiated Action class.
    */
   Action* instance() const { return new RemoveObstacleSetAction(); }
@@ -224,7 +224,7 @@ class MENGE_API AddObstacleSetAction : public ObstacleAction {
  public:
   /*!
    *	@brief		Computes the new property value given the original property value.
-   *
+
    *	@param		value		The original obstacle set value.
    *	@returns	The new value.
    */
@@ -245,19 +245,19 @@ class MENGE_API AddObstacleyActFactory : public ObstacleActFactory {
 
   /*!
    *	@brief		The name of the action.
-   *
+
    *	The action's name must be unique among all registered actions.
    *	Each action factory must override this function.
-   *
+
    *	@returns	A string containing the unique action name.
    */
   virtual const char* name() const { return "add_obstacle"; }
 
   /*!
    *	@brief		A description of the action.
-   *
+
    *	Each action factory must override this function.
-   *
+
    *	@returns	A string containing the action description.
    */
   virtual const char* description() const {
@@ -267,12 +267,12 @@ class MENGE_API AddObstacleyActFactory : public ObstacleActFactory {
  protected:
   /*!
    *	@brief		Create an instance of this class's action.
-   *
+
    *	All ActionFactory sub-classes must override this by creating (on the heap)
    *	a new instance of its corresponding action type.  The various field values
    *	of the instance will be set in a subsequent call to ActionFactory::setFromXML.
    *	The caller of this function takes ownership of the memory.
-   *
+
    *	@returns		A pointer to a newly instantiated Action class.
    */
   Action* instance() const { return new AddObstacleSetAction(); }
@@ -288,7 +288,7 @@ class MENGE_API SetObstacleSetAction : public ObstacleAction {
  public:
   /*!
    *	@brief		Computes the new property value given the original property value.
-   *
+
    *	@param		value		The original obstacle set value.
    *	@returns	The new value.
    */
@@ -309,19 +309,19 @@ class MENGE_API SetObstacleActFactory : public ObstacleActFactory {
 
   /*!
    *	@brief		The name of the action.
-   *
+
    *	The action's name must be unique among all registered actions.
    *	Each action factory must override this function.
-   *
+
    *	@returns	A string containing the unique action name.
    */
   virtual const char* name() const { return "set_obstacle"; }
 
   /*!
    *	@brief		A description of the action.
-   *
+
    *	Each action factory must override this function.
-   *
+
    *	@returns	A string containing the action description.
    */
   virtual const char* description() const {
@@ -331,12 +331,12 @@ class MENGE_API SetObstacleActFactory : public ObstacleActFactory {
  protected:
   /*!
    *	@brief		Create an instance of this class's action.
-   *
+
    *	All ActionFactory sub-classes must override this by creating (on the heap)
    *	a new instance of its corresponding action type.  The various field values
    *	of the instance will be set in a subsequent call to ActionFactory::setFromXML.
    *	The caller of this function takes ownership of the memory.
-   *
+
    *	@returns		A pointer to a newly instantiated Action class.
    */
   Action* instance() const { return new SetObstacleSetAction(); }

@@ -39,7 +39,7 @@ extern "C" {
  *	@brief		Initializes a simulator.  The simulator uses the given pedestrian @p model
  *type
  *				and is initialized using the given behavior file and scene file.
- *
+
  *	@param		behaveFile		Path to the behavior file.
  *	@param		sceneFile		Path to the scene specification file.
  *	@param		model			Name of the model type to use.
@@ -59,7 +59,7 @@ MENGE_API void SetTimeStep(float timeStep);
 
 /*!
  *	@brief		Advances the state of the simulator one time step.
- *
+
  *	@returns	True if the simulation can keep running.
  */
 MENGE_API bool DoStep();
@@ -91,14 +91,14 @@ MENGE_API size_t StateCount();
 
 /*!
  *	@brief		Reports the number of agents in the simulation.
- *
+
  *	@returns	The agent count.
  */
 MENGE_API size_t AgentCount();
 
 /*!
  *	@brief		Reports the 3D position of the indicated agent.
- *
+
  *	@param		i		The index of the desired agent.
  *	@param[out]	x		The position's x-component.
  *	@param[out]	y		The position's y-component.
@@ -109,7 +109,7 @@ MENGE_API bool GetAgentPosition(size_t i, float* x, float* y, float* z);
 
 /*!
  *	@brief		Reports the 3D velocity of the indicated agent.
- *
+
  *	@param		i		The index of the desired agent.
  *	@param[out]	x		The velocity's x-component.
  *	@param[out]	y		The velocity's y-component.
@@ -140,7 +140,7 @@ MENGE_API bool GetAgentState(size_t i, size_t* state_id);
  *	@brief		Reports the 2D orientation of the indicated agent.  It is the facing
  *direction
  *				of the agent, projected onto the xz plane.
- *
+
  *	@param		i		The index of the desired agent.
  *	@param[out]	x		The orient's x-component.
  *	@param[out]	y		The orient's y-component.
@@ -150,7 +150,7 @@ MENGE_API bool GetAgentOrient(size_t i, float* x, float* y);
 
 /*!
  *	@brief		Reports the agent class for this particular class.
- *
+
  *	@param		i		The index of the desired agent.
  *	@returns			The agent's class (-1 if it can't be found).
  */
@@ -158,7 +158,7 @@ MENGE_API int GetAgentClass(size_t i);
 
 /*!
  *	@brief		Reports the radius of the given agent.
- *
+
  *	@param		i		The index of the desired agent.
  *	@returns			The agent's radius (negative for errors).
  */
@@ -168,7 +168,7 @@ MENGE_API float GetAgentRadius(size_t i);
 
 /*! @name		External triggers.
  *	@brief		The interface for working with external triggers.
- *
+
  *	External triggers allow code _external_ to the simulator code to change the simulator
  *  state. They are event triggers that are exposed to the outside world and can be fired off
  *  by arbitrary code.

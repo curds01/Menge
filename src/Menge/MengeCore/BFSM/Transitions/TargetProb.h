@@ -44,7 +44,7 @@ class ProbTargetFactory;
 
 /*!
  *	@brief		The definition of the probabalistic target.
- *
+
  *	Typically, the FSM will be deterministic in that if an agent is in
  *	a current state, with a particualr condition being true, it will
  *	transition to a deterministic state.  The probabalistic target allows
@@ -61,19 +61,19 @@ class MENGE_API ProbTarget : public TransitionTarget {
 
   /*!
    *	@brief		Copy constructor.
-   *
+
    *	@param		tgt		The target to copy.
    */
   ProbTarget(const ProbTarget& tgt);
 
   /*!
    *	@brief		Determines the next state for the given agent.
-   *
+
    *	This function defines the main functionality of the target.
    *	Given the current agent and the class's internal state, it determines
    *	The state to move the agent into.  This should be overridden by each
    *	sub-class.
-   *
+
    *	@param		agent		The agent to test the transition for.
    *	@returns	A pointer to the next state.
    */
@@ -81,10 +81,10 @@ class MENGE_API ProbTarget : public TransitionTarget {
 
   /*!
    *	@brief		Performs any necessary connections to the target state(s).
-   *
+
    *	Sub-classes must override this because a transition must transition to
    *	a state.  See the sub-classes SingleTransition for an example.
-   *
+
    *	@param		stateMap		A mapping from state names to state pointers.
    *	@returns	True if connection was successful, false otherwise.
    */
@@ -92,9 +92,9 @@ class MENGE_API ProbTarget : public TransitionTarget {
 
   /*!
    *	@brief		Create a copy of this target.
-   *
+
    *	It is the responsibility of the caller to delete the object.
-   *
+
    *	@returns:	A "deep copy" of this target - such that there is no shared
    *				objects between this and its copy.
    */
@@ -110,7 +110,7 @@ class MENGE_API ProbTarget : public TransitionTarget {
 
   /*!
    *	@brief		The total weight of all the target states.
-   *
+
    *				This gets set after a call to connectStates.
    */
   float _totalWeight;
@@ -136,19 +136,19 @@ class MENGE_API ProbTargetFactory : public TargetFactory {
  public:
   /*!
    *	@brief		The name of the action.
-   *
+
    *	The action's name must be unique among all registered actions.
    *	Each action factory must override this function.
-   *
+
    *	@returns	A string containing the unique action name.
    */
   virtual const char* name() const { return "prob"; }
 
   /*!
    *	@brief		A description of the action.
-   *
+
    *	Each action factory must override this function.
-   *
+
    *	@returns	A string containing the action description.
    */
   virtual const char* description() const {
@@ -160,12 +160,12 @@ class MENGE_API ProbTargetFactory : public TargetFactory {
  protected:
   /*!
    *	@brief		Create an instance of this class's condition.
-   *
+
    *	All ConditionFactory sub-classes must override this by creating (on the heap)
    *	a new instance of its corresponding condition type.  The various field values
    *	of the instance will be set in a subsequent call to ConditionFactory::setFromXML.
    *	The caller of this function takes ownership of the memory.
-   *
+
    *	@returns		A pointer to a newly instantiated TransitionTarget class.
    */
   virtual TransitionTarget* instance() const { return new ProbTarget(); }
@@ -173,13 +173,13 @@ class MENGE_API ProbTargetFactory : public TargetFactory {
   /*!
    *	@brief		Given a pointer to an Condition instance, sets the appropriate fields
    *				from the provided XML node.
-   *
+
    *	It is assumed that the value of the `type` attribute is this Tarnsitions's type.
    *	(i.e. ConditionFactory::thisFactory has already been called and returned true.)
    *	If sub-classes of ConditionFactory introduce *new* Condition parameters, then the
    *	sub-class should override this method but explicitly call the parent class's
    *	version.
-   *
+
    *	@param		target			A pointer to the transition target whose attributes
    *are
    *								to be set.

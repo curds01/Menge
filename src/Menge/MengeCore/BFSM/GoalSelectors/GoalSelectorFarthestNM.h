@@ -47,7 +47,7 @@ class MENGE_API FarthestNMGoalSelector : public SetGoalSelector {
 
   /*!
    *	@brief		Interface function for acquiring per-agent goals.
-   *
+
    *	@param		agent		The agent for whom a goal is extracted.
    *	@returns	A pointer to a goal.
    *	// TODO: Figure out who owns this goal.
@@ -56,7 +56,7 @@ class MENGE_API FarthestNMGoalSelector : public SetGoalSelector {
 
   /*!
    *	@brief		Returns a pointer to the nav mesh localizer task.
-   *
+
    *	@returns		A pointer to the nav mesh localizer task.  It is the responsibility
    *					of the caller to free the memory of the provided task by
    *					calling its destroy method.
@@ -65,28 +65,28 @@ class MENGE_API FarthestNMGoalSelector : public SetGoalSelector {
 
   /*!
    *	@brief		Sets the navigation mesh pointer.
-   *
+
    *	@param		nm		The managed pointer to the navigation mesh.
    */
   void setNavMesh(const NavMeshPtr& nm) { _navMesh = nm; }
 
   /*!
    *	@brief		Returns a resource pointer to the underlying navigation mesh
-   *
+
    *	@returns	The navigation mesh.
    */
   NavMeshPtr getNavMesh() { return _navMesh; }
 
   /*!
    *	@brief		Returns a resource pointer to the underlying navigation mesh localizer
-   *
+
    *	@returns	The navigation mesh localizer.
    */
   NavMeshLocalizerPtr getLocalizer() { return _localizer; }
 
   /*!
    *	@brief		Sets the navigation mesh localizer pointer.
-   *
+
    *	@param		nml		The managed pointer to the navigation mesh localizer.
    */
   void setNavMeshLocalizer(const NavMeshLocalizerPtr& nml) { _localizer = nml; }
@@ -115,19 +115,19 @@ class MENGE_API FarthestNMGoalSelectorFactory : public SetGoalSelectorFactory {
 
   /*!
    *	@brief		The name of the goal selector type.
-   *
+
    *	The goal selector's name must be unique among all registered goal selectors.
    *	Each goal selector factory must override this function.
-   *
+
    *	@returns	A string containing the unique goal selector name.
    */
   virtual const char* name() const { return "farthest_nav_mesh"; }
 
   /*!
    *	@brief		A description of the goal selector.
-   *
+
    *	Each goal selector factory must override this function.
-   *
+
    *	@returns	A string containing the goal selector description.
    */
   virtual const char* description() const {
@@ -139,7 +139,7 @@ class MENGE_API FarthestNMGoalSelectorFactory : public SetGoalSelectorFactory {
  protected:
   /*!
    *	@brief		Create an instance of this class's goal selector.
-   *
+
    *	@returns		A pointer to a newly instantiated GoalSelector class.
    */
   GoalSelector* instance() const { return new FarthestNMGoalSelector(); }
@@ -147,7 +147,7 @@ class MENGE_API FarthestNMGoalSelectorFactory : public SetGoalSelectorFactory {
   /*!
    *	@brief		Given a pointer to a GoalSelector instance, sets the appropriate fields
    *				from the provided XML node.
-   *
+
    *	@param		selector	A pointer to the goal whose attributes are to be set.
    *	@param		node		The XML node containing the goal selector attributes.
    *	@param		behaveFldr	The path to the behavior file.  If the goal selector

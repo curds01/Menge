@@ -48,17 +48,17 @@ class MENGE_API SetGoalSelector : public GoalSelector {
 
   /*!
    *	@brief		Gives the instance the opportunity to set the goal set.
-   *
+
    *	This does nothing for instances which don't require a goal set.  Otherwise,
    *	it extracts its required goal set.
-   *
+
    *	@param		goalSets	A mapping from goal set identifier to goal set pointers.
    */
   void setGoalSet(std::map<size_t, GoalSet*>& goalSets);
 
   /*!
    *	@brief		Sets the goal set identifier.
-   *
+
    *	@param		id		The goal set's id that belongs to this selector.
    */
   void setGoalSetID(size_t id) { _goalSetID = id; }
@@ -67,7 +67,7 @@ class MENGE_API SetGoalSelector : public GoalSelector {
   /*!
    *	@brief		Allows the goal selector to lock any resources it
    *				requires.
-   *
+
    *	This is primarily here so that GoalSelectors which use shared
    *	resources have a chance to lock them (see SetGoalSelector).
    *	A call to lockResources should always be followed by a call
@@ -78,7 +78,7 @@ class MENGE_API SetGoalSelector : public GoalSelector {
   /*!
    *	@brief		Allows the goal selector to release previously locked
    *				resources.
-   *
+
    *	Should be used in conjunction with lockResources.
    */
   virtual void releaseResources() { _goalSet->releaseRead(); }
@@ -109,7 +109,7 @@ class MENGE_API SetGoalSelectorFactory : public GoalSelectorFactory {
   /*!
    *	@brief		Given a pointer to a GoalSelector instance, sets the appropriate fields
    *				from the provided XML node.
-   *
+
    *	@param		selector	A pointer to the goal whose attributes are to be set.
    *	@param		node		The XML node containing the goal selector attributes.
    *	@param		behaveFldr	The path to the behavior file.  If the goal selector

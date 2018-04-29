@@ -19,7 +19,7 @@
 /*!
  *	@file		MengeException.h
  *	@brief		The base definition for exceptions in Menge.
- *
+
  *	TODO: Refactor all exceptions to inherit from this class.
  */
 
@@ -45,7 +45,7 @@ class MENGE_API MengeException : public std::exception {
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   MengeException(const std::string& s) : std::exception(), _msg(s) {}
@@ -57,7 +57,7 @@ class MENGE_API MengeException : public std::exception {
 
   /*!
    *	@brief		Provides the exception message.
-   *
+
    *	@returns	A pointer to the exception message.
    */
   virtual const char* what() const throw() { return _msg.c_str(); }
@@ -72,7 +72,7 @@ class MENGE_API MengeException : public std::exception {
 
 /*!
  *	@brief		Base class for *fatal* exceptions.
- *
+
  *	A fatal exception is one that requires the simulator to stop because
  *	it has achieved an inoperable state.
  */
@@ -85,7 +85,7 @@ class MENGE_API MengeFatalException : public virtual MengeException {
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   MengeFatalException(const std::string& s) : MengeException(s) {}

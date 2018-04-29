@@ -49,14 +49,14 @@ class MENGE_API SimXMLLoader {
  public:
   /*!
    *	@brief		Constructor
-   *
+
    *	@param		sim		The simulator to populate based on definition in XML.
    */
   SimXMLLoader(XMLSimulatorBase* sim);
 
   /*!
    *	@brief		Parse the xml and load the given simulator.
-   *
+
    *	@param		xmlName		The path to the xml file simulation specification.
    *	@param		agentInit	The AgentInitializer necessary to parse AgentSet properties
    *	@param		verbose		Determines if parsing outputs progress information (true)
@@ -79,7 +79,7 @@ class MENGE_API SimXMLLoader {
 
   /*!
    *	@brief		Parses the definition of an AgentGroup.
-   *
+
    *	@param		node		A pointer to the XML node containing the definition.
    *	@param		agentInit	The AgentInitializer necessary to parse AgentProfile
    *							properties.
@@ -89,7 +89,7 @@ class MENGE_API SimXMLLoader {
 
   /*!
    *	@brief		Parses the definition of an obstacleset.
-   *
+
    *	@param		node		A pointer to the XML node containing the obstacleset.
    *	@returns	A boolean reporting success (true) or failure (false).
    */
@@ -97,7 +97,7 @@ class MENGE_API SimXMLLoader {
 
   /*!
    *	@brief		Parses the definition of an agent profile.
-   *
+
    *	@param		node		A pointer to the XML node containing the definition.
    *	@param		agentInit	The AgentInitializer necessary to parse AgentProfile
    *							properties.

@@ -37,7 +37,7 @@ class GLDagNode;
 
 /*!
  *	@brief		An abstact class -- a generic, scene graph node.
- *
+
  *				A GLNode can be included in a hierarchy, but cannot take
  *				children.  It is the basic entity that forms the "graph"
  *				of the scene graph.  It cannot be added to the scene
@@ -47,7 +47,7 @@ class MENGEVIS_API GLNode {
  public:
   /*!
    *	@brief		Constructor.
-   *
+
    *	@param		parent		A pointer to the optional parent node in the
    *							graph.
    */
@@ -60,10 +60,10 @@ class MENGEVIS_API GLNode {
 
   /*!
    *	@brief		Sets the visible state of the node.
-   *
+
    *	A node which is not visible does not draw in the scene.
    *	Nor does any child or child-tree that the node has.
-   *
+
    *	@param		state		The desired visible state.  True for a visible
    *							node that will be drawn, false for
    *invisible.
@@ -72,10 +72,10 @@ class MENGEVIS_API GLNode {
 
   /*!
    *	@brief		Causes this node to draw itself to the scene.
-   *
+
    *	This is a purely virtual function.  Every node in the
    *	graph *must* implement this function.
-   *
+
    *	@param		select		Determines if the draw call is being performed
    *							for the purpose of selection (true) or for
    *visualization
@@ -86,7 +86,7 @@ class MENGEVIS_API GLNode {
   /*!
    *	@brief		Allows the node to recreate any unique OpenGL objects
    *				based on the acquisition of a new OpenGL context.
-   *
+
    *	This should be over-ridden by nodes that have their own
    *	unique OpenGL constructs (display lists, textures, etc.)
    */
@@ -94,7 +94,7 @@ class MENGEVIS_API GLNode {
 
   /*!
    *	@brief		Returns a pointer to the node's parent (possibly NULL).
-   *
+
    *	@returns	A pointer to a parent node -- if no parent, it returns NULL (0x0).
    */
   GLDagNode* getParent() { return _parent; }
@@ -104,9 +104,9 @@ class MENGEVIS_API GLNode {
  protected:
   /*!
    *	@brief		Assigns this node to a parent GLDagNode.
-   *
+
    *				Nodes should be linked by calling GLDagNode::addChild.
-   *
+
    *	@param		p		The pointer to the new parent node.
    */
   void setParent(GLDagNode* p) { _parent = p; }
@@ -141,12 +141,12 @@ typedef GLNodeList::const_iterator GLNodeListCItr;
 
 /*!
  *	@brief		The node that provides the basis for a "hierarchy" in the scene graph.
- *
+
  *				The scene graph is, ultimately, not truly a graph.  It is a directed
  *				acyclic graph, best thought of as a tree with the GLScene at the root
  *and
  *				all other nodes inserted into sub-strees below the GLScene.
- *
+
  *				The GLDagNode serves as the basis for this.  It is a GLNode that can
  *accept
  *				children, providing the mechanism for creating trees
@@ -155,7 +155,7 @@ class MENGEVIS_API GLDagNode : public GLNode {
  public:
   /*!
    *	@brief		Constructor.
-   *
+
    *	@param		parent		A pointer to the optional parent node in the
    *							graph.
    */
@@ -168,9 +168,9 @@ class MENGEVIS_API GLDagNode : public GLNode {
 
   /*!
    *	@brief		Adds a child node to this node.
-   *
+
    *	Nodes can be linked either by calling GLNode::setParent or GLDagNode::addChild
-   *
+
    *	@param		child		The node to add as a child to this node.
    */
   void addChild(GLNode* child);
@@ -183,7 +183,7 @@ class MENGEVIS_API GLDagNode : public GLNode {
 
   /*!
    *	@brief		Causes this node's child nodes to draw themselves to the scene.
-   *
+
    *	@param		select		Determines if the draw call is being performed
    *							for the purpose of selection (true) or for
    *visualization
@@ -193,44 +193,44 @@ class MENGEVIS_API GLDagNode : public GLNode {
 
   /*!
    *	@brief		Reports the local object transform matrix.
-   *
+
    *	By definition, because this node can provide no transformation
    *	its transform matrix is the identity matrix.
-   *
+
    *	@param		mat		The 4x4 matrix into which the identity matrix is set.
    */
   virtual void getMatrix(Menge::Math::Matrix4x4& mat) { mat.identity(); }
 
   /*!
    *	@brief		Reports the local object inverse transform matrix.
-   *
+
    *	By definition, because this node can provide no transformation
    *	its inverse transform matrix is the identity matrix.
-   *
+
    *	@param		mat		The 4x4 matrix into which the identity matrix is set.
    */
   virtual void getInverseMatrix(Menge::Math::Matrix4x4& mat) { mat.identity(); }
 
   /*!
    *	@brief		Reports the world object transform matrix.
-   *
+
    *	This is the concatenation of all transforms experienced by this
    *	node and any node in its ancestors up to the GLSCene.  This is
    *	essentially the transform that transforms elements in this
    *	object's space into world space.
-   *
+
    *	@param		mat		The 4x4 matrix into which the world matrix is set.
    */
   virtual void getWorldMatrix(Menge::Math::Matrix4x4& mat);
 
   /*!
    *	@brief		Reports the world object inverse transform matrix.
-   *
+
    *	This is the concatenation of all transforms experienced by this
    *	node and any node in its ancestors up to the GLSCene.  This is
    *	essentially the transform that transforms elements in world space
    *	into this object's space.
-   *
+
    *	@param		mat		The 4x4 matrix into which the inverse world matrix is set.
    */
   virtual void getWorldInverseMatrix(Menge::Math::Matrix4x4& mat);
@@ -238,7 +238,7 @@ class MENGEVIS_API GLDagNode : public GLNode {
   /*!
    *	@brief		The world matrix of this node's parent matrix
    *				(see GLDagNode::getWorldMatrix)
-   *
+
    *	@param		mat		The 4x4 matrix into which the result is written.
    *						If this node has no parent matrix, the identity matrix
    *is
@@ -249,7 +249,7 @@ class MENGEVIS_API GLDagNode : public GLNode {
   /*!
    *	@brief		The inverse world matrix of this node's parent matrix
    *				(see GLDagNode::getWorldInverseMatrix)
-   *
+
    *	@param		mat		The 4x4 matrix into which the result is written.
    *						If this node has no parent matrix, the identity matrix
    *is

@@ -50,7 +50,7 @@ class MENGE_API NamedStateMemberTarget : public AgentEventTarget {
   /*!
    *	@brief		Allows the event target to finish initializing itself from its
    *				parsed state to its running state.
-   *
+
    *	@throws		EventException if there is a problem finalizing.
    */
   virtual void finalize();
@@ -58,7 +58,7 @@ class MENGE_API NamedStateMemberTarget : public AgentEventTarget {
   /*!
    *	@brief		Gives the target a chance to update its knowledge of the
    *				target entities.
-   *
+
    *	If a sub-class needs to do particular computation to evaluate the target,
    *	it should be implemented here.
    */
@@ -98,19 +98,19 @@ class MENGE_API NamedStateMemberTargetFactory : public AgentEventTargetFactory {
 
   /*!
    *	@brief		The name of the target.
-   *
+
    *	The target's name must be unique among all registered targets.
    *	Each target factory must override this function.
-   *
+
    *	@returns	A string containing the unique target name.
    */
   virtual const char* name() const { return "named_state_member"; }
 
   /*!
    *	@brief		A description of the target.
-   *
+
    *	Each target factory must override this function.
-   *
+
    *	@returns	A string containing the target description.
    */
   virtual const char* description() const {
@@ -121,12 +121,12 @@ class MENGE_API NamedStateMemberTargetFactory : public AgentEventTargetFactory {
  protected:
   /*!
    *	@brief		Create an instance of this class's target.
-   *
+
    *	All EventTargetFactory sub-classes must override this by creating (on the heap)
    *	a new instance of its corresponding event target type.  The various field values
    *	of the instance will be set in a subsequent call to EventTargetFactory::setFromXML.
    *	The caller of this function takes ownership of the memory.
-   *
+
    *	@returns		A pointer to a newly instantiated EventTarget class.
    */
   EventTarget* instance() const { return new NamedStateMemberTarget(); }
@@ -134,13 +134,13 @@ class MENGE_API NamedStateMemberTargetFactory : public AgentEventTargetFactory {
   /*!
    *	@brief		Given a pointer to an EventTarget instance, sets the appropriate fields
    *				from the provided XML node.
-   *
+
    *	It is assumed that the value of the `type` attribute is this EventTarget's type.
    *	(i.e. EventTargetFactory::thisFactory has already been called and returned true.)
    *	If sub-classes of EventTargetFactory introduce *new* EventTarget parameters, then the
    *	sub-class should override this method but explicitly call the parent class's
    *	version.
-   *
+
    *	@param		target			A pointer to the target whose attributes are to be
    *set.
    *	@param		node			The XML node containing the target attributes.

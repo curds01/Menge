@@ -49,14 +49,14 @@ class MENGE_API GraphEdge {
 
   /*!
    *	@brief		Set's the neighboring vertex
-   *
+
    *	@param		v		The first connected vertex.
    */
   void setNeighbor(GraphVertex* v) { _nbr = v; }
 
   /*!
    *	@brief		Sets the distance between the vertices
-   *
+
    *	@param		d		The distance between the two vertices.
    */
   void setDistance(float d) { _distance = d; }
@@ -64,14 +64,14 @@ class MENGE_API GraphEdge {
   /*!
    *	@brief		Reports the distance between the vertices connected
    *				by this edge.
-   *
+
    *	@returns	The length of this edge.
    */
   inline float getDistance() const { return _distance; }
 
   /*!
    *	@brief		Returns the first attached GraphVertex
-   *
+
    *	@returns	A pointer to the first graph vertex.
    */
   GraphVertex* getNeighbor() const { return _nbr; }

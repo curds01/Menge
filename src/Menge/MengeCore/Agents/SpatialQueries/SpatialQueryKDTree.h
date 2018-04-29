@@ -20,7 +20,7 @@
  *  @file       SpatialQueryKDTree.h
  *  @brief      A spatial query object based on Jur van den Berg's <i>k</i>d-tree as defined
  *				in the RVO2 library (http://gamma.cs.unc.edu/RVO2).
- *
+
  *	This spatial query implementation uses a <i>k</i>d-tree for agents and a bsp-tree for
  *	obstacles.  The BSP Tree changes the input obstacle set.  Single line segments can end
  *	up cut into two or more pieces.  This *may* have a deleterious effect on simulation.
@@ -53,7 +53,7 @@ class MENGE_API BergKDTree : public SpatialQuery {
 
   /*!
    *  @brief      Define the set of agents on which <i>k</i>d-tree will query.
-   *
+
    *	@param		agents		The set of agents in the simulator to be managed.
    */
   virtual void setAgents(const std::vector<BaseAgent*>& agents) { _agentTree.setAgents(agents); }
@@ -66,7 +66,7 @@ class MENGE_API BergKDTree : public SpatialQuery {
 
   /*!
    *  @brief      performs an agent based proximity query
-   *
+
    *  @param      query           a pointer to the proximity query to be performed
    */
   virtual void agentQuery(ProximityQuery* query) const { _agentTree.agentQuery(query); }
@@ -81,16 +81,16 @@ class MENGE_API BergKDTree : public SpatialQuery {
 
   /*!
    *  @brief      perform an obstacle based proximity query
-   *
+
    *  @param      query           a pointer to the proximity query to be performed
-   *
+
    */
   virtual void obstacleQuery(ProximityQuery* query) const { _obstTree.obstacleQuery(query); }
 
   /*!
    *  @brief      Queries the visibility between two points within a
    *              specified radius.
-   *
+
    *  @param      q1              The first point between which visibility is
    *                              to be tested.
    *  @param      q2              The second point between which visibility is
@@ -125,20 +125,20 @@ class MENGE_API BergKDTreeFactory : public SpatialQueryFactory {
  public:
   /*!
    *	@brief		The name of the spatial query implemenation.
-   *
+
    *	The spatial query's name must be unique among all registered
    *	spatial query components.  Each spatial query factory must override
    *	this function.
-   *
+
    *	@returns	A string containing the unique spatial query name.
    */
   virtual const char* name() const { return "kd-tree"; }
 
   /*!
    *	@brief		A description of the spatial query.
-   *
+
    *	Each spatial query factory must override this function.
-   *
+
    *	@returns	A string containing the spatial query description.
    */
   virtual const char* description() const {
@@ -149,13 +149,13 @@ class MENGE_API BergKDTreeFactory : public SpatialQueryFactory {
  protected:
   /*!
    *	@brief		Create an instance of this class's spatial query implementation.
-   *
+
    *	All SpatialQueryFactory sub-classes must override this by creating (on the heap)
    *	a new instance of its corresponding spatial query type.  The various field values
    *	of the instance will be set in a subsequent call to
    *	SpatialQueryFactory::setFromXML. The caller of this function takes ownership of the
    *	memory.
-   *
+
    *	@returns		A pointer to a newly instantiated SpatialQuery class.
    */
   SpatialQuery* instance() const { return new BergKDTree(); }

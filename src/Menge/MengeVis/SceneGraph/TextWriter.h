@@ -52,7 +52,7 @@ typedef FontMap::const_iterator FontMapCItr;
 
 /*!
  *	@brief		A singleton class responsible for writing text to an OpenGL context
- *
+
  *	It has numerous functions for drawing text.  It typically works in screen space,
  *	where the upper, left-hand corner is (0, 0).
  */
@@ -70,7 +70,7 @@ class MENGEVIS_API TextWriter {
  public:
   /*!
    *	@brief		Sets the default font to use.
-   *
+
    *	@param		fontName		The path to the font to use.
    */
   static void setDefaultFont(const std::string& fontName);
@@ -111,7 +111,7 @@ class MENGEVIS_API TextWriter {
   /*!
    *	@brief		Print the given text with an alignment relative to the given anchor
    *				point.
-   *
+
    *	@param		text		The string to draw.
    *	@param		alignment	The alignment, relative to the screen.
    *	@param		anchorX		The x-position of the anchor point (in screen coords).
@@ -129,7 +129,7 @@ class MENGEVIS_API TextWriter {
 
   /*!
    *	@brief		Print the given text to the screen at the given coordinates
-   *
+
    *	@param		text		The string to draw.
    *	@param		left		The position of the left extent of the text (in screen
    *							coords).
@@ -148,7 +148,7 @@ class MENGEVIS_API TextWriter {
 
   /*!
    *	@brief		Print the given text to the screen with the specified alignment
-   *
+
    *	@param		text		The string to draw.
    *	@param		alignment	The alignment, relative to the screen.
    *	@param		fontSize	The size of the text, in pixels.
@@ -196,7 +196,7 @@ class MENGEVIS_API TextWriter {
   /*!
    *	@brief		Reports the size, in pixels, the given text will consume on the screen,
    *				given current font and indicated font size.
-   *
+
    *	@param		text		The string to draw.
    *	@param		fontSize	The size of the font (in points).
    *	@param		textWidth	The width of the text will be stored in this value.
@@ -206,10 +206,10 @@ class MENGEVIS_API TextWriter {
 
   /*!
    *	@brief		Inform the text writer that the viewport has resized.
-   *
+
    *	This must be called by the viewer when the viewport resizes.  This information is
    *	how the TextWriter correctly interprets alignment.
-   *
+
    *	@param		w		The viewport width (in pixels).
    *	@param		h		The viewport height (in pixels).
    */
@@ -217,24 +217,24 @@ class MENGEVIS_API TextWriter {
 
   /*!
    *	@brief		Reports TextWriter's belief of the viewport width.
-   *
+
    *	@returns	The effective viewport width the TextWrtier is using.
    */
   inline int getViewWidth() const { return _width; }
 
   /*!
    *	@brief		Reports TextWriter's belief of the viewport width.
-   *
+
    *	@returns	The effective viewport width the TextWrtier is using.
    */
   inline int getViewHeight() const { return _height; }
 
   /*!
    *	@brief		Changes the font family
-   *
+
    *	The first font is loaded at the default size
    *	If it is unable to load the font, the old family is left in place
-   *
+
    *	@param		fontName		The name of the font family to use.
    *	@returns	True if the font was successfully loaded, false otherwise.
    *				If false, it uses the default font.
@@ -243,7 +243,7 @@ class MENGEVIS_API TextWriter {
 
   /*!
    *	@brief		Sets the default font color.
-   *
+
    *	@param		r		The red component of the color.
    *	@param		g		The green component of the color.
    *	@param		b		The blue component of the color.
@@ -254,10 +254,10 @@ class MENGEVIS_API TextWriter {
 
   /*!
    *	@brief		A utility function to map from screen to image coordinates.
-   *
+
    *	The screen coordiantes have the origin in the top, left corner.
    *	Image coordinates have the origin at the *bottom*, left corner.
-   *
+
    *	@param		y		The vertical position in screen coordinates.
    *	@returns	The vertical position in corresponding image coordinates.
    */
@@ -268,7 +268,7 @@ class MENGEVIS_API TextWriter {
  protected:
   /*!
    *	@brief		Returns a pointer to a font for the given size.
-   *
+
    *	@param		size		The desired size of the font.
    *	@returns	A pointer to a font instance at the desired size.
    *				If size is negative, NULL is returned.
@@ -319,17 +319,17 @@ class MENGEVIS_API TextWriter {
 
   /*!
    *	@brief		Set the surface upon which the text has been rendered to a texture.
-   *
+
    *	@param		surf		The surface upon which the text has been rendered.
    */
   void sdlSurfaceToGLTex(SDL_Surface* surf);
 
   /*!
    *	@brief		The work necessary to print a single line of text.
-   *
+
    *	The text is displayed relative to the anchor point of an entire *block* of text,
    *	(left, bottom), withthe text extending above and to the right of the anchor point.
-   *
+
    *	@param		font		The font to render the text.
    *	@param		text		The text to draw.
    *	@param		left		The horizontal value of the anchor point.

@@ -23,12 +23,12 @@ namespace MengeVis {
 namespace Runtime {
 /*!
  *	@brief		A context that connects user actions to Menge::ExternalEventTrigger.
- *
+
  *	The EventInjectionContext serves as a layer between UI and the simulator. It keys on
  *	ExternalEventTrigger instances with particular names. Each of the specific names is
  *	triggered by a specific user action. The following table shows the actions and
  *	the name of the trigger that gets fired:
- *
+
  *	User Action               | Trigger Name
  *  --------------------------|---------------------
  *  Press left arrow          | left_arrow
@@ -42,13 +42,13 @@ namespace Runtime {
  *	Roll mouse wheel up       | mouse_wheel_up
  *	Roll mouse wheel down     | mouse_wheel_down
  * @endcond
- *
+
  *	Note: no mouse data is provided (i.e., mouse position, state of modifiers, etc.)
  *	The simple user action is sufficient to fire the trigger.
- *
+
  *	The EventInjectionContext also contains a child context. Events that trigger simulation
  *	events are _also_ propagated down to the child context.
- *
+
  *	Finally, if the EvenEjectionContext finds appropriate external triggers, it will
  *	display the valid event actions in the display (the display of which is toggle-able
  *	by the user).
@@ -57,7 +57,7 @@ class MENGEVIS_API EventInjectionContext : public SceneGraph::Context {
  public:
   /*!
    *	@brief	Constructor.
-   *
+
    *	@param	ctx		The optional pass-through context.
    */
   EventInjectionContext(SceneGraph::Context* ctx = nullptr);
@@ -67,7 +67,7 @@ class MENGEVIS_API EventInjectionContext : public SceneGraph::Context {
 
   /*!
    *	@brief		The draw function for the context.
-   *
+
    *	@param		vWidth		The width of the viewport (in pixels).
    *	@param		vHeight		The height of the viewport (in pixels).
    */
@@ -76,7 +76,7 @@ class MENGEVIS_API EventInjectionContext : public SceneGraph::Context {
   /*!
    *	@brief		Performs selection based on a click on screen space.
    *				Uses the OpenGL selection mechanism.
-   *
+
    *	@param		scene			The scene to select in.
    *	@param		camera			The camera.
    *	@param		vWidth			The width of the viewport.
@@ -92,7 +92,7 @@ class MENGEVIS_API EventInjectionContext : public SceneGraph::Context {
   /*!
    *	@brief		Give the context the opportunity to respond to a mouse
    *				event.
-   *
+
    *	@param		e		The SDL event with the mouse event data.
    *	@returns	A ContextResult instance reporting if the event was handled and
    *				if redrawing is necessary.
@@ -102,7 +102,7 @@ class MENGEVIS_API EventInjectionContext : public SceneGraph::Context {
   /*!
    *	@brief		Give the context the opportunity to respond to a keyboard
    *				event.
-   *
+
    *	@param		e		The SDL event with the keyboard event data.
    *	@returns	A ContextResult instance reporting if the event was handled and
    *				if redrawing is necessary.
@@ -133,7 +133,7 @@ class MENGEVIS_API EventInjectionContext : public SceneGraph::Context {
  protected:
   /*!
    *	@brief		Draw UI elements into the context.
-   *
+
    *	@param		vWidth		The width of the viewport (in pixels).
    *	@param		vHeight		The height of the viewport (in pixels).
    *	@param		select		Defines if the drawing is being done for selection

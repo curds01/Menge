@@ -19,13 +19,13 @@
 /*!
  *	@file		RandGenerator.h
  *	@brief		Utility for generating number distributions.
- *
+
  *	Number generators simple purpose is to produce a value, scalar or vector,
  *	float or int.  These values may be constant or random with either normal
  *	or uniform distributions.  The number generator provides an interface
  *	so that the various entities do not need to know anything about the
  *	value type or distribution.
- *
+
  *	When pointers to number generators are passed around, "ownership" never
  *	changes.  I.e., the caller is still responsible for the eventually freeing
  *	up the memory.  If the callee needs to save an instance of the generator
@@ -52,24 +52,24 @@ namespace Menge {
 namespace Math {
 /*!
  *	@brief		Allows the global random number seed value to be set.
- *
+
  *	This allows a bit more control over the random number generator.  Setting
  *	the global seed value to zero will cause the default seed value to be
  *	"randomly" generated from the system clock.  This will cause repeated
  *	executions of the program to vary.
- *
+
  *	Setting the seed to a non-zero constant will still allow for pseudo-random
  *	distribution of values, but the pattern of distributions will be the same.
  *	Two different non-zero values will lead to two different, but repeatable,
  *	distributions.
- *
+
  *	@param		seed		The desired seed.
  */
 MENGE_API void setDefaultGeneratorSeed(int seed);
 
 /*!
  *	@brief		Retrieves a seed based on the global settings
- *
+
  *	@returns	A random seed according to global parameters.
  */
 MENGE_API int getDefaultSeed();
@@ -91,30 +91,30 @@ class MENGE_API FloatGenerator {
 
   /*!
    *	@brief		Function for converting the generator to a string on a output stream.
-   *
+
    *	This *must* be overridden by each derived class to provide a string format
    *	of the float generator.
-   *
+
    *	This method is used instead of the traditional method of writing a
    *	friend overloaded operator (>>).  The reason for this is that using pointers to
    *	this base class to refer to derived classes would need to be derefenced to pass
    *	(as objects) to the output stream and dereferencing them precludes the use of
    *	polymorphism in the format.
-   *
+
    *	This could be overcome by writing the streaming operator to operate on
    *	a pointer to the base class, which in turn calls a virtual function.  But this
    *	approach removes one level of indirection, and preserves the ability to output
    *	pointer addresses for the sake of debugging.
-   *
+
    *	@param		out		The output stream to write the string representation to.
    */
   virtual void print(Logger& out) const = 0;
 
   /*!
    *	@brief		Return a value based on the float generation rules.
-   *
+
    *	This is the basic functionality that must be overwridden by derived classes.
-   *
+
    *	@return		A float value.
    */
   virtual float getValue() const = 0;
@@ -122,20 +122,20 @@ class MENGE_API FloatGenerator {
   /*!
    *	@brief		Return a value based on the float generation rules - performed
    *				in a thread-safe manner.
-   *
+
    *	This is the basic functionality that must be overwridden by derived classes.
-   *
+
    *	@return		A float value.
    */
   virtual float getValueConcurrent() const = 0;
 
   /*!
    *	@brief		Create a copy of itself
-   *
+
    *	This is the basic functionality that must be overwridden by derived classes.
    *	This is not an exact copy.  The copy should not have the same seed as the
    *	original.  All other parameters should be identical.
-   *
+
    *	@returns	A pointer to a new generator which is a copy of this one.
    *				The caller of this function is responsible for freeing up the
    *				memory for the copy.
@@ -152,14 +152,14 @@ class MENGE_API ConstFloatGenerator : public FloatGenerator {
  public:
   /*!
    *	@brief		Constructor.
-   *
+
    *	@param		value		The constant value this generator returns.
    */
   ConstFloatGenerator(float value) : FloatGenerator(), _value(value) {}
 
   /*!
    *	@brief		Return a value based on the float generation rules.
-   *
+
    *	@return		A constant float value.
    */
   virtual float getValue() const { return _value; }
@@ -167,23 +167,23 @@ class MENGE_API ConstFloatGenerator : public FloatGenerator {
   /*!
    *	@brief		Return a value based on the float generation rules - performed
    *				in a thread-safe manner.
-   *
+
    *	This is the basic functionality that must be overwridden by derived classes.
-   *
+
    *	@return		A float value.
    */
   virtual float getValueConcurrent() const { return _value; }
 
   /*!
    *	@brief		Function for converting the generator to a string on a output stream.
-   *
+
    *	@param		out		The output stream to write the string representation to.
    */
   virtual void print(Logger& out) const;
 
   /*!
    *	@brief		Create a copy of itself
-   *
+
    *	@returns	A pointer to a new generator which is a copy of this one.
    *				The caller of this function is responsible for freeing up the
    *				memory for the copy.
@@ -192,7 +192,7 @@ class MENGE_API ConstFloatGenerator : public FloatGenerator {
 
   /*!
    *	@brief		Friend function for writing string representation to an output stream
-   *
+
    *	@param		out		The output stream.
    *	@param		gen		An instance of the generator to represent as a string.
    *	@returns	Reference to the input output stream.
@@ -210,11 +210,11 @@ class MENGE_API ConstFloatGenerator : public FloatGenerator {
 
 /*!
  *	@brief		A FloatGenerator which returns a normally distributed value.
- *
+
  *	Furthermore, the normally distributed value is clamped to a range [min, max] that
  *	prevents the otherwise theoretically possible (though highly improbable) values that
  *	can lie outside of practical ranges.
- *
+
  *	The min and max values should span a range which includes the interval:
  *	[ mean - 3 * std. dev.,  mean + 3 * std. dev.]
  *	Clamping the range smaller will lead to abnormal accretions of samples at the clamping
@@ -225,10 +225,10 @@ class MENGE_API NormalFloatGenerator : public FloatGenerator {
  public:
   /*!
    *	@brief		Constructor.
-   *
+
    *	The value is normally distributed around mean, with a standard deviation of stddev
    *	but clamped to lie within the range [minVal, maxVal].
-   *
+
    *	@param		mean		The mean value of the distribution.
    *	@param		stddev		The standard deviation of the value
    *	@param		minVal		The lower clamped value, such that all values returned will
@@ -247,7 +247,7 @@ class MENGE_API NormalFloatGenerator : public FloatGenerator {
 
   /*!
    *	@brief		Sets the distribution parameters.
-   *
+
    *	@param		mean		The mean value of the distribution.
    *	@param		stddev		The standard deviation of the value
    *	@param		minVal		The lower clamped value, such that all values returned will
@@ -264,7 +264,7 @@ class MENGE_API NormalFloatGenerator : public FloatGenerator {
 
   /*!
    *	@brief		Return a value based on the float generation rules.
-   *
+
    *	@return		A clamped, normally-distributed float value.
    */
   virtual float getValue() const;
@@ -272,23 +272,23 @@ class MENGE_API NormalFloatGenerator : public FloatGenerator {
   /*!
    *	@brief		Return a value based on the float generation rules - performed
    *				in a thread-safe manner.
-   *
+
    *	This is the basic functionality that must be overwridden by derived classes.
-   *
+
    *	@return		A float value.
    */
   virtual float getValueConcurrent() const;
 
   /*!
    *	@brief		Function for converting the generator to a string on a output stream.
-   *
+
    *	@param		out		The output stream to write the string representation to.
    */
   virtual void print(Logger& out) const;
 
   /*!
    *	@brief		Create a copy of itself
-   *
+
    *	@returns	A pointer to a new generator which is a copy of this one.
    *				The caller of this function is responsible for freeing up the
    *				memory for the copy.
@@ -297,7 +297,7 @@ class MENGE_API NormalFloatGenerator : public FloatGenerator {
 
   /*!
    *	@brief		Friend function for writing string representation to an output stream
-   *
+
    *	@param		out		The output stream.
    *	@param		gen		An instance of the generator to represent as a string.
    *	@returns	Reference to the input output stream.
@@ -360,10 +360,10 @@ class MENGE_API UniformFloatGenerator : public FloatGenerator {
  public:
   /*!
    *	@brief		Constructor.
-   *
+
    *	The value will lie within the range [minVal, maxVal].  All values in
    *	that range have equal probability of being selected.
-   *
+
    *	@param		minVal		The lower end of the valid range.
    *	@param		maxVal		The upper end of the valid range.
    *	@param		seed		If the seed is zero, the global seed will be used otherwise
@@ -373,7 +373,7 @@ class MENGE_API UniformFloatGenerator : public FloatGenerator {
 
   /*!
    *	@brief		Copy constructor
-   *
+
    *	The copy is not a perfect copy - the seed value in the new
    *	float generator is NOT the same as the source.
    *  @param		gen		The generator to copy
@@ -382,7 +382,7 @@ class MENGE_API UniformFloatGenerator : public FloatGenerator {
 
   /*!
    *	@brief		Return a value based on the float generation rules.
-   *
+
    *	@return		A clamped, uniformly-distributed float value.
    */
   virtual float getValue() const;
@@ -390,23 +390,23 @@ class MENGE_API UniformFloatGenerator : public FloatGenerator {
   /*!
    *	@brief		Return a value based on the float generation rules - performed
    *				in a thread-safe manner.
-   *
+
    *	This is the basic functionality that must be overwridden by derived classes.
-   *
+
    *	@return		A float value.
    */
   virtual float getValueConcurrent() const;
 
   /*!
    *	@brief		Function for converting the generator to a string on a output stream.
-   *
+
    *	@param		out		The output stream to write the string representation to.
    */
   virtual void print(Logger& out) const;
 
   /*!
    *	@brief		Create a copy of itself
-   *
+
    *	@returns	A pointer to a new generator which is a copy of this one.
    *				The caller of this function is responsible for freeing up the
    *				memory for the copy.
@@ -415,7 +415,7 @@ class MENGE_API UniformFloatGenerator : public FloatGenerator {
 
   /*!
    *	@brief		Friend function for writing string representation to an output stream
-   *
+
    *	@param		out		The output stream.
    *	@param		gen		An instance of the generator to represent as a string.
    *	@returns	Reference to the input output stream.
@@ -424,21 +424,21 @@ class MENGE_API UniformFloatGenerator : public FloatGenerator {
 
   /*!
    *	@brief		Reports the lower end of the valid range.
-   *
+
    *	@returns	The lower end of the valid range.
    */
   float getMin() const { return _min; }
 
   /*!
    *	@brief		Reports the upper end of the valid range.
-   *
+
    *	@returns	The upper end of the valid range.
    */
   float getMax() const { return _min + _size; }
 
   /*!
    *	@brief		Reports the size of the interval.
-   *
+
    *	@returns	The size of the interval.
    */
   float getSize() const { return _size; }
@@ -484,9 +484,9 @@ class MENGE_API IntGenerator {
 
   /*!
    *	@brief		Return a value based on the integer generation rules.
-   *
+
    *	This is the basic functionality that must be overwridden by derived classes.
-   *
+
    *	@return		An integer value.
    */
   virtual int getValue() const = 0;
@@ -494,28 +494,28 @@ class MENGE_API IntGenerator {
   /*!
    *	@brief		Return a value based on the integer generation rules - performed
    *				in a thread-safe manner.
-   *
+
    *	This is the basic functionality that must be overwridden by derived classes.
-   *
+
    *	@return		A integer value.
    */
   virtual int getValueConcurrent() const = 0;
 
   /*!
    *	@brief		Function for converting the generator to a string on a output stream.
-   *
+
    *	This *must* be overridden by each derived class to provide a string format
    *	of the float generator.
-   *
+
    *	@param		out		The output stream to write the string representation to.
    */
   virtual void print(Logger& out) const = 0;
 
   /*!
    *	@brief		Create a copy of itself
-   *
+
    *	This is the basic functionality that must be overwridden by derived classes.
-   *
+
    *	@returns	A pointer to a new generator which is a copy of this one.
    *				The caller of this function is responsible for freeing up the
    *				memory for the copy.
@@ -532,14 +532,14 @@ class MENGE_API ConstIntGenerator : public IntGenerator {
  public:
   /*!
    *	@brief		Constructor.
-   *
+
    *	@param		value		The constant value this generator returns.
    */
   ConstIntGenerator(int value) : IntGenerator(), _value(value) {}
 
   /*!
    *	@brief		Return a value based on the integer generation rules.
-   *
+
    *	@return		A constant integer value.
    */
   virtual int getValue() const { return _value; }
@@ -547,25 +547,25 @@ class MENGE_API ConstIntGenerator : public IntGenerator {
   /*!
    *	@brief		Return a value based on the integer generation rules - performed
    *				in a thread-safe manner.
-   *
+
    *	This is the basic functionality that must be overwridden by derived classes.
-   *
+
    *	@return		A integer value.
    */
   virtual int getValueConcurrent() const { return _value; }
 
   /*!
    *	@brief		Function for converting the generator to a string on a output stream.
-   *
+
    *	@param		out		The output stream to write the string representation to.
    */
   virtual void print(Logger& out) const;
 
   /*!
    *	@brief		Create a copy of itself
-   *
+
    *	This is the basic functionality that must be overwridden by derived classes.
-   *
+
    *	@returns	A pointer to a new generator which is a copy of this one.
    *				The caller of this function is responsible for freeing up the
    *				memory for the copy.
@@ -574,7 +574,7 @@ class MENGE_API ConstIntGenerator : public IntGenerator {
 
   /*!
    *	@brief		Friend function for writing string representation to an output stream
-   *
+
    *	@param		out		The output stream.
    *	@param		gen		An instance of the generator to represent as a string.
    *	@returns	Reference to the input output stream.
@@ -598,10 +598,10 @@ class MENGE_API UniformIntGenerator : public IntGenerator {
  public:
   /*!
    *	@brief		Constructor.
-   *
+
    *	The value will lie within the range [minVal, maxVal].  All values in
    *	that range have equal probability of being selected.
-   *
+
    *	@param		minVal		The lower end of the valid range.
    *	@param		maxVal		The upper end of the valid range.
    *	@param		seed		If the seed is zero, the global seed will be used otherwise
@@ -611,7 +611,7 @@ class MENGE_API UniformIntGenerator : public IntGenerator {
 
   /*!
    *	@brief		Set the selection range.
-   *
+
    *	@param		minVal		The lower end of the valid range.
    *	@param		maxVal		The upper end of the valid range.
    */
@@ -622,7 +622,7 @@ class MENGE_API UniformIntGenerator : public IntGenerator {
 
   /*!
    *	@brief		Return a value based on the integer generation rules.
-   *
+
    *	@return		A uniformly distributed integer value.
    */
   virtual int getValue() const;
@@ -630,25 +630,25 @@ class MENGE_API UniformIntGenerator : public IntGenerator {
   /*!
    *	@brief		Return a value based on the integer generation rules - performed
    *				in a thread-safe manner.
-   *
+
    *	This is the basic functionality that must be overwridden by derived classes.
-   *
+
    *	@return		A integer value.
    */
   virtual int getValueConcurrent() const;
 
   /*!
    *	@brief		Function for converting the generator to a string on a output stream.
-   *
+
    *	@param		out		The output stream to write the string representation to.
    */
   virtual void print(Logger& out) const;
 
   /*!
    *	@brief		Create a copy of itself
-   *
+
    *	This is the basic functionality that must be overwridden by derived classes.
-   *
+
    *	@returns	A pointer to a new generator which is a copy of this one.
    *				The caller of this function is responsible for freeing up the
    *				memory for the copy.
@@ -657,7 +657,7 @@ class MENGE_API UniformIntGenerator : public IntGenerator {
 
   /*!
    *	@brief		Friend function for writing string representation to an output stream
-   *
+
    *	@param		out		The output stream.
    *	@param		gen		An instance of the generator to represent as a string.
    *	@returns	Reference to the input output stream.
@@ -705,9 +705,9 @@ class MENGE_API Vec2DGenerator {
 
   /*!
    *	@brief		Return a value based on the 2D float generation rules.
-   *
+
    *	This is the basic functionality that must be overwridden by derived classes.
-   *
+
    *	@return		A 2D float value.
    */
   virtual Vector2 getValue() const = 0;
@@ -715,28 +715,28 @@ class MENGE_API Vec2DGenerator {
   /*!
    *	@brief		Return a value based on the 2D float generation rules - performed
    *				in a thread-safe manner.
-   *
+
    *	This is the basic functionality that must be overwridden by derived classes.
-   *
+
    *	@return		A 2D float value.
    */
   virtual Vector2 getValueConcurrent() const = 0;
 
   /*!
    *	@brief		Function for converting the generator to a string on a output stream.
-   *
+
    *	This *must* be overridden by each derived class to provide a string format
    *	of the float generator.
-   *
+
    *	@param		out		The output stream to write the string representation to.
    */
   virtual void print(Logger& out) const = 0;
 
   /*!
    *	@brief		Create a copy of itself
-   *
+
    *	This is the basic functionality that must be overwridden by derived classes.
-   *
+
    *	@returns	A pointer to a new generator which is a copy of this one.
    *				The caller of this function is responsible for freeing up the
    *				memory for the copy.
@@ -753,7 +753,7 @@ class MENGE_API Zero2DGenerator : public Vec2DGenerator {
  public:
   /*!
    *	@brief		Return a value based on the 2D float generation rules.
-   *
+
    *	@return		A 2D zero vector.
    */
   virtual Vector2 getValue() const { return Vector2(0.f, 0.f); }
@@ -761,16 +761,16 @@ class MENGE_API Zero2DGenerator : public Vec2DGenerator {
   /*!
    *	@brief		Return a value based on the 2D float generation rules - performed
    *				in a thread-safe manner.
-   *
+
    *	This is the basic functionality that must be overwridden by derived classes.
-   *
+
    *	@return		A 2D float value.
    */
   virtual Vector2 getValueConcurrent() const { return Vector2(0.f, 0.f); }
 
   /*!
    *	@brief		Create a copy of itself
-   *
+
    *	@returns	A pointer to a new generator which is a copy of this one.
    *				The caller of this function is responsible for freeing up the
    *				memory for the copy.
@@ -779,14 +779,14 @@ class MENGE_API Zero2DGenerator : public Vec2DGenerator {
 
   /*!
    *	@brief		Function for converting the generator to a string on a output stream.
-   *
+
    *	@param		out		The output stream to write the string representation to.
    */
   virtual void print(Logger& out) const;
 
   /*!
    *	@brief		Friend function for writing string representation to an output stream
-   *
+
    *	@param		out		The output stream.
    *	@param		gen		An instance of the generator to represent as a string.
    *	@returns	Reference to the input output stream.
@@ -803,14 +803,14 @@ class MENGE_API Const2DGenerator : public Vec2DGenerator {
  public:
   /*!
    *	@brief		Constructor.
-   *
+
    *	@param		val		The value to be returned.
    */
   Const2DGenerator(const Vector2& val) : Vec2DGenerator(), _value(val) {}
 
   /*!
    *	@brief		Return a value based on the 2D float generation rules.
-   *
+
    *	@return		A constat 2D value.
    */
   virtual Vector2 getValue() const { return _value; }
@@ -818,23 +818,23 @@ class MENGE_API Const2DGenerator : public Vec2DGenerator {
   /*!
    *	@brief		Return a value based on the 2D float generation rules - performed
    *				in a thread-safe manner.
-   *
+
    *	This is the basic functionality that must be overwridden by derived classes.
-   *
+
    *	@return		A 2D float value.
    */
   virtual Vector2 getValueConcurrent() const { return _value; }
 
   /*!
    *	@brief		Function for converting the generator to a string on a output stream.
-   *
+
    *	@param		out		The output stream to write the string representation to.
    */
   virtual void print(Logger& out) const;
 
   /*!
    *	@brief		Create a copy of itself
-   *
+
    *	@returns	A pointer to a new generator which is a copy of this one.
    *				The caller of this function is responsible for freeing up the
    *				memory for the copy.
@@ -843,7 +843,7 @@ class MENGE_API Const2DGenerator : public Vec2DGenerator {
 
   /*!
    *	@brief		Friend function for writing string representation to an output stream
-   *
+
    *	@param		out		The output stream.
    *	@param		gen		An instance of the generator to represent as a string.
    *	@returns	Reference to the input output stream.
@@ -867,7 +867,7 @@ class MENGE_API AABBUniformPosGenerator : public Vec2DGenerator {
  public:
   /*!
    *	@brief		Constructor.
-   *
+
    *	@param		minPt		The minimum extent of the AAB.
    *	@param		maxPt		The maximum extent of the AAB.
    *	@param		seed		If the seed is zero, the global seed will be used otherwise
@@ -877,14 +877,14 @@ class MENGE_API AABBUniformPosGenerator : public Vec2DGenerator {
 
   /*!
    *	@brief		Copy constructor.
-   *
+
    *	@param		aabbGen		The generator to copy its values from.
    */
   AABBUniformPosGenerator(const AABBUniformPosGenerator& aabbGen);
 
   /*!
    *	@brief		Return a value based on the 2D float generation rules.
-   *
+
    *	@return		A constat position uniformly samples from an AAB.
    */
   virtual Vector2 getValue() const;
@@ -892,16 +892,16 @@ class MENGE_API AABBUniformPosGenerator : public Vec2DGenerator {
   /*!
    *	@brief		Return a value based on the 2D float generation rules - performed
    *				in a thread-safe manner.
-   *
+
    *	This is the basic functionality that must be overwridden by derived classes.
-   *
+
    *	@return		A 2D float value.
    */
   virtual Vector2 getValueConcurrent() const;
 
   /*!
    *	@brief		Create a copy of itself
-   *
+
    *	@returns	A pointer to a new generator which is a copy of this one.
    *				The caller of this function is responsible for freeing up the
    *				memory for the copy.
@@ -910,14 +910,14 @@ class MENGE_API AABBUniformPosGenerator : public Vec2DGenerator {
 
   /*!
    *	@brief		Function for converting the generator to a string on a output stream.
-   *
+
    *	@param		out		The output stream to write the string representation to.
    */
   virtual void print(Logger& out) const;
 
   /*!
    *	@brief		Friend function for writing string representation to an output stream
-   *
+
    *	@param		out		The output stream.
    *	@param		gen		An instance of the generator to represent as a string.
    *	@returns	Reference to the input output stream.
@@ -950,7 +950,7 @@ class MENGE_API OBBUniformPosGenerator : public Vec2DGenerator {
  public:
   /*!
    *	@brief		Constructor.
-   *
+
    *	@param		minPt		The anchor point of the OB.
    *	@param		size		The size of the OB.
    *	@param		theta		The rotation around the achor point (in degrees) of the OB.
@@ -961,14 +961,14 @@ class MENGE_API OBBUniformPosGenerator : public Vec2DGenerator {
 
   /*!
    *	@brief		Copy constructor.
-   *
+
    *	@param		obbGen		The generator to copy its values from.
    */
   OBBUniformPosGenerator(const OBBUniformPosGenerator& obbGen);
 
   /*!
    *	@brief		Return a value based on the 2D float generation rules.
-   *
+
    *	@return		A constat position uniformly samples from an OB.
    */
   virtual Vector2 getValue() const;
@@ -976,23 +976,23 @@ class MENGE_API OBBUniformPosGenerator : public Vec2DGenerator {
   /*!
    *	@brief		Return a value based on the 2D float generation rules - performed
    *				in a thread-safe manner.
-   *
+
    *	This is the basic functionality that must be overwridden by derived classes.
-   *
+
    *	@return		A 2D float value.
    */
   virtual Vector2 getValueConcurrent() const;
 
   /*!
    *	@brief		Function for converting the generator to a string on a output stream.
-   *
+
    *	@param		out		The output stream to write the string representation to.
    */
   virtual void print(Logger& out) const;
 
   /*!
    *	@brief		Create a copy of itself
-   *
+
    *	@returns	A pointer to a new generator which is a copy of this one.
    *				The caller of this function is responsible for freeing up the
    *				memory for the copy.
@@ -1001,7 +1001,7 @@ class MENGE_API OBBUniformPosGenerator : public Vec2DGenerator {
 
   /*!
    *	@brief		Friend function for writing string representation to an output stream
-   *
+
    *	@param		out		The output stream.
    *	@param		gen		An instance of the generator to represent as a string.
    *	@returns	Reference to the input output stream.
@@ -1051,7 +1051,7 @@ class MENGE_API WeightedInt {
  public:
   /*!
    *	@brief		Constructor.
-   *
+
    *	@param		value		The integer value.
    *	@param		weight		The relative weight associated with the value.
    */
@@ -1069,7 +1069,7 @@ class MENGE_API WeightedInt {
 
   /*!
    *	@brief		Friend function for writing string representation to an output stream
-   *
+
    *	@param		out		The output stream.
    *	@param		wInt	An instance of the weighted int to represent as a string.
    *	@returns	Reference to the input output stream.
@@ -1081,7 +1081,7 @@ class MENGE_API WeightedInt {
 
 /*!
  *	@brief		A number generator based on a weighted probability of a discrete value set.
- *
+
  *	Each value in the set is associated with a weight.  The relative probability of any
  *	given value is that value's weight, divided by the summed weight of all values.
  */
@@ -1094,16 +1094,16 @@ class MENGE_API WeightedIntGenerator : public IntGenerator {
 
   /*!
    *	@brief		Copy constructor.
-   *
+
    *	The constructed copy should not share the same seed as the original.
-   *
+
    *	@param		gen		The generator to copy.
    */
   WeightedIntGenerator(const WeightedIntGenerator& gen);
 
   /*!
    *	@brief		Return a value based on the integer generation rules.
-   *
+
    *	@return		An integer value drawn from a set with weighted probabilities.
    */
   virtual int getValue() const;
@@ -1111,16 +1111,16 @@ class MENGE_API WeightedIntGenerator : public IntGenerator {
   /*!
    *	@brief		Return a value based on the integer generation rules - performed
    *				in a thread-safe manner.
-   *
+
    *	This is the basic functionality that must be overwridden by derived classes.
-   *
+
    *	@return		A integer value.
    */
   virtual int getValueConcurrent() const;
 
   /*!
    *	@brief		Add a value to the set.
-   *
+
    *	@param		value		The value to add to the set.
    *	@param		weight		The weight of the corresponding value.
    */
@@ -1128,17 +1128,17 @@ class MENGE_API WeightedIntGenerator : public IntGenerator {
 
   /*!
    *	@brief		Function for converting the generator to a string on a output stream.
-   *
+
    *	@param		out		The output stream to write the string representation to.
    */
   virtual void print(Logger& out) const;
 
   /*!
    *	@brief		Create a copy of itself.
-   *
+
    *	This should only be called after the generator has been finalized.
    *	Otherwise, the copy will need to be finalized as well.
-   *
+
    *	@returns	A pointer to a new generator which is a copy of this one.
    *				The caller of this function is responsible for freeing up the
    *				memory for the copy.
@@ -1147,7 +1147,7 @@ class MENGE_API WeightedIntGenerator : public IntGenerator {
 
   /*!
    *	@brief		Friend function for writing string representation to an output stream
-   *
+
    *	@param		out		The output stream.
    *	@param		gen		An instance of the generator to represent as a string.
    *	@returns	Reference to the input output stream.
@@ -1156,7 +1156,7 @@ class MENGE_API WeightedIntGenerator : public IntGenerator {
 
   /*!
    *	@brief		Finalizes the generator so that it can generate values.
-   *
+
    *	When finished adding points, call this function to post-process them.
    *	Calling WeightedIntGenerator::getValue before calling this will lead to
    *	unpredictable results.  Furthermore, calling WeightedIntGenerator::addValue
@@ -1183,10 +1183,10 @@ class MENGE_API WeightedIntGenerator : public IntGenerator {
 
 /*!
  *	@brief		Creates a float generator from an xml node.
- *
+
  *	This function does not maintain responsibility for freeing up the object.
  *	The calling function is responsible for the memory.
- *
+
  *	@param		node		The tiny XML node containing the definition of a scalar
  *float
  *							generator.
@@ -1205,10 +1205,10 @@ MENGE_API FloatGenerator* createFloatGenerator(TiXmlElement* node, float scale =
 
 /*!
  *	@brief		Creates an int generator from an xml node.
- *
+
  *	This function does not maintain responsibility for freeing up the object.
  *	The calling function is responsible for the memory.
- *
+
  *	@param		node		The tiny XML node containing the definition of a scalar
  *float
  *							generator.
@@ -1222,10 +1222,10 @@ MENGE_API IntGenerator* createIntGenerator(TiXmlElement* node, const std::string
 
 /*!
  *	@brief		Creates a 2D vector generator from an xml node
- *
+
  *	This function does not maintain responsibility for freeing up the object.
  *	The calling function is responsible for the memory.
- *
+
  *	@param		node		The tiny XML node containing the definition of a vector
  *float
  *							generator.

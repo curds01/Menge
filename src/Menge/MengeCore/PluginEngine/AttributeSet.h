@@ -43,22 +43,22 @@ class Vec2DGenerator;
 using namespace Math;
 /*!
  *	@brief		A set of attributes.
- *
+
  *	This is a utility class for facilitating parsing XML specifications.
  *	It is used for elements who can be completely defined strictly via
  *	XML attributes in a single tag.  It allows handling these types of
  *	specifications without explicitly dealing with the XML.
- *
+
  *	Making use of this utility is a two-step process.
  *		1 Define the expected attributes.
  *		2 Use the extracted values to initialize the agent.
- *
+
  *	Every element factory has a built-in attribute set (called _attrSet).
  *	In the factory's constructor, simply make calls into the attribute set
  *	providing the details of each desired attribute.  The attribute set
  *	returns a unique identifier for each new attribute.  Store these
  *	attributes, you will use them to extract the parsed values later.
- *
+
  *	In the setFromXML function, first, call the parent class's implementation
  *	of the function.  If there is a parsing error, an exception will be automatically
  *	thrown.  You don't need to catch it.  The framework will catch the exception and
@@ -80,7 +80,7 @@ class MENGE_API AttributeSet {
 
   /*!
    *	@brief		Adds a boolean attribute to the set.
-   *
+
    *	@param		name		The attribute name.
    *	@param		required	Whether or not the attribute is required (true)
    *							or not (false).
@@ -94,7 +94,7 @@ class MENGE_API AttributeSet {
 
   /*!
    *	@brief		Adds an integer attribute to the set.
-   *
+
    *	@param		name		The attribute name.
    *	@param		required	Whether or not the attribute is required (true)
    *							or not (false).
@@ -108,7 +108,7 @@ class MENGE_API AttributeSet {
 
   /*!
    *	@brief		Adds a size_t attribute to the set.
-   *
+
    *	@param		name		The attribute name.
    *	@param		required	Whether or not the attribute is required (true)
    *							or not (false).
@@ -122,7 +122,7 @@ class MENGE_API AttributeSet {
 
   /*!
    *	@brief		Adds a float attribute to the set.
-   *
+
    *	@param		name		The attribute name.
    *	@param		required	Whether or not the attribute is required (true)
    *							or not (false).
@@ -136,7 +136,7 @@ class MENGE_API AttributeSet {
 
   /*!
    *	@brief		Adds a float distribution attribute to the set.
-   *
+
    *	@param		prefix		The prefix for the distribution (provide the empty string to
    *							use defaults.)
    *	@param		required	Whether or not the attribute is required (true)
@@ -153,7 +153,7 @@ class MENGE_API AttributeSet {
 
   /*!
    *	@brief		Adds a Vector2 distribution attribute to the set.
-   *
+
    *	@param		required	Whether or not the attribute is required (true)
    *							or not (false).
    *	@param		defValue	The default value for the attribute if none is provided.
@@ -167,7 +167,7 @@ class MENGE_API AttributeSet {
 
   /*!
    *	@brief		Adds an integer distribution attribute to the set.
-   *
+
    *	@param		prefix		The prefix for the distribution (provide the empty string to
    *							use defaults.)
    *	@param		required	Whether or not the attribute is required (true)
@@ -182,7 +182,7 @@ class MENGE_API AttributeSet {
 
   /*!
    *	@brief		Adds an integer attribute to the set.
-   *
+
    *	@param		name		The attribute name.
    *	@param		required	Whether or not the attribute is required (true)
    *							or not (false).
@@ -202,7 +202,7 @@ class MENGE_API AttributeSet {
 
   /*!
    *	@brief		Parses the node for the given attributes.
-   *
+
    *	@param		node		The XML node containing the attributes.
    *	@returns	True on sucessful extraction, false otherwise.
    */
@@ -210,10 +210,10 @@ class MENGE_API AttributeSet {
 
   /*!
    *	@brief		Retrieve the int value from the given property ID.
-   *
+
    *	If the attribute associated with the given property ID is of the
    *	wrong type, this will throw an exception.
-   *
+
    *	@param		propID		The property ID -- this is given as the
    *							result of AttributeSet::addAttribute.
    *	@returns	The int value.
@@ -223,10 +223,10 @@ class MENGE_API AttributeSet {
 
   /*!
    *	@brief		Retrieve the size_t value from the given property ID.
-   *
+
    *	If the attribute associated with the given property ID is of the
    *	wrong type, this will throw an exception.
-   *
+
    *	@param		propID		The property ID -- this is given as the
    *							result of AttributeSet::addAttribute.
    *	@returns	The size_t value.
@@ -236,10 +236,10 @@ class MENGE_API AttributeSet {
 
   /*!
    *	@brief		Retrieve the int value from the given property ID.
-   *
+
    *	If the attribute associated with the given property ID is of the
    *	wrong type, this will throw an exception.
-   *
+
    *	@param		propID		The property ID -- this is given as the
    *							result of AttributeSet::addAttribute.
    *	@returns	The boolean value.
@@ -249,10 +249,10 @@ class MENGE_API AttributeSet {
 
   /*!
    *	@brief		Retrieve the float value from the given property ID.
-   *
+
    *	If the attribute associated with the given property ID is of the
    *	wrong type, this will throw an exception.
-   *
+
    *	@param		propID		The property ID -- this is given as the
    *							result of AttributeSet::addAttribute.
    *	@returns	The float value.
@@ -262,10 +262,10 @@ class MENGE_API AttributeSet {
 
   /*!
    *	@brief		Retrieve the string value from the given property ID.
-   *
+
    *	If the attribute associated with the given property ID is of the
    *	wrong type, this will throw an exception.
-   *
+
    *	@param		propID		The property ID -- this is given as the
    *							result of AttributeSet::addAttribute.
    *	@returns	The int value.
@@ -275,10 +275,10 @@ class MENGE_API AttributeSet {
 
   /*!
    *	@brief		Retrieve the float generator from the given property ID.
-   *
+
    *	If the attribute associated with the given property ID is of the
    *	wrong type, this will throw an exception.
-   *
+
    *	@param		propID		The property ID -- this is given as the
    *							result of AttributeSet::addAttribute.
    *	@returns	A pointer to the float generator.  The caller now is responsible
@@ -289,10 +289,10 @@ class MENGE_API AttributeSet {
 
   /*!
    *	@brief		Retrieve the Vector2 generator from the given property ID.
-   *
+
    *	If the attribute associated with the given property ID is of the
    *	wrong type, this will throw an exception.
-   *
+
    *	@param		propID		The property ID -- this is given as the
    *							result of AttributeSet::addAttribute.
    *	@returns	A pointer to the Vector2 generator.  The caller now is responsible
@@ -303,10 +303,10 @@ class MENGE_API AttributeSet {
 
   /*!
    *	@brief		Retrieve the int generator from the given property ID.
-   *
+
    *	If the attribute associated with the given property ID is of the
    *	wrong type, this will throw an exception.
-   *
+
    *	@param		propID		The property ID -- this is given as the
    *							result of AttributeSet::addAttribute.
    *	@returns	A pointer to the int generator.  The caller now is responsible

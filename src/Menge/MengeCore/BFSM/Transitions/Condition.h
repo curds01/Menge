@@ -41,7 +41,7 @@ class Goal;
 
 /*!
  *	@brief		The base class for transition conditions.
- *
+
  *	This class is an abstract class used to define arbitrary conditions
  *	for finite-state-machine transitions.
  */
@@ -54,7 +54,7 @@ class MENGE_API Condition : public Element {
 
   /*!
    *	@brief		Copy Constructor.
-   *
+
    *	@param		cond		The condition to copy from.
    */
   Condition(const Condition& cond) {}
@@ -68,10 +68,10 @@ class MENGE_API Condition : public Element {
  public:
   /*!
    *	@brief		Called when an agent enters a state with this exiting transition.
-   *
+
    *	Sub-classes should use this function as the opportunity to cache any
    *	particular per-agent data.
-   *
+
    *	@param		agent		The agent who has entered the state which uses
    *							this transition.
    */
@@ -79,19 +79,19 @@ class MENGE_API Condition : public Element {
 
   /*!
    *	@brief		Called when an agent exits the state with this transition.
-   *
+
    *	@param		agent		The agent who left the state.
    */
   virtual void onLeave(Agents::BaseAgent* agent) {}
 
   /*!
    *	@brief		Reports if the conditions have been met.
-   *
+
    *	This function defines the main functionality of a definition.
    *	Given the current agent and its internal state, it determines if
    *	the conditions have been met.  This should be overridden by each
    *	sub-class.
-   *
+
    *	@param		agent		The agent to test the transition for.
    *	@param		goal		The agent's goal (although this may be ignored).
    *	@returns	True if the condition has been met, false otherwise.
@@ -100,9 +100,9 @@ class MENGE_API Condition : public Element {
 
   /*!
    *	@brief		Create a copy of this condition.
-   *
+
    *	It is the responsibility of the caller to delete the object.
-   *
+
    *	@returns:	A "deep copy" of this condition - such that there is no shared
    *				objects between this and its copy.
    */

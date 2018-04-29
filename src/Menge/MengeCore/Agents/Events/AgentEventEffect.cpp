@@ -65,4 +65,5 @@ void AgentEventEffect::apply(EventTarget* target) {
 bool AgentEventEffect::isCompatible(EventTarget* target) {
   return dynamic_cast<AgentEventTarget*>(target) != 0x0;
 }
+
 }  // namespace Menge

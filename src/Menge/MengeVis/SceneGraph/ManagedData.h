@@ -19,7 +19,7 @@
 /*!
  *	@file		ManagedData.h
  *	@brief		The interface for handling resources from a disk system.
- *
+
  *	ManagedData are heavy-weight on-disk resources.  They are managed in the
  *	sense that they are only read from the disk once and stored in memory as
  *	a single instance.  If multiple entities need the same on-disk resource,
@@ -48,7 +48,7 @@ class MENGEVIS_API ManagedData {
 
   /*!
    *	@brief		Virtual destructor.
-   *
+
    *	Sub-classes of ManagedData, upon their destruction, must remove themselves
    *	from the resource set.  It does this by performing a call to
    *	removeResource with appropriate template values and parameters.
@@ -58,32 +58,32 @@ class MENGEVIS_API ManagedData {
 
   /*!
    *	@brief		Increment references to the managed data.
-   *
+
    *	Any object that carries a pointer to managed data should call this function
    *	when acquiring and storing a pointer to that data.
-   *
+
    *	@returns	The total number of references.
    */
   int incRef() { return ++_refCount; }
 
   /*!
    *	@brief		Decrement references to the managed data.
-   *
+
    *	Any object that carries a pointer to managed data should call this function
    *	upon destruction (thereby removing its reference from the managed data's reference
    *	count.
-   *
+
    *	@returns	The number of remaining references.
    */
   int decRef() { return --_refCount; }
 
   /*!
    *	@brief		Reports if the data is referenced.
-   *
+
    *	Any object that carries a pointer to managed data, after dereferencing itself
    *	upon destruction, should determine if it is no longer referenced and delete
    *	the object if this function returns true.  NOTE: this is not thread-safe.
-   *
+
    *	@returns	True if the underlying managed data is no longer referenced, false
    *				otherwise.
    */
@@ -99,7 +99,7 @@ class MENGEVIS_API ManagedData {
 /*!
  *	@brief		A wrapper for managed data - automatically handles referencing
  *				and deletion of managed data.
- *
+
  *	Any class that uses managed data directly (i.e., a class derived from
  *	ManagedData) should sub-class the ManagedData wrapper and implement its
  *	interface.  The wrapper will automatically take care of reference counts.
@@ -109,10 +109,10 @@ class ManagedDataWrapper {
  public:
   /*!
    *	@brief		Constructor.
-   *
+
    *	All classes which must call this constructor in their own constructors.
    *	See Image::Image for an example.
-   *
+
    *	@param		data		A pointer to an instance of ManagedData.
    */
   ManagedDataWrapper(TData* data) {
@@ -123,7 +123,7 @@ class ManagedDataWrapper {
   /*!
    *	@brief		Technically, decrements the data's reference count
    *				and garbage collects it when necessary.
-   *
+
    *	Sub-classes of ManagedDataWrapper should call this in their destructor
    *	after destorying all the rest of their memory.
    *	See Image::~Image for an example.
@@ -162,7 +162,7 @@ class ManagedDataWrapper {
 
 /*!
  *	@brief		Templated function for acquiring a managed data resource from its name.
- *
+
  *	@param		name		The name of the on-disk resource.
  *	@param		map			The mapping from name to in-memory resource.
  *	@returns	A pointer to the ManagedData instance if it is in memory, NULL otherwise.
@@ -180,11 +180,11 @@ TData* getResource(const std::string& name, std::map<std::string, TData*>& map) 
 
 /*!
  *	@brief		Templated function for loading a managed data resource.
- *
+
  *	For each type of managed data and its wrapper, a function should exist that
  *	simply calls this function, templated on the wrapper and managed data types
  *	providing the name and the managed data reader function.  See Image for an example.
- *
+
  *	@param		fileName		The name of the on-disk resource.
  *	@param		reader			A pointer to the resource reading function.
  *	@returns	A pointer to the wrapper for the managed data.  NULL if the
@@ -209,10 +209,10 @@ T* loadManagedData(const std::string& fileName, TData* (*reader)(const std::stri
 
 /*!
  *	@brief		Tempalted function for removing a resource from the managed databse.
- *
+
  *	This *should* be called by the managed data instance in its destructor.
  *	The data is no longer valid and should need to be reloaded before re-use.
- *
+
  *	@param		data		A pointer to the managed data.
  *	@param		map			The map of names to manage data instances of this
  *type.

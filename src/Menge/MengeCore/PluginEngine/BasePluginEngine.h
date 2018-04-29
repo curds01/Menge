@@ -55,7 +55,7 @@ class BasePluginEngine {
 
   /*!
    *	@brief		Initialize plug-ins from the given directory.
-   *
+
    *	@param		pluginFolder		The folder to search for plugins.
    *	@returns	The number of plugins successfully loaded.
    */

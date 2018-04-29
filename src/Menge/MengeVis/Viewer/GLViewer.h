@@ -19,7 +19,7 @@
 /*!
  *	@file		GLViewer.h
  *	@brief		Specification for an OpenGL based 3D viewer.
- *
+
  *				Can draw a SceneGraph GLScene, perform view
  *				manipulation and overlay text on the scene.
  */
@@ -61,7 +61,7 @@ class MENGEVIS_API GLViewer {
  public:
   /*!
    *	@brief		Default constructor based on preferred viewer size.
-   *
+
    *	@param		width		The width of the view window, in pixels.
    *	@param		height		The height of the view window, in pixels.
    */
@@ -69,7 +69,7 @@ class MENGEVIS_API GLViewer {
 
   /*!
    *	@brief		Constructor based on configuration in a ViewConfig instance.
-   *
+
    *	@param		cfg		A fully specified view configuration.
    */
   GLViewer(ViewConfig& cfg);
@@ -88,7 +88,7 @@ class MENGEVIS_API GLViewer {
 
   /*!
    *	@brief		Sets the optional background image to the viewer.
-   *
+
    *	@param		imgName		A valid path to a valid image to load.
    *	@returns	A boolean reporting success (true) or failure (false).
    */
@@ -96,14 +96,14 @@ class MENGEVIS_API GLViewer {
 
   /*!
    *	@brief		Reports if the viewer has a background image.
-   *
+
    *	@returns	True if there is a background image, false otherwise.
    */
   bool hasBGImage() const { return _bgImg != 0x0; }
 
   /*!
    *	@brief		Sets the watermark to the viewer.
-   *
+
    *	@param		imgName		A valid path to a valid image to load.
    *	@returns	A boolean reporting success (true) or failure (false).
    */
@@ -111,7 +111,7 @@ class MENGEVIS_API GLViewer {
 
   /*!
    *	@brief		Reports if the viewer has a watermark.
-   *
+
    *	@returns	True if there is a watermark, false otherwise.
    */
   bool hasWatermark() const { return _waterMark != 0x0; }
@@ -123,7 +123,7 @@ class MENGEVIS_API GLViewer {
 
   /*!
    *	@brief		Initializes the viewer with the given title.
-   *
+
    *	@param		title		The name displayed at the top of the window.
    *	@returns	True if initialization was successful, false otherwise.
    */
@@ -131,7 +131,7 @@ class MENGEVIS_API GLViewer {
 
   /*!
    *	@brief		Resizes the window to the indicated size.
-   *
+
    *	@param		w		The new width of the viewer window.
    *	@param		h		The new height of the viewer window.
    */
@@ -146,7 +146,7 @@ class MENGEVIS_API GLViewer {
    *	@brief		Sets the GLScene to be drawn.
    *				A viewer can only draw a single scene; all drawn
    *				elements belong either to the GLScene or a GLContext.
-   *
+
    *	@param		scene	The GLScene to be rendered and temporally advanced.
    */
   void setScene(SceneGraph::GLScene* scene);
@@ -164,7 +164,7 @@ class MENGEVIS_API GLViewer {
 
   /*!
    *	@brief		Processes a mouse event.
-   *
+
    *	@param		e		An SDL_Event corresponding with an appropriate SDL mouse event
    *(button up/down, move).
    *	@returns	A boolean indicating if a scene redraw is necessary (true)
@@ -174,7 +174,7 @@ class MENGEVIS_API GLViewer {
 
   /*!
    *	@brief		Processes a keyboard event.
-   *
+
    *	@param		e		An SDL_Event corresponding with an appropriate SDL keyboard event
    *(key up/down).
    *	@returns	A boolean indicating if a scene redraw is necessary (true)
@@ -184,7 +184,7 @@ class MENGEVIS_API GLViewer {
 
   /*!
    *	@brief		Sets whether the world axis is drawn or not.
-   *
+
    *	@param		state	A boolean controlling whether the world axis is drawn (true)
    *						or not (false).
    */
@@ -192,7 +192,7 @@ class MENGEVIS_API GLViewer {
 
   /*!
    *	@brief		Reports the state of whether the world axis is drawn or not.
-   *
+
    *	@returns	A boolean indicating if the world axis is drawn (true) or not (false).
    */
   bool getDrawWorldAxis() const { return _drawWorldAxis; }
@@ -205,7 +205,7 @@ class MENGEVIS_API GLViewer {
 
   /*!
    *	@brief		Sets the horizontal field of view for the ith camera.
-   *
+
    *	@param		i		The index of the camera - index value is NOT checked.
    *	@param		fov		The horizontal field of view for the indicated camera.
    *						Value is not validated.
@@ -214,7 +214,7 @@ class MENGEVIS_API GLViewer {
 
   /*!
    *	@brief		Sets the distance to the camera's far clipping plane.
-   *
+
    *	@param		i		The index of the camera - index value is NOT checked.
    *	@param		dist	The distance, from the camera, to its far clipping plane.
    *						Value is not validated.
@@ -223,7 +223,7 @@ class MENGEVIS_API GLViewer {
 
   /*!
    *	@brief		Change the scene time by the given offset.
-   *
+
    *	@param		delta	The amount of time change.  Can be negative, but only
    *						meaningful if the GLScene can support negative time
    *changes.
@@ -231,7 +231,7 @@ class MENGEVIS_API GLViewer {
   void offsetTime(float delta);
   /*!
    *	@brief		Sets the current time.
-   *
+
    *	@param		t		The current time for the viewer and its GLScene.
    */
   void setTime(float t) { _viewTime = t; };
@@ -239,7 +239,7 @@ class MENGEVIS_API GLViewer {
   /*!
    *	@brief		Sets the view's background color.
    *				This must be called AFTER the view has been initialized.
-   *
+
    *	@param		r		The red component of the background color (must be in the range [0,
    *1]).
    *	@param		g		The green component of the background color (must be in the range [0,
@@ -251,7 +251,7 @@ class MENGEVIS_API GLViewer {
 
   /*!
    *	@brief		Gets a pointer to the ith camera.
-   *
+
    *	@param		i		The index of the desired camera.  The index value
    *						is not checked.
    *	@returns	A pointer to the ith camera.
@@ -260,7 +260,7 @@ class MENGEVIS_API GLViewer {
 
   /*!
    *	@brief		Sets the simulator to use a fixed time step, with the given value.
-   *
+
    *	@param		stepSize		The size of the fixed step the viewer should advance
    *								its GLScene.
    */
@@ -268,7 +268,7 @@ class MENGEVIS_API GLViewer {
 
   /*!
    *	@brief		Sets the path for when outputting screen capture images.
-   *
+
    *	@param		path		The path to which output images should be written.
    */
   void setDumpPath(const std::string& path);

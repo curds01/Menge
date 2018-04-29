@@ -56,7 +56,7 @@ class MENGE_API AttributeDefinitionException : public virtual Menge::MengeExcept
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   AttributeDefinitionException(const std::string& s) : Menge::MengeException(s) {}
@@ -76,7 +76,7 @@ class MENGE_API AttributeDefinitionFatalException : public AttributeDefinitionEx
 
   /*!
 *	@brief		Constructor with message.
-*
+
 *	@param		s		The exception-specific message.
 */
   AttributeDefinitionFatalException(const std::string& s)
@@ -85,11 +85,11 @@ class MENGE_API AttributeDefinitionFatalException : public AttributeDefinitionEx
 
 /*!
  *	@brief		An element attribute.
- *
+
  *	This serves as a simple mechanism to configure XML parsing for elements who only
  *	require simple xml-parameter-style arguments.  See AttributeSet for proper user.
  *	This is the entity responsible for parsing the XML and extracting the value specified.
- *
+
  *	The Attribute also stores the parsed value and reports on its own "validity".
  *	The validity of an Attribute is based on whether it is set to be "required"
  *	(i.e., the user *must* explicitly specify a value).  If a required attribute is
@@ -99,7 +99,7 @@ class MENGE_API Attribute {
  public:
   /*!
    *	@brief		Constructor
-   *
+
    *	@param		name		The attribute name - used in parsing XML attributes.
    *	@param		required	Whether or not the attribute is required (true)
    *							or not (false).
@@ -113,9 +113,9 @@ class MENGE_API Attribute {
 
   /*!
    *	@brief		Extracts the values for this attribute from the xml node.
-   *
+
    *	This is the main parsing work.  It must be performed by each attribute sub-class.
-   *
+
    *	@param		node			The XML node containing the attributes.
    *	@returns	True on sucessful extraction, false otherwise.
    */
@@ -123,21 +123,21 @@ class MENGE_API Attribute {
 
   /*!
    *	@brief		Returns a const reference to the name of the attribute.
-   *
+
    *	@returns	The name of the attribute.
    */
   inline const std::string& getName() const { return _name; }
 
   /*!
    *	@brief		Reports if this attribute is required to be specified.
-   *
+
    *	@returns	True if this attribute must be specified, false otherwise.
    */
   inline bool isRequired() const { return _required; }
 
   /*!
    *	@brief		Reports if the attribute is valid.
-   *
+
    *	@returns	True if the attribute is properly initialized, false otherwise.
    */
   inline bool isValid() const { return _valid; }
@@ -154,9 +154,9 @@ class MENGE_API Attribute {
 
   /*!
    *	@brief		Retrieve the parsed int value.
-   *
+
    *	If the type of this attribute is not an int, an exception will be thrown.
-   *
+
    *	@returns	The int value.
    *	@throws		An AttributeDefinitionException if the types are wrong.
    */
@@ -166,9 +166,9 @@ class MENGE_API Attribute {
 
   /*!
    *	@brief		Retrieve the parsed boolean value.
-   *
+
    *	If the type of this attribute is not a bool, an exception will be thrown.
-   *
+
    *	@returns	The boolean value.
    *	@throws		An AttributeDefinitionException if the types are wrong.
    */
@@ -178,9 +178,9 @@ class MENGE_API Attribute {
 
   /*!
    *	@brief		Retrieve the parsed float value.
-   *
+
    *	If the type of this attribute is not a float, an exception will be thrown.
-   *
+
    *	@returns	The float value.
    *	@throws		An AttributeDefinitionException if the types are wrong.
    */
@@ -190,9 +190,9 @@ class MENGE_API Attribute {
 
   /*!
    *	@brief		Retrieve the parsed string value.
-   *
+
    *	If the type of this attribute is not a string, an exception will be thrown.
-   *
+
    *	@returns	The string value.
    *	@throws		An AttributeDefinitionException if the types are wrong.
    */
@@ -202,9 +202,9 @@ class MENGE_API Attribute {
 
   /*!
    *	@brief		Retrieve the parsed size_t value.
-   *
+
    *	If the type of this attribute is not a size_t, an exception will be thrown.
-   *
+
    *	@returns	The size_t value.
    *	@throws		An AttributeDefinitionException if the types are wrong.
    */
@@ -214,9 +214,9 @@ class MENGE_API Attribute {
 
   /*!
    *	@brief		Retrieve the parsed float generator.
-   *
+
    *	If the type of this attribute is not a float generator, an exception will be thrown.
-   *
+
    *	@returns	A pointer to a float generator.  The float generator becomes
    *				the responsibility of the caller.
    *	@throws		An AttributeDefinitionException if the types are wrong.
@@ -227,7 +227,7 @@ class MENGE_API Attribute {
 
   /*!
    *	@brief		Retrieve the parsed 2D float generator.
-   *
+
    *	@returns	A pointer to a 2D float generator.  The float generator becomes
    *				the responsibility of the caller.
    *	@throws		An AttributeDefinitionException if the types are wrong.
@@ -240,9 +240,9 @@ class MENGE_API Attribute {
 
   /*!
    *	@brief		Retrieve the parsed int generator.
-   *
+
    *	If the type of this attribute is not an int generator, an exception will be thrown.
-   *
+
    *	@returns	A pointer to a float generator.  The float generator becomes
    *				the responsibility of the caller.
    *	@throws		An AttributeDefinitionException if the types are wrong.
@@ -279,7 +279,7 @@ class MENGE_API StringAttribute : public Attribute {
  public:
   /*!
    *	@brief		Constructor.
-   *
+
    *	@param		name		The attribute name.
    *	@param		required	Whether or not the attribute is required (true)
    *							or not (false).
@@ -290,9 +290,9 @@ class MENGE_API StringAttribute : public Attribute {
 
   /*!
    *	@brief		Extracts the values for this attribute from the xml node.
-   *
+
    *	This is the main parsing work.  It must be performed by each attribute sub-class.
-   *
+
    *	@param		node			The XML node containing the attributes.
    *	@returns	True on sucessful extraction, false otherwise.
    */
@@ -305,7 +305,7 @@ class MENGE_API StringAttribute : public Attribute {
 
   /*!
    *	@brief		Retrieve the parsed string value.
-   *
+
    *	@returns	The string value.
    *	@throws		An AttributeDefinitionException if the types are wrong.
    */
@@ -332,7 +332,7 @@ class MENGE_API IntAttribute : public Attribute {
  public:
   /*!
    *	@brief		Constructor.
-   *
+
    *	@param		name		The attribute name.
    *	@param		required	Whether or not the attribute is required (true)
    *							or not (false).
@@ -343,9 +343,9 @@ class MENGE_API IntAttribute : public Attribute {
 
   /*!
    *	@brief		Extracts the values for this attribute from the xml node.
-   *
+
    *	This is the main parsing work.  It must be performed by each attribute sub-class.
-   *
+
    *	@param		node			The XML node containing the attributes.
    *	@returns	True on sucessful extraction, false otherwise.
    */
@@ -358,7 +358,7 @@ class MENGE_API IntAttribute : public Attribute {
 
   /*!
    *	@brief		Retrieve the parsed int value.
-   *
+
    *	@returns	The int value.
    *	@throws		An AttributeDefinitionException if the types are wrong.
    */
@@ -385,7 +385,7 @@ class MENGE_API FloatAttribute : public Attribute {
  public:
   /*!
    *	@brief		Constructor.
-   *
+
    *	@param		name		The attribute name.
    *	@param		required	Whether or not the attribute is required (true)
    *							or not (false).
@@ -396,9 +396,9 @@ class MENGE_API FloatAttribute : public Attribute {
 
   /*!
    *	@brief		Extracts the values for this attribute from the xml node.
-   *
+
    *	This is the main parsing work.  It must be performed by each attribute sub-class.
-   *
+
    *	@param		node			The XML node containing the attributes.
    *	@returns	True on sucessful extraction, false otherwise.
    */
@@ -411,7 +411,7 @@ class MENGE_API FloatAttribute : public Attribute {
 
   /*!
    *	@brief		Retrieve the parsed float value.
-   *
+
    *	@returns	The float value.
    *	@throws		An AttributeDefinitionException if the types are wrong.
    */
@@ -438,7 +438,7 @@ class MENGE_API BoolAttribute : public Attribute {
  public:
   /*!
    *	@brief		Constructor.
-   *
+
    *	@param		name		The attribute name.
    *	@param		required	Whether or not the attribute is required (true)
    *							or not (false).
@@ -449,9 +449,9 @@ class MENGE_API BoolAttribute : public Attribute {
 
   /*!
    *	@brief		Extracts the values for this attribute from the xml node.
-   *
+
    *	This is the main parsing work.  It must be performed by each attribute sub-class.
-   *
+
    *	@param		node			The XML node containing the attributes.
    *	@returns	True on sucessful extraction, false otherwise.
    */
@@ -464,7 +464,7 @@ class MENGE_API BoolAttribute : public Attribute {
 
   /*!
    *	@brief		Retrieve the parsed boolean value.
-   *
+
    *	@returns	The boolean value.
    *	@throws		An AttributeDefinitionException if the types are wrong.
    */
@@ -491,7 +491,7 @@ class MENGE_API SizeTAttribute : public Attribute {
  public:
   /*!
    *	@brief		Constructor.
-   *
+
    *	@param		name		The attribute name.
    *	@param		required	Whether or not the attribute is required (true)
    *							or not (false).
@@ -502,9 +502,9 @@ class MENGE_API SizeTAttribute : public Attribute {
 
   /*!
    *	@brief		Extracts the values for this attribute from the xml node.
-   *
+
    *	This is the main parsing work.  It must be performed by each attribute sub-class.
-   *
+
    *	@param		node			The XML node containing the attributes.
    *	@returns	True on sucessful extraction, false otherwise.
    */
@@ -517,7 +517,7 @@ class MENGE_API SizeTAttribute : public Attribute {
 
   /*!
    *	@brief		Retrieve the parsed size_t value.
-   *
+
    *	@returns	The size_t value.
    *	@throws		An AttributeDefinitionException if the types are wrong.
    */
@@ -544,7 +544,7 @@ class MENGE_API FloatDistributionAttribute : public Attribute {
  public:
   /*!
    *	@brief		Constructor.
-   *
+
    *	@param		name		The attribute name - in this case, interpreted as the
    *							the prefix for the distribution values.
    *	@param		required	Whether or not the attribute is required (true)
@@ -565,9 +565,9 @@ class MENGE_API FloatDistributionAttribute : public Attribute {
 
   /*!
    *	@brief		Extracts the values for this attribute from the xml node.
-   *
+
    *	This is the main parsing work.  It must be performed by each attribute sub-class.
-   *
+
    *	@param		node			The XML node containing the attributes.
    *	@returns	True on sucessful extraction, false otherwise.
    */
@@ -580,7 +580,7 @@ class MENGE_API FloatDistributionAttribute : public Attribute {
 
   /*!
    *	@brief		Retrieve the parsed float generator.
-   *
+
    *	@returns	A pointer to a float generator.  The float generator becomes
    *				the responsibility of the caller.
    *	@throws		An AttributeDefinitionException if the types are wrong.
@@ -619,10 +619,10 @@ class MENGE_API Vec2DDistributionAttribute : public Attribute {
  public:
   /*!
    *	@brief		Constructor.
-   *
+
    *	The 2D Vector generator does not accept an optional prefix like the float and int
    *	distributions.
-   *
+
    *	@param		required	Whether or not the attribute is required (true)
    *							or not (false).
    *	@param		defValue	The default value for the attribute if none is provided.
@@ -640,9 +640,9 @@ class MENGE_API Vec2DDistributionAttribute : public Attribute {
 
   /*!
    *	@brief		Extracts the values for this attribute from the xml node.
-   *
+
    *	This is the main parsing work.  It must be performed by each attribute sub-class.
-   *
+
    *	@param		node			The XML node containing the attributes.
    *	@returns	True on sucessful extraction, false otherwise.
    */
@@ -655,7 +655,7 @@ class MENGE_API Vec2DDistributionAttribute : public Attribute {
 
   /*!
    *	@brief		Retrieve the parsed 2D float generator.
-   *
+
    *	@returns	A pointer to a 2D float generator.  The float generator becomes
    *				the responsibility of the caller.
    *	@throws		An AttributeDefinitionException if the types are wrong.
@@ -693,7 +693,7 @@ class MENGE_API IntDistributionAttribute : public Attribute {
  public:
   /*!
    *	@brief		Constructor.
-   *
+
    *	@param		name		The attribute name - in this case, interpreted as the
    *							the prefix for the distribution values.
    *	@param		required	Whether or not the attribute is required (true)
@@ -712,9 +712,9 @@ class MENGE_API IntDistributionAttribute : public Attribute {
 
   /*!
    *	@brief		Extracts the values for this attribute from the xml node.
-   *
+
    *	This is the main parsing work.  It must be performed by each attribute sub-class.
-   *
+
    *	@param		node			The XML node containing the attributes.
    *	@returns	True on sucessful extraction, false otherwise.
    */
@@ -727,7 +727,7 @@ class MENGE_API IntDistributionAttribute : public Attribute {
 
   /*!
    *	@brief		Retrieve the parsed int generator.
-   *
+
    *	@returns	A pointer to a float generator.  The float generator becomes
    *				the responsibility of the caller.
    *	@throws		An AttributeDefinitionException if the types are wrong.

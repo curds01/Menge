@@ -38,11 +38,11 @@ namespace BFSM {
 
 /*!
  *	@brief		A velocity modifier that scales the input velocity's speed.
- *
+
  *	To specify a scale velocity modifier, use the following syntax:
- *
+
  *		<VelModifier type="scale" scale="float"/>
- *
+
  *	The value `scale` contains the scalar factor the input preferred
  *	velocity's speed will be multiplied by.
  */
@@ -55,7 +55,7 @@ class MENGE_API ScaleVelModifier : public VelModifier {
 
   /*!
    *	@brief		Constructor.
-   *
+
    *	@param		scale			The scale factor to apply to the preferred
    *velocity's
    *								speed.
@@ -64,7 +64,7 @@ class MENGE_API ScaleVelModifier : public VelModifier {
 
   /*!
    *	@brief		Sets the scale factor.
-   *
+
    *	@param		scale			The the scale factor to apply to the preferred
    *								velocity's speed.
    */
@@ -73,7 +73,7 @@ class MENGE_API ScaleVelModifier : public VelModifier {
   /*!
    *	@brief		Scales the input preferred velocity's speed by the pre-defined scale
    *				factor.
-   *
+
    *	@param		agent		The agent for which a preferred velocity is modified.
    *	@param		pVel		The instance of Agents::PrefVelocity to set.
    */
@@ -81,21 +81,21 @@ class MENGE_API ScaleVelModifier : public VelModifier {
 
   /*!
    *	@brief		Returns scale factor.
-   *
+
    *	@returns	The scale factor stored in this modifier.
    */
   float getScale() const { return _scale; }
 
   /*!
    *	@brief		Creates a copy of this velocity modifier.
-   *
+
    *	@returns	A unique, deep copy of this velocity modifier.
    */
   VelModifier* copy() const;
 #if 0
 			/*!
 			 *	@brief		Provides a display context for interacting with this velocity modifier.
-			 *
+
 			 *	@returns	A pointer to a context for this vel modifier.
 			 */
 			virtual VelModContext * getContext();    //TODO: Implement the context
@@ -119,7 +119,7 @@ class MENGE_API ScaleVelModifier : public VelModifier {
 		public:
 			/*!
 			 *	@brief		Constructor.
-			 *
+
 			 *	@param		vm			A pointer to the underlying fsm velocity modifier.
 			 *							The context will *not* delete the velocity modifier.
 			 */
@@ -128,7 +128,7 @@ class MENGE_API ScaleVelModifier : public VelModifier {
 			/*!
 			 *	@brief		Provides a string to be printed in the display as a UI element
 			 *				detailing velocity modifier information.
-			 *
+
 			 *	@param		indent		An optional string representing indentation to be
 			 *							applied to the text.  It is prefixed at the start
 			 *							of each line.
@@ -138,9 +138,9 @@ class MENGE_API ScaleVelModifier : public VelModifier {
 
 			/*!
 			 *	@brief		Draw context elements into the 3D world.
-			 *
+
 			 *	This should never be called in select mode.
-			 *
+
 			 *	@param		agt			The particular agent for which the FSM is being visualized.
 			 */
 			virtual void draw3DGL( const Agents::BaseAgent * agt);
@@ -166,19 +166,19 @@ class MENGE_API ScaleVMFactory : public VelModFactory {
 
   /*!
    *	@brief		The name of the velocity modifier.
-   *
+
    *	The velocity modifiers's name must be unique among all registered
    *	velocity modifiers.  Each velocity modifier factory must override this function.
-   *
+
    *	@returns	A string containing the unique velocity modifier name.
    */
   virtual const char* name() const { return "scale"; }
 
   /*!
    *	@brief		A description of the velocity modifier.
-   *
+
    *	Each velocity modifier factory must override this function.
-   *
+
    *	@returns	A string containing the velocity modifier description.
    */
   virtual const char* description() const {
@@ -188,13 +188,13 @@ class MENGE_API ScaleVMFactory : public VelModFactory {
  protected:
   /*!
    *	@brief		Create an instance of this class's velocity modifier.
-   *
+
    *	All VelModFactory sub-classes must override this by creating (on the heap)
    *	a new instance of its corresponding velocity modifier type.  The various field
    *	values of the instance will be set in a subsequent call to
    *	VelModFactory::setFromXML. The caller of this function takes ownership of the
    *	memory.
-   *
+
    *	@returns		A pointer to a newly instantiated VelModifier class.
    */
   VelModifier* instance() const { return new ScaleVelModifier(); }
@@ -202,13 +202,13 @@ class MENGE_API ScaleVMFactory : public VelModFactory {
   /*!
    *	@brief		Given a pointer to an VelModifier instance, sets the appropriate fields
    *				from the provided XML node.
-   *
+
    *	It is assumed that the value of the `type` attribute is this VelModifier's type.
    *	(i.e. VelModFactory::thisFactory has already been called and returned true.)
    *	If sub-classes of VelModFactory introduce *new* VelComponent parameters, then the
    *	sub-class should override this method but explicitly call the parent class's
    *	version.
-   *
+
    *	@param		vm			A pointer to the velocity modifier whose attributes are
    *to
    *							be set.

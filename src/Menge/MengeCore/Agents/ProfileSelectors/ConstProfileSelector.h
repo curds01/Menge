@@ -35,7 +35,7 @@ namespace Agents {
 /*!
  *	@brief		A profile selector that stores a single agent initializer
  *				and assigns this profile to all agents.
- *
+
  *	To specify a const profile selector use the following syntax:
  *
  *  @code{xml}
@@ -54,18 +54,18 @@ class MENGE_API ConstProfileSelector : public ProfileSelector {
 
   /*!
    *	@brief		Select an agent profile based on internal mechanisms.
-   *
+
    *	@returns	A const pointer to an agent initializer.
    */
   virtual AgentInitializer* getProfile() const { return _init; }
 
   /*!
    *	@brief		Caches the agent initializers defined in the specification.
-   *
+
    *	Although the ProfileSelector can cache pointers to the profiles for
    *	internal convenience, it does not own the memory and should not delete
    *	them.
-   *
+
    *	@param		profiles		A mapping from profile name to initializer.
    *	@returns	True if successful, false otherwise.
    */
@@ -73,7 +73,7 @@ class MENGE_API ConstProfileSelector : public ProfileSelector {
 
   /*!
    *	@brief		Sets the name of the profile.
-   *
+
    *	@param		name		The name of the selector's profile.
    */
   void setName(const std::string& name) { _profileName = name; }
@@ -104,19 +104,19 @@ class MENGE_API ConstProfileSelectorFactory : public ProfileSelectorFactory {
 
   /*!
    *	@brief		The name of the profile selector type.
-   *
+
    *	The profile selector's name must be unique among all registered profile selector
    *	elements. Each profile selector factory must override this function.
-   *
+
    *	@returns	A string containing the unique profile selector name.
    */
   virtual const char* name() const { return "const"; }
 
   /*!
    *	@brief		A description of the profile selector.
-   *
+
    *	Each profile selector factory must override this function.
-   *
+
    *	@returns	A string containing the profile selector description.
    */
   virtual const char* description() const {
@@ -126,13 +126,13 @@ class MENGE_API ConstProfileSelectorFactory : public ProfileSelectorFactory {
  protected:
   /*!
    *	@brief		Create an instance of this class's profile selector implementation.
-   *
+
    *	All ProfileSelectorFactory sub-classes must override this by creating (on the heap)
    *	a new instance of its corresponding selector type.  The various field values
    *	of the instance will be set in a subsequent call to
    *	ProfileSelectorFactory::setFromXML. The caller of this function takes ownership of
    *	the memory.
-   *
+
    *	@returns		A pointer to a newly instantiated ProfileSelector class.
    */
   ProfileSelector* instance() const { return new ConstProfileSelector(); }
@@ -140,13 +140,13 @@ class MENGE_API ConstProfileSelectorFactory : public ProfileSelectorFactory {
   /*!
    *	@brief		Given a pointer to a pProfileSelector instance, sets the appropriate
    *				fields from the provided XML node.
-   *
+
    *	It is assumed that the value of the `type` attribute is this ProfileSelector's
    *	type. (i.e. ProfileSelectorFactory::thisFactory has already been called and
    *	returned true.) If sub-classes of ProfileSelectorFactory introduce *new*
    *	ProfileSelector parameters, then the sub-class should override this method but
    *	explicitly call the parent class's version.
-   *
+
    *	@param		pSel			A pointer to the profile selector whose attributes
    *are
    *								to be set.

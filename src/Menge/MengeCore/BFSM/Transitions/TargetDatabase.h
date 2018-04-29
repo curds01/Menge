@@ -19,7 +19,7 @@
 /*!
  *	@file		TargetDatabase.h
  *	@brief		Central database for querying available behavior transition targets.
- *
+
  *	For transition targets to be used in the finite state machine, they must register
  *	themselves into the TargetDatabase.  This is done via the PluginEngine.
  */

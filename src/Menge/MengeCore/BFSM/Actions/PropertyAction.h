@@ -45,7 +45,7 @@ namespace BFSM {
 
 /*!
  *	@brief		The base class for modifying agent properties.
- *
+
  *	This is an abstract class and must be sub-classed.  To create different
  *	types of property actions, simply specialize this templated class with
  *	a different type of AgentPropertyManipulator.
@@ -68,7 +68,7 @@ class MENGE_API PropertyAction : public Action {
   /*!
    *	@brief		Upon entering the state, this is called -- it is the main work
    *				of the action.
-   *
+
    *	@param		agent		The agent to act on.
    */
   virtual void onEnter(Agents::BaseAgent* agent) { _manip.manipulate(agent); }
@@ -81,7 +81,7 @@ class MENGE_API PropertyAction : public Action {
  protected:
   /*!
    *	@brief		The work to do upon state exit.
-   *
+
    *	@param		agent		The agent to act on.
    */
   virtual void resetAction(Agents::BaseAgent* agent) { _manip.restore(agent); }
@@ -96,7 +96,7 @@ class MENGE_API PropertyAction : public Action {
 
 /*!
  *	@brief		Factory for the PropertyAction.
- *
+
  *	This is still an abstract class because it doesn't define the
  *	name or description.  Nor does it define instance.
  */
@@ -115,13 +115,13 @@ class MENGE_API PropertyActFactory : public ActionFactory {
   /*!
    *	@brief		Given a pointer to an Action instance, sets the appropriate fields
    *				from the provided XML node.
-   *
+
    *	It is assumed that the value of the `type` attribute is this Action's type.
    *	(i.e. ActionFactory::thisFactory has already been called and returned true.)
    *	If sub-classes of ActionFactory introduce *new* Action parameters, then the
    *	sub-class should override this method but explicitly call the parent class's
    *	version.
-   *
+
    *	@param		action		A pointer to the action whose attributes are to be set.
    *	@param		node		The XML node containing the action attributes.
    *	@param		behaveFldr	The path to the behavior file.  If the action references
@@ -172,19 +172,19 @@ class MENGE_API SetPropertyActFactory : public PropertyActFactory<Menge::SetProp
  public:
   /*!
    *	@brief		The name of the action.
-   *
+
    *	The action's name must be unique among all registered actions.
    *	Each action factory must override this function.
-   *
+
    *	@returns	A string containing the unique action name.
    */
   virtual const char* name() const { return "set_property"; }
 
   /*!
    *	@brief		A description of the action.
-   *
+
    *	Each action factory must override this function.
-   *
+
    *	@returns	A string containing the action description.
    */
   virtual const char* description() const {
@@ -194,12 +194,12 @@ class MENGE_API SetPropertyActFactory : public PropertyActFactory<Menge::SetProp
  protected:
   /*!
    *	@brief		Create an instance of this class's action.
-   *
+
    *	All ActionFactory sub-classes must override this by creating (on the heap)
    *	a new instance of its corresponding action type.  The various field values
    *	of the instance will be set in a subsequent call to ActionFactory::setFromXML.
    *	The caller of this function takes ownership of the memory.
-   *
+
    *	@returns		A pointer to a newly instantiated Action class.
    */
   Action* instance() const { return new PropertyAction<Menge::SetPropertyManipulator>(); }
@@ -215,19 +215,19 @@ class MENGE_API OffsetPropertyActFactory
  public:
   /*!
    *	@brief		The name of the action.
-   *
+
    *	The action's name must be unique among all registered actions.
    *	Each action factory must override this function.
-   *
+
    *	@returns	A string containing the unique action name.
    */
   virtual const char* name() const { return "offset_property"; }
 
   /*!
    *	@brief		A description of the action.
-   *
+
    *	Each action factory must override this function.
-   *
+
    *	@returns	A string containing the action description.
    */
   virtual const char* description() const {
@@ -237,12 +237,12 @@ class MENGE_API OffsetPropertyActFactory
  protected:
   /*!
    *	@brief		Create an instance of this class's action.
-   *
+
    *	All ActionFactory sub-classes must override this by creating (on the heap)
    *	a new instance of its corresponding action type.  The various field values
    *	of the instance will be set in a subsequent call to ActionFactory::setFromXML.
    *	The caller of this function takes ownership of the memory.
-   *
+
    *	@returns		A pointer to a newly instantiated Action class.
    */
   Action* instance() const { return new PropertyAction<Menge::OffsetPropertyManipulator>(); }
@@ -258,19 +258,19 @@ class MENGE_API ScalePropertyActFactory
  public:
   /*!
    *	@brief		The name of the action.
-   *
+
    *	The action's name must be unique among all registered actions.
    *	Each action factory must override this function.
-   *
+
    *	@returns	A string containing the unique action name.
    */
   virtual const char* name() const { return "scale_property"; }
 
   /*!
    *	@brief		A description of the action.
-   *
+
    *	Each action factory must override this function.
-   *
+
    *	@returns	A string containing the action description.
    */
   virtual const char* description() const {
@@ -280,12 +280,12 @@ class MENGE_API ScalePropertyActFactory
  protected:
   /*!
    *	@brief		Create an instance of this class's action.
-   *
+
    *	All ActionFactory sub-classes must override this by creating (on the heap)
    *	a new instance of its corresponding action type.  The various field values
    *	of the instance will be set in a subsequent call to ActionFactory::setFromXML.
    *	The caller of this function takes ownership of the memory.
-   *
+
    *	@returns		A pointer to a newly instantiated Action class.
    */
   Action* instance() const { return new PropertyAction<Menge::ScalePropertyManipulator>(); }

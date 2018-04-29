@@ -68,7 +68,7 @@ class SharedLibrary {
 
   /*!
    *	@brief		Loads the DLL from the given path.
-   *
+
    *	@param		Path of the dll to be loaded.
    *	@returns	The Handle for the DLL
    *	@throws		std::runtime_error if there is an error in loading the dll
@@ -84,7 +84,7 @@ class SharedLibrary {
 
   /*!
    *	@brief		Unloads the DLL for the given handle
-   *
+
    *	@param		The Handle for the DLL
    *	@throws		std::runtime_error if there is an error in unloading the dll
    */
@@ -98,7 +98,7 @@ class SharedLibrary {
   /*!
    *	@brief		Templated class for returning a pointer to a function with the
    *				given signature from the indicated dll.
-   *
+
    *	@param		handle		The dll's handle.
    *	@param		funcName	The name of the function
    *	@returns	The desired function pointer.
@@ -133,7 +133,7 @@ class SharedLibrary {
 
   /*!
    *	@brief		Loads the shared library from the given path.
-   *
+
    *	@param		path		Path of the shared library to be loaded.
    *	@returns	The Handle for the shared library
    *	@throws		std::runtime_error if there is an error in loading the shared library
@@ -150,7 +150,7 @@ class SharedLibrary {
 
   /*!
    *	@brief		Unloads the shared library for the given handle
-   *
+
    *	@param		sharedLibraryHandle		The Handle for the shared library
    *	@throws		std::runtime_error if there is an error in unloading the shared library
    */
@@ -164,7 +164,7 @@ class SharedLibrary {
   /*!
    *	@brief		Templated class for returning a pointer to a function with the
    *				given signature from the indicated dll.
-   *
+
    *	@param		handle		The dll's handle.
    *	@param		funcName	The name of the function
    *	@returns	The desired function pointer.

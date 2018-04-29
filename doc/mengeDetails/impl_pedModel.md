@@ -38,17 +38,17 @@ Your Simulator class should sub-class the templated PedSim::SimulatorBase class.
 If your agent model has no global parameters, then you should simply implement the function PedSim::SimulatorBase::hasExpTarget like this:
 
 	virtual bool hasExpTarget() { return false; }
-	
+
 This informs the XML parser that your model does *not* expect to see any specific global parameter definitions.  If, however, your model does have global parameters, then it is necessary to inform the parser and provide the functionality for handling it.  
 
 First, the `hasExpTarget` function must return `true`.  Second, the following function must be implemented, reporting the name of the property set via the function PedSim::SimulatorBase::isExpTarget:
 
 	bool isExpTarget( const std::string & tagName ) { return tagName == "TagName"; }
-	
+
 Replace `TagName` with a uniquely identifying string that is not `Common` (as that is reserved for the common properties of all pedestrian models).  Finally, your Simulator class must handle parsing the properties by implementing the function PedSim::SimulatorBase::setExpParam:
 
 	bool setExpParam( const std::string & paramName, const std::string & value ) throw( PedSim::XMLParamException )
-	
+
 Each attribute of the tag `TagName` will be passed into this function (as a parameter-value pair of strings).  The `setExpParam` function should test the parameter name, making sure it is expected, and confirm that the value is consistent with expectations.  If the parameter is expected and the string value is acceptable, it should return true, otherwise return false.
 
 It is recommended that the global parameters be stored as static members of the simulator.  This is a reasonable choice because %Menge will only instantiate one Simulator at a time.  As global members of the simulator, each agent will have easy access to the global parameters without necessarily increasing the agent's memory footprint.
@@ -135,10 +135,10 @@ Do the following:
 		- Build Events
 			- Post-Build Events
 				- Command Line (release and debug )
-				
+
 						if not exist $(SolutionDir)Exe\plugins  md $(SolutionDir)Exe\plugins
 						xcopy /y $(TargetPath) $(SolutionDir)Exe\plugins
-					
+
 				- Description
 					- `Copy DLL to exectuable folder`
 

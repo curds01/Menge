@@ -52,7 +52,7 @@ class FunnelApex {
  public:
   /*!
    *	@brief		Constructor
-   *
+
    *	@param		id			The index of the portal associated with this
    *							apex.  If -1, it is the start position.
    *	@param		point		The location of the start point.
@@ -61,7 +61,7 @@ class FunnelApex {
 
   /*!
    *	@brief		Sets the values of the apex
-   *
+
    *	@param		id			The index of the portal associated with this
    *							apex.  If -1, it is the start position.
    *	@param		point		The location of the start point.
@@ -102,7 +102,7 @@ class FunnelEdge {
 #ifdef SIMPLE_FUNNEL
   /*!
    *	@brief		Constructor.
-   *
+
    *	@param		id		The identifier of the portal from which this
    *						direction arises.
    *	@param		dir	The direction from the apex to the portal.
@@ -111,7 +111,7 @@ class FunnelEdge {
 #else
   /*!
    *	@brief		Constructor.
-   *
+
    *	@param		id		The identifier of the portal from which this
    *						direction arises.
    *	@param		end		The identifier of the portal at which this
@@ -125,7 +125,7 @@ class FunnelEdge {
 
   /*!
    *	@brief		Reports if the given direction is to the left of this edge.
-   *
+
    *	@param		dir		The direction to test.
    *	@returns	A boolean reporting if the direction is to the left of this
    *				edge (true) or to the right (false).
@@ -134,7 +134,7 @@ class FunnelEdge {
 
   /*!
    *	@brief		Reports if the given direction is to the right of this edge.
-   *
+
    *	@param		dir		The direction to test.
    *	@returns	A boolean reporting if the direction is to the right of this
    *				edge (true) or to the left (false).
@@ -143,7 +143,7 @@ class FunnelEdge {
 
   /*!
    *	@brief		Sets the properties of the funnel edge.
-   *
+
    *	@param		id		The id of the portal to which this funnel edge is
    *associated.
    *	@param		dir		The direction of the edge.
@@ -204,7 +204,7 @@ class FunnelPlanner {
   /*!
    *	@brief		Computes the crossings for the given path based on
    *				the funnel algorithm.
-   *
+
    *	@param		radius			The radius of the agent.
    *	@param		startPos		The starting position of the path.
    *	@param		path			A pointer to a portal path.

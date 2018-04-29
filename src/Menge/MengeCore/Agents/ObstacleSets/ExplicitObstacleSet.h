@@ -58,19 +58,19 @@ class MENGE_API ExplicitObstacleSetFactory : public ObstacleSetFactory {
  public:
   /*!
    *	@brief		The name of the obstacleset type.
-   *
+
    *	The set's name must be unique among all registered obstacleset components.
    *	Each obstacleset factory must override this function.
-   *
+
    *	@returns	A string containing the unique obstacleset name.
    */
   virtual const char* name() const { return "explicit"; }
 
   /*!
    *	@brief		A description of the obstacle set
-   *
+
    *	Each obstacleset factory must override this function.
-   *
+
    *	@returns	A string containing the obstacleset description.
    */
   virtual const char* description() const {
@@ -81,12 +81,12 @@ class MENGE_API ExplicitObstacleSetFactory : public ObstacleSetFactory {
  protected:
   /*!
    *	@brief		Create an instance of this class's obstacleset implementation.
-   *
+
    *	All ObstacleSetFactory sub-classes must override this by creating (on the heap)
    *	a new instance of its corresponding ObstacleSet type.  The various field values
    *	of the instance will be set in a subsequent call to ObstacleSetFactory::setFromXML.
    *	The caller of this function takes ownership of the memory.
-   *
+
    *	@returns		A pointer to a newly instantiated ExplicitObstacleSet class.
    */
   ObstacleSet* instance() const { return new ExplicitObstacleSet(); }
@@ -94,13 +94,13 @@ class MENGE_API ExplicitObstacleSetFactory : public ObstacleSetFactory {
   /*!
    *	@brief		Given a pointer to an ObstacleSet instance, sets the appropriate fields
    *				from the provided XML node.
-   *
+
    *	It is assumed that the value of the `type` attribute is this ObstacleSet's type.
    *	(i.e. ObstacleSetFactory::thisFactory has already been called and returned true.)
    *	If sub-classes of ObstacleSetFactory introduce *new* ObstacleSet parameters, then
    *	the sub-class should override this method but explicitly call the parent class's
    *	version.
-   *
+
    *	@param		gen			A pointer to the ObstacleSet whose attributes are to be
    *set.
    *	@param		node		The XML node containing the ObstacleSet attributes.
@@ -116,7 +116,7 @@ class MENGE_API ExplicitObstacleSetFactory : public ObstacleSetFactory {
 
   /*!
    *	@brief		Parses an obstacle position from an \<Obstacle\> tag.
-   *
+
    *	@param		node		The XML node containing the agent definition.
    *	@returns	Vector of Vector2s representing the obstacle parsed
    *	@throws		ObstacleSetException if the Obstacle tag is mangled or incomplete

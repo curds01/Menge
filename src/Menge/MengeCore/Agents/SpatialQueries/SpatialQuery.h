@@ -50,7 +50,7 @@ class MENGE_API SpatialQueryException : public virtual MengeException {
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   SpatialQueryException(const std::string& s) : MengeException(s) {}
@@ -69,7 +69,7 @@ class MENGE_API SpatialQueryFatalException : public SpatialQueryException,
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   SpatialQueryFatalException(const std::string& s)
@@ -81,7 +81,7 @@ class BaseAgent;
 
 /*!
  *	@brief		The base class for performing spatial queries.
- *
+
  *	A spatial query implementation has to support several operations:
  *		- Given a maximum distance, find agents within that distance from a point
  *		- Given a maximum distance, find obstacles within that distance from a point
@@ -122,7 +122,7 @@ class MENGE_API SpatialQuery : public Element {
 
   /*!
    *  @brief      Adds an obstacle to the internal list of the spatial query
-   *
+
    * 	@param		obs		The obstacle to insert into the spatial query data
    *						structure.
    */
@@ -131,7 +131,7 @@ class MENGE_API SpatialQuery : public Element {
   /*!
    *  @brief      Returns the collected obstacles of the spatial query for use
    *				in visualization.
-   *
+
    *  @returns    A const reference to the obstacle set
    */
   const std::vector<Obstacle*>& getObstacles() const { return _obstacles; }
@@ -173,7 +173,7 @@ class MENGE_API SpatialQuery : public Element {
 
   /*!
    *	@brief		Sets the spatial query to include visibility in finding agent neighbors.
-   *
+
    *	@param		state		If true, the spatial query has to consider visibility.
    *							if false, it doesn't.
    */
@@ -181,14 +181,14 @@ class MENGE_API SpatialQuery : public Element {
 
   /*!
    *	@brief		Sets the test visibility status of the neighbor functions.
-   *
+
    *	@param		status		The new status of the test visibility property.
    */
   inline void setTestVisibility(bool status) { _testVisibility = status; }
 
   /*!
    *	@brief		Reports the test visibility property of the spatial query instance.
-   *
+
    *	@returns	A boolean reporting if the spatial query instance uses visibility
    *				tests when computing nearby agents and obstacles (true) or not
    *(false).
@@ -204,7 +204,7 @@ class MENGE_API SpatialQuery : public Element {
 
   /*!
    *	@brief		an internal central list of obstacles
-   *
+
    */
   std::vector<Obstacle*> _obstacles;
 };

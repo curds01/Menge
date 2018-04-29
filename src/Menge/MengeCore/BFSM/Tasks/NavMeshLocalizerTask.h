@@ -48,7 +48,7 @@ class MENGE_API NavMeshLocalizerTask : public Task {
  public:
   /*!
    *	@brief		Constructor from a localizer.
-   *
+
    *	@param		navMeshName		The name of the navigation mesh which the
    *								task depends on.
    *	@param		usePlanner		Indicates if the localizer should use a planner
@@ -58,7 +58,7 @@ class MENGE_API NavMeshLocalizerTask : public Task {
 
   /*!
    *	@brief		The work performed by the task.
-   *
+
    *	@param		fsm		The finite state machine for the task to operate on.
    *	@throws		A TaskException if there was some non-fatal error
    *				in execution.  It should be logged.
@@ -69,7 +69,7 @@ class MENGE_API NavMeshLocalizerTask : public Task {
 
   /*!
    *	@brief		String representation of the task
-   *
+
    *	@returns	A string containing task information.
    */
   virtual std::string toString() const;
@@ -79,7 +79,7 @@ class MENGE_API NavMeshLocalizerTask : public Task {
    *				This makes it possible for a task to be redundantly added
    *				to the fsm without fear of duplication as the equivalent
    *				duplicates will be culled.
-   *
+
    *	@param		task		The task to test against this one.
    *	@returns	A boolean reporting if the two tasks are equivalent (true)
    *				or unique (false).

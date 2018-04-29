@@ -19,7 +19,7 @@
 /*!
  *	@file		VelModifierDatabase.h
  *	@brief		Central database for querying available behavior velocity modifiers.
- *
+
  *	For velocity modifiers to be used in the finite state machine, they must register
  *	themselves into the VelModDB.  This is done via the PluginEngine.
  */

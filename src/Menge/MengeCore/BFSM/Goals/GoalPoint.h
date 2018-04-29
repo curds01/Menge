@@ -42,14 +42,14 @@ class MENGE_API PointGoal : public Goal {
 
   /*!
    *	@brief		Full constructor.
-   *
+
    *	@param		p		The position of the goal.
    */
   PointGoal(const Vector2& p);
 
   /*!
    *	@brief		Full constructor - component-wise.
-   *
+
    *	@param		x		The x-position of the goal.
    *	@param		y		The x-position of the goal.
    */
@@ -73,19 +73,19 @@ class MENGE_API PointGoalFactory : public GoalFactory {
  public:
   /*!
    *	@brief		The name of the goal type.
-   *
+
    *	The goal's name must be unique among all registered goals.
    *	Each goal factory must override this function.
-   *
+
    *	@returns	A string containing the unique goal name.
    */
   virtual const char* name() const { return PointGoal::NAME.c_str(); }
 
   /*!
    *	@brief		A description of the goal.
-   *
+
    *	Each goal factory must override this function.
-   *
+
    *	@returns	A string containing the goal description.
    */
   virtual const char* description() const {
@@ -95,7 +95,7 @@ class MENGE_API PointGoalFactory : public GoalFactory {
  protected:
   /*!
    *	@brief		Create an instance of this class's goal.
-   *
+
    *	@returns		A pointer to a newly instantiated Goal class.
    */
   Goal* instance() const { return new PointGoal(); }
@@ -103,7 +103,7 @@ class MENGE_API PointGoalFactory : public GoalFactory {
   /*!
    *	@brief		Given a pointer to a Goal instance, sets the appropriate fields
    *				from the provided XML node.
-   *
+
    *	@param		goal		A pointer to the goal whose attributes are to be set.
    *	@param		node		The XML node containing the action attributes.
    *	@param		behaveFldr	The path to the behavior file.  If the action references

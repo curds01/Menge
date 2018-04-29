@@ -32,13 +32,13 @@ namespace MengeVis {
 
 /*!
  *	@brief		Handles updating the scene graph when there is a new OpenGL context.
- *
+
  *	Through this class and its static members, all of the resources used in the scene graph
  *	are refreshed when the OpenGL context changes.
- *
+
  *	Each resource registers a refresh callback  to the manager and then the viewer, when
  *	changin GL Contexts, calls newGLContext() to have the resources update.
- *
+
  *	If any new resources are added to the SceneGraph which have OpenGL-dependent memory
  *	(such as textures, display lists, arrays of data, etc.) that class must provide
  *	a static callback method and register it so its data can be restored in the new
@@ -53,7 +53,7 @@ class MENGEVIS_API GLContextManager {
  public:
   /*!
    *	@brief		Register a new class callback to the context manager.
-   *
+
    *	@param		newGLContext	A pointer to the callback function.
    */
   static void addCallback(void (*newGLContext)());

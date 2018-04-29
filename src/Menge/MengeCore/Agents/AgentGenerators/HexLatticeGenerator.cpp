@@ -55,7 +55,7 @@ namespace Agents {
 /*!
  *	@brief		Computes the effective density of an agent to achieve the target
  *				density.
- *
+
  *	@param		density		The target density.
  *	@returns	The radius of the disk which, if maximally packed, achieves the
  *				target density.
@@ -67,7 +67,7 @@ float effectiveRadius(float density) { return 1.f / sqrt(2.f * density * sqrt(3.
 /*!
  *	@brief		Computes the rank distance based on a target radius.
  *				rank distance is the distance between two rows in the lattice.
- *
+
  *	@param		radius		The target radius of the disk.
  *	@returns	The distance between rows.
  */

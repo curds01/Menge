@@ -20,7 +20,7 @@
  *  @file       ORCATypeAgentContext.h
  *  @brief      A basic context for interacting with and displaying
  *				ORCA-type agent parameters.
- *
+
  *	ORCA-type agents are those that solve w.r.t. a set of linear constraints
  *	this context gives some basic functionality for displaying those constraints
  */
@@ -50,18 +50,18 @@ class ORCATypeAgentContext : public BaseAgentContext {
 
   /*!
    *	@brief		Sets the agent for this context.
-   *
+
    *	This method works in conjunction with the VisElementDatabase. When this
    *	visualization element is triggered, the database will supply the triggering
    *	element.
-   *
+
    *	@param		agent		The agent to interact with.
    */
   virtual void setElement(VisAgent* agent);
 
   /*!
    *	@brief		Returns the name of the context for display.
-   *
+
    *	@returns		The name of this context.
    */
   virtual std::string contextName() const { return "UNDEFINED ORCA TYPE"; }
@@ -76,7 +76,7 @@ class ORCATypeAgentContext : public BaseAgentContext {
   /*!
    *	@brief		Give the context the opportunity to respond to a keyboard
    *				event.
-   *
+
    *	@param		e		The SDL event with the keyboard event data.
    *	@returns	A ContextResult instance reporting if the event was handled and
    *				if redrawing is necessary.
@@ -92,7 +92,7 @@ class ORCATypeAgentContext : public BaseAgentContext {
  protected:
   /*!
    *	@brief		Draw context elements into the 3D world.
-   *
+
    *	@param		select		Defines if the drawing is being done for selection
    *							purposes (true) or visualization (false).
    */
@@ -117,7 +117,7 @@ class ORCATypeAgentContext : public BaseAgentContext {
 
   /*!
    *	@brief		Draws the given ORCA line for the given agent
-   *
+
    *	@param		agent		A pointer to the agent to whom this line applies
    *	@param		line		The actual line
    *	@param		isAgent		A boolean reporting if the orca line comes from an agent.
@@ -127,7 +127,7 @@ class ORCATypeAgentContext : public BaseAgentContext {
 
   /*!
    *	@brief		Draw the optimized velocity for the current set of orca lines
-   *
+
    *	@param		agent		A pointer to the agent for which the velocity is drawn
    *							computeNewVelocity will be called on the
    *agent
@@ -137,7 +137,7 @@ class ORCATypeAgentContext : public BaseAgentContext {
   /*!
    *	@brief		Creates a formatted string to be printed in the context
    *				for a particular agent
-   *
+
    *	@param		agent		A pointer to the agent for which the information is
    *							displayed.
    *	@returns	A formatted string for display in the context's 2D gui.
@@ -151,7 +151,7 @@ class ORCATypeAgentContext : public BaseAgentContext {
 
   /*!
    *	@brief		Function for drawing the ORCA lines acting on agt
-   *
+
    *	@param		agt			A pointer to the agent whose ORCA lines will be
    *drawn.
    */
@@ -169,7 +169,7 @@ class ORCATypeAgentContext : public BaseAgentContext {
 
   /*!
    *	@brief		The function that draws the visualization of the orca construction
-   *
+
    *	@param		agt			A pointer to the agent for whom the *computation* of
    *							a single ORCA line is illustrated.
    */

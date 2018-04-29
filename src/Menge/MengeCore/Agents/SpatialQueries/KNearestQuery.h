@@ -36,11 +36,11 @@ namespace Agents {
 
 /*!
  *	@brief		The K-Nearest query class
- *
+
  *	A spatial query which returns the k nearest agents and obstacles in the spatial query
  *      The query doesn't know where the point it, it is given distances
  *      in this case, K is set to the maxAgentResults and maxObstacleResults
- *
+
  */
 class KNearestQuery : public ProximityQuery {
  public:
@@ -57,7 +57,7 @@ class KNearestQuery : public ProximityQuery {
   /*!
    *  @brief      Filters an agent and determines if it is within the set of k-nearest
    *				neighbors.
-   *
+
    *  @param      agent     the agent to consider
    *  @param      distSq	  the squared distance to the agent
    */
@@ -66,7 +66,7 @@ class KNearestQuery : public ProximityQuery {
   /*!
    *  @brief      Filters an obstacle and determines if it is within the set of k-nearest
    *				neighbors.
-   *
+
    *  @param      obstacle    the obstacle to consider
    *  @param      distSq		the squared distance to the obstacle
    */
@@ -74,56 +74,56 @@ class KNearestQuery : public ProximityQuery {
 
   /*!
    *  @brief      sets the max number of agent results for this query to store
-   *
+
    *  @param      results         the number of agent results to store
    */
   void setMaxAgentResults(size_t results) { _maxAgentResults = results; }
 
   /*!
    *  @brief      sets the max number of obstacle results for this query to store
-   *
+
    *  @param      results         the number of obstacle results to store
    */
   void setMaxObstacleResults(size_t results) { _maxObstacleResults = results; }
 
   /*!
    *  @brief      sets the query point
-   *
+
    *  @param     point       the query point to be stored
    */
   void setQueryPoint(Math::Vector2 point) { _queryPoint = point; }
 
   /*!
    *  @brief      sets the query point
-   *
+
    *  @param     range       the squared range to search for nearby candidates
    */
   void setQueryRangeSq(float range) { _initialRange = range; }
 
   /*!
    *  @brief      gets the max number of agent results for this query to store
-   *
+
    *  @returns      the number of agent results to store
    */
   size_t maxAgentResults() { return _maxAgentResults; }
 
   /*!
    *  @brief      gets the max number of obstacle results for this query to store
-   *
+
    *  @returns      the number of obstacle results to store
    */
   size_t maxObstacleResults() { return _maxObstacleResults; }
 
   /*!
    *  @brief      gets the number of agent results stored currently
-   *
+
    *  @returns         the number of agent results in the query
    */
   size_t agentResultCount() { return _agentResults.size(); }
 
   /*!
    *  @brief      gets the number of obstacle results stored currently
-   *
+
    *  @returns         the number of obstacle results in the query
    */
   size_t obstacleResultCount() { return _obstacleResults.size(); }
@@ -135,14 +135,14 @@ class KNearestQuery : public ProximityQuery {
 
   /*!
    *  @brief      gets the start point for the query
-   *
+
    *   @returns    the query point for this query
    */
   virtual Math::Vector2 getQueryPoint() { return _queryPoint; }
 
   /*!
    *  @brief      gets the ith agent result
-   *
+
    *  @param      i		the index of the agent to get
    *  @returns    the result pair in question
    */
@@ -150,7 +150,7 @@ class KNearestQuery : public ProximityQuery {
 
   /*!
    *  @brief      gets the ith obstacle result
-   *
+
    *  @param      i		the index of the obstacle to get
    *  @returns    the result pair in question
    */
@@ -160,7 +160,7 @@ class KNearestQuery : public ProximityQuery {
    *  @brief      Updates the max agent query range if conditions inside the query are
    *              met typically, we don't shrink the query range until the result set is
    *				full.
-   *
+
    *  @returns    the new query distance. Typically this is the initial value.d
    */
   virtual float getMaxAgentRange();
@@ -170,7 +170,7 @@ class KNearestQuery : public ProximityQuery {
    *				met typically, we don't shrink the query range until the result set
    *is
    *				full.
-   *
+
    *  @returns    the new query distance. Typically this is the initial value.
    */
   virtual float getMaxObstacleRange() { return _initialRange; };

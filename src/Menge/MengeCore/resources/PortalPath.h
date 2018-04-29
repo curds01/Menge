@@ -42,7 +42,7 @@ class BaseAgent;
 
 /*!
  *	@brief		The definition of a path through space comprising of a sequence of portals.
- *
+
  *	The path is repsonsible for computing instantaneous preferred velocity for an agent
  *	based on a PortalRoute and an optimized path through the portals.
  */
@@ -50,7 +50,7 @@ class MENGE_API PortalPath {
  public:
   /*!
    *	@brief		Constructor
-   *
+
    *	@param		startPos		The 2D position where the path starts
    *	@param		goal			The goal (whose centroid lies in the final polygon).
    *	@param		route			The route the path follows
@@ -66,7 +66,7 @@ class MENGE_API PortalPath {
 
   /*!
    *	@brief		Sets the directions in the preferred velocity from the path
-   *
+
    *	@param		agent			The agent for which the preferred direction should
    *be
    *								computed.
@@ -84,7 +84,7 @@ class MENGE_API PortalPath {
 
   /*!
    *	@brief		Updates the location of the agent relative to the nav mesh.
-   *
+
    *	@param		agent		The agent whose location is updated.
    *	@param		navMesh		The navmesh for making queries.
    *	@param		localizer	The nav mesh localizer for identifying locations.
@@ -96,7 +96,7 @@ class MENGE_API PortalPath {
 
   /*!
    *	@brief		Reports the node the agent is currently in.
-   *
+
    *	@returns	The index of the node associated with this location.
    *				If the location is not on a node, PortalPath::NO_NODE is returned.
    */
@@ -104,14 +104,14 @@ class MENGE_API PortalPath {
 
   /*!
    *	@brief		Reports the number of way points in the path (*not* including the goal)
-   *
+
    *	@return		The number of points (*not* including the goal).
    */
   inline size_t getWayPointCount() const { return _route->getPortalCount(); }
 
   /*!
    *	@brief		Returns the position of the ith way point.
-   *
+
    *	@param		i		The index of the desired way point.
    *	@returns	The 2d position of the desired way point.
    */
@@ -119,28 +119,28 @@ class MENGE_API PortalPath {
 
   /*!
    *	@brief		Returns the goal.
-   *
+
    *	@returns	The goal.
    */
   inline const BFSM::Goal* getGoal() const { return _goal; }
 
   /*!
    *	@brief		Returns the centroid of the goal.
-   *
+
    *	@returns	The goal's centroid.
    */
   inline Math::Vector2 getGoalCentroid() const { return _goal->getCentroid(); }
 
   /*!
    *	@brief		Returns the identifier for the destination node on the path.
-   *
+
    *	@returns	The destination node's index.
    */
   inline unsigned int getEndNode() const { return _route->getEndNode(); }
 
   /*!
    *	@brief		Returns the id of the node traveled for the ith way point.
-   *
+
    *	@param		i		The index of the ith way point.
    *	@returns	The identifier of the node the agent would be travelling on
    *				while making progress toward the ith point.
@@ -150,21 +150,21 @@ class MENGE_API PortalPath {
   /*!
    *	@brief		Returns the index of the current portal (the portal
    *				the agent is currently headed towards.
-   *
+
    *	@returns	The index of the current portal.
    */
   inline size_t getCurrentPortal() const { return _currPortal; }
 
   /*!
    *	@brief		Reports the number of portals in the path)
-   *
+
    *	@return		The number of portals.
    */
   inline size_t getPortalCount() const { return _route->getPortalCount(); }
 
   /*!
    *	@brief		Returns the ith portal
-   *
+
    *	@param		i		The index of the desired portal
    *	@returns	A pointer to the ith portal.
    */
@@ -172,7 +172,7 @@ class MENGE_API PortalPath {
 
   /*!
    *	@brief		Set the waypoints for all of the indicated way portals.
-   *
+
    *	@param		start		The index of the first portal to set the crossing point.
    *	@param		end			The index of the first portal to stop at.  In other
    *words,
@@ -204,7 +204,7 @@ class MENGE_API PortalPath {
 
   /*!
    *	@brief		Computes the crossing values for each portal
-   *
+
    *	@param		startPos		The 2D position where the path starts
    *	@param		agentRadius		The radius of the given agent.
    */
@@ -222,7 +222,7 @@ class MENGE_API PortalPath {
 
   /*!
    *	@brief		Something has changed and the path has to replan.
-   *
+
    *	@param		startPos		The starting position.
    *	@param		startNode		The starting node (startPos should lie on this
    *node.)

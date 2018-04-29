@@ -40,7 +40,7 @@ namespace MengeVis {
 namespace Runtime {
 /*!
  *	@brief		The basic agent visualization class: a selectable cylinder.
- *
+
  *	This is the basic visualization of simulation agents in the visualization
  *  context.  The agents are drawn as 3D cylinders by default.  This class can
  *	be sub-classed adn the drawGL method can be overridden to provide a different
@@ -55,11 +55,11 @@ class MENGEVIS_API VisAgent : public SceneGraph::GLNode, public SceneGraph::Sele
 
   /*!
    *	@brief		Sets the agent for this agent visualizer.
-   *
+
    *	This method works in conjunction with the VisElementDatabase. When this
    *	visualization element is triggered, the database will supply the triggering
    *	element.
-   *
+
    *	@param		goal		The goal to interact with.
    */
   void setElement(const Menge::Agents::BaseAgent* agent);
@@ -74,7 +74,7 @@ class MENGEVIS_API VisAgent : public SceneGraph::GLNode, public SceneGraph::Sele
   /*!
    *	@brief		Creates a clone of this vis agent, moving the contained agent to the
    *				clone.  The caller is responsible for the new VisAgent instance.
-   *
+
    *	@returns	A copy of this visualization agent (with a pointer to the same
    *				underlying simulation agent).
    */
@@ -82,7 +82,7 @@ class MENGEVIS_API VisAgent : public SceneGraph::GLNode, public SceneGraph::Sele
 
   /*!
    *	@brief		Draw the agent into the 3D world.
-   *
+
    *	@param		select		Defines if the drawing is being done for selection
    *							purposes (true) or visualization (false).
    */
@@ -91,14 +91,14 @@ class MENGEVIS_API VisAgent : public SceneGraph::GLNode, public SceneGraph::Sele
   /*!
    *	@brief		Returns a Agents::BaseAgent pointer of the associated simulation
    *				agent.
-   *
+
    *	@returns	A pointer to the visualization agent's simulation agent.
    */
   const Menge::Agents::BaseAgent* getAgent() const { return _agent; }
 
   /*!
    *	@brief		Set the 3D position of the visual agent.
-   *
+
    *	@param		x		The x-position of the agent (in world coordinates).
    *	@param		y		The y-position of the agent (in world coordinates).
    *	@param		z		The z-position of the agent (in world coordinates).
@@ -107,9 +107,9 @@ class MENGEVIS_API VisAgent : public SceneGraph::GLNode, public SceneGraph::Sele
 
   /*!
    *	@brief		String identifier of the underlying agent.
-   *
+
    *	This permits mapping of visual element to the appropriate agent context.
-   *
+
    *	@returns	The string identifier for the agent this visualization agent contains.
    */
   std::string getStringId() const;
@@ -117,10 +117,10 @@ class MENGEVIS_API VisAgent : public SceneGraph::GLNode, public SceneGraph::Sele
  protected:
   /*!
    *	@brief		Execute the code that actually draws the agent in its local space.
-   *
+
    *	Subclasses should use this to define the geometry, relying on it to have
    *	already been positioned appropriately.
-   *
+
    *	@param		r		The red component of the agent color to draw.
    *	@param		g		The green component of the agent color to draw.
    *	@param		b		The blue component of the agent color to draw.
@@ -130,7 +130,7 @@ class MENGEVIS_API VisAgent : public SceneGraph::GLNode, public SceneGraph::Sele
   /*!
    *	@brief		Confirm that the agent provided is compatible with this VisAgent
    *				instance.
-   *
+
    *				Sub-classes that care about the *type* of agent that is passed in
    *				should override this and perform the appropriate test, returning
    *true
@@ -145,10 +145,10 @@ class MENGEVIS_API VisAgent : public SceneGraph::GLNode, public SceneGraph::Sele
 
   /*!
    *	@brief		Defines the color of the cylinder.
-   *
+
    *	The color is computed and returned via the three floats passed in as
    *	parameters.
-   *
+
    *	@param		r		The red component of the cylinder.
    *	@param		g		The green component of the cylinder.
    *	@param		b		The blue component of the cylinder.

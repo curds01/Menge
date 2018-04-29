@@ -39,7 +39,7 @@ class MENGEVIS_API GLLight {
  public:
   /*!
    *	@brief		Defines the space of the camera: world or camera.
-   *
+
    *				If world, the camera is fixed to the world.
    *				If camera, it is fixed to the camera and moves with the camera.
    */
@@ -47,7 +47,7 @@ class MENGEVIS_API GLLight {
 
   /*!
    *	@brief		Defines the type of the light: point or directional.
-   *
+
    *				If the light is point light, it acts like a single point
    *				source originating from the position.  If the light is a
    *				directional light, it is a light source, infinitely far away
@@ -68,7 +68,7 @@ class MENGEVIS_API GLLight {
 
   /*!
    *	@brief		Sets the light color.
-   *
+
    *	@param		r		The red component of the light's diffuse color.
    *						Must lie in the range [0, 1]
    *	@param		g		The green component of the light's diffuse color.
@@ -82,7 +82,7 @@ class MENGEVIS_API GLLight {
 
   /*!
    *	@brief		Sets the light color.
-   *
+
    *	@param		x		The x-value of the light's position.
    *	@param		y		The y-value of the light's position.
    *	@param		z		The z-value of the light's position.
@@ -97,7 +97,7 @@ class MENGEVIS_API GLLight {
 
   /*!
    *	@brief		Sets the light type
-   *
+
    *	@param		lightType		The enumeration specifying either POINT or
    *								DIRECTIONAL light.
    */
@@ -105,7 +105,7 @@ class MENGEVIS_API GLLight {
 
   /*!
    *	@brief		Sets the space of the camera
-   *
+
    *	@param		space		The space for the camera.
    */
   void setSpace(LightSpace space) { _space = space; }
@@ -116,7 +116,7 @@ class MENGEVIS_API GLLight {
 
   /*!
    *	@brief		Initializes the corresponding OpenGL light
-   *
+
    *	@param		i			The GL identifier for this light, such that
    *							this light is GL_LIGHTi.
    *	@param		space		The space being initialized.  If the light is

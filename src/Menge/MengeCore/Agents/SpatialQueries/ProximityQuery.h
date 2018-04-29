@@ -42,15 +42,15 @@ class BaseAgent;
 
 /*!
  *	@brief		The base class for filtering spatial queries according to proximity
- *
+
  *	There are different types of spatial queries: nearest, k-nearest, k-nearest with minimum
  *range, etc.
  *	The ProximityQuery class works in conjunction with a SpatialQuery implementation to
  *	define one of these types of spatial queries.  It serves as a means of directing the
  *	spatial query implementation in its search and of filtering and caching the results.
- *
+
  *	The ProximityQuery can apply to proximal agents or obstacles.
- *
+
  *	Valid sub-classes must provide implementations for both obstacles and agents.
  */
 class MENGE_API ProximityQuery {
@@ -74,7 +74,7 @@ class MENGE_API ProximityQuery {
 
   /*!
    *  @brief      gets the start point for the query ???
-   *
+
    *  @returns    the query point for this Query
    */
   virtual Math::Vector2 getQueryPoint() = 0;
@@ -84,7 +84,7 @@ class MENGE_API ProximityQuery {
    *				met typically, we don't shrink the query range until the result set
    *is
    *				full.
-   *
+
    *  @returns	the current max query range
    */
   virtual float getMaxAgentRange() = 0;
@@ -94,14 +94,14 @@ class MENGE_API ProximityQuery {
    *				met typically, we don't shrink the query range until the result set
    *is
    *				full.
-   *
+
    *  @returns	the current max query range
    */
   virtual float getMaxObstacleRange() = 0;
 
   /*!
    *  @brief      filters an agent and determines if it needs to be in the result set
-   *
+
    *              CHILDREN MUST OVERWRITE THIS
    *  @param      agent     the agent to consider
    *  @param      distSq  the distance to the agent
@@ -110,7 +110,7 @@ class MENGE_API ProximityQuery {
 
   /*!
    *  @brief      filters an obstacle and determines if it needs to be in the result set
-   *
+
    *              CHILDREN MUST OVERWRITE THIS
    *  @param      obstacle     the obstacle to consider
    *  @param      distSq  the distance to the obstacle

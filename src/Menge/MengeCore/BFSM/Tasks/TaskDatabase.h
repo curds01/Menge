@@ -19,7 +19,7 @@
 /*!
  *	@file		TaskDatabase.h
  *	@brief		Central database for querying available behavior actions.
- *
+
  *	For tasks to be used in the finite state machine, they must register
  *	themselves into the TaskDatabase.  This is done via the PluginEngine.
  */

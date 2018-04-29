@@ -48,13 +48,13 @@ class MENGE_API ObstacleSetFactory : public ElementFactory<ObstacleSet> {
   /*!
    *	@brief		Given a pointer to an ObstacleSet instance, sets the appropriate fields
    *				from the provided XML node.
-   *
+
    *	It is assumed that the value of the `type` attribute is this ObstacleSet's type.
    *	(i.e. ObstacleSetFactory::thisFactory has already been called and returned true.)
    *	If sub-classes of ObstacleSetFactory introduce *new* ObstacleSet parameters, then
    *	the sub-class should override this method but explicitly call the parent class's
    *	version.
-   *
+
    *	@param		gen			A pointer to the ObstacleSet whose attributes are to
    *be
    *							set.

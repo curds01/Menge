@@ -80,7 +80,7 @@ class MENGE_API Obstacle {
   /*!
    *	@brief		Computes the squared distance from the obstacle to the given point.
    *				Also sets the value of the point in the provided Vector2
-   *
+
    *	@param		pt			The point whose distance is to be evaluated
    *	@param		nearPt		The position on the obstacle which is nearest to the
    *							test point will be set here.
@@ -95,7 +95,7 @@ class MENGE_API Obstacle {
   /*!
    *	@brief		Determines if a circle, moving along a ray, will intersect
    *				the obstacle.
-   *
+
    *	@param		dir		The direction of motion
    *	@param		start	The starting point of the circle
    *	@param		radius	The radius of the circle
@@ -107,14 +107,14 @@ class MENGE_API Obstacle {
 
   /*!
    *	@brief		Returns the length of the obstacle
-   *
+
    *	@returns	The length.
    */
   inline float length() const { return _length; }
 
   /*!
    *	@brief		Reports if the given point lies on the obstacle
-   *
+
    *	@param		pt		The point to test
    *	@returns	True if pt is on the obstacle, false otherwise
    */
@@ -124,7 +124,7 @@ class MENGE_API Obstacle {
    *	@brief		Reports if the given point is on the "outside" of
    *				the obstacle.  This definition depends on whether the
    *				obstacle is double-sided or not.
-   *
+
    *	@param		point		The point to test.
    *	@returns	A boolean reporting if the point lies on the outside of this
    *				obstacle (true) or not (false).
@@ -138,10 +138,10 @@ class MENGE_API Obstacle {
 
   /*!
    *	@brief		Reports if the obstacle is convext at _point.
-   *
+
    *	Takes into account the double-sidedness of the obstacle and the side
    *	of the obstacle the agent is on.
-   *
+
    *	@param		agtOnRight		Indicate if the agent is on the right side of
    *								the obstacle (true) or the left
    *(false).
@@ -153,10 +153,10 @@ class MENGE_API Obstacle {
 
   /*!
    *	@brief		Reports if the obstacle is convext at _point + _length * _unitDir.
-   *
+
    *	Takes into account the double-sidedness of the obstacle and the side
    *	of the obstacle the agent is on.
-   *
+
    *	@param		agtOnRight		Indicate if the agent is on the right side of
    *								the obstacle (true) or the left
    *(false).
@@ -171,10 +171,10 @@ class MENGE_API Obstacle {
 
   /*!
    *	@brief		Sets the obstacle's closed state.
-   *
+
    *	If closed, it is part of a sequence of obstacles that form a closed polygon.
    *	If open, it is part of a polyline.
-   *
+
    *	@param		closed		Defines the obstacle as part of a closed polygon (true),
    *							or a closed polygon (false).
    */
@@ -182,7 +182,7 @@ class MENGE_API Obstacle {
 
   /*!
    *	@brief		Reports if the obstacle is double sided.
-   *
+
    *	If double sided (true) then the obstacle should be included in the
    *	nearby obstacles, *regardless* of which side of the line the agent lies.
    */
@@ -235,7 +235,7 @@ class MENGE_API Obstacle {
 /*!
    *  @brief      Computes the squared distance from a line segment with the
    *              specified endpoints to a specified point.
-   *
+
    *  @param      a               The first endpoint of the line segment.
    *  @param      b               The second endpoint of the line segment.
    *  @param      c               The point to which the squared distance is to

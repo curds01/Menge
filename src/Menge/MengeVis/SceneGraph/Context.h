@@ -56,7 +56,7 @@ class MENGEVIS_API ContextResult {
  public:
   /*!
    *	@brief		Constructor
-   *
+
    *	@param		handled			Set to true if the event has been handled and does
    *								not need to be considered by any other
    *handler.
@@ -68,7 +68,7 @@ class MENGEVIS_API ContextResult {
 
   /*!
    *	@brief		Simple assignment operator overloaded.
-   *
+
    *	@param		res		Const reference to the ContextResult instance to copy from.
    *	@returns	A reference to this context result.
    */
@@ -80,7 +80,7 @@ class MENGEVIS_API ContextResult {
 
   /*!
    *	@brief		Sets the "handled" state to the given boolean state.
-   *
+
    *	@param		state		True means the result should consider the event handled,
    *							otherwise false.
    */
@@ -88,14 +88,14 @@ class MENGEVIS_API ContextResult {
 
   /*!
    *	@brief		Reports if the result considers the event handled.
-   *
+
    *	@returns	True if the result considers the event handled, false otherwise.
    */
   inline bool isHandled() const { return _handled; }
 
   /*!
    *	@brief		Sets the "needs redraw" state to the given boolean state.
-   *
+
    *	@param		state		True means the result should believe the event requires a
    *							redraw, otherwise false.
    */
@@ -103,14 +103,14 @@ class MENGEVIS_API ContextResult {
 
   /*!
    *	@brief		Reports if the result believes the event handling requires a redraw.
-   *
+
    *	@returns	True if the result requires a redraw, false otherwise.
    */
   inline bool needsRedraw() const { return _redraw; }
 
   /*!
    *	@brief		Sets the handled and needs redraw state simultaneously.
-   *
+
    *	@param		handled		True if the result should consider the event handled, false
    *							otherwise.
    *	@param		redraw		True means the result should believe the event requires a
@@ -124,7 +124,7 @@ class MENGEVIS_API ContextResult {
   /*!
    *	@brief		Combines the provided context result with this one; flags are combined
    *				with a boolean OR.
-   *
+
    *	@param		res		The context results to combine with this.
    */
   inline void combine(const ContextResult& res) {
@@ -168,7 +168,7 @@ class MENGEVIS_API Context {
 
   /*!
    *	@brief		The draw function for the context.
-   *
+
    *	@param		vWidth		The width of the viewport (in pixels).
    *	@param		vHeight		The height of the viewport (in pixels).
    */
@@ -177,7 +177,7 @@ class MENGEVIS_API Context {
   /*!
    *	@brief		Performs selection based on a click on screen space.
    *				Uses the OpenGL selection mechanism.
-   *
+
    *	@param		scene			The scene to select in.
    *	@param		camera			The camera.
    *	@param		vWidth			The width of the viewport.
@@ -195,7 +195,7 @@ class MENGEVIS_API Context {
   /*!
    *	@brief		Give the context the opportunity to respond to a mouse
    *				event.
-   *
+
    *	@param		e		The SDL event with the mouse event data.
    *	@returns	A ContextResult instance reporting if the event was handled and
    *				if redrawing is necessary.
@@ -205,7 +205,7 @@ class MENGEVIS_API Context {
   /*!
    *	@brief		Give the context the opportunity to respond to a keyboard
    *				event.
-   *
+
    *	@param		e		The SDL event with the keyboard event data.
    *	@returns	A ContextResult instance reporting if the event was handled and
    *				if redrawing is necessary.
@@ -237,7 +237,7 @@ class MENGEVIS_API Context {
   /*!
    *	@brief		UI setup - handles the configuration of the opengl context
    *				for orthographic rendering.
-   *
+
    *	@param		vWidth		The width of the view (in pixels).
    *	@param		vHeight		The height of the view (in pixels).
    */
@@ -251,7 +251,7 @@ class MENGEVIS_API Context {
 
   /*!
    *	@brief		Draw UI elements into the context.
-   *
+
    *	@param		vWidth		The width of the viewport (in pixels).
    *	@param		vHeight		The height of the viewport (in pixels).
    *	@param		select		Defines if the drawing is being done for selection
@@ -261,7 +261,7 @@ class MENGEVIS_API Context {
 
   /*!
    *	@brief		Draw context elements into the 3D world.
-   *
+
    *	@param		select		Defines if the drawing is being done for selection
    *							purposes (true) or visualization (false).
    */
@@ -330,12 +330,12 @@ class MENGEVIS_API Context {
 
   /*!
    *	@brief		Writes the given text to the screen based on the given alignment.
-   *
+
    *	The text will be written to one of 9 locations:
    *		- Top left corner, top center, top right corner
    *		- left center, screen center, right center
    *		- bottom left corner, bottom center, bottom right corner
-   *
+
    *	@param		txt			The text to write to the screen.
    *	@param		align		TextWriter alignment specification.
    *	@param		fontSize	The size of the text to write.
@@ -376,7 +376,7 @@ class MENGEVIS_API SelectContext : public Context {
   /*!
    *	@brief		Performs selection based on a click on screen space.
    *				Uses the OpenGL selection mechanism.
-   *
+
    *	@param		scene			The scene to select in.
    *	@param		camera			The camera.
    *	@param		vWidth			The width of the viewport.

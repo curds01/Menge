@@ -322,7 +322,7 @@ void FSM::finalize() {
 				StateContext * sCtx = new StateContext( _nodes[ i ] );
 				ctx->addStateContext( _nodes[i]->getID(), sCtx );
 			}
-			
+
 			return ctx;
 		}
 #endif

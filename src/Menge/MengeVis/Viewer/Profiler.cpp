@@ -238,7 +238,7 @@ class Profiler {
   /*!
    *	@brief		Returns a pointer to the singleton instance, creating it as
    *				necessary.
-   *
+
    *	@returns	A pointer to the single instance of profiler
    */
   static Profiler* getInstance() {
@@ -252,7 +252,7 @@ class Profiler {
 
   /*!
    *	@brief		Creates a lap timer which uses the given label for display.
-   *
+
    *	@param		label		The string to display when reporting the profiling
    *							results.
    *	@returns	The identifier for the created timer.
@@ -276,7 +276,7 @@ class Profiler {
 
   /*!
    *	@brief		Starts the ith timer.
-   *
+
    *	@param		i			The identifier for the timer.  Only checked in debug
    *mode.
    */
@@ -290,7 +290,7 @@ class Profiler {
   /*!
    *	@brief		Reports the time elapsed between this call and the last start for the
    *				ith timer.
-   *
+
    *	@param		i			The identifier for the timer.  Only checked in debug
    *mode.
    *	@param		scale		The scale of the units to report the elapsed time in.
@@ -311,7 +311,7 @@ class Profiler {
    *				this call for the ith timer.  The clock is still "running" and the
    *next
    *				lap starts.
-   *
+
    *	@param		i			The identifier for the timer.  Only checked in debug
    *mode.
    *	@param		scale		The scale of the units to report the elapsed time in.
@@ -329,7 +329,7 @@ class Profiler {
   /*!
    *	@brief		Reports the average lap time across all recorded laps for the ith
    *				timer.
-   *
+
    *	@param		i			The identifier for the timer.  Only checked in debug
    *mode.
    *	@param		scale		The scale of the units to report the elapsed time in.
@@ -346,7 +346,7 @@ class Profiler {
 
   /*!
    *	@brief		Reports the number of laps the ith counter has had.
-   *
+
    *	@param		i			The identifier for the timer.  Only checked in debug
    *mode.
    *	@returns	The number of laps.
@@ -361,7 +361,7 @@ class Profiler {
   /*!
    *	@brief		Reports the average lap time across all recorded laps for the first
    *				"count" timers.
-   *
+
    *	@param		count		The first count timers' average times will be reported.
    *							Only checked in debug mode.
    *	@param		scale		The scale of the units to report the elapsed time in.
@@ -381,7 +381,7 @@ class Profiler {
 
   /*!
    *	@brief		Returns the display string for the given LapTimer.
-   *
+
    *	@param		i		The index of the desired timer -- only validated in debug
    *mode.
    *	@returns	The display string for the indicated LapTimer.

@@ -34,11 +34,11 @@ namespace Menge {
 
 /*!
  *	@brief		The definition of a simple mutex-style lock.
- *
+
  *	This lock provides a simple mutex to guarantee thread-safe concurrency.
  *	Use of this lock guarantees that only one thread at a time can acquire
  *	the lock.
- *
+
  */
 class MENGE_API SimpleLock {
  public:
@@ -70,7 +70,7 @@ class MENGE_API SimpleLock {
  private:
   /*!
    *	@brief		The openmp lock used for synchronization.
-   *
+
    *	This is mutable so the corresponding functions can be called in a const
    *	context.
    */

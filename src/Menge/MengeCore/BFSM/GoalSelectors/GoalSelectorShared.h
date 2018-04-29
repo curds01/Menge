@@ -57,7 +57,7 @@ class SharedGoalSelector : public GoalSelector {
 
   /*!
    *	@brief		Interface function for acquiring per-agent goals.
-   *
+
    *	@param		agent		The agent for whom a goal is extracted.
    *	@returns	A pointer to a goal.
    */
@@ -87,19 +87,19 @@ class SharedGoalSelectorFactory : public GoalSelectorFactory {
  public:
   /*!
    *	@brief		The name of the goal selector type.
-   *
+
    *	The goal selector's name must be unique among all registered goal selectors.
    *	Each goal selector factory must override this function.
-   *
+
    *	@returns	A string containing the unique goal selector name.
    */
   virtual const char* name() const { return "shared"; }
 
   /*!
    *	@brief		A description of the goal selector.
-   *
+
    *	Each goal selector factory must override this function.
-   *
+
    *	@returns	A string containing the goal selector description.
    */
   virtual const char* description() const {
@@ -110,7 +110,7 @@ class SharedGoalSelectorFactory : public GoalSelectorFactory {
  protected:
   /*!
    *	@brief		Create an instance of this class's goal selector.
-   *
+
    *	@returns		A pointer to a newly instantiated GoalSelector class.
    */
   GoalSelector* instance() const { return new SharedGoalSelector(); }
@@ -118,7 +118,7 @@ class SharedGoalSelectorFactory : public GoalSelectorFactory {
   /*!
    *	@brief		Given a pointer to a GoalSelector instance, sets the appropriate fields
    *				from the provided XML node.
-   *
+
    *	@param		selector	A pointer to the goal whose attributes are to be set.
    *	@param		node		The XML node containing the goal selector attributes.
    *	@param		behaveFldr	The path to the behavior file.  If the goal selector

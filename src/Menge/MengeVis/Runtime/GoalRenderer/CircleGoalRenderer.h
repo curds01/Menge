@@ -39,7 +39,7 @@ class MENGEVIS_API CircleGoalRenderer : public GoalRenderer {
  protected:
   /*!
    *	@brief		The method for handling the details of a particular goal.
-   *
+
    *	This is called twice by drawGL().  If there is an expensive operation, it would
    *  be best to be cached because it will be called twice every time a goal is
    *	drawn.

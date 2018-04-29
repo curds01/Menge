@@ -48,7 +48,7 @@ enum WatermarkAlign {
 
 /*!
  *	@brief		A class for handling the watermark functionality.
- *
+
  *	A watermark is a semi-transparent image drawn over the top of the scene.
  */
 class Watermark {
@@ -70,7 +70,7 @@ class Watermark {
 
   /*!
    *	@brief		Draws the watermark to the screen.
-   *
+
    *	@param		w		The width of the screen (in pixels).
    *	@param		h		The height of the screen (in pixels).
    */
@@ -126,7 +126,7 @@ class Watermark {
 /*!
  *	@brief		Parses a water mark xml specification and returns the corresponding
  *				instance.
- *
+
  *	@param		node		The XML node containing the watermark definition.
  *	@param		viewFldr	The path to the view configuration file.
  *	@returns	A pointer to a water mark, if the definition was valid (NULL otherwise).

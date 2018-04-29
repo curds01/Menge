@@ -55,7 +55,7 @@ class MENGE_API GraphVertex {
   /*!
    *	@brief		Computes the distance between this vertex and the
    *				given vertex.
-   *
+
    *	@param		other		The other vertex.
    *	@returns	The Euclidian distance between this vertex and the
    *				other vertex.
@@ -64,7 +64,7 @@ class MENGE_API GraphVertex {
 
   /*!
    *	@brief		Reports the distance to the ith neighbor.
-   *
+
    *	@param		i		The index of the desired neighbor.
    *	@returns	The distance to the ith neghbor.
    */
@@ -72,7 +72,7 @@ class MENGE_API GraphVertex {
 
   /*!
    *	@brief		Sets the node identifier.
-   *
+
    *	@param		id		The identifier to set this node to.
    */
   void setID(size_t id) { _id = id; }
@@ -84,21 +84,21 @@ class MENGE_API GraphVertex {
 
   /*!
    *	@brief		Sets the graph vertex's position.
-   *
+
    *	@param		p		The point value to set.
    */
   inline void setPosition(const Vector2& p) { _pos.set(p); }
 
   /*!
    *	@brief		Reports the position of the vertex.
-   *
+
    *	@returns	The position of the vertex.
    */
   Vector2 getPosition() const { return _pos; }
 
   /*!
    *	@brief		Sets the ith edge for the vertex.
-   *
+
    *	@param		edge		The edge to set
    *	@param		i			The index to set.
    *	@returns	True if the operation is valid, false otherwise.
@@ -112,7 +112,7 @@ class MENGE_API GraphVertex {
 
   /*!
    *	@brief		Returns a pointer to the ith neighbor.
-   *
+
    *	@param		i		The index of the neighboring vertex to retrieve.
    *						The index is defined in the range [0, N-1], where
    *						this vertex has N neighbors.
@@ -123,21 +123,21 @@ class MENGE_API GraphVertex {
   /*!
    *	@brief		Sets the degree -- the number of neighbors this vertex
    *				has
-   *
+
    *	@param		degree		The number of neighbors this vertex has.
    */
   void setDegree(size_t degree);
 
   /*!
    *	@brief		Reports the number of edges on the node.
-   *
+
    *	@returns	The number of edges.
    */
   size_t getEdgeCount() const { return _edgeCount; }
 
   /*!
    *	@brief		Retrieves the ith edge connected to this node.
-   *
+
    *	@param		i		The local index of the desired edge.
    *	@returns	A pointer to the ith edge.
    */
@@ -145,7 +145,7 @@ class MENGE_API GraphVertex {
 
   /*!
    *	@brief		Retrieves a const pointer to the ith edge connected to this node.
-   *
+
    *	@param		i		The local index of the desired edge.
    *	@returns	A pointer to the ith edge.
    */

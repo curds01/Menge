@@ -19,7 +19,7 @@
 /*!
  *	@file		SimulatorState.h
  *	@brief		A snapshot of the simulator state.
- *
+
  *	TODO: Make this a complete snapshot.
  */
 
@@ -35,11 +35,11 @@ namespace Menge {
 namespace Agents {
 /*!
  *	@brief		A class which caches the state of the simulator.
- *
+
  *	This version of the class is, as yet, incomplete.  Ultimately, it
  *	will store all critical parameters of the simulator such that the
  *	simulation can be restarted from this state.
- *
+
  *	This version is currently used to determine agent's starting state.
  */
 class SimulatorState {
@@ -51,7 +51,7 @@ class SimulatorState {
 
   /*!
    *	@brief		Sets the state for the given agent.
-   *
+
    *	@param		id			The identifier of the agent.
    *	@param		stateName	The name of the state to which the agent belongs.
    */
@@ -59,7 +59,7 @@ class SimulatorState {
 
   /*!
    *	@brief		Reports the state name for the given agent.
-   *
+
    *	@param		id			The identifier of the agent.
    *	@returns	The name of this agent's start state.
    */

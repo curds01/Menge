@@ -39,12 +39,12 @@ namespace Viewer {
 
 /*!
  *	@brief		The off-line context for running a simulation.
- *
+
  *				The NullViewer is a mock viewer, similar to the GLViewer
  *				It takes a SceneGraph node and repeatedly updates the scene
  *				However, there is no visualization.  It's purpose is simply
  *				to run the scene.
- *
+
  *				The POINT of this type of thing is to load up an empty scene
  *				with a non-trivial system that has some secondary, non-visual
  *				side effects and simply exercise it.
@@ -73,7 +73,7 @@ class MENGEVIS_API NullViewer {
 
   /*!
    *	@brief		Sets the simulator to use a fixed time step, with the given value.
-   *
+
    *	@param		stepSize		The size of the fixed step the viewer should advance
    *								its GLScene.
    */

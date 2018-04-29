@@ -52,7 +52,7 @@ class Simulator : public Menge::Agents::SimulatorBase<Agent> {
    *				should be tilted.  If the dot product between the preferred
    *				*direction* and the constraint's normal is greater than or
    *				equal then this threshhold, the obstacle is tilted.
-   *
+
    *				This is also used to perform the minimum rotation.
    */
   static float COS_OBST_TURN;

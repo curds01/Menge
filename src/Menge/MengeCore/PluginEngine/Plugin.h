@@ -51,7 +51,7 @@ class Plugin {
 
   /*!
    *	@brief		Constructor.
-   *
+
    *	@param		filename		The filename of the plugin to instantiate.
    *	@throws		std::exception if there is a problem initializing the plugin.
    */
@@ -93,21 +93,21 @@ class Plugin {
 
   /*!
    *	@brief		Registers the plugin to the PluginEngine.
-   *
+
    *	@param		engine		The PluginEngine.
    */
   void registerPlugin(EngineType* engine) { _registerFcnAddr(engine); }
 
   /*!
    *	@brief		Returns the name of the plugin.
-   *
+
    *	@returns	The name of the plug-in.
    */
   const char* getName() { return _getNameFcnAddr(); }
 
   /*!
    *	@brief		Returns the description of the plugin.
-   *
+
    *	@returns	The description of the plug-in.
    */
   const char* getDescription() { return _getDescFcnAddr(); }
@@ -120,7 +120,7 @@ class Plugin {
 
   /*!
    *	@brief		A function pointer to the plugin registration function.
-   *
+
    *	This should get initialized in the constructor.
    */
   RegisterPluginFcn* _registerFcnAddr;

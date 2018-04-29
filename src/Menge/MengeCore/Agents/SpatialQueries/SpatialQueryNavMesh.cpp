@@ -60,7 +60,7 @@ namespace Agents {
 /*!
  *	@brief		A visiblity cone.  In order for an agent to be visible, they must lie
  *				within the visibility cone.
- *
+
  */
 class VisibilityCone {
  public:
@@ -68,7 +68,7 @@ class VisibilityCone {
    *	@brief		Constructor - the visiblity cone is defined by two vectors.
    *				The cone is assumed to be the smaller angle subtending the two
    *				vectors.  The constructor orders them appropriately.
-   *
+
    *	@param		dir0		One bound on the cone.
    *	@param		dir1		The other bound on the cone.
    */
@@ -85,7 +85,7 @@ class VisibilityCone {
   /*!
    *	@brief		Reports if any portion of a line segment lies within the visibility
    *				cone.
-   *
+
    *	@param		p0		One end of the line segment.
    *	@param		p1		The other end of the line segment.
    *	@returns	A boolean which indicates if any portion of the segment lies in the
@@ -114,7 +114,7 @@ class VisibilityCone {
 
   /*!
    *	@brief		Reports if the point lies within the visibility cone.
-   *
+
    *	@param		p		The point to test.
    *	@returns	A boolean which indicates if the point lies in the cone (true) and
    *				is visible, or if it lies outside and is not visible (false).
@@ -128,7 +128,7 @@ class VisibilityCone {
   /*!
    *	@brief		Intersects this cone with the given cone, changing the extent
    *				of this cone to adhere to the intersected span.
-   *
+
    *	@param		cone		The cone to intersect this cone with.
    *	@returns	A boolean reporting if there is a non-empty intersection (true)
    *				or if there is no proper intersection (false).
@@ -164,7 +164,7 @@ class NeighborEntry {
  public:
   /*!
    *	@brief		Constructor
-   *
+
    *	@param		distSq			The squared distance from some reference point
    *								to the nearest point on the mesh
    *polygon.
@@ -178,7 +178,7 @@ class NeighborEntry {
 
   /*!
    *	@brief		Comparator - provided for creating a min_heap.
-   *
+
    *	@param		entry			The other entry against which to compare this entry.
    *	@returns	True if the squared distance for this entry is less that of the given
    *				entry.

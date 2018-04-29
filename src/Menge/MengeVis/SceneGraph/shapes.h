@@ -36,12 +36,12 @@ namespace SceneGraph {
 
 /*!
  *	@brief		Initializes the static functions for all shapes (as appropriate).
- *
+
  *				When a new shape is created with a static "init" function, a call
  *				to an initialization function should be added into this function
  *				(defined in shapes.cpp). This allows for the drawing of shapes via
  *				static functions as well as by instances.
- *
+
  *				It means the draw function doesn't have to test at each draw
  *				command if it has been properly initialized.
  */
@@ -49,10 +49,10 @@ MENGEVIS_API void initShapes();
 
 /*!
  *	@brief		Emits OpenGL commands to create a sphere in OpenGL
- *
+
  *	The sphere is constructed with N longitudinal and latitudinal points.  The
  *	sphere has normals sufficient to support lighting.
- *
+
  *	@param		samples		The number of longitudinal and latitudinal samples.
  */
 MENGEVIS_API void glSphere(int samples);
@@ -69,7 +69,7 @@ class MENGEVIS_API Shape : public GLNode, public Selectable {
 
   /*!
    *	@brief		Constructor with color and drawing style.
-   *
+
    *	@param		r		The red component of the shape's color (in the range [0,
    *1]).
    *	@param		g		The green component of the shape's color (in the range [0,
@@ -83,7 +83,7 @@ class MENGEVIS_API Shape : public GLNode, public Selectable {
 
   /*!
    *	@brief		Set the shape color from a vector.
-   *
+
    *	@param		vec		The rgb color, where each channel lies in the range [0, 1].
    */
   void setColor(const Menge::Math::Vector3& vec) {
@@ -94,7 +94,7 @@ class MENGEVIS_API Shape : public GLNode, public Selectable {
 
   /*!
    *	@brief		Set the shape color from three separate values.
-   *
+
    *	@param		r		The red component of the shape's color (in the range [0,
    *1]).
    *	@param		g		The green component of the shape's color (in the range [0,
@@ -110,7 +110,7 @@ class MENGEVIS_API Shape : public GLNode, public Selectable {
 
   /*!
    *	@brief		Set the shape's render style.
-   *
+
    *	@param		style		The desired render style.  Should be one of GL_FILL,
    *							GL_LINE, or GL_POINT.
    */
@@ -152,7 +152,7 @@ class MENGEVIS_API Circle : public Shape {
 
   /*!
    *	@brief		Constructor with color.
-   *
+
    *	@param		r		The red component of the shape's color (in the range [0,
    *1]).
    *	@param		g		The green component of the shape's color (in the range [0,
@@ -164,11 +164,11 @@ class MENGEVIS_API Circle : public Shape {
 
   /*!
    *	@brief		Function for drawing a circle into the context.
-   *
+
    *	The circle is drawn on the x-z OpenGL plane, centered on the origin.  To change
    *	position or orientation, the draw call should be preceeded by appropriate
    *	transforms.
-   *
+
    *	@param		select		True if the circle is being drawn for selection purposes,
    *							false otherwise.
    */
@@ -176,11 +176,11 @@ class MENGEVIS_API Circle : public Shape {
 
   /*!
    *	@brief		Static function for drawing circles in the context with out instances.
-   *
+
    *	The circle is drawn on the x-z OpenGL plane, centered on the origin.  To change
    *	position or orientation, the draw call should be preceeded by appropriate
    *	transforms.
-   *
+
    *	@param		radius	The radius of the circle.
    *	@param		r		The red component of the shape's color (in the range [0,
    *1]).
@@ -201,7 +201,7 @@ class MENGEVIS_API Circle : public Shape {
 
   /*!
    *	@brief		Initializes the OpenGL primitives for drawing the circle.
-   *
+
    *	A call to this function has been added to initShapes.
    */
   static void init();
@@ -270,7 +270,7 @@ class MENGEVIS_API Cylinder : public Shape {
 
   /*!
    *	@brief		Draw a cylinder without access to an instance
-   *
+
    *	@param		radius		The radius of the cylinder.
    *	@param		height		The height of the cylinder.
    *	@param		r			The red component of the color (in the range [0,1]

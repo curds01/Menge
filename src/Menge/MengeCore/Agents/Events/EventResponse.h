@@ -45,7 +45,7 @@ class EventResponse {
 
   /*!
    *	@brief		Constructor.
-   *
+
    *	@param		effect		The name of the effect for this response.
    *	@param		target		The name of the target for this response.
    */

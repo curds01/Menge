@@ -54,7 +54,7 @@ class Timer {
 
   /*!
    *	@brief		Reports the time elapsed between this call and the last start.
-   *
+
    *	@param		scale		The scale of the units to report the elapsed time in.
    *							e.g., 1.0 --> seconds, 0.001 -->, 1e-6 -->
    *microseconds.
@@ -100,7 +100,7 @@ class LapTimer : public Timer {
   /*!
    *	@brief		Reports the time elapsed from the previous call to lap() or start() to
    *				this call.  The clock is still "running" and the next lap starts.
-   *
+
    *	@param		scale		The scale of the units to report the elapsed time in.
    *							e.g., 1.0 --> seconds, 0.001 -->, 1e-6 -->
    *microseconds.
@@ -110,7 +110,7 @@ class LapTimer : public Timer {
 
   /*!
    *	@brief		Reports the average lap time across all recorded laps.
-   *
+
    *	@param		scale		The scale of the units to report the elapsed time in.
    *							e.g., 1.0 --> seconds, 0.001 -->, 1e-6 -->
    *microseconds.
@@ -152,7 +152,7 @@ class SampleTimer : public Timer {
  public:
   /*!
    *	@brief		Constructor.
-   *
+
    *	@param		sampleCount		The number of repeated calls to lap to cause the
    *								timer to report a new, average
    *value.
@@ -161,7 +161,7 @@ class SampleTimer : public Timer {
 
   /*!
    *	@brief		Reports the average elapsed time of the last N calls to lap
-   *
+
    *	@param		scale		The scale of the units to report the elapsed time in.
    *							e.g., 1.0 --> seconds, 0.001 -->, 1e-6 -->
    *microseconds.
@@ -204,7 +204,7 @@ class SampleTimer : public Timer {
 
 /*!
  *	@brief		Creates a lap timer which uses the given label for display.
- *
+
  *	@param		displayString		The string to display when reporting the profiling
  *									results.
  *	@returns	The identifier for the created timer.
@@ -213,28 +213,28 @@ size_t addTimer(const std::string& displayString);
 
 /*!
  *	@brief		Starts the timer with the given identifier.
- *
+
  *	@param		index		The timer identifier supplied by addTimer
  */
 void startTimer(size_t index);
 
 /*!
  *	@brief		Stops the timer with the given identifier.
- *
+
  *	@param		index		The timer identifier supplied by addTimer
  */
 void stopTimer(size_t index);
 
 /*!
  *	@brief		Lap the ith timer
- *
+
  *	@param		index		The timer identifier supplied by addTimer
  */
 void lapTimer(size_t index);
 
 /*!
  *	@brief		Reports the average time of the ith timer
- *
+
  *	@param		index		The timer identifier supplied by addTimer
  *	@returns	The average time of all laps.
  */
@@ -248,7 +248,7 @@ void printAverages();
 
 /*!
  *	@brief		Sets the internal units of the profiler.
- *
+
  *	@param		scale		The scale of the units to report the elapsed time in.
  *							e.g., 1.0 --> seconds, 0.001 -->, 1e-6 -->
  *microseconds.

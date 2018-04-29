@@ -39,7 +39,7 @@ class Transform;
 
 /*!
  *	@brief		The transformation matrix.
- *
+
  *	The transform matrix is the concatenation of *five* transformation matrices
  *		SCALE * ROT_AXIS^-1 * ROTATE * ROT_AXIS * TRANSLATE
  *	The scale, rotation, and translation matrices are self-explanatory.
@@ -57,7 +57,7 @@ class MENGEVIS_API XformMatrix {
 
   /*!
    *	@brief		Set the translation of this node.
-   *
+
    *	@param		vec		The 3D position of the transform.
    */
   void setTranslation(const Menge::Math::Vector3& vec) {
@@ -67,7 +67,7 @@ class MENGEVIS_API XformMatrix {
 
   /*!
    *	@brief		Offset the translation of this node.
-   *
+
    *	@param		vec		The change to position of this node.
    */
   void addTranslation(const Menge::Math::Vector3& vec) {
@@ -77,7 +77,7 @@ class MENGEVIS_API XformMatrix {
 
   /*!
    *	@brief		Set the scale of this node.
-   *
+
    *	@param		vec		The desired scale of this node.
    */
   void setScale(const Menge::Math::Vector3& vec) {
@@ -87,10 +87,10 @@ class MENGEVIS_API XformMatrix {
 
   /*!
    *	@brief		Set the orientation of this node.
-   *
+
    *	Rotation is performed using Euler angles and the implict evaluation order
    *	of x-, then y-, and finally z-axis rotation.
-   *
+
    *	@param		vec		The rotations around the x-, y-, and z-axes, respectively
    *						in degrees.
    */
@@ -101,10 +101,10 @@ class MENGEVIS_API XformMatrix {
 
   /*!
    *	@brief		Set the orientation of this node.
-   *
+
    *	Rotation is performed using Euler angles and the implict evaluation order
    *	of x-, then y-, and finally z-axis rotation.
-   *
+
    *	@param		vec		The rotations around the x-, y-, and z-axes, respectively
    *						in radians.
    */
@@ -115,12 +115,12 @@ class MENGEVIS_API XformMatrix {
 
   /*!
    *	@brief		Offsets the orientation of this node.
-   *
+
    *	Rotation is performed using Euler angles and the implict evaluation order
    *	of x-, then y-, and finally z-axis rotation. In this case, each axis is
    *	summed independently.  Generally, because these are Euler angles, this will
    *	will not lead to linear interpolation of orientation.
-   *
+
    *	@param		vec		The rotations around the x-, y-, and z-axes, respectively
    *						in degrees.
    */
@@ -131,12 +131,12 @@ class MENGEVIS_API XformMatrix {
 
   /*!
    *	@brief		Offsets the orientation of this node.
-   *
+
    *	Rotation is performed using Euler angles and the implict evaluation order
    *	of x-, then y-, and finally z-axis rotation. In this case, each axis is
    *	summed independently.  Generally, because these are Euler angles, this will
    *	will not lead to linear interpolation of orientation.
-   *
+
    *	@param		vec		The rotations around the x-, y-, and z-axes, respectively
    *						in radians.
    */
@@ -147,10 +147,10 @@ class MENGEVIS_API XformMatrix {
 
   /*!
    *	@brief		Set the orientation of this node's rotation axis.
-   *
+
    *	Rotation is performed using Euler angles and the implict evaluation order
    *	of x-, then y-, and finally z-axis rotation.
-   *
+
    *	@param		vec		The orientation of the rotation axis around the x-, y-,
    *						and z-axes, respectively in degrees.
    */
@@ -158,10 +158,10 @@ class MENGEVIS_API XformMatrix {
 
   /*!
    *	@brief		Set the orientation of this node's rotation axis.
-   *
+
    *	Rotation is performed using Euler angles and the implict evaluation order
    *	of x-, then y-, and finally z-axis rotation.
-   *
+
    *	@param		vec		The orientation of the rotation axis around the x-, y-,
    *						and z-axes, respectively in radians.
    */
@@ -173,14 +173,14 @@ class MENGEVIS_API XformMatrix {
   // void rotatePivotMatrix( Matrix4x4 & mat );
   /*!
    *	@brief		Computes the translation matrix.
-   *
+
    *	@param		mat		Writes the translation matrix in the provided matrix.
    */
   void translationMatrix(Menge::Math::Matrix4x4& mat);
 
   /*!
    *	@brief		Computes the translation inverse matrix.
-   *
+
    *	@param		mat		Writes the inverse translation matrix in the provided
    *matrix.
    */
@@ -188,42 +188,42 @@ class MENGEVIS_API XformMatrix {
 
   /*!
    *	@brief		Computes the scale matrix.
-   *
+
    *	@param		mat		Writes the scale matrix in the provided matrix.
    */
   void scaleMatrix(Menge::Math::Matrix4x4& mat);
 
   /*!
    *	@brief		Computes the inverse scale matrix.
-   *
+
    *	@param		mat		Writes the inverse scale matrix in the provided matrix.
    */
   void scaleInverseMatrix(Menge::Math::Matrix4x4& mat);
 
   /*!
    *	@brief		Computes the rotation matrix.
-   *
+
    *	@param		mat		Writes the rotation matrix in the provided matrix.
    */
   void rotationMatrix(Menge::Math::Matrix4x4& mat);
 
   /*!
    *	@brief		Computes the inverse rotation matrix.
-   *
+
    *	@param		mat		Writes the inverse rotation matrix in the provided matrix.
    */
   void rotationInverseMatrix(Menge::Math::Matrix4x4& mat);
 
   /*!
    *	@brief		Computes the transformation matrix.
-   *
+
    *	@param		mat		Writes the matrix in the provided matrix.
    */
   void getMatrix(Menge::Math::Matrix4x4& mat);
 
   /*!
    *	@brief		Computes the inverse transformation matrix.
-   *
+
    *	@param		mat		Writes the inverse matrix in the provided matrix.
    */
   void getInverseMatrix(Menge::Math::Matrix4x4& mat);
@@ -232,7 +232,7 @@ class MENGEVIS_API XformMatrix {
 
   /*!
    *	@brief		Print the matrix to the output stream.
-   *
+
    *	@param		out			The output stream.
    *	@param		xformMat	The transformation matrix to print to the output stream.
    */
@@ -273,7 +273,7 @@ class MENGEVIS_API XformMatrix {
 
   /*!
    *	@brief		Enumeration of dirty matrices.
-   *
+
    *	Used to intelligently compute matrices as necessary.
    */
   enum MatrixBit {
@@ -284,7 +284,7 @@ class MENGEVIS_API XformMatrix {
 
   /*!
    *	@brief		An integer mask for determining which cached matrices are clean/dirty
-   *
+
    *	Works with the MatrixBit enumeration to determine which matrices need to be
    *	recomputed.
    */
@@ -317,7 +317,7 @@ class MENGEVIS_API XformMatrix {
 
   /*!
    *	@brief		Set the matrix corresponding to the given bit dirty.
-   *
+
    *	@param		bit		The bit for the specific matrix to set dirty.  Should
    *						be a MatrixBit enumeration value.
    */
@@ -325,14 +325,14 @@ class MENGEVIS_API XformMatrix {
 
   /*!
    *	@brief		Set the matrix corresponding to the given bit dirty.
-   *
+
    *	@param		bit		The bit for the specific matrix to set dirty.
    */
   inline void setDirty(MatrixBit bit) { _clean &= (int)(~bit); }
 
   /*!
    *	@brief		Reports if the indicated matrix is clean.
-   *
+
    *	@param		bit		The bit for the specific matrix to set dirty.
    *	@returns	True if the matrix does NOT need recomputation, false otherwise.
    */
@@ -340,14 +340,14 @@ class MENGEVIS_API XformMatrix {
 
   /*!
    *	@brief		Sets the indicated matrix to be clean.
-   *
+
    *	@param		bit		The bit for the specific matrix to set clean.
    */
   inline void setClean(MatrixBit bit) { _clean |= (int)bit; }
 
   /*!
    *	@brief		Sets the indicated matrix to be clean.
-   *
+
    *	@param		bit		The bit for the specific matrix to set clean.  Should
    *						be a MatrixBit enumeration value.
    */

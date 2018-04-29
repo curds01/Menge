@@ -41,7 +41,7 @@ namespace SceneGraph {
 
 /*!
  *	@brief		Exception class for indicating that a system is done.
- *
+
  *	When a system will no longer change the the scene with calls to
  *	System::updateScene, it throws the SystemStopException.  The caller
  *	is responsible for catching and reacting appropriately.
@@ -57,7 +57,7 @@ class MENGEVIS_API SystemStopException : public Menge::MengeException {
 /*!
  *	@brief		An animation system.  Responsible for updating the scene based
  *				based on increasing time values.
- *
+
  *	This is a purely virtual class.  It must be sub-classed to be used.
  */
 class MENGEVIS_API System {
@@ -74,7 +74,7 @@ class MENGEVIS_API System {
 
   /*!
    *	@brief		Finalizing function for the system.
-   *
+
    *	When the viewer wants to exit, it calls this method on the scene to give the
    *	scene any last minute things it needs to do (such as outputting data)
    *	The scene calls the systems finish method.
@@ -83,7 +83,7 @@ class MENGEVIS_API System {
 
   /*!
    *	@brief		Updates the state of the scene graph with the global time.
-   *
+
    *	@param		time		The time for which the system should be set.
    *	@returns	True if the system changed the scene such that it should be redrawn.
    */

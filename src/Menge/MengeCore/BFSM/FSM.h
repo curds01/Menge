@@ -71,7 +71,7 @@ class FSMException : public virtual MengeException {
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   FSMException(const std::string& s) : MengeException(s) {}
@@ -92,7 +92,7 @@ class FSMFatalException : public FSMException, public MengeFatalException {
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   FSMFatalException(const std::string& s)
@@ -108,7 +108,7 @@ class MENGE_API FSM {
  public:
   /*!
    *	@brief		Constructor.
-   *
+
    *	@param		sim			The simulator to operate on.
    */
   FSM(Agents::SimulatorInterface* sim);
@@ -125,13 +125,13 @@ class MENGE_API FSM {
 
   /*!
    *	@brief		Adds a task to the set.
-   *
+
    *	Elements can blindly add tasks to the finite state machine (including adding
    *	a null pointer.  If the pointer is null, no work is done.  If the pointer is
    *	a duplicate of a previous task, it will not be repeatedly added.
-   *
+
    *	The FSM takes possession of the task and is responsible for cleaning the memory.
-   *
+
    *	@param		task		A pointer to a task to add.
    */
   void addTask(Task* task);
@@ -139,7 +139,7 @@ class MENGE_API FSM {
   /*!
    *	@brief		Initializes the memory required for the number of agents
    *				included in the FSm.
-   *
+
    *	@param		count		The number of agents.
    */
   void setAgentCount(size_t count);
@@ -147,7 +147,7 @@ class MENGE_API FSM {
   /*!
    *	@brief		Advances the FSM based on the current state for the given
    *				agent.
-   *
+
    *	@param		agent		The agent to advance the FSM for.
    */
   void advance(Agents::BaseAgent* agent);
@@ -174,7 +174,7 @@ class MENGE_API FSM {
 
   /*!
    *	@brief		Get the pointer for the node with the given identifier.
-   *
+
    *	@param		id		The state identifier.  Id is not validated.
    *	@returns	A pointer to the state with the given identifier.
    */
@@ -182,7 +182,7 @@ class MENGE_API FSM {
 
   /*!
    *	@brief		Returns the state with the given name.
-   *
+
    *	@param		name		The name of the desired state.
    *	@returns	A pointer to the desired state (if it is found),
    *				otherwise, returns null.
@@ -191,14 +191,14 @@ class MENGE_API FSM {
 
   /*!
    *	@brief		Reports the number of states in the FSM.
-   *
+
    *	@returns	The number of states in the fsm.
    */
   size_t getNodeCount() const { return _nodes.size(); }
 
   /*!
    *	@brief		Adds a state to the BFSM.
-   *
+
    *	@param		node		The state to add.
    *	@returns	A unique identifier for the newly added state.
    */
@@ -206,10 +206,10 @@ class MENGE_API FSM {
 
   /*!
    *	@brief		Adds the given transition to the FSM.
-   *
+
    *	The transition already contains a pointer to the destination state
    *	(see Transition).
-   *
+
    *	@param		fromNode		The global identifier from the origin state.
    *	@param		t				The transition to add.
    *	@returns	True if the transition is successfully added, false otherwise.
@@ -218,7 +218,7 @@ class MENGE_API FSM {
 
   /*!
    *	@brief		Adds a goal to the indicated goal set.
-   *
+
    *	@param		goalSet		The id of the goal set which receives the goal.
    *	@param		goalID		The id of the goal in the goal set.
    *	@param		goal		The goal to add.
@@ -228,7 +228,7 @@ class MENGE_API FSM {
 
   /*!
    *	@brief		Retrieves the given goal from the given goal set.
-   *
+
    *	@param		goalSet		The identifier of the goal set.
    *	@param		goalID		The identifier of the goal.
    *	@returns	A pointer to the corresponding goal.  If no such goal exists
@@ -238,7 +238,7 @@ class MENGE_API FSM {
 
   /*!
    *	@brief		Retrives the given goal set.
-   *
+
    *	@param		goalSetID		The identifier of the goal set.
    *	@returns	A pointer to the corresponding goal set.  If no such goal set
    *				exists, NULL is returned.
@@ -247,7 +247,7 @@ class MENGE_API FSM {
 
   /*!
    *	@brief		Update the fsm state by one time step
-   *
+
    *	@returns	A boolean reporting if all agents are in a final state (true)
    *				or not (false).
    */
@@ -255,7 +255,7 @@ class MENGE_API FSM {
 
   /*!
    *	@brief		Sets the current state for the given agent.
-   *
+
    *	@param		agt			The agent whose BFSM state gets set.
    *	@param		currNode	The unique identifier of the desired state
    *							(returned by FSM::addNode).
@@ -264,7 +264,7 @@ class MENGE_API FSM {
 
   /*!
    *	@brief		Gets a pointer to the state the agent is currently in.
-   *
+
    *	@param		agt			The agent.
    *	@returns	A pointer to the agent's current state.
    */
@@ -272,7 +272,7 @@ class MENGE_API FSM {
 
   /*!
    *	@brief		Reports the state the given agent is currently in.
-   *
+
    *	@param		agent		A pointer to the agent whose state id is returned.
    *	@returns	The id of the state the given agent is in.
    */
@@ -280,7 +280,7 @@ class MENGE_API FSM {
 
   /*!
    *	@brief		Reports the state the given agent is currently in.
-   *
+
    *	@param		agentID		The unique id of the agent whose state id is returned.
    *	@returns	The id of the state the given agent is in.
    */
@@ -289,7 +289,7 @@ class MENGE_API FSM {
   /*!
    *	@brief		Reports if all agents are in final states (i.e. the simulation is
    *				done.)
-   *
+
    *	@returns	True if all agents are in a final state, false otherwise.
    */
   bool allFinal() const;
@@ -316,25 +316,25 @@ class MENGE_API FSM {
 
   /*!
    *	@brief		Returns the BFSM Context for this FSM
-   *
+
    *	A new FsmContext will be constructed upon each call to
    *	this function.  It is the responsibility of the caller to
    *	make sure it gets deleted.
-   *
+
    *	@returns	A pointer to a valid fsm context.
    */
   FsmContext* getContext();
 
   /*!
    *	@brief		Returns the goal sets defined in the simulator.
-   *
+
    *	@returns	A reference to the goal set map.
    */
   std::map<size_t, GoalSet*>& getGoalSets() { return _goalSets; }
 
   /*!
    *	@brief		Add an velocity modifier to the FSM
-   *
+
    *	@param		v		The modifier to add
    */
   void addVelModifier(VelModifier* v) { _velModifiers.push_back(v); }
@@ -349,7 +349,7 @@ class MENGE_API FSM {
 
   /*!
    *	@brief		Number of agents attached to the state machine
-   *
+
    *	This should be the same as the number of agents in the simulator.
    */
   size_t _agtCount;
@@ -386,7 +386,7 @@ class MENGE_API FSM {
 /*!
  *	@brief		Templated function which builds the behavior fsm from the
  *				behavior configuration given.
- *
+
  *	@param		fsmDescrip		The Behavior configuration.
  *	@param		sim				The simulator which uses the BFSM.
  *	@param		VERBOSE			The optional argument which causes the construction

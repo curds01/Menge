@@ -31,7 +31,7 @@ namespace Menge {
 
 /*!
  *	@brief		A simple portal definition.
- *
+
  *	A portal is simply a line segment - a region through which agents can pass.
  */
 class MENGE_API Portal {
@@ -43,7 +43,7 @@ class MENGE_API Portal {
 
   /*!
    *	@brief		Constructor specifying portal geometry.
-   *
+
    *	@param		x0		The x-position of the first end point.
    *	@param		y0		The y-position of the first end point.
    *	@param		x1		The x-position of the second end point.
@@ -53,7 +53,7 @@ class MENGE_API Portal {
 
   /*!
    *	@brief		Sets the geometry of the portal
-   *
+
    *	@param		x0		The x-position of the first end point.
    *	@param		y0		The y-position of the first end point.
    *	@param		x1		The x-position of the second end point.
@@ -63,7 +63,7 @@ class MENGE_API Portal {
 
   /*!
    *	@brief		Sets the geometry of the portal
-   *
+
    *	@param		p0		The position of the first end point.
    *	@param		p1		The position of the second end point.
    */
@@ -71,15 +71,15 @@ class MENGE_API Portal {
 
   /*!
    *	@brief		Computes the neareset *clearable* point w.r.t. the portal
-   *
+
    *	Given the position and radius of an agent, computes the best clearable goal point.
    *	Clearable means that the straight-line path between the agent's current position
    *	and that goal point does NOT intersect either end point of the goal.
-   *
+
    *	This is important because we assume that the end points attach to obstacles and
    *	if the end point intersects the path, that means the preferred velocity is
    *	leading the agent into a collision with the obstacle.
-   *
+
    *	@param		pos		The position of the agent.
    *	@param		radius		The radius of the agent.
    *	@returns	The nearest *clearable* point.

@@ -48,14 +48,14 @@ class MENGEVIS_API GLCamera {
 
   /*!
    *	@brief		Constructor for setting camera position.
-   *
+
    *	@param		p		The position of the camera.
    */
   GLCamera(const Menge::Math::Vector3& p);
 
   /*!
    *	@brief		Constructor for setting camera position and target.
-   *
+
    *	@param		p		The position of the camera.
    *	@param		t		The position of the camera's view target.
    */
@@ -64,7 +64,7 @@ class MENGEVIS_API GLCamera {
   /*!
    *	@brief		Constructor for setting camera position, target,
    *				and up vector.
-   *
+
    *	@param		p		The position of the camera.
    *	@param		t		The position of the camera's view target.
    *	@param		u		the direction of the camera's up direction.
@@ -74,7 +74,7 @@ class MENGEVIS_API GLCamera {
 
   /*!
    *	@brief		Sets the camera to use an orthographic projection.
-   *
+
    *	@param		scaleFactor		Defines the horizontal span of the orthographic
    *								view as a function of the distance to
    *target.
@@ -90,21 +90,21 @@ class MENGEVIS_API GLCamera {
 
   /*!
    *  @brief    Reports the projection mode of the camera.
-   *
+
    *  @returns  The enumeration indicating the projection type of the camera.
    */
   ProjectionType getProjection() const { return _type; }
 
   /*!
    *  @brief  Reports the name of this camera.
-   *
+
    *  @returns    The camera name.
    */
   const std::string& get_name() const { return _name; }
 
   /*!
    *  @brief    Sets the camera's name.
-   *
+
    *  @param    name    The camera's new name.
    */
   void set_name(const std::string& name) { _name = name; }
@@ -118,21 +118,21 @@ class MENGEVIS_API GLCamera {
 
   /*!
    *	@brief		Return the position of the camera.
-   *
+
    *	@returns	The position fo the camera in 3D space.
    */
   Menge::Math::Vector3 getPosition() const { return _position; }
 
   /*!
    *	@brief		Set the camera position explicitly from a Vector3.
-   *
+
    *	@param		p		The desired position of the camera.
    */
   void setPosition(const Menge::Math::Vector3& p);
 
   /*!
    *	@brief		Set the camera position explicitly from three values.
-   *
+
    *	@param		x		The position of the camera along the x-axis.
    *	@param		y		The position of the camera along the y-axis.
    *	@param		z		The position of the camera along the z-axis.
@@ -141,14 +141,14 @@ class MENGEVIS_API GLCamera {
 
   /*!
    *	@brief		Return the position of the camera's view target.
-   *
+
    *	@returns	The position of the camera's view target.
    */
   Menge::Math::Vector3 getTarget() const { return _target; }
 
   /*!
    *	@brief		Set the position of the camera's view target explicitly from a Vector3.
-   *
+
    *	@param		p		The desired position of the camera's view target.
    */
   void setTarget(const Menge::Math::Vector3& p);
@@ -156,7 +156,7 @@ class MENGEVIS_API GLCamera {
   /*!
    *	@brief		Set the position of the camera's view target explicitly from three
    *				values.
-   *
+
    *	@param		x		The position of the camera's view target along the x-axis.
    *	@param		y		The position of the camera's view target along the y-axis.
    *	@param		z		The position of the camera's view target along the z-axis.
@@ -165,14 +165,14 @@ class MENGEVIS_API GLCamera {
 
   /*!
    *	@brief		Return the orientation of the camera's up direction.
-   *
+
    *	@returns	The orientation of the camera's up direction.
    */
   Menge::Math::Vector3 getUp() const { return _up; }
 
   /*!
    *	@brief		Set the orientation of the camera's up vector from a Vector3.
-   *
+
    *	@param		u		The desired direction of the camera's up direction.
    *						It is assumed to be of normal length.
    */
@@ -180,7 +180,7 @@ class MENGEVIS_API GLCamera {
 
   /*!
    *	@brief		Set the orientation of the camera's up vector from three values.
-   *
+
    *	@param		x		The x-component of the camera's up vector.
    *	@param		y		The y-component of the camera's up vector.
    *	@param		z		The z-component of the camera's up vector.
@@ -190,7 +190,7 @@ class MENGEVIS_API GLCamera {
   /*!
    *	@brief		Sets the field of view of the camera -- only applicable
    *				when using the perspective projection.
-   *
+
    *	@param		fov		The horizontal field of view (in degrees).
    */
   inline void setFOV(float fov) { _fov = fov; }
@@ -202,40 +202,40 @@ class MENGEVIS_API GLCamera {
 
   /*!
    *	@brief		Sets the far plane distance.
-   *
+
    *	@param		fp		The desired far plane distance.
    */
   inline void setFarPlane(float fp) { _farPlane = fp; }
 
   /*!
    *	@brief		Reports the camera's current far plane distance.
-   *
+
    *	@returns	The camera's current far plane distance.
    */
   inline float getFarPlane() const { return _farPlane; }
 
   /*!
    *	@brief		Sets the near plane distance.
-   *
+
    *	@param		np		The desired near plane distance.
    */
   inline void setNearPlane(float np) { _nearPlane = np; }
 
   /*!
    *	@brief		Reports the camera's current near plane distance.
-   *
+
    *	@returns	The camera's current near plane distance.
    */
   inline float getNearPlane() const { return _nearPlane; }
 
   /*!
    *	@brief		Reports the orthographic scale factor for this camera.
-   *
+
    *	The orthographic scale factor is the value which determines
    *	how "zoomed in" an orthographic camera is.  It is the ratio
    *	of the distance between camera and target and the
    *	width of the viewable region in orthographic.
-   *
+
    *	@returns	The orthographic scale
    */
   float getOrthoScaleFactor() const;
@@ -243,7 +243,7 @@ class MENGEVIS_API GLCamera {
   /*!
    *	@brief		Sets the camera's viewport to a view with the given
    *				width and height dimensions.
-   *
+
    *	@param		w		The width of the viewport (in pixels)
    *	@param		h		The height of the viewport (in pixels )
    *	@param		left	The position of the left-most edge of the viewport
@@ -258,7 +258,7 @@ class MENGEVIS_API GLCamera {
   /*!
    *	@brief		Emits the appropriate OpenGL commands for setting up a projection
    *				matrix.
-   *
+
    *	@param		w		The viewport width (in pixels).
    *	@param		h		The viewport height (in pixels).
    */
@@ -267,7 +267,7 @@ class MENGEVIS_API GLCamera {
   /*!
    *	@brief		Emits the appropriate OpenGL commands for setting up a selection
    *				context.
-   *
+
    *	@param		selectPoint		A pointer to an array of two floats interpreted as
    *the
    *								x- and y-positions of the selection point, in
@@ -284,10 +284,10 @@ class MENGEVIS_API GLCamera {
 
   /*!
    *	@brief		Sets the camera to look along the world's x-axis.
-   *
+
    *	The camera's distance from the origin is the same as its previous displacement from
    *	the origin along the x-axis.
-   *
+
    *	@param		downPositive		If true, the camera looks along the positive x-axis
    *									direction.  If false, it looks in the
    *negative
@@ -297,10 +297,10 @@ class MENGEVIS_API GLCamera {
 
   /*!
    *	@brief		Sets the camera to look along the world's y-axis.
-   *
+
    *	The camera's distance from the origin is the same as its previous displacement from
    *	the origin along the y-axis.
-   *
+
    *	@param		downPositive		If true, the camera looks along the positive y-axis
    *									direction.  If false, it looks in the
    *negative
@@ -310,10 +310,10 @@ class MENGEVIS_API GLCamera {
 
   /*!
    *	@brief		Sets the camera to look along the world's z-axis.
-   *
+
    *	The camera's distance from the origin is the same as its previous displacement from
    *	the origin along the z-axis.
-   *
+
    *	@param		downPositive		If true, the camera looks along the positive z-axis
    *									direction.  If false, it looks in the
    *negative
@@ -323,10 +323,10 @@ class MENGEVIS_API GLCamera {
 
   /*!
    *	@brief		Causes the camera to "pan" the given angle.
-   *
+
    *	The camera "pans" by rotating around its own center along the world's vertical axis
    *	(i.e., turning left and right).
-   *
+
    *	@param		angle		The amount of pan (in radians).  Positive values cause the
    *							camera to turn left, negative values turn the camera
    *right.
@@ -335,10 +335,10 @@ class MENGEVIS_API GLCamera {
 
   /*!
    *	@brief		Causes the camera to "tilt" the given angle.
-   *
+
    *	The camera "tilts" by rotating around its own center along the its own horizontal
    *	axis  (i.e., looking up and down).
-   *
+
    *	@param		angle		The amount of pan (in radians).  Postive values rotates the
    *							camera down, negative rotates up.
    */
@@ -346,10 +346,10 @@ class MENGEVIS_API GLCamera {
 
   /*!
    *	@brief		Causes the camera to "truck" the given amount.
-   *
+
    *	"Trucking" is moving the camera side to side on its own horizontal axis (i.e.,
    *	"strafe" left and right).
-   *
+
    *	@param		amount		The amount to move.  Postive values move the camera to its
    *							right and negative values move left.
    */
@@ -357,11 +357,11 @@ class MENGEVIS_API GLCamera {
 
   /*!
    *	@brief		Causes the camera to "crane" the given amount.
-   *
+
    *	A camera "cranes" by moving along its own vertical axis. This causes the camera to
    *	rise and lower in its view. The actual movement in the WORLD coordinate system
    *	depends on the camera's orientation.
-   *
+
    *	@param		amount		The amount to move.  Postive values move the camera up and
    *							negative values move down.
    */
@@ -369,10 +369,10 @@ class MENGEVIS_API GLCamera {
 
   /*!
    *	@brief		Causes the camera to "dolly" in and out.
-   *
+
    *	Dollying a camera moves it forward and backward in the camera's facing direction
    *	(i.e., moving in the direction of the target).  The target moves with the camera.
-   *
+
    *	@param		amount		The amount to move.  Positive values move forward and
    *							negative values move backward.
    */
@@ -380,11 +380,11 @@ class MENGEVIS_API GLCamera {
 
   /*!
    *	@brief		Causes the camera to "dolly" along a plane.
-   *
+
    *	In this case, the elevation (in world space) does not change.  The camera moves
    *	parallel with the ground plane based on the projeciton of the camera's facing
    *	direction on that plane.
-   *
+
    *	@param		amount		The amount to move.  Positive values move forward and
    *							negative values move backward.
    */
@@ -392,10 +392,10 @@ class MENGEVIS_API GLCamera {
 
   /*!
    *	@brief		Causes the camera to "zoom" toward its target.
-   *
+
    *	This is not a zoom in the sense that the lens focal length changes.  This merely
    *	moves the camera along its facing direction while holding the target stationary.
-   *
+
    *	@param		amount		The amount to zoom.  Positive values move forward and
    *							negative values move backward.
    */
@@ -404,7 +404,7 @@ class MENGEVIS_API GLCamera {
   /*!
    *	@brief		Causes the camera to rotate an axis, parallel with the world vertical
    *				axis centered on the camera's target.
-   *
+
    *	@param		angle		The angle of rotation (in radians).  Positive values move
    *							the camera to its right, negative to its
    *left.
@@ -414,7 +414,7 @@ class MENGEVIS_API GLCamera {
   /*!
    *	@brief		Camera rotates, at distance, around target on axis parallel to camera's
    *				horizontal axis.
-   *
+
    *	@param		angle		The angle of rotation (in radians).  Positive values move
    *							the camera in its upward direction, negative to
    *its
@@ -426,24 +426,24 @@ class MENGEVIS_API GLCamera {
 
   /*!
    *	@brief	Returns distance between camera and target
-   *
+
    *	@returns	The distance between camera and its target.
    */
   float targetDistance() const;
 
   /*!
    *	@brief	Returns the unit-length vector indicating direction FROM camera to TARGET.
-   *
+
    *	@returns	Direction to target in world space.
    */
   Menge::Math::Vector3 targetDir() const;
 
   /*!
    *	@brief	Returns the ACTUAL up dir -- as opposed to the desired up.
-   *
+
    *	Essentially, the cross product of the camera's horizontal direction
    *	with its facing direction.
-   *
+
    *	@returns	Camera's current, local up vector in world space.
    */
   Menge::Math::Vector3 getActualUpDir() const;
@@ -451,14 +451,14 @@ class MENGEVIS_API GLCamera {
   /*!
    *	@brief	Returns the normalized vector representing the camera's horizontal axis
    *			pointing to right
-   *
+
    *	@returns	The direction of the camera's right in world space.
    */
   Menge::Math::Vector3 getRightDir() const;
 
   /*!
    *	@brief		Outputs the state of the camera to the console.
-   *
+
    *	The format can be cut-and-pasted into a view configuration file.
    */
   void outputState() const;
@@ -525,7 +525,7 @@ class MENGEVIS_API GLCamera {
   /*!
    *	@brief		The width of the orthographic display.  Combined with the scale factor
    *				determines the scope of the orthographic view.
-   *
+
    *	@see	setOrtho
    */
   float _orthoHWidth;

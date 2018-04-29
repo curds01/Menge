@@ -50,10 +50,10 @@ using Math::FloatGenerator;
 
 /*!
  *	@brief		Helper function for parsing property actions
- *
+
  *	It converts the xml string indicating the property to an
  *	enumerated value
- *
+
  *	@param		opName		The name of the operand as specified in the
  *							xml specification.
  *	@returns	The corresponding enumeration.  If there is no corresponding

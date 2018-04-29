@@ -53,7 +53,7 @@ class MENGE_API Graph : public Resource {
  public:
   /*!
    *	@brief		Constructor.
-   *
+
    *	@param		fileName		The name of the file which contains the vector field
    *								definition.
    */
@@ -80,11 +80,11 @@ class MENGE_API Graph : public Resource {
 
   /*!
    *	@brief		Parses a graph definition and returns a pointer to it.
-   *
+
    *	This function works in conjunction with the ResourceManager.  That is why it
    *	returns a pointer, not to a Graph, but to a Resource.  The ResourceManager
    *	uses it to load and instantiate Graph instances.
-   *
+
    *	@param		fileName		The path to the file containing the VectorField
    *								definition.
    *	@returns	A pointer to the new Graph (if the file is valid), NULL if
@@ -94,7 +94,7 @@ class MENGE_API Graph : public Resource {
 
   /*!
    *	@brief		Compute path
-   *
+
    *	@param		agent		The agent for whom to compute the path.
    *	@param		goal		The agent's goal.
    *	@returns	A pointer to a RoadMapPath.  If there is an error,
@@ -104,17 +104,17 @@ class MENGE_API Graph : public Resource {
 
   /*!
    *	@brief		Return the number of vertices in the graph.
-   *
+
    *	@returns	The number of vertices in the graph.
    */
   inline size_t getVertexCount() const { return _vCount; }
 
   /*!
    *	@brief		Returns a const pointer to the ith vertex.
-   *
+
    *	The validitiy of the index is only checked in debug mode with
    *	an assertion.
-   *
+
    *	@param		i		The index of the desired pointer.
    *	@returns	A const pointer to the ith graph vertex.
    */
@@ -130,7 +130,7 @@ class MENGE_API Graph : public Resource {
   /*!
    *	@brief		Find the closest visible graph vertex to the given
    *				point.
-   *
+
    *	@param		point		The point to connect to the graph.
    *	@param		radius		The radius of the agent testing.
    *	@returns	The index of the closest node.
@@ -139,10 +139,10 @@ class MENGE_API Graph : public Resource {
 
   /*!
    *	@brief		Computes the shortest path from start to end vertices.
-   *
+
    *	This function instantiates a new path, but the caller is responsible
    *	for deleting it.
-   *
+
    *	@param		startID		The index of the start vertex.
    *	@param		endID		The index of the end vertex.
    *	@returns	A pointer to a new RoadMapPath.
@@ -153,7 +153,7 @@ class MENGE_API Graph : public Resource {
    *	@brief		Compute's "h" for the A* algorithm.  H is the estimate of the
    *				cost of a node to a goal point.  In this case, simply Euclidian
    *				distance.
-   *
+
    *	@param		v			The vertex to estimate the cost.
    *	@param		goal		The goal point.
    *	@returns	The h-value.
@@ -230,7 +230,7 @@ typedef ResourcePtr<Graph> GraphPtr;
 
 /*!
  *	@brief		        Loads the graph of the given name
- *
+
  *	@param	 fileName   The name of the file containing the graph definition.
  *	@returns	        The GraphPtr containing the data.
  *	@throws		        A  ResourceException if the data is unable to be instantiated.

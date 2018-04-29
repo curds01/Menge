@@ -65,14 +65,14 @@ class MENGEVIS_API VisPluginEngine
 
   /*!
    *	@brief		Register an AgentContext instance.
-   *
+
    *	@param		context		An instance of an agent context with a unique element name.
    */
   void registerAgentContext(Runtime::BaseAgentContext* context);
 
   /*!
    *	@brief		Register a VelCompContext instance.
-   *
+
    *	@param		context		An instance of a velocity component context with a globally
    *							unique element name.
    */
@@ -80,7 +80,7 @@ class MENGEVIS_API VisPluginEngine
 
   /*!
    *	@brief		Register a GoalRenderer instance.
-   *
+
    *	@param		renderer	An instance of a goal renderer with a globally unique
    *							element name.
    */
@@ -88,7 +88,7 @@ class MENGEVIS_API VisPluginEngine
 
   /*!
    *	@brief		Register a VisAgent instance.
-   *
+
    *	@param		visAgent	An instance of a visualization agent with a globally unique
    *							element name.
    */

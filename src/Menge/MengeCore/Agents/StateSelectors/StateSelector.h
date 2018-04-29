@@ -46,7 +46,7 @@ class MENGE_API StateSelectorException : public virtual MengeException {
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   StateSelectorException(const std::string& s) : MengeException(s) {}
@@ -66,7 +66,7 @@ class MENGE_API StateSelectorFatalException : public StateSelectorException,
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   StateSelectorFatalException(const std::string& s)
@@ -75,7 +75,7 @@ class MENGE_API StateSelectorFatalException : public StateSelectorException,
 
 /*!
  *	@brief		The base class for selecting an agent's intial state.
- *
+
  *	This is an abstract class, primarily defining the mechanism for selecting
  *	an agent's initial state.
  */
@@ -95,9 +95,9 @@ class MENGE_API StateSelector : public Element {
  public:
   /*!
    *	@brief		Provides the name of a state.
-   *
+
    *	Ths must be overriden by child classes.
-   *
+
    *	@returns:		The name of the state.
    */
   virtual std::string getState() = 0;

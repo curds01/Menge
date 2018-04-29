@@ -19,7 +19,7 @@
 /*!
  *	@file	SimulatorDBEntry.h
  *	@brief	Definition of an entry into the simulator database.
- *
+
  *	This provides the mechanism by which the executable can learn about
  *	new pedestrian models/simulators without any significant code
  *	contortions.
@@ -52,14 +52,14 @@ class FSM;
 
 /*!
  *	@brief		An entry in the simulator database.
- *
+
  *	Every pedestrian model must define and register a SimulatorDBEntry.
  *	The entry provides brief and long descriptions of the pedestrian
  *	model to display in response to command-line queries.  Furthermore,
  *	they are responsible for instantiating simulators, behavior FSM,
  *	and SimSystem (although, this is done in the base class and <i>not</i>
  *	the derived classes.
- *
+
  *	A derived class should do the following:
  *		- Inherit from the SimulatorDBEntry
  *		- Implement the following functions:
@@ -83,7 +83,7 @@ class MENGE_API SimulatorDBEntry {
 
   /*!
    *	@brief		Gives a brief description of the simulator.
-   *
+
    *	@returns	A brief description of the simulator and pedestrian
    *				model.
    */
@@ -91,7 +91,7 @@ class MENGE_API SimulatorDBEntry {
 
   /*!
    *	@brief		Gives a long description of the simulator.
-   *
+
    *	@returns	A long description of the simulator and pedestrian
    *				model.
    */
@@ -99,7 +99,7 @@ class MENGE_API SimulatorDBEntry {
 
   /*!
    *	@brief		Gives a label to apply to the interactive viewer.
-   *
+
    *	@returns	The name for display on the interactive viewer.
    *	@returns	A newly instantiated simulator instance of a type appropriate
    *				for this database entry.
@@ -108,11 +108,11 @@ class MENGE_API SimulatorDBEntry {
 
   /*!
    *	@brief		Gives a unique name to be used as a command-line parameter.
-   *
+
    *	This name MUST satisfy two constraints:
    *		- It must contain no spaces.
    *		- It must be unique from that used by all other simulators.
-   *
+
    *	@returns	A single string (with no spaces) that can be used as
    *				a command line parameter to uniquely identify this model.
    */
@@ -120,9 +120,9 @@ class MENGE_API SimulatorDBEntry {
 
   /*!
    *	@brief		Returns a pointer to this model's Simulator instance.
-   *
+
    *	This must be overridden by a derived class
-   *
+
    *	@returns	A newly instantiated simulator instance of a type appropriate
    *				for this database entry.
    */
@@ -130,7 +130,7 @@ class MENGE_API SimulatorDBEntry {
 
   /*!
    *	@brief		Returns a new simulator.
-   *
+
    *	@param		agentCount		The number of the agents in the system.
    *	@param		simTimeStep		The simulator's time step (for updating the sim
    *system).
@@ -156,9 +156,9 @@ class MENGE_API SimulatorDBEntry {
 
   /*!
    *	@brief		Reports the current run-time of an instantiated simulation.
-   *
+
    *	This is only meaningful if called *after* getSimulatorSystem.
-   *
+
    *	@returns	The current run-time of the instantiated simulation.  If no
    *				simulation has been instantiated, -1 is returned.
    */
@@ -169,13 +169,13 @@ class MENGE_API SimulatorDBEntry {
 		/*!
 		 *	@brief		Returns a pointer to an agent context appropriate to
 		 *				the corresponding simulator.
-		 *
+
 		 *	If the provided system is not, in fact, a pointer to a SimSystem for the
 		 *	appropriate simulator type, this function will report failure.  Furthermore,
 		 *	the default implementation is to return a BaseAgentContext.  If the
 		 *	simulator comes with a novel context, this function should be overridden
 		 *	in the derived SimulatorDBEntry.
-		 *
+
 		 *	@param		simSystem	The system which tracks the agents.  This should be
 		 *							the same system which was returned by a call to 
 		 *							SimulatorDBEntry::getSimulatorSystem.
@@ -186,11 +186,11 @@ class MENGE_API SimulatorDBEntry {
 #endif
   /*!
    *	@brief		Provides an AgentInitializer appropriate to this simulator class.
-   *
+
    *	Each derived database entry must provide the appropriate AgentInitializer
    *	for its simulator type, in order to fully process all of the corresponding
    *	XML data to initialize the agent population.
-   *
+
    *	@returns	A pointer to an agent initializer.  The caller is responsible for
    *				freeing up the memory.
    */
@@ -198,7 +198,7 @@ class MENGE_API SimulatorDBEntry {
 
   /*!
    *	@brief		Creates the simulator.
-   *
+
    *	@param		sceneFileName		The full path to the simulation scene specification.
    *	@param		VERBOSE				Determines if the initialization outputs
    *status
@@ -212,7 +212,7 @@ class MENGE_API SimulatorDBEntry {
 
   /*!
    *	@brief		Creates the finite state machine and finalizes simulator and fsm
-   *
+
    *	@param		behaveFile		string containing the full path to the behavior file
    *	@param		sim				pointer to the simulator interface to be used
    *in
@@ -226,7 +226,7 @@ class MENGE_API SimulatorDBEntry {
   /*!
    *	@brief		Finalizes the finite state machine and simulator in preparation for
    *				execution.
-   *
+
    *	@param		sim		A pointer to the simulator.
    *	@param		fsm		The finite state machine that goes with the simulator.
    *	@returns	A boolean reporting if finalization was successful (true) or not (false).

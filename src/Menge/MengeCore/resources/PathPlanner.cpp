@@ -61,7 +61,7 @@ using Math::Vector2;
 
 /*!
  *	@brief		Creates unique keys for a route based on start and end nodes.
- *
+
  *	Mangles the start and end node identifiers into a RouteKey for
  *	using in the map.  The map is a single, unsigned int of the same
  *	size as size_t.  The value is cut in half with the upper bits
@@ -71,7 +71,7 @@ using Math::Vector2;
  *	size of size_t.  On a 32-bit machine, that's 16 bits per node index
  *	(for 65K total nodes). On a 64-bit machine, it is 32 bits per node
  *	index, allowing 4 billion nodes.
- *
+
  *	@param		start		ID of start node.
  *	@param		end			ID of end node.
  *	@returns	A unique node key based on the start and end nodes.

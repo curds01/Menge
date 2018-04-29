@@ -68,7 +68,7 @@ using Menge::UtilException;
 
 /*!
  *	@brief		helper function to convert a string to water mark alignment
- *
+
  *	@param		s		the string representing the alignment
  *	@returns	a WatermarkAlign corresponding to the given string
  */

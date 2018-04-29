@@ -46,7 +46,7 @@ class MENGE_API ElevationException : public virtual MengeException {
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   ElevationException(const std::string& s) : MengeException(s) {}
@@ -64,7 +64,7 @@ class MENGE_API ElevationFatalException : public ElevationException, public Meng
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   ElevationFatalException(const std::string& s)
@@ -73,11 +73,11 @@ class MENGE_API ElevationFatalException : public ElevationException, public Meng
 
 /*!
  *	@brief		The base class for determining an agent's elevation.
- *
+
  *	This is an abstract class, primarily defining the Elevation abstraction.
  *	Essentially, the Elevation object must be able to report elevation for
  *	an agent (or an arbitrary position) and the "gradient" at that point.
- *
+
  *	The gradient is not *truly* the gradient.  In fact, it is merely the
  *	projection of the elevation object's normal on the planning plane.  So,
  *	if the elevation is parallel to the planning plane, the gradient would be
@@ -95,10 +95,10 @@ class MENGE_API Elevation : public Element {
  public:
   /*!
    *	@brief		Reports the elevation of the simulation domain at the given point.
-   *
+
    *	The domain may have more than one valid elevation for the point.
    *	It is the responsibility of the elevation entity resolve this.
-   *
+
    *	@param		point		A point on the x-z cartesian plane.
    *	@returns	The elevation at the given point.
    */
@@ -106,10 +106,10 @@ class MENGE_API Elevation : public Element {
 
   /*!
    *	@brief		Reports the elevation of the simulation domain for the given agent
-   *
+
    *	The domain may have more than one valid elevation for the point.
    *	It is the responsibility of the elevation entity resolve this.
-   *
+
    *	@param		agent		A pointer to the agent for which elevation should be
    *							reported.
    *	@returns	The elevation (position on the y-axis) based on current agent
@@ -118,10 +118,10 @@ class MENGE_API Elevation : public Element {
   virtual float getElevation(const BaseAgent* agent) const = 0;
 
   /*!	@brief		Reports the gradient of the simulation domain at the given point.
-   *
+
    *	The domain may have more than one valid gradient for the point.
    *	It is the responsibility of the elevation entity resolve this.
-   *
+
    *	@param		point		A point on the x-z cartesian plane.
    *	@returns	The gradient at the given point.
    */
@@ -129,10 +129,10 @@ class MENGE_API Elevation : public Element {
 
   /*!
    *	@brief		Reports the gradient of the simulation domain for the given agent
-   *
+
    *	The domain may have more than one valid gradient for the point.
    *	It is the responsibility of the elevation entity resolve this.
-   *
+
    *	@param		agent		A pointer to the agent for which gradient should be
    *reported.
    *	@returns	The gradient of the domain based on current agent state/position.

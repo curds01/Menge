@@ -50,7 +50,7 @@ class MENGEVIS_API Selectable {
 
   /*!
    *	@brief		Returns this object's globally unique *selection* id.
-   *
+
    *	@returns	The selection id - a positive value.
    */
   unsigned int getID() const { return _id; }
@@ -63,17 +63,17 @@ class MENGEVIS_API Selectable {
 
   /*!
    *	@brief		Retrives a pointer to the currently selected node.
-   *
+
    *	@returns	A pointer to the selected object -- NULL if no object is selected.
    */
   static Selectable* getSelectedObject() { return _selectedObject; }
 
   /*!
    *	@brief		Returns the "name" of the currently selected object.
-   *
+
    *	In this case, "name" refers to the OpenGL identifier.  It corresponds to
    *	a *selectable* object's id (see Selectable::getID).
-   *
+
    *	@returns	The OpenGL name (selectable id) of the currently selected object.
    *				If no object is selected, it returns zero.
    */
@@ -90,7 +90,7 @@ class MENGEVIS_API Selectable {
 
   /*!
    *	@brief		Forces an arbitrary selectable to be selected
-   *
+
    *	@param		obj		A selectable object to set as selected.
    */
   static void setSelectedObject(Selectable* obj) {
@@ -102,7 +102,7 @@ class MENGEVIS_API Selectable {
 
   /*!
    *	@brief		The selection set up.
-   *
+
    *	To perform selection, this needs to be called prior to drawing the scene of
    *	selectable objects.
    */
@@ -110,10 +110,10 @@ class MENGEVIS_API Selectable {
 
   /*!
    *	@brief		The selection take down.
-   *
+
    *	When performing selection, after calling Selectable::selectStart and drawing the
    *	scene, this must be called to conclude the selection process.
-   *
+
    *	@returns	A boolean reporting if the selection *changed* (true) or not (false).
    */
   static bool selectEnd();
@@ -131,7 +131,7 @@ class MENGEVIS_API Selectable {
 
   /*!
    *	@brief		Reports if this node is selcted.
-   *
+
    *	This can be used by contexts or objects that change how they are drawn based
    *	on selection state.
    */
@@ -151,14 +151,14 @@ class MENGEVIS_API Selectable {
 
   /*!
    *	@brief		A gobal counter of the number of selectable objects in the scene.
-   *
+
    *	Used to assign a new globally unique selection id to the next Selectable.
    */
   static unsigned int ID;
 
   /*!
    *	@brief		The currently selected object
-   *
+
    *	This system currently only supports selection of one item at a time.
    *	TODO: support multiple selection as required.
    */

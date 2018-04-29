@@ -56,7 +56,7 @@ class MENGEVIS_API SimSystemException : public virtual Menge::MengeException {
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   SimSystemException(const std::string& s) : Menge::MengeException(s) {}
@@ -76,7 +76,7 @@ class MENGEVIS_API SimSystemFatalException : public SimSystemException,
 
   /*!
    *	@brief		Constructor with message.
-   *
+
    *	@param		s		The exception-specific message.
    */
   SimSystemFatalException(const std::string& s)
@@ -85,7 +85,7 @@ class MENGEVIS_API SimSystemFatalException : public SimSystemException,
 
 /*!
  *	@brief		Templated class for performing simulation.
- *
+
  *	The SimSystem is the main mechanism which performs the simulation loop.
  *	It is responsible for updating the simulation step after step, with
  *	appropriate calls to the BFSM and the simulator.
@@ -94,7 +94,7 @@ class MENGEVIS_API SimSystem : public SceneGraph::System {
  public:
   /*!
    *	@brief		Constructor
-   *
+
    *	@param	sim		A pointer to the simulator.
    */
   SimSystem(Menge::Agents::SimulatorInterface* sim);
@@ -107,7 +107,7 @@ class MENGEVIS_API SimSystem : public SceneGraph::System {
   /*!
    *	@brief		Update the simulation (and possibly visual elements) to the
    *				given global time.
-   *
+
    *	@param		time		The global time of the system.
    *	@returns	True if the system has changed such that it requires a redraw.
    */
@@ -115,42 +115,42 @@ class MENGEVIS_API SimSystem : public SceneGraph::System {
 
   /*!
    *	@brief		Add visual representations of the simulation obstcles to the GLScene.
-   *
+
    *	@param		scene		The scene which receives nodes for drawing obstacles.
    */
   void addObstacleToScene(SceneGraph::GLScene* scene);
 
   /*!
    *	@brief		Add visual representations of the simulation agents to the GLScene.
-   *
+
    *	@param		scene		The scene which receives nodes for drawing agents.
    */
   virtual void addAgentsToScene(SceneGraph::GLScene* scene);
 
   /*!
    *	@brief		Add visual representations of obstacles and agents to the GLScene.
-   *
+
    *	@param		scene		The scene which receives nodes for drawing agents.
    */
   void populateScene(SceneGraph::GLScene* scene);
 
   /*!
    *	@brief		Update the position of the *visual* agents from the simulation data.
-   *
+
    *	@param		agtCount		The number of agents in the system.
    */
   virtual void updateAgentPosition(int agtCount);
 
   /*!
    *	@brief		Returns a pointer to the visualization agents
-   *
+
    *	@returns	Returns the pointer to the pointers.
    */
   inline VisAgent** getVisAgents() { return _visAgents; }
 
   /*!
    *	@brief		Reports the number of agents.
-   *
+
    *	@returns	The number of VisAgents updated by the system.
    */
   size_t getAgentCount() const;

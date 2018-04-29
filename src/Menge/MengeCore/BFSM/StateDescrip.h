@@ -50,7 +50,7 @@ class StateDescrip {
  public:
   /*!
    *	@brief		Constructor.
-   *
+
    *	@param		name		The name of the state.
    *	@param		isFinal		Determines if this state is a final state (true) or not
    *							(false).
@@ -64,7 +64,7 @@ class StateDescrip {
 
   /*!
    *	@brief		Friend operator for printing the state description to an output stream.
-   *
+
    *	@param		out			The output stream.
    *	@param		state		A state description to write to the stream.
    *	@returns	The provided output stream.
@@ -105,7 +105,7 @@ class StateDescrip {
 
 /*!
  *	@brief		Parses a TinyXML element containing a state description
- *
+
  *	@param		node			The TinyXML element
   *	@param		behaveFldr	The folder in which the behavior is defined -- all resources
  *							are defined relative to this folder.

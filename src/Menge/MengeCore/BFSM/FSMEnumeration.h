@@ -55,7 +55,7 @@ enum InitVelEnum {
 
 /*!
  *	@brief		Friend function for printing string versions of the PropertyOperand enum
- *
+
  *	@param		out		The stream to write the string to.
  *	@param		op		The ProperyOperand to write.
  *	@returns	A reference to the output stream.

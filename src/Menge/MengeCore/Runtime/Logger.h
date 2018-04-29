@@ -72,17 +72,17 @@ class Logger {
 
   /*!
    *	@brief		Sets the logger's output file
-   *
+
    *	If there is an error in opening the file, the logger will default to
    *	writing to the console.
-   *
+
    *	@param		fileName		The file name to write the html to.
    */
   MENGE_API void setFile(const std::string& fileName);
 
   /*!
    *	@brief		Writes strings to the logger based on current status.
-   *
+
    *	@param		logger		A reference to a logger.
    *	@param		msg			The string to write.
    *	@returns	A reference to the logger streamed to.
@@ -91,7 +91,7 @@ class Logger {
 
   /*!
    *	@brief		Writes strings to the logger based on current status.
-   *
+
    *	@param		logger		A reference to a logger.
    *	@param		msg			The string to write.
    *	@returns	A reference to the logger streamed to.
@@ -100,7 +100,7 @@ class Logger {
 
   /*!
    *	@brief		Writes long unsigned int to the logger based on current status.
-   *
+
    *	@param		logger		A reference to a logger.
    *	@param		value		The value to write.
    *	@returns	A reference to the logger streamed to.
@@ -111,7 +111,7 @@ class Logger {
   /*!
        *	@brief		Writes a size_t to the logger based on current status. Only done in
        *				windows, as GCC complains.
-       *
+
        *	@param		logger		A reference to a logger.
        *	@param		value		The value to write.
        *	@returns	A reference to the logger streamed to.
@@ -121,7 +121,7 @@ class Logger {
 #if !defined _MSC_VER || defined _M_X64
   /*!
    *	@brief		Writes long unsigned int to the logger based on current status.
-   *
+
    *	@param		logger		A reference to a logger.
    *	@param		value		The value to write.
    *	@returns	A reference to the logger streamed to.
@@ -130,7 +130,7 @@ class Logger {
 #endif
   /*!
    *	@brief		Writes int to the logger based on current status.
-   *
+
    *	@param		logger		A reference to a logger.
    *	@param		value		The value to write.
    *	@returns	A reference to the logger streamed to.
@@ -139,7 +139,7 @@ class Logger {
 
   /*!
    *	@brief		Writes float to the logger based on current status.
-   *
+
    *	@param		logger		A reference to a logger.
    *	@param		value		The value to write.
    *	@returns	A reference to the logger streamed to.
@@ -148,7 +148,7 @@ class Logger {
 
   /*!
    *	@brief		Writes double to the logger based on current status.
-   *
+
    *	@param		logger		A reference to a logger.
    *	@param		value		The value to write.
    *	@returns	A reference to the logger streamed to.
@@ -157,7 +157,7 @@ class Logger {
 
   /*!
    *	@brief		Changes the message status of the logger
-   *
+
    *	@param		logger		A reference to a logger.
    *	@param		type		The value to write.
    *	@returns	A reference to the logger streamed to.
@@ -177,10 +177,10 @@ class Logger {
 
   /*!
    *	@brief		Process text.
-   *
+
    *	Modifies the string in place to make an html version of the text if the output
    *	file is valid, otherwise, simply returns leaving the string untouched.
-   *
+
    *	@param		input		The input text to write to the log.  The string
    */
   void processText(std::string& input);
@@ -203,7 +203,7 @@ class Logger {
 
 /*!
   *  @brief Globally available Logger
-  *
+
   * The single, globally availably logger. This allows core files
   * and plugins to use a single consistant logger object.
   */

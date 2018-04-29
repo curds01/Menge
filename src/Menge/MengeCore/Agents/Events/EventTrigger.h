@@ -35,7 +35,7 @@ class EventTriggerFactory;
 
 /*!
  *	@brief		The base class for event triggers.
- *
+
  *	An event trigger specifies the conditions under which an event is
  *	triggered (allowing registered event handlers to respond).
  */
@@ -49,14 +49,14 @@ class MENGE_API EventTrigger : public Element {
   /*!
    *	@brief		Allows the trigger to finish initializing itself from its
    *				parsed state to its running state.
-   *
+
    *	@throws		EventException if there is a problem finalizing.
    */
   virtual void finalize() {}
 
   /*!
    *	@brief		Evaluates the condition to see if it has been met.
-   *
+
    *	@returns	True if the condition has been met, false otherwise.
    */
   bool conditionMet();
@@ -78,9 +78,9 @@ class MENGE_API EventTrigger : public Element {
  protected:
   /*!
    *	@brief		Evaluates the condition to see if it has been met.
-   *
+
    *	This must be implemented by all sub-classes.
-   *
+
    *	@returns		True if the condition has been met, false otherwise.
    */
   virtual bool testCondition() = 0;

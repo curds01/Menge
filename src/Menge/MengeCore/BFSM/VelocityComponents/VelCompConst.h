@@ -48,28 +48,28 @@ class MENGE_API ConstVelComponent : public VelComponent {
 
   /*!
    *	@brief		Constructor.
-   *
+
    *	@param		vel			The preferred velocity to return.
    */
   ConstVelComponent(const Vector2& vel);
 
   /*!
    *	@brief		Sets the constant velocity.
-   *
+
    *	@param		velocity		The velocity for this velocity component.
    */
   void setVelocity(const Vector2& velocity);
 
   /*!
    *	@brief		Computes and sets the agent's preferred velocity.
-   *
+
    *	The velocity component directly sets preferred velocity values in the
    *	the provided preferred velocity instance.  See Agents::PrefVelocity for details.
    *	Rather than setting the agent's preferred velocity value directly, a reference
    *	to a preferred velocity instance is passed in to make the use more general.
    *	This allows the computation of the preferred velocity for the agent, without
    *	necessarily making changes to it.
-   *
+
    *	@param		agent		The agent for which a preferred velocity is computed.
    *	@param		goal		The agent's goal (although this may be ignored).
    *	@param		pVel		The instance of Agents::PrefVelocity to set.
@@ -79,7 +79,7 @@ class MENGE_API ConstVelComponent : public VelComponent {
 
   /*!
    *	@brief		Returns the constant velocity.
-   *
+
    *	@returns	The velocity computed by this constant velocity component.
    */
   Vector2 getConstVelocity() const { return _dir * _speed; }
@@ -122,19 +122,19 @@ class MENGE_API ConstVCFactory : public VelCompFactory {
 
   /*!
    *	@brief		The name of the velocity component.
-   *
+
    *	The velocity component's name must be unique among all registered
    *	velocity components.  Each velocity component factory must override this function.
-   *
+
    *	@returns	A string containing the unique velocity component name.
    */
   virtual const char* name() const { return ConstVelComponent::NAME.c_str(); }
 
   /*!
    *	@brief		A description of the velocity component.
-   *
+
    *	Each velocity component factory must override this function.
-   *
+
    *	@returns	A string containing the velocity component description.
    */
   virtual const char* description() const {
@@ -145,13 +145,13 @@ class MENGE_API ConstVCFactory : public VelCompFactory {
  protected:
   /*!
    *	@brief		Create an instance of this class's velocity component.
-   *
+
    *	All VelCompFactory sub-classes must override this by creating (on the heap)
    *	a new instance of its corresponding velocity component type.  The various field
    *	values of the instance will be set in a subsequent call to
    *	VelCompFactory::setFromXML. The caller of this function takes ownership of the
    *	memory.
-   *
+
    *	@returns		A pointer to a newly instantiated VelComponent class.
    */
   VelComponent* instance() const { return new ConstVelComponent(); }
@@ -159,13 +159,13 @@ class MENGE_API ConstVCFactory : public VelCompFactory {
   /*!
    *	@brief		Given a pointer to an VelComponent instance, sets the appropriate
    *				fields from the provided XML node.
-   *
+
    *	It is assumed that the value of the `type` attribute is this VelComponent's type.
    *	(i.e. VelCompFactory::thisFactory has already been called and returned true.)
    *	If sub-classes of VelCompFactory introduce *new* VelComponent parameters, then the
    *	sub-class should override this method but explicitly call the parent class's
    *	version.
-   *
+
    *	@param		vc			A pointer to the velocity component whose attributes are
    *to
    *							be set.
@@ -205,7 +205,7 @@ class MENGE_API ConstVelDirComponent : public VelComponent {
 
   /*!
    *	@brief		Constructor.
-   *
+
    *	@param		vel			The preferred velocity direction to return (vel is
    **not*
    *							assumed to be unit-length).
@@ -214,14 +214,14 @@ class MENGE_API ConstVelDirComponent : public VelComponent {
 
   /*!
    *	@brief		Computes and sets the agent's preferred velocity.
-   *
+
    *	The velocity component directly sets preferred velocity values in the
    *	the provided preferred velocity instance.  See Agents::PrefVelocity for details.
    *	Rather than setting the agent's preferred velocity value directly, a reference
    *	to a preferred velocity instance is passed in to make the use more general.
    *	This allows the computation of the preferred velocity for the agent, without
    *	necessarily making changes to it.
-   *
+
    *	@param		agent		The agent for which a preferred velocity is computed.
    *	@param		goal		The agent's goal (although this may be ignored).
    *	@param		pVel		The instance of Agents::PrefVelocity to set.
@@ -231,7 +231,7 @@ class MENGE_API ConstVelDirComponent : public VelComponent {
 
   /*!
    *	@brief		Sets the direction of the velocity component.
-   *
+
    *	@param		dir			The direction the velocity should provide.
    *							The input need not be normalized, as tha will be
    *done
@@ -241,7 +241,7 @@ class MENGE_API ConstVelDirComponent : public VelComponent {
 
   /*!
    *	@brief		Reports the direction of this velocity component.
-   *
+
    *	@returns	The direction.
    */
   const Vector2& getDirection() const { return _dir; }
@@ -279,19 +279,19 @@ class MENGE_API ConstDirVCFactory : public VelCompFactory {
 
   /*!
    *	@brief		The name of the velocity component.
-   *
+
    *	The velocity component's name must be unique among all registered
    *	velocity components.  Each velocity component factory must override this function.
-   *
+
    *	@returns	A string containing the unique velocity component name.
    */
   virtual const char* name() const { return ConstVelDirComponent::NAME.c_str(); }
 
   /*!
    *	@brief		A description of the velocity component.
-   *
+
    *	Each velocity component factory must override this function.
-   *
+
    *	@returns	A string containing the velocity component description.
    */
   virtual const char* description() const {
@@ -302,12 +302,12 @@ class MENGE_API ConstDirVCFactory : public VelCompFactory {
  protected:
   /*!
    *	@brief		Create an instance of this class's velocity component.
-   *
+
    *	All VelCompFactory sub-classes must override this by creating (on the heap)
    *	a new instance of its corresponding velocity component type.  The various field values
    *	of the instance will be set in a subsequent call to VelCompFactory::setFromXML.
    *	The caller of this function takes ownership of the memory.
-   *
+
    *	@returns		A pointer to a newly instantiated VelComponent class.
    */
   VelComponent* instance() const { return new ConstVelDirComponent(); }
@@ -315,13 +315,13 @@ class MENGE_API ConstDirVCFactory : public VelCompFactory {
   /*!
    *	@brief		Given a pointer to an VelComponent instance, sets the appropriate
    *				fields from the provided XML node.
-   *
+
    *	It is assumed that the value of the `type` attribute is this VelComponent's type.
    *	(i.e. VelCompFactory::thisFactory has already been called and returned true.)
    *	If sub-classes of VelCompFactory introduce *new* VelComponent parameters, then the
    *	sub-class should override this method but explicitly call the parent class's
    *	version.
-   *
+
    *	@param		vc			A pointer to the velocity component whose attributes are
    *to
    *							be set.
@@ -362,14 +362,14 @@ class MENGE_API ZeroVelComponent : public VelComponent {
 
   /*!
    *	@brief		Computes and sets the agent's preferred velocity.
-   *
+
    *	The velocity component directly sets preferred velocity values in the
    *	the provided preferred velocity instance.  See Agents::PrefVelocity for details.
    *	Rather than setting the agent's preferred velocity value directly, a reference
    *	to a preferred velocity instance is passed in to make the use more general.
    *	This allows the computation of the preferred velocity for the agent, without
    *	necessarily making changes to it.
-   *
+
    *	@param		agent		The agent for which a preferred velocity is computed.
    *	@param		goal		The agent's goal (although this may be ignored).
    *	@param		pVel		The instance of Agents::PrefVelocity to set.
@@ -397,19 +397,19 @@ class MENGE_API ZeroVCFactory : public VelCompFactory {
  public:
   /*!
    *	@brief		The name of the velocity component.
-   *
+
    *	The velocity component's name must be unique among all registered
    *	velocity components.  Each velocity component factory must override this function.
-   *
+
    *	@returns	A string containing the unique velocity component name.
    */
   virtual const char* name() const { return ZeroVelComponent::NAME.c_str(); }
 
   /*!
    *	@brief		A description of the velocity component.
-   *
+
    *	Each velocity component factory must override this function.
-   *
+
    *	@returns	A string containing the velocity component description.
    */
   virtual const char* description() const {
@@ -419,12 +419,12 @@ class MENGE_API ZeroVCFactory : public VelCompFactory {
  protected:
   /*!
    *	@brief		Create an instance of this class's velocity component.
-   *
+
    *	All VelCompFactory sub-classes must override this by creating (on the heap)
    *	a new instance of its corresponding velocity component type.  The various field values
    *	of the instance will be set in a subsequent call to VelCompFactory::setFromXML.
    *	The caller of this function takes ownership of the memory.
-   *
+
    *	@returns		A pointer to a newly instantiated VelComponent class.
    */
   VelComponent* instance() const { return new ZeroVelComponent(); }

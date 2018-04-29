@@ -59,7 +59,7 @@ class MENGE_API NavMeshPoly {
   /*!
    *	@brief		Reports if the point lies inside the polygon.
    *				NOTE: This is limited to 2D polygons.
-   *
+
    *	@param		point		The point to test.
    *	@returns	A boolean reporting if the point is inside (true)
    *				or outside (false) the polygon
@@ -70,7 +70,7 @@ class MENGE_API NavMeshPoly {
   /*!
    *	@brief		Computes the elevation of the polygon at the
    *				given point.
-   *
+
    *	@param		point		A point on the polygon to evaluate.
    *							The function does not test to see if the
    *point
@@ -82,7 +82,7 @@ class MENGE_API NavMeshPoly {
   /*!
    *	@brief		Reports the gradient of the polygon.
    *				Because it is a plane, the gradient is constant at all positions.
-   *
+
    *	@returns	The gradient of the plane.
    */
   Math::Vector2 getGradient() const { return Math::Vector2(_A, _B); }
@@ -90,7 +90,7 @@ class MENGE_API NavMeshPoly {
   /*!
    *	@brief		Sets the polygon properties from a polygon definition
    *				in the given ascii file stream.
-   *
+
    *	@param		f		The input file stream.
    *	@returns	A boolean indicating successful parsing (true) or failure
    *				(false).
@@ -100,7 +100,7 @@ class MENGE_API NavMeshPoly {
   /*!
    *	@brief		Sets the polygon properties from a polygon definition
    *				in the given binary file stream.
-   *
+
    *	@param		f		The input file stream.
    *	@returns	A boolean indicating successful parsing (true) or failure
    *				(false).
@@ -109,7 +109,7 @@ class MENGE_API NavMeshPoly {
 
   /*!
    *	@brief		Initialize the polygon with vertices and equation of plane
-   *
+
    *	@param		vCount		Number of vertices in the polygon.
    *	@param		ids			An array of index values into the global
    *							set of vertices in the navigation mesh.
@@ -130,7 +130,7 @@ class MENGE_API NavMeshPoly {
    *	@brief		An array of indices into the vertex list defining the
    *			polygon.  The indices must be ordered such that the
    *			vertices are visited in a counter-clockwise order.
-   *
+
    * TODO: These are unsigned ints because of the binary file format.  It would
    * be better to decouple the file format from the representation.
    */
@@ -172,7 +172,7 @@ class MENGE_API NavMeshPoly {
 
   /*!
    *	@brief		Compute the bounding box for this polygon.
-   *
+
    *	@param		vertices		The actucal vertices used for
    *								geometric queries.
    */

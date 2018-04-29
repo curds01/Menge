@@ -51,13 +51,13 @@ class MENGE_API GoalSelectorFactory : public ElementFactory<GoalSelector> {
   /*!
    *	@brief		Given a pointer to a Goal Selector instance, sets the appropriate
    *				fields from the provided XML node.
-   *
+
    *	It is assumed that the value of the `type` attribute is this Goal Selector's type.
    *	(i.e. GoalSelectorFactory::thisFactory has already been called and returned true.)
    *	If sub-classes of GoalSelectorFactory introduce *new* GoalSelector parameters, then
    *	the sub-class should override this method but explicitly call the parent class's
    *	version.
-   *
+
    *	@param		selector		A pointer to the goal selector whose attributes are
    *to
    *								be set.

@@ -33,11 +33,11 @@ namespace Menge {
 
 /*!
  *	@brief		The definition of a readers-writer lock.
- *
+
  *	A readers-writer lock can be used to secure a resource for concurrent
  *	usage such that multiple readers can safely utilize the resource but
  *	writing tasks must have sole access.
- *
+
  */
 class MENGE_API ReadersWriterLock {
  public:
@@ -83,7 +83,7 @@ class MENGE_API ReadersWriterLock {
  private:
   /*!
    *	@brief		The openmp lock used for synchronization.
-   *
+
    *	This is mutable so the corresponding functions can be called in a const
    *	context.
    */
