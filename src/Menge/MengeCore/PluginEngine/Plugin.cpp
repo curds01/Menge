@@ -2,8 +2,8 @@
 #include "MengeCore/PluginEngine/CorePluginEngine.h"
 
 namespace Menge {
-	namespace PluginEngine {
+namespace PluginEngine {
 
-		template class Plugin<CorePluginEngine>;
-	}
+template class Plugin<CorePluginEngine>;
+}
 }  // namespace Menge
