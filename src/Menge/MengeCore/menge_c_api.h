@@ -17,8 +17,8 @@
 */
 
 /*!
- *	@file		menge_c_api.h
- *	@brief		Provides a limited c-style API to access Menge's functionality.
+ @file		menge_c_api.h
+ @brief		Provides a limited c-style API to access Menge's functionality.
  */
 
 #ifndef __MENGE_C_API__
@@ -31,36 +31,33 @@
 
 extern "C" {
 /*! @name		Simulator management
- *	@brief		Functions for initializing and working with the simulator.
+ @brief		Functions for initializing and working with the simulator.
  */
 //@{
 
 /*!
- *	@brief		Initializes a simulator.  The simulator uses the given pedestrian @p model
- *type
- *				and is initialized using the given behavior file and scene file.
+ @brief		Initializes a simulator.  The simulator uses the given pedestrian `model` type and is
+          initialized using the given behavior file and scene file.
 
- *	@param		behaveFile		Path to the behavior file.
- *	@param		sceneFile		Path to the scene specification file.
- *	@param		model			Name of the model type to use.
- *	@param		pluginPath		Optional path to location of plugin directories.  If
- *not
- *								provided, plugins will *not* be
- *loaded.
- *	@returns	True if initialization was successful.
+ @param		behaveFile		Path to the behavior file.
+ @param		sceneFile		  Path to the scene specification file.
+ @param		model			    Name of the model type to use.
+ @param		pluginPath		Optional path to location of plugin directories. If not provided, plugins
+                        will *not* be loaded.
+ @returns	True if initialization was successful.
  */
 MENGE_API bool InitSimulator(const char* behaveFile, const char* sceneFile, const char* model,
                              const char* pluginPath = 0x0);
 
 /*!
- *	@brief		Sets the time step for the simulator.
+ @brief		Sets the time step for the simulator.
  */
 MENGE_API void SetTimeStep(float timeStep);
 
 /*!
- *	@brief		Advances the state of the simulator one time step.
+ @brief		Advances the state of the simulator one time step.
 
- *	@returns	True if the simulation can keep running.
+ @returns	True if the simulation can keep running.
  */
 MENGE_API bool DoStep();
 
@@ -85,116 +82,115 @@ MENGE_API size_t StateCount();
 //@}
 
 /*!	@name		Agent functions
- *	@brief		Functions for querying the state of the simulator agents.
+ @brief		Functions for querying the state of the simulator agents.
  */
 //@{
 
 /*!
- *	@brief		Reports the number of agents in the simulation.
+ @brief		Reports the number of agents in the simulation.
 
- *	@returns	The agent count.
+ @returns	The agent count.
  */
 MENGE_API size_t AgentCount();
 
 /*!
- *	@brief		Reports the 3D position of the indicated agent.
+ @brief		Reports the 3D position of the indicated agent.
 
- *	@param		i		The index of the desired agent.
- *	@param[out]	x		The position's x-component.
- *	@param[out]	y		The position's y-component.
- *	@param[out]	z		The position's z-component.
- *	@returns			True if the values were successfully set.
+ @param[in]		i		The index of the desired agent.
+ @param[out]	x		The position's x-component.
+ @param[out]	y		The position's y-component.
+ @param[out]	z		The position's z-component.
+ @returns			True if the values were successfully set.
  */
 MENGE_API bool GetAgentPosition(size_t i, float* x, float* y, float* z);
 
 /*!
- *	@brief		Reports the 3D velocity of the indicated agent.
+ @brief		Reports the 3D velocity of the indicated agent.
 
- *	@param		i		The index of the desired agent.
- *	@param[out]	x		The velocity's x-component.
- *	@param[out]	y		The velocity's y-component.
- *	@param[out]	z		The velocity's z-component.
- *	@returns			True if the values were successfully set.
+ @param[in]		i		The index of the desired agent.
+ @param[out]	x		The velocity's x-component.
+ @param[out]	y		The velocity's y-component.
+ @param[out]	z		The velocity's z-component.
+ @returns			True if the values were successfully set.
  */
 MENGE_API bool GetAgentVelocity(size_t i, float* x, float* y, float* z);
 
 /*!
- *	@brief		Reports the 2D preferred velocity of the indicated agent.
- *	@param		i		The index of the desired agent.
- *	@param[out] x		The preferred velocity's x-component.
- *	@param[out] y		The preferred velocity's y-component.
- *	@returns			True if the values were successfully set.
+ @brief		Reports the 2D preferred velocity of the indicated agent.
+ @param		i		The index of the desired agent.
+ @param[out] x		The preferred velocity's x-component.
+ @param[out] y		The preferred velocity's y-component.
+ @returns			True if the values were successfully set.
  */
 MENGE_API bool GetAgentPrefVelocity(size_t i, float* x, float* y);
 
 /*!
- *	@brief		Reports the id of the state the indicated agent is currently in.
- *
- *	@param		i			The index of the desired agent.
- *	@param[out]	state_id	The id of the state the agent is currently in.
- *	@returns				True if the values were successfully set.
+ @brief		Reports the id of the state the indicated agent is currently in.
+
+ @param[in]		i			The index of the desired agent.
+ @param[out]	state_id	The id of the state the agent is currently in.
+ @returns				True if the values were successfully set.
  */
 MENGE_API bool GetAgentState(size_t i, size_t* state_id);
 
 /*!
- *	@brief		Reports the 2D orientation of the indicated agent.  It is the facing
- *direction
- *				of the agent, projected onto the xz plane.
+ @brief		Reports the 2D orientation of the indicated agent. It is the facing direction of the
+          agent, projected onto the xz plane.
 
- *	@param		i		The index of the desired agent.
- *	@param[out]	x		The orient's x-component.
- *	@param[out]	y		The orient's y-component.
- *	@returns			True if the values were successfully set.
+ @param[in]		i		The index of the desired agent.
+ @param[out]	x		The orient's x-component.
+ @param[out]	y		The orient's y-component.
+ @returns			True if the values were successfully set.
  */
 MENGE_API bool GetAgentOrient(size_t i, float* x, float* y);
 
 /*!
- *	@brief		Reports the agent class for this particular class.
+ @brief		Reports the agent class for this particular class.
 
- *	@param		i		The index of the desired agent.
- *	@returns			The agent's class (-1 if it can't be found).
+ @param		i		The index of the desired agent.
+ @returns			The agent's class (-1 if it can't be found).
  */
 MENGE_API int GetAgentClass(size_t i);
 
 /*!
- *	@brief		Reports the radius of the given agent.
+ @brief		Reports the radius of the given agent.
 
- *	@param		i		The index of the desired agent.
- *	@returns			The agent's radius (negative for errors).
+ @param		i		The index of the desired agent.
+ @returns			The agent's radius (negative for errors).
  */
 MENGE_API float GetAgentRadius(size_t i);
 
 //@}
 
 /*! @name		External triggers.
- *	@brief		The interface for working with external triggers.
+ @brief		The interface for working with external triggers.
 
- *	External triggers allow code _external_ to the simulator code to change the simulator
- *  state. They are event triggers that are exposed to the outside world and can be fired off
- *  by arbitrary code.
+ External triggers allow code _external_ to the simulator code to change the simulator state. They
+ are event triggers that are exposed to the outside world and can be fired off by arbitrary code.
  */
 //@{
 
 /*!
- *	@brief		Reports the number of external triggers exposed in the simulator.
- *	@returns	The number of external triggers available.
+ @brief		Reports the number of external triggers exposed in the simulator.
+ @returns	The number of external triggers available.
  */
 MENGE_API int ExternalTriggerCount();
 
 /*!
- *	@brief		The name of the iᵗʰ external trigger. If `i` is _not_ a valid trigger index,
- *				`nullptr` is returned.
- *	@param		i		The index of the desired external trigger. Must be <= the
- *value
- *						returned by ExternalTriggerCount().
- *	@returns	The name of the iᵗʰ trigger, or null if `i` is invalid.
+ @brief		The name of the iᵗʰ external trigger. If `i` is _not_ a valid trigger index, `nullptr` is
+          returned.
+ @param		i		The index of the desired external trigger. Must be <= the value returned by
+              ExternalTriggerCount().
+ @returns	The name of the iᵗʰ trigger, or null if `i` is invalid.
  */
 MENGE_API const char* ExternalTriggerName(int i);
 
 /*!
- *	@brief		Fires the trigger of the given name.
- *	If the name does not refer to a valid external trigger, nothing happens.
- *	@param	triggerName		The name of the trigger to fire.
+ @brief		Fires the trigger of the given name.
+
+ If the name does not refer to a valid external trigger, nothing happens.
+
+ @param	triggerName		The name of the trigger to fire.
  */
 MENGE_API void FireExternalTrigger(const char* triggerName);
 //@}

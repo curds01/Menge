@@ -26,38 +26,36 @@
 
 namespace Menge {
 /*!
- *	@namespace  Menge::PluginEngine
- *	@brief		The namespace containing the plug-in infrastructure for the core simulation.
+ @namespace  Menge::PluginEngine
+ @brief		The namespace containing the plug-in infrastructure for the core simulation.
  */
 namespace PluginEngine {
 /*!
- *	@brief		Class that serves as the basis for registering and loading plug-ins for
- *				Menge.
+ @brief		Class that serves as the basis for registering and loading plug-ins for Menge.
  */
 template <typename EngineType, typename PluginType>
 class BasePluginEngine {
  public:
   /*!
-   *	@brief		Mapping from the file name of the dynamic library to a pointer to
-   *				the loaded plugin.
+   @brief		Mapping from the file name of the dynamic library to a pointer to the loaded plugin.
    */
   typedef std::map<std::string, PluginType*> PluginMap;
 
   /*!
-   *	@brief		Default constructor.
+   @brief		Default constructor.
    */
   BasePluginEngine() : _plugins() {}
 
   /*!
-   *	@brief		Virtual destructor.
+   @brief		Virtual destructor.
    */
   virtual ~BasePluginEngine() {}
 
   /*!
-   *	@brief		Initialize plug-ins from the given directory.
+   @brief		Initialize plug-ins from the given directory.
 
-   *	@param		pluginFolder		The folder to search for plugins.
-   *	@returns	The number of plugins successfully loaded.
+   @param		pluginFolder		The folder to search for plugins.
+   @returns	The number of plugins successfully loaded.
    */
   size_t loadPlugins(const std::string& pluginFolder) {
     //	1. get all files in pluginFolder that conform to a platform-dependent
@@ -108,19 +106,18 @@ class BasePluginEngine {
 
  protected:
   /*!
-   *	@brief		Provides the string that will be written to the logger as an info
-   *				at the beginning of plugin loading.  It should be specialized for
-   *each
-   *				type of plugin engine.
+   @brief		Provides the string that will be written to the logger as an info at the beginning of
+            plugin loading.  It should be specialized for each type of plugin engine.
    */
   virtual std::string getIntroMessage() = 0;
 
   /*!
-   *	@brief		The loaded plugins.
+   @brief		The loaded plugins.
    */
   PluginMap _plugins;
 };
-}
-}
+
+}  // namespace PluginEngine
+}  // namespace Menge
 
 #endif  // __BASE_PLUGIN_ENGINE_H__

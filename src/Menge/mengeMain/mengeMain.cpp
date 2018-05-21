@@ -88,7 +88,7 @@ SimulatorDB simDB;
 
 /*!
  *	@brief		Utility function for defining the plugin directory.
- *
+
  *	@param		The path to the plugins.
  */
 std::string getPluginPath() {
@@ -105,7 +105,7 @@ std::string getPluginPath() {
 
 /*!
  *	@brief		Parse the command line arguments
- *
+
  *	@param		argc		the number of command-line arguments.
  *	@param		argv		The command-line parameters.
  *	@param		simDB		A pointer to the current simulator database.
@@ -268,7 +268,7 @@ bool parseCommandParameters(int argc, char* argv[], ProjectSpec* spec, const Sim
 
 /*!
  *	@brief		Initialize and start the simulation.
- *
+
  *	@param		dbEntry			The SimulatorDBEntry that describes the simulator
  *								to be instantiated.
  *	@param		behaveFile		The path to a valid behavior specification file.

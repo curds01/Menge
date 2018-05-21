@@ -47,10 +47,10 @@ class MENGE_API AgentEventEffect : public EventEffect {
  public:
   /*!
    @brief		Reports if the given target is compatible with this effect.
-   
+
    Each effect can only work on certain types of targets.  This function reports if the given 
    target works with this effect.
-   
+
    @param		target		The target instance to test.
    @returns	True if the target is a valid argument to EventEffect::apply.
    */
@@ -58,10 +58,10 @@ class MENGE_API AgentEventEffect : public EventEffect {
 
   /*!
    @brief		Applies the effect to the simulation target.
-   
+
    Not all targets work with all effects.  The target passed here must have previously passed the
    EventEffect::isCompatible test to work.
-   
+
    @param		target		The target to apply the event to.
    */
   virtual void apply(EventTarget* target);
@@ -69,9 +69,9 @@ class MENGE_API AgentEventEffect : public EventEffect {
  protected:
   /*!
    @brief		The actual work of the effect.
-   
+
    Sub-classes should implement this.  It is the action to be taken for each agent.
-   
+
    @param		agent		The agent to operate on.
    */
   virtual void agentEffect(Agents::BaseAgent* agent) = 0;

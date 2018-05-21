@@ -17,8 +17,8 @@
 */
 
 /*!
- *	@file		StateEvtTrigger.h
- *	@brief		The definitin of event triggers which key on state properties.
+ @file		StateEvtTrigger.h
+ @brief		The definitin of event triggers which key on state properties.
  */
 
 #ifndef __STATE_EVT_TRIGGER_H__
@@ -38,18 +38,18 @@ class State;
 //////////////////////////////////////////////////////////////////////////
 
 /*!
- *	@brief		The base class event triggers which depend on state properties.
+ @brief		The base class event triggers which depend on state properties.
  */
 class MENGE_API StateEvtTrigger : public EventTrigger {
  public:
   /*!
-   *	@brief		Constructor.
+   @brief		Constructor.
    */
   StateEvtTrigger();
 
   /*!
-   *	@brief		Allows the trigger to finish initializing itself from its
-   *				parsed state to its running state.
+   @brief		Allows the trigger to finish initializing itself from its parsed state to its running
+            state.
    */
   virtual void finalize();
 
@@ -57,12 +57,12 @@ class MENGE_API StateEvtTrigger : public EventTrigger {
 
  protected:
   /*!
-   *	@brief		The name of the state.
+   @brief		The name of the state.
    */
   std::string _stateName;
 
   /*!
-   *	@brief		The state to operate on.
+   @brief		The state to operate on.
    */
   BFSM::State* _state;
 };
@@ -70,42 +70,37 @@ class MENGE_API StateEvtTrigger : public EventTrigger {
 //////////////////////////////////////////////////////////////////////////
 
 /*!
- *	@brief		The factory for state event triggers.
+ @brief		The factory for state event triggers.
  */
 class MENGE_API StateEvtTriggerFactory : public EventTriggerFactory {
  public:
   /*!
-   *	@brief		Constructor.
+   @brief		Constructor.
    */
   StateEvtTriggerFactory();
 
  protected:
   /*!
-   *	@brief		Given a pointer to an EventTrigger instance, sets the appropriate fields
-   *				from the provided XML node.
+   @brief		Given a pointer to an EventTrigger instance, sets the appropriate fields from the
+            provided XML node.
 
-   *	It is assumed that the value of the `type` attribute is this EventTrigger's type.
-   *	(i.e. EventTrigger::thisFactory has already been called and returned true.)
-   *	If sub-classes of EventTriggerFactory introduce *new* EventTrigger parameters, then the
-   *	sub-class should override this method but explicitly call the parent class's
-   *	version.
+   It is assumed that the value of the `type` attribute is this EventTrigger's type (i.e.
+   EventTrigger::thisFactory has already been called and returned true). If sub-classes of
+   EventTriggerFactory introduce *new* EventTrigger parameters, then the sub-class should override
+   this method but explicitly call the parent class's version.
 
-   *	@param		trigger		A pointer to the event trigger whose attributes are to be
-   *set.
-   *	@param		node		The XML node containing the event trigger attributes.
-   *	@param		specFldr	The path to the specification file.  If the EventTrigger
-   *							references resources in the file system, it should be
-   *defined
-   *							relative to the specification file location.  This is
-   *the
-   *							folder containing that path.
-   *	@returns	A boolean reporting success (true) or failure (false).
+   @param		trigger		A pointer to the event trigger whose attributes are to be set.
+   @param		node		  The XML node containing the event trigger attributes.
+   @param		specFldr	The path to the specification file.  If the EventTrigger references resources
+                      in the file system, it should be defined relative to the specification file
+                      location. This is the folder containing that path.
+   @returns	A boolean reporting success (true) or failure (false).
    */
   virtual bool setFromXML(EventTrigger* trigger, TiXmlElement* node,
                           const std::string& specFldr) const;
 
   /*!
-   *	@brief		The identifier for the "state" string attribute.
+   @brief		The identifier for the "state" string attribute.
    */
   size_t _stateID;
 };
@@ -113,35 +108,35 @@ class MENGE_API StateEvtTriggerFactory : public EventTriggerFactory {
 //////////////////////////////////////////////////////////////////////////
 
 /*!
- *	@brief		A trigger that fires off when a state's population increases.
+ @brief		A trigger that fires off when a state's population increases.
  */
 class MENGE_API StatePopIncreaseTrigger : public StateEvtTrigger {
  public:
   /*!
-   *	@brief		Constructor.
+   @brief		Constructor.
    */
   StatePopIncreaseTrigger();
 
   /*!
-   *	@brief		Allows the trigger to finish initializing itself from its
-   *				parsed state to its running state.
+   @brief		Allows the trigger to finish initializing itself from its parsed state to its running
+            state.
 
-   *	@throws		EventException if there is a problem finalizing.
+   @throws		EventException if there is a problem finalizing.
    */
   virtual void finalize();
 
  protected:
   /*!
-   *	@brief		Evaluates the condition to see if it has been met.
+   @brief		Evaluates the condition to see if it has been met.
 
-   *	This must be implemented by all sub-classes.
+   This must be implemented by all sub-classes.
 
-   *	@returns	True if the condition has been met, false otherwise.
+   @returns	True if the condition has been met, false otherwise.
    */
   virtual bool testCondition();
 
   /*!
-   *	@brief		The population last time the state was examined.
+   @brief		The population last time the state was examined.
    */
   size_t _lastPop;
 };
@@ -149,26 +144,26 @@ class MENGE_API StatePopIncreaseTrigger : public StateEvtTrigger {
 //////////////////////////////////////////////////////////////////////////
 
 /*!
- *	@brief		The factory for StatePopIncreaseTrigger event triggers.
+ @brief		The factory for StatePopIncreaseTrigger event triggers.
  */
 class MENGE_API StatePopIncTriggerFactory : public StateEvtTriggerFactory {
  public:
   /*!
-   *	@brief		The name of the trigger type.
+   @brief		The name of the trigger type.
 
-   *	The trigger's name must be unique among all registered triggers.
-   *	Each trigger factory must override this function.
+   The trigger's name must be unique among all registered triggers. Each trigger factory must
+   override this function.
 
-   *	@returns	A string containing the unique trigger name.
+   @returns	A string containing the unique trigger name.
    */
   virtual const char* name() const { return "state_pop_increase"; }
 
   /*!
-   *	@brief		A description of the event trigger.
+   @brief		A description of the event trigger.
 
-   *	Each trigger factory must override this function.
+   Each trigger factory must override this function.
 
-   *	@returns	A string containing the trigger description.
+   @returns	A string containing the trigger description.
    */
   virtual const char* description() const {
     return "Event trigger which fires when a state's population increases.";
@@ -176,14 +171,14 @@ class MENGE_API StatePopIncTriggerFactory : public StateEvtTriggerFactory {
 
  protected:
   /*!
-   *	@brief		Create an instance of this class's event trigger implementation.
+   @brief		Create an instance of this class's event trigger implementation.
 
-   *	All EventTriggerFactory sub-classes must override this by creating (on the heap)
-   *	a new instance of its corresponding trigger type.  The various field values
-   *	of the instance will be set in a subsequent call to EventTriggerFactory::setFromXML.
-   *	The caller of this function takes ownership of the memory.
+   All EventTriggerFactory sub-classes must override this by creating (on the heap) a new instance
+   of its corresponding trigger type. The various field values of the instance will be set in a
+   subsequent call to EventTriggerFactory::setFromXML. The caller of this function takes ownership
+   of the memory.
 
-   *	@returns		A pointer to a newly instantiated EventTrigger class.
+   @returns		A pointer to a newly instantiated EventTrigger class.
    */
   EventTrigger* instance() const { return new StatePopIncreaseTrigger(); }
 };

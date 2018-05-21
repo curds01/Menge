@@ -45,7 +45,7 @@ class MENGE_API AgentGeneratorException : public virtual MengeException {
 
   /*!
    @brief		Constructor with message.
-   
+
    @param		s		The exception-specific message.
    */
   AgentGeneratorException(const std::string& s) : MengeException(s) {}
@@ -101,7 +101,7 @@ class MENGE_API AgentGeneratorFatalException : public AgentGeneratorException,
  This is an abstract class, primarily defining the agent generation abstraction. Essentially,
  the AgentGenerator produces a set of agent positions.  Its properties should be sufficient to
  produce a count of agents with defined positions.
- 
+
  The base class provides the definition (parsing and utilization) of a noise parameter which can
  be applied on top of the sub-class's implementation. The direction of perturbation is uniformly
  distributed on the plane; the user defines the magnitude of the perturbation. To make use of
@@ -134,7 +134,7 @@ class MENGE_API AgentGenerator : public Element {
  public:
   /*!
    @brief		Reports the number of agents created.
-   
+
    @returns	The number of agents this generator creates.
    */
   virtual size_t agentCount() = 0;

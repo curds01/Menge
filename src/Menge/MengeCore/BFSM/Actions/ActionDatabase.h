@@ -19,7 +19,7 @@
 /*!
  @file		ActionDatabase.h
  @brief		Central database for querying available behavior actions.
- 
+
  For actions to be used in the finite state machine, they must register
  themselves into the ActionDatabase.  This is done via the PluginEngine.
  */

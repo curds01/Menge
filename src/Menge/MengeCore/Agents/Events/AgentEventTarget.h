@@ -31,7 +31,7 @@
 namespace Menge {
 /*!
  @brief		The base class for all event targets which target agents.
- 
+
  Event targets are fundamentally defined by what the target of the effect is.  Each event target
  specifies a single kind of target. This event target produces a set of one or more agents to 
  effect.
