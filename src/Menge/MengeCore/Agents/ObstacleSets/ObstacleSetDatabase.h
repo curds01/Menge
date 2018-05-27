@@ -17,8 +17,8 @@
 */
 
 /*!
- @file		ObstacleSetDatabase.h
- @brief		Central database for querying available obstacle set implementations.
+ @file    ObstacleSetDatabase.h
+ @brief    Central database for querying available obstacle set implementations.
 
  For obstacle sets to be used in simulation, they must register themselves into the ObstacleSetDB.
  This is done via the PluginEngine.
@@ -35,7 +35,7 @@ namespace Menge {
 
 namespace Agents {
 /*!
- @brief		The database of registered aobstacle set implementations.
+ @brief    The database of registered aobstacle set implementations.
  */
 typedef ElementDB<ObstacleSetFactory, ObstacleSet> ObstacleSetDB;
 

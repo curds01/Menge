@@ -96,7 +96,7 @@ const int TIXML_MAJOR_VERSION = 2;
 const int TIXML_MINOR_VERSION = 5;
 const int TIXML_PATCH_VERSION = 3;
 
-/*	Internal structure for tracking location of items
+/*  Internal structure for tracking location of items
         in the XML file.
 */
 struct TiXmlCursor {
@@ -168,13 +168,13 @@ const TiXmlEncoding TIXML_DEFAULT_ENCODING = TIXML_ENCODING_UNKNOWN;
         other elements and other types of nodes.
 
         @verbatim
-        A Document can contain:	Element	(container or leaf)
+        A Document can contain:  Element  (container or leaf)
                                                         Comment (leaf)
                                                         Unknown (leaf)
                                                         Declaration( leaf )
 
-        An Element can contain:	Element (container or leaf)
-                                                        Text	(leaf)
+        An Element can contain:  Element (container or leaf)
+                                                        Text  (leaf)
                                                         Attributes (not on tree)
                                                         Comment (leaf)
                                                         Unknown (leaf)
@@ -191,7 +191,7 @@ class TiXmlBase {
   TiXmlBase() : userData(0) {}
   virtual ~TiXmlBase() {}
 
-  /**	All TinyXml classes can print themselves to a filestream
+  /**  All TinyXml classes can print themselves to a filestream
           or the string class (TiXmlString in non-STL mode, std::string
           in STL mode.) Either or both cfile and str can be null.
 
@@ -202,7 +202,7 @@ class TiXmlBase {
   */
   virtual void Print(FILE* cfile, int depth) const = 0;
 
-  /**	The world does not agree on whether white space should be kept or
+  /**  The world does not agree on whether white space should be kept or
           not. In order to make everyone happy, these global, static functions
           are provided to set whether or not TinyXml will condense all white space
           into a single space or not. The default is to condense. Note changing this
@@ -287,13 +287,13 @@ class TiXmlBase {
   static bool StreamTo(std::istream* in, int character, TIXML_STRING* tag);
 #endif
 
-  /*	Reads an XML name into the string provided. Returns
+  /*  Reads an XML name into the string provided. Returns
           a pointer just past the last character of the name,
           or 0 if the function has an error.
   */
   static const char* ReadName(const char* p, TIXML_STRING* name, TiXmlEncoding encoding);
 
-  /*	Reads text. Returns a pointer past the given end tag.
+  /*  Reads text. Returns a pointer past the given end tag.
           Wickedly complex options, but it keeps the (sensitive) code in one place.
   */
   static const char* ReadText(const char* in,           // where to start
@@ -323,7 +323,7 @@ class TiXmlBase {
       *_value = *p;
       return p + 1;
     } else if (*length) {
-      // strncpy( _value, p, *length );	// lots of compilers don't like this function (unsafe),
+      // strncpy( _value, p, *length );  // lots of compilers don't like this function (unsafe),
       // and the null terminator isn't needed
       for (int i = 0; p[i] && i < *length; ++i) {
         _value[i] = p[i];
@@ -431,11 +431,11 @@ class TiXmlNode : public TiXmlBase {
   /** The meaning of 'value' changes for the specific type of
           TiXmlNode.
           @verbatim
-          Document:	filename of the xml file
-          Element:	name of the element
-          Comment:	the comment text
-          Unknown:	the tag contents
-          Text:		the text string
+          Document:  filename of the xml file
+          Element:  name of the element
+          Comment:  the comment text
+          Unknown:  the tag contents
+          Text:    the text string
           @endverbatim
 
           The subclasses will wrap this function.
@@ -454,11 +454,11 @@ class TiXmlNode : public TiXmlBase {
 
   /** Changes the value of the node. Defined as:
           @verbatim
-          Document:	filename of the xml file
-          Element:	name of the element
-          Comment:	the comment text
-          Unknown:	the tag contents
-          Text:		the text string
+          Document:  filename of the xml file
+          Element:  name of the element
+          Comment:  the comment text
+          Unknown:  the tag contents
+          Text:    the text string
           @endverbatim
   */
   void SetValue(const char* _value) { value = _value; }
@@ -875,7 +875,7 @@ class TiXmlAttribute : public TiXmlBase {
   bool operator<(const TiXmlAttribute& rhs) const { return name < rhs.name; }
   bool operator>(const TiXmlAttribute& rhs) const { return name > rhs.name; }
 
-  /*	Attribute parsing starts: first letter of the name
+  /*  Attribute parsing starts: first letter of the name
                                            returns: the next char after the value end quote
   */
   virtual const char* Parse(const char* p, TiXmlParsingData* data, TiXmlEncoding encoding);
@@ -899,7 +899,7 @@ class TiXmlAttribute : public TiXmlBase {
   TiXmlAttribute* next;
 };
 
-/*	A class used to manage a group of attributes.
+/*  A class used to manage a group of attributes.
         It is only used internally, both by the ELEMENT and the DECLARATION.
 
         The set can be changed transparent to the Element and Declaration
@@ -937,8 +937,8 @@ class TiXmlAttributeSet {
 #endif
 
  private:
-  //*ME:	Because of hidden/disabled copy-construktor in TiXmlAttribute (sentinel-element),
-  //*ME:	this class must be also use a hidden/disabled copy-constructor !!!
+  //*ME:  Because of hidden/disabled copy-construktor in TiXmlAttribute (sentinel-element),
+  //*ME:  this class must be also use a hidden/disabled copy-constructor !!!
   TiXmlAttributeSet(const TiXmlAttributeSet&);  // not allowed
   void operator=(const TiXmlAttributeSet&);     // not allowed (as TiXmlAttribute)
 
@@ -1127,7 +1127,7 @@ template<> int QueryValueAttribute( const std::string& name, std::string* outVal
   // Print the Element to a FILE stream.
   virtual void Print(FILE* cfile, int depth) const;
 
-  /*	Attribtue parsing starts: next char past '<'
+  /*  Attribtue parsing starts: next char past '<'
                                            returns: next char past '>'
   */
   virtual const char* Parse(const char* p, TiXmlParsingData* data, TiXmlEncoding encoding);
@@ -1151,7 +1151,7 @@ template<> int QueryValueAttribute( const std::string& name, std::string* outVal
 #ifdef TIXML_USE_STL
   virtual void StreamIn(std::istream* in, TIXML_STRING* tag);
 #endif
-  /*	[internal use]
+  /*  [internal use]
           Reads the "value" of the element -- another element, or text.
           This should terminate with the current end tag.
   */
@@ -1161,7 +1161,7 @@ template<> int QueryValueAttribute( const std::string& name, std::string* outVal
   TiXmlAttributeSet attributeSet;
 };
 
-/**	An XML comment.
+/**  An XML comment.
 */
 class TiXmlComment : public TiXmlNode {
  public:
@@ -1179,7 +1179,7 @@ class TiXmlComment : public TiXmlNode {
   // Write this Comment to a FILE stream.
   virtual void Print(FILE* cfile, int depth) const;
 
-  /*	Attribtue parsing starts: at the ! of the !--
+  /*  Attribtue parsing starts: at the ! of the !--
                                            returns: next char past '>'
   */
   virtual const char* Parse(const char* p, TiXmlParsingData* data, TiXmlEncoding encoding);
@@ -1202,7 +1202,7 @@ class TiXmlComment : public TiXmlNode {
 #ifdef TIXML_USE_STL
   virtual void StreamIn(std::istream* in, TIXML_STRING* tag);
 #endif
-  //	virtual void StreamOut( TIXML_OSTREAM * out ) const;
+  //  virtual void StreamOut( TIXML_OSTREAM * out ) const;
 
  private:
 };
@@ -1432,14 +1432,14 @@ class TiXmlDocument : public TiXmlNode {
   bool LoadFile(const std::string& filename,
                 TiXmlEncoding encoding = TIXML_DEFAULT_ENCODING)  ///< STL std::string version.
   {
-    //		StringToBuffer f( filename );
-    //		return ( f.buffer && LoadFile( f.buffer, encoding ));
+    //    StringToBuffer f( filename );
+    //    return ( f.buffer && LoadFile( f.buffer, encoding ));
     return LoadFile(filename.c_str(), encoding);
   }
   bool SaveFile(const std::string& filename) const  ///< STL std::string version.
   {
-    //		StringToBuffer f( filename );
-    //		return ( f.buffer && SaveFile( f.buffer ));
+    //    StringToBuffer f( filename );
+    //    return ( f.buffer && SaveFile( f.buffer ));
     return SaveFile(filename.c_str());
   }
 #endif
@@ -1603,7 +1603,7 @@ class TiXmlDocument : public TiXmlNode {
         @endverbatim
 
         And that doesn't even cover "else" cases. TiXmlHandle addresses the verbosity
-        of such code. A TiXmlHandle checks for null	pointers so it is perfectly safe
+        of such code. A TiXmlHandle checks for null  pointers so it is perfectly safe
         and correct to use:
 
         @verbatim
@@ -1710,7 +1710,7 @@ class TiXmlHandle {
   /** Return the handle as a TiXmlElement. This may return null.
   */
   TiXmlElement* ToElement() const { return ((node && node->ToElement()) ? node->ToElement() : 0); }
-  /**	Return the handle as a TiXmlText. This may return null.
+  /**  Return the handle as a TiXmlText. This may return null.
   */
   TiXmlText* ToText() const { return ((node && node->ToText()) ? node->ToText() : 0); }
   /** Return the handle as a TiXmlUnknown. This may return null.
@@ -1725,7 +1725,7 @@ class TiXmlHandle {
           Return the handle as a TiXmlElement. This may return null.
   */
   TiXmlElement* Element() const { return ToElement(); }
-  /**	@deprecated use ToText()
+  /**  @deprecated use ToText()
           Return the handle as a TiXmlText. This may return null.
   */
   TiXmlText* Text() const { return ToText(); }

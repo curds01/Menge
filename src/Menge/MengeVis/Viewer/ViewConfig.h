@@ -17,8 +17,8 @@
 */
 
 /*!
- *	@file		ViewConfig.h
- *	@brief		Specification for parsing the view configuration file.
+ *  @file    ViewConfig.h
+ *  @brief    Specification for parsing the view configuration file.
  */
 
 #ifndef __VIEW_CONFIG_H__
@@ -40,12 +40,12 @@ namespace Viewer {
 class Watermark;
 
 /*!
- *	@brief		A set of parameters specifying a single camera.
+ *  @brief    A set of parameters specifying a single camera.
  */
 class CameraParam {
  public:
   /*!
-   *	@brief		Default constructor.
+   *  @brief    Default constructor.
    */
   CameraParam() {
     _posX = _posY = _tgtX = _tgtY = _tgtZ = 0.0f;
@@ -75,59 +75,59 @@ class CameraParam {
   std::string _name;
 
   /*!
-   *	@brief		Camera x-position in world space.
+   *  @brief    Camera x-position in world space.
    */
   float _posX;
 
   /*!
-   *	@brief		Camera y-position in world space.
+   *  @brief    Camera y-position in world space.
    */
   float _posY;
 
   /*!
-   *	@brief		Camera z-position in world space.
+   *  @brief    Camera z-position in world space.
    */
   float _posZ;
 
   /*!
-   *	@brief		Camera's target x-position in world space.
+   *  @brief    Camera's target x-position in world space.
    */
   float _tgtX;
 
   /*!
-   *	@brief		Camera's target y-position in world space.
+   *  @brief    Camera's target y-position in world space.
    */
   float _tgtY;
 
   /*!
-   *	@brief		Camera's target z-position in world space.
+   *  @brief    Camera's target z-position in world space.
    */
   float _tgtZ;
 
   /*!
-   *	@brief		Distance to camera's far plane.
+   *  @brief    Distance to camera's far plane.
    */
   float _farPlane;
 
   /*!
-   *	@brief		Distance to camera's near plane.
+   *  @brief    Distance to camera's near plane.
    */
   float _nearPlane;
 
   /*!
-   *	@brief		The "scale" factor applid to the camera in orthographic view.
+   *  @brief    The "scale" factor applid to the camera in orthographic view.
    */
   float _orthoScale;
 
   /*!
-   *	@brief		The camera's horizontal field of view (in degrees).
+   *  @brief    The camera's horizontal field of view (in degrees).
    */
   float _fov;
 
   /*!
-   *	@brief		The camera's projection type (perspective or orthographic).
+   *  @brief    The camera's projection type (perspective or orthographic).
 
-   *	@see		SceneGraph::GLCamera
+   *  @see    SceneGraph::GLCamera
    */
   SceneGraph::GLCamera::ProjectionType _projType;
 };
@@ -135,12 +135,12 @@ class CameraParam {
 ////////////////////////////////////////////////////////////////////////////
 
 /*!
- *	@brief		A set of parameters specifying a single light
+ *  @brief    A set of parameters specifying a single light
  */
 class LightParam {
  public:
   /*!
-   *	@brief		Default constructor.
+   *  @brief    Default constructor.
    */
   LightParam() {
     _r = _g = _b = 1.f;
@@ -159,48 +159,48 @@ class LightParam {
   }
 
   /*!
-   *	@brief		The red channel of the light's diffuse color.
+   *  @brief    The red channel of the light's diffuse color.
    */
   float _r;
 
   /*!
-   *	@brief		The green channel of the light's diffuse color.
+   *  @brief    The green channel of the light's diffuse color.
    */
   float _g;
 
   /*!
-   *	@brief		The blue channel of the light's diffuse color.
+   *  @brief    The blue channel of the light's diffuse color.
    */
   float _b;
 
   /*!
-   *	@brief		The alpha channel of the lights' diffuse color.
+   *  @brief    The alpha channel of the lights' diffuse color.
    */
   float _a;
 
   /*!
-   *	@brief		The x-value of the light position
+   *  @brief    The x-value of the light position
    */
   float _x;
 
   /*!
-   *	@brief		The y-value of the light position
+   *  @brief    The y-value of the light position
    */
   float _y;
 
   /*!
-   *	@brief		The z-value of the light position
+   *  @brief    The z-value of the light position
    */
   float _z;
 
   /*!
-   *	@brief		The w-value of the light position. Determines if the light
-   *				Is a point or directional light.
+   *  @brief    The w-value of the light position. Determines if the light
+   *        Is a point or directional light.
    */
   float _w;
 
   /*!
-   *	@brief		The space in which the light lives.
+   *  @brief    The space in which the light lives.
    */
   SceneGraph::GLLight::LightSpace _space;
 };
@@ -208,27 +208,27 @@ class LightParam {
 ////////////////////////////////////////////////////////////////////////////
 
 /*!
- *	@brief		The specification of an OpenGL GLViewer for a scene
+ *  @brief    The specification of an OpenGL GLViewer for a scene
 
- *	@see	GLViewer
+ *  @see  GLViewer
  */
 class MENGEVIS_API ViewConfig {
  public:
   /*!
-   *	@brief		Default constructor.
+   *  @brief    Default constructor.
    */
   ViewConfig();
 
   /*!
-   *	@brief		Destructor.
+   *  @brief    Destructor.
    */
   ~ViewConfig();
 
   /*!
-   *	@brief		Parses the XML configuration file.
+   *  @brief    Parses the XML configuration file.
 
-   *	@param		fileName		The name of the view configuration file to parse.
-   *	@returns	A boolean reporting success (true) or failure (false).
+   *  @param    fileName    The name of the view configuration file to parse.
+   *  @returns  A boolean reporting success (true) or failure (false).
    */
   bool readXML(const std::string& fileName);
 
@@ -238,39 +238,39 @@ class MENGEVIS_API ViewConfig {
   std::string toXML(bool include_font) const;
 
   /*!
-   *	@brief		Sets the view configuration to a set of default values.
+   *  @brief    Sets the view configuration to a set of default values.
    */
   void setDefaults();
 
   /*!
-   *	@brief		Set the camera properties based on the configuration
+   *  @brief    Set the camera properties based on the configuration
 
-   *	@param		camera		The camera to set
-   *	@param		i			The index of the camera
+   *  @param    camera    The camera to set
+   *  @param    i      The index of the camera
    */
   void setCamera(SceneGraph::GLCamera& camera, size_t i = 0) const;
 
   /*!
-   *	@brief		Sets the vector of cameras based on the camera specifications
+   *  @brief    Sets the vector of cameras based on the camera specifications
 
-   *	@param		cameras		A vector to populate with cameras.  Any pre-existing cameras
-   *							will be deleted.
+   *  @param    cameras    A vector to populate with cameras.  Any pre-existing cameras
+   *              will be deleted.
    */
   void setCameras(std::vector<SceneGraph::GLCamera>& cameras) const;
 
   /*!
-   *	@brief		Set the light properties based on the configuration
+   *  @brief    Set the light properties based on the configuration
 
-   *	@param		light		The light to set
-   *	@param		i			The index of the light specification to apply
+   *  @param    light    The light to set
+   *  @param    i      The index of the light specification to apply
    */
   void setLight(SceneGraph::GLLight& light, size_t i = 0) const;
 
   /*!
-   *	@brief		Sets the vector of lights based on the light specifications
+   *  @brief    Sets the vector of lights based on the light specifications
 
-   *	@param		lights		A vector to populate with lights.  Any pre-existing lights
-   *							will be deleted.
+   *  @param    lights    A vector to populate with lights.  Any pre-existing lights
+   *              will be deleted.
    */
   void setLights(std::vector<SceneGraph::GLLight>& lights) const;
 
@@ -280,57 +280,57 @@ class MENGEVIS_API ViewConfig {
   bool _z_up;
 
   /*!
-   *	@brief		The folder the view configuration file is located in.
+   *  @brief    The folder the view configuration file is located in.
    */
   std::string _viewFldr;
 
   /*!
-   *	@brief		Width of viewport (in pixels).
+   *  @brief    Width of viewport (in pixels).
    */
   int _width;
 
   /*!
-   *	@brief		Height of viewport (in pixels).
+   *  @brief    Height of viewport (in pixels).
    */
   int _height;
 
   /*!
-   *	@brief		The name of the background image to use.
+   *  @brief    The name of the background image to use.
    */
   std::string _bgImg;
 
   /*!
-   *	@brief		The optional watermark.
+   *  @brief    The optional watermark.
    */
   Watermark* _waterMark;
 
   /*!
-   *	@brief		Font name.
+   *  @brief    Font name.
    */
   std::string _fontName;
 
   /*!
-   *	@brief		Default font color.
+   *  @brief    Default font color.
    */
   float _fontColor[4];
 
   /*!
-   *	@brief		The set of cameras for the configuration
+   *  @brief    The set of cameras for the configuration
    */
   std::vector<CameraParam> _camSpecs;
 
   /*!
-   *	@brief		The set of cameras for the configuration
+   *  @brief    The set of cameras for the configuration
    */
   std::vector<LightParam> _lightSpecs;
 };
 
 /*!
- *	@brief		Streaming output operator to display configuration specification.
+ *  @brief    Streaming output operator to display configuration specification.
 
- *	@param		out		The output stream to which to write the view configuration.
- *	@param		cfg		The configuration to convert to a string.
- *	@returns	The output stream.
+ *  @param    out    The output stream to which to write the view configuration.
+ *  @param    cfg    The configuration to convert to a string.
+ *  @returns  The output stream.
  */
 MENGEVIS_API Menge::Logger& operator<<(Menge::Logger& out, const ViewConfig& cfg);
 

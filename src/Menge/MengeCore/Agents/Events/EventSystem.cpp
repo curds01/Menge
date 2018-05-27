@@ -48,7 +48,7 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 
 namespace Menge {
 /////////////////////////////////////////////////////////////////////
-//					Implementation of EventSystem
+//          Implementation of EventSystem
 /////////////////////////////////////////////////////////////////////
 
 bool EventSystem::CONSERVATIVE_SETUP = true;

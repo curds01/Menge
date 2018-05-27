@@ -38,38 +38,38 @@ namespace Menge {
 namespace Agents {
 
 /*!
- @brief		Exception class for spatial query operations
+ @brief    Exception class for spatial query operations
  */
 class MENGE_API SpatialQueryException : public virtual MengeException {
  public:
   /*!
-   @brief		Default constructor.
+   @brief    Default constructor.
    */
   SpatialQueryException() : MengeException() {}
 
   /*!
-   @brief		Constructor with message.
+   @brief    Constructor with message.
 
-   @param		s		The exception-specific message.
+   @param    s    The exception-specific message.
    */
   SpatialQueryException(const std::string& s) : MengeException(s) {}
 };
 
 /*!
- @brief		The fatal spatial query exception.
+ @brief    The fatal spatial query exception.
  */
 class MENGE_API SpatialQueryFatalException : public SpatialQueryException,
                                              public MengeFatalException {
  public:
   /*!
-   @brief		Default constructor.
+   @brief    Default constructor.
    */
   SpatialQueryFatalException() : MengeException(), SpatialQueryException(), MengeFatalException() {}
 
   /*!
-   @brief		Constructor with message.
+   @brief    Constructor with message.
 
-   @param		s		The exception-specific message.
+   @param    s    The exception-specific message.
    */
   SpatialQueryFatalException(const std::string& s)
       : MengeException(s), SpatialQueryException(), MengeFatalException() {}
@@ -79,7 +79,7 @@ class MENGE_API SpatialQueryFatalException : public SpatialQueryException,
 class BaseAgent;
 
 /*!
- @brief		The base class for performing spatial queries.
+ @brief    The base class for performing spatial queries.
 
  A spatial query implementation has to support several operations:
  - Given a maximum distance, find agents within that distance from a point
@@ -94,13 +94,13 @@ class BaseAgent;
 class MENGE_API SpatialQuery : public Element {
  public:
   /*!
-   @brief		Constructor.
+   @brief    Constructor.
    */
   SpatialQuery();
 
  protected:
   /*!
-   @brief		Virtual destructor.
+   @brief    Virtual destructor.
    */
   virtual ~SpatialQuery() {}
 
@@ -120,7 +120,7 @@ class MENGE_API SpatialQuery : public Element {
   /*!
    @brief      Adds an obstacle to the internal list of the spatial query
 
-   @param		obs		The obstacle to insert into the spatial query data structure.
+   @param    obs    The obstacle to insert into the spatial query data structure.
    */
   virtual void addObstacle(Obstacle* obs);
 
@@ -164,36 +164,36 @@ class MENGE_API SpatialQuery : public Element {
                                float radius) const = 0;
 
   /*!
-   @brief		Sets the spatial query to include visibility in finding agent neighbors.
+   @brief    Sets the spatial query to include visibility in finding agent neighbors.
 
-   @param		state		If true, the spatial query has to consider visibility.
+   @param    state    If true, the spatial query has to consider visibility.
    */
   virtual void setNeighborVisibleTest(bool state) {}
 
   /*!
-   @brief		Sets the test visibility status of the neighbor functions.
+   @brief    Sets the test visibility status of the neighbor functions.
 
-   @param		status		The new status of the test visibility property.
+   @param    status    The new status of the test visibility property.
    */
   inline void setTestVisibility(bool status) { _testVisibility = status; }
 
   /*!
-   @brief		Reports the test visibility property of the spatial query instance.
+   @brief    Reports the test visibility property of the spatial query instance.
 
-   @returns	  A boolean reporting if the spatial query instance uses visibility tests when computing
+   @returns    A boolean reporting if the spatial query instance uses visibility tests when computing
               nearby agents and obstacles (true) or not (false).
    */
   inline bool getTestVisibility() const { return _testVisibility; }
 
  protected:
   /*!
-   @brief		Dictates if visibility queries should be used (true) for neighbor queries or not
+   @brief    Dictates if visibility queries should be used (true) for neighbor queries or not
             (false).
    */
   bool _testVisibility;
 
   /*!
-   @brief		An internal central list of obstacles.
+   @brief    An internal central list of obstacles.
    */
   std::vector<Obstacle*> _obstacles;
 };

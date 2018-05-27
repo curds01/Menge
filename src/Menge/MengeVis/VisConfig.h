@@ -17,9 +17,9 @@
 */
 
 /*!
- *	@file		VisConfig.h
- *	@brief		Sets up the proper compiler directives for
- *				platform and dll export/import
+ *  @file    VisConfig.h
+ *  @brief    Sets up the proper compiler directives for
+ *        platform and dll export/import
  */
 
 #ifndef __VIS_CONFIG_H__

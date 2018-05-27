@@ -17,8 +17,8 @@
 */
 
 /*!
- @file		Action.h
- @brief		The definition of actions that are taken as agents enter states.
+ @file    Action.h
+ @brief    The definition of actions that are taken as agents enter states.
 
  Actions are associated with behavior states.  When an agent enters the corresponding
  behavior state, the action is taken on the agent.  It is typically used to modify
@@ -42,7 +42,7 @@ namespace Menge {
 
 /*!
  @namespace Menge::BFSM
- @brief	The namespace contains the Behavior Finite State Machine (BFSM) definition
+ @brief  The namespace contains the Behavior Finite State Machine (BFSM) definition
  */
 namespace BFSM {
 
@@ -50,7 +50,7 @@ namespace BFSM {
 class ActionFactory;
 
 /*!
- @brief		The abstract definition of an action.
+ @brief    The abstract definition of an action.
 
  An action is explicitly executed upon entering a state and has the option of undoing its effect
  upon exiting the state.
@@ -58,31 +58,31 @@ class ActionFactory;
 class MENGE_API Action : public Element {
  public:
   /*!
-   @brief		Constructor.
+   @brief    Constructor.
    */
   Action() : Element(), _undoOnExit(true) {}
 
  protected:
   /*!
-   @brief		Virtual destructor.
+   @brief    Virtual destructor.
    */
   virtual ~Action() {}
 
  public:
   /*!
-   @brief		Upon entering the state, this is called -- it is the main work of the action.
+   @brief    Upon entering the state, this is called -- it is the main work of the action.
 
    This is a purely virtual function.  Any instantiable Action sub-class must *explicitly* account
    for this function.
 
-   @param		agent		The agent to act on.
+   @param    agent    The agent to act on.
    */
   virtual void onEnter(Agents::BaseAgent* agent) = 0;
 
   /*!
-   @brief		The work to do upon state exit.
+   @brief    The work to do upon state exit.
 
-   @param		agent		The agent to act on.
+   @param    agent    The agent to act on.
    */
   void onLeave(Agents::BaseAgent* agent);
 
@@ -90,37 +90,37 @@ class MENGE_API Action : public Element {
 
  protected:
   /*!
-   @brief		The work to do when reseting an agent up on exit reset.
+   @brief    The work to do when reseting an agent up on exit reset.
 
    The reset action is guaranteed to be called *before* the general leave action, if the action has
    been configured to reset.
 
-   @param[in,out]	agent	  If non-null, the action should take whatever actions are necessary to
-                          reset the action's effects.
+   @param[in,out]  agent    If non-null, the action should take whatever actions are necessary to
+                            reset the action's effects.
    */
   virtual void resetAction(Agents::BaseAgent* agent) {}
 
   /*!
-   @brief		Work that will be done *unconditionally* when an agent leaves the state	to which this
+   @brief   Work that will be done *unconditionally* when an agent leaves the state  to which this
             action belongs.
 
-   @param		agent		The agent to act on.
+   @param    agent    The agent to act on.
    */
   virtual void leaveAction(Agents::BaseAgent* agent){};
 
   /*!
-   @brief		Determines if the action undoes itself on exiting the state.
+   @brief    Determines if the action undoes itself on exiting the state.
    */
   bool _undoOnExit;
 };
 
 /*!
- @brief		Parses a TinyXML element containing an action specification
+ @brief    Parses a TinyXML element containing an action specification
 
- @param		node			    The TinyXML element
- @param		behaveFldr		The folder in which the behavior is defined -- all resources are defined
-                        relative to this folder.
- @returns	A pointer to the new action .
+ @param    node          The TinyXML element
+ @param    behaveFldr    The folder in which the behavior is defined -- all resources are defined
+                         relative to this folder.
+ @returns  A pointer to the new action .
  */
 Action* parseAction(TiXmlElement* node, const std::string& behaveFldr);
 

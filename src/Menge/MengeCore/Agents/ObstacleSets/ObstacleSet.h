@@ -17,8 +17,8 @@
 */
 
 /*!
- @file		ObstacleSet.h
- @brief		The definition of the ObstacleSet element -- the numbers and positions of obstacles in a
+ @file    ObstacleSet.h
+ @brief    The definition of the ObstacleSet element -- the numbers and positions of obstacles in a
           set.
  */
 #ifndef __OBSTACLE_SET_H__
@@ -35,45 +35,45 @@ class Obstacle;
 class ObstacleSetFactory;
 
 /*!
- @brief		Exception class for obstacle set instantiation
+ @brief    Exception class for obstacle set instantiation
  */
 class MENGE_API ObstacleSetException : public virtual MengeException {
  public:
   /*!
-   @brief		Default constructor.
+   @brief    Default constructor.
    */
   ObstacleSetException() : MengeException() {}
 
   /*!
-   @brief		Constructor with message.
+   @brief    Constructor with message.
 
-   @param		s		The exception-specific message.
+   @param    s    The exception-specific message.
    */
   ObstacleSetException(const std::string& s) : MengeException(s) {}
 };
 
 /*!
- @brief		The fatal obstacle set exception.
+ @brief    The fatal obstacle set exception.
  */
 class MENGE_API ObstacleSetFatalException : public ObstacleSetException,
                                             public MengeFatalException {
  public:
   /*!
-   @brief		Default constructor.
+   @brief    Default constructor.
    */
   ObstacleSetFatalException() : MengeException(), ObstacleSetException(), MengeFatalException() {}
 
   /*!
-   @brief		Constructor with message.
+   @brief    Constructor with message.
 
-   @param		s		The exception-specific message.
+   @param    s    The exception-specific message.
    */
   ObstacleSetFatalException(const std::string& s)
       : MengeException(s), ObstacleSetException(), MengeFatalException() {}
 };
 
 /*!
- @brief		The base class for obstacle set definitions
+ @brief    The base class for obstacle set definitions
 
  This is an abstract class defining the functions of an obstacle set in Menge Obstacle sets must be
  able to provide a count of Obstacles in their definition and pass those obstacles on to the
@@ -82,7 +82,7 @@ class MENGE_API ObstacleSetFatalException : public ObstacleSetException,
 class MENGE_API ObstacleSet : public Element {
  public:
   /*!
-   @brief		Default constructor
+   @brief    Default constructor
    */
   ObstacleSet();
 
@@ -90,7 +90,7 @@ class MENGE_API ObstacleSet : public Element {
 
  protected:
   /*!
-   @brief		Protected destructor.
+   @brief    Protected destructor.
    
    The destroy method should be used to delete an instance of an obstacle set.
    */
@@ -98,38 +98,38 @@ class MENGE_API ObstacleSet : public Element {
 
  public:
   /*!
-   @brief		Reports the number of obstacles in the set.
+   @brief    Reports the number of obstacles in the set.
 
-   @returns	The number of obstacles in this set.
+   @returns  The number of obstacles in this set.
    */
   virtual size_t obstacleCount() = 0;
 
   /*!
-   @brief		Returns the ith obstacle.
+   @brief    Returns the ith obstacle.
 
-   @param		i		The index of the requested obstacle.
-   @returns	A pointer to the corresponding Obstacle instance.
-   @throws		ObstacleSetException if the index, i, is invalid.
+   @param    i    The index of the requested obstacle.
+   @returns  A pointer to the corresponding Obstacle instance.
+   @throws    ObstacleSetException if the index, i, is invalid.
    */
   virtual Obstacle* getObstacle(size_t i) = 0;
 
   /*!
-   @brief		Sets the class of this obstacle set.
+   @brief    Sets the class of this obstacle set.
 
-   @param		cl		the class id to which the obstacle set belongs.
+   @param    cl    the class id to which the obstacle set belongs.
    */
   virtual void setClass(size_t cl) { _class = cl; };
 
   /*!
-   @brief		Gets the class of this obstacle set.
+   @brief    Gets the class of this obstacle set.
 
-   @returns	The class id to which the obstacle set belongs.
+   @returns  The class id to which the obstacle set belongs.
    */
   virtual size_t getClass() { return _class; };
 
  protected:
   /*!
-   @brief		The class for the obstacles in this set.
+   @brief    The class for the obstacles in this set.
 
    This works with the BaseAgent::_obstacleSet member to determine which obstacles affect an agent.
    */

@@ -19,8 +19,8 @@ Any questions or comments should be sent to the authors menge@cs.unc.edu
 */
 
 /*!
- @file	EventEffectAgentState.h
- @brief	Provides the definition of an event effect that changes an agent's state.
+ @file  EventEffectAgentState.h
+ @brief  Provides the definition of an event effect that changes an agent's state.
  */
 
 #include "MengeCore/Agents/Events/AgentEventEffect.h"
@@ -37,7 +37,7 @@ class State;
 }
 
 /*!
- @brief		An event effect that can change the state the target agents are in.
+ @brief    An event effect that can change the state the target agents are in.
 
  This class uses the StateSelector to determine the target state. If the agent is already in the
  state selected by the Effect's selector, the effect can either cause the agent to exit and
@@ -59,12 +59,12 @@ class State;
  */
 class MENGE_API EventEffectAgentState : public AgentEventEffect {
   /*!
-   @brief		Default constructor.
+   @brief    Default constructor.
    */
   EventEffectAgentState();
 
   /*!
-   @brief		Destructor.
+   @brief    Destructor.
    */
   ~EventEffectAgentState();
 
@@ -72,18 +72,18 @@ class MENGE_API EventEffectAgentState : public AgentEventEffect {
 
  protected:
   /*!
-   @brief		The actual work of the effect.
+   @brief    The actual work of the effect.
 
    Sub-classes should implement this.  It is the action to be taken for each agent.
 
-   @param		agent		The agent to operate on.
+   @param    agent    The agent to operate on.
    */
   void agentEffect(Agents::BaseAgent* agent) override;
 
   /*!
-   @brief		Returns the state the agent should transition to.
-   @returns	A pointer to the state to which the agent will move to.
-   @throws		EventFatalException if the selector generates a state name that cannot be found in
+   @brief    Returns the state the agent should transition to.
+   @returns  A pointer to the state to which the agent will move to.
+   @throws    EventFatalException if the selector generates a state name that cannot be found in
               the BFSM.
    */
   BFSM::State* StateForAgent() const;
@@ -98,31 +98,31 @@ class MENGE_API EventEffectAgentState : public AgentEventEffect {
 };
 
 /*!
- @brief		The factory for generating instances of EventEffectAgentState from XML.
+ @brief    The factory for generating instances of EventEffectAgentState from XML.
  */
 class MENGE_API EventEffectAgentStateFactory : public EventEffectFactory {
  public:
   /*!
-   @brief		Default constructor.
+   @brief    Default constructor.
    */
   EventEffectAgentStateFactory();
 
   /*!
-   @brief		The name of the effect.
+   @brief    The name of the effect.
 
    The effect's name must be unique among all registered effect. Each effect factory must override
    this function.
 
-   @returns	A string containing the unique effect name.
+   @returns  A string containing the unique effect name.
    */
   const char* name() const override { return "set_agent_state"; }
 
   /*!
-   @brief		A description of the effect.
+   @brief    A description of the effect.
 
    Each effect factory must override this function.
 
-   @returns	A string containing the effect description.
+   @returns  A string containing the effect description.
    */
   const char* description() const override {
     return "Moves the target agent from their current state to the state determined by "
@@ -132,19 +132,19 @@ class MENGE_API EventEffectAgentStateFactory : public EventEffectFactory {
 
  protected:
   /*!
-   @brief		Create an instance of this class's effect.
+   @brief    Create an instance of this class's effect.
 
    All EventEffectFactory sub-classes must override this by creating (on the heap) a new instance
    of its corresponding event effect type. The various field values of the instance will be set in
    a subsequent call to EventEffectFactory::setFromXML. The caller of this function takes ownership
    of the memory.
 
-   @returns		A pointer to a newly instantiated EventEffect class.
+   @returns    A pointer to a newly instantiated EventEffect class.
    */
   EventEffect* instance() const override { return new EventEffectAgentState(); }
 
   /*!
-   @brief		Given a pointer to an AgentPropertyEffect instance, sets the appropriate fields from
+   @brief    Given a pointer to an AgentPropertyEffect instance, sets the appropriate fields from
             the provided XML node.
 
    It is assumed that the value of the `type` attribute is this AgentPropertyEffect's type (i.e.
@@ -152,18 +152,18 @@ class MENGE_API EventEffectAgentStateFactory : public EventEffectFactory {
    EventEffectFactory introduce *new* EventEffect parameters, then the sub-class should override
    this method but explicitly call the parent class's version.
 
-   @param		effect		  A pointer to the effect whose attributes are to be set.
-   @param		node		    The XML node containing the event effect attributes.
-   @param		behaveFldr	The path to the behavior file. If the action references resources in the
+   @param    effect      A pointer to the effect whose attributes are to be set.
+   @param    node        The XML node containing the event effect attributes.
+   @param    behaveFldr  The path to the behavior file. If the action references resources in the
                         file system, it should be defined relative to the behavior file location.
                         This is the folder containing that path.
-   @returns	A boolean reporting success (true) or failure (false).
+   @returns  A boolean reporting success (true) or failure (false).
    */
   virtual bool setFromXML(EventEffect* effect, TiXmlElement* node,
                           const std::string& behaveFldr) const override;
 
   /*!
-   @brief		The identifier for the "reenter" int attribute.
+   @brief    The identifier for the "reenter" int attribute.
    */
   size_t _reenterID;
 };

@@ -17,8 +17,8 @@
 */
 
 /*!
- @file		Element.h
- @brief		Base class for all Menge elements.
+ @file    Element.h
+ @brief    Base class for all Menge elements.
  */
 
 #ifndef __ELEMENT_H__
@@ -30,7 +30,7 @@ namespace Menge {
 
 //// forward declarations
 // namespace SceneGraph {
-//	class GLNode;
+//  class GLNode;
 //}
 
 namespace BFSM {
@@ -38,7 +38,7 @@ class Task;
 }
 
 /*!
- @brief		The basic interface of extendible Menge Elements.
+ @brief    The basic interface of extendible Menge Elements.
 
  A Menge element is a component of the Menge framework. A particular crowd simulator is defined by
  the instantiation of various types of elements.
@@ -46,13 +46,13 @@ class Task;
 class MENGE_API Element {
  protected:
   /*!
-   @brief		Protected destructor; virtual to work with subclassing.
+   @brief    Protected destructor; virtual to work with subclassing.
    */
   virtual ~Element() {}
 
  public:
   /*!
-   @brief		This supplants the destructor.
+   @brief    This supplants the destructor.
 
    In order to avoid potential problems in windows when dlls do not share the same c-runtime
    library, the destructor is held to be protected.  To garbage collect an Element, the destroy
@@ -65,26 +65,26 @@ class MENGE_API Element {
   void destroy() { delete this; }
 
   /*!
-   @brief		Return an optional task associated with this element.
+   @brief    Return an optional task associated with this element.
 
    An element can have an accompanying Task for performing synchronized work. Most element
    implementations will not have a task.  If a task is required, override this function to return
    an appropriate instance of the required task.
 
-   @returns		A pointer to the required task. It is the responsibility of the caller to free the
+   @returns    A pointer to the required task. It is the responsibility of the caller to free the
               memory of the provided task by calling its destroy method.
    */
   virtual BFSM::Task* getTask() { return 0x0; }
 
 #if 0
   /*!
-	  @brief		Returns an optional visualization element associated with the element.
+    @brief    Returns an optional visualization element associated with the element.
 
-	  This element will simply be added to the scene graph and will be destroyed by the scene graph.
+    This element will simply be added to the scene graph and will be destroyed by the scene graph.
     It should not be used if the visualization is context dependent.
 
-	  @returns		A pointer to the scene graph node element.
-	  */
+    @returns    A pointer to the scene graph node element.
+    */
   virtual SceneGraph::GLNode * getSGNode() { return 0x0; }
 #endif
 };

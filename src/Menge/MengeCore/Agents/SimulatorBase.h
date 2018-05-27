@@ -65,12 +65,12 @@ class SimulatorBase : public SimulatorInterface {
   void doStep();
 
   /*!
-   @brief		Initalize spatial query structure.
+   @brief    Initalize spatial query structure.
    */
   virtual bool initSpatialQuery();
 
   /*!
-   @brief	  After all agents and all obstacles have been added to the scene does the work to finish
+   @brief    After all agents and all obstacles have been added to the scene does the work to finish
             preparing the simulation to be run.
 
    This work is performed when the simulator is done being initialized. If a particular new
@@ -101,14 +101,14 @@ class SimulatorBase : public SimulatorInterface {
   virtual const BaseAgent* getAgent(size_t agentNo) const { return &_agents[agentNo]; }
 
   /*!
-   @brief		Add an agent with specified position to the simulator whose properties are defined by
+   @brief    Add an agent with specified position to the simulator whose properties are defined by
             the given agent initializer.
 
    It uses the agent initializer to define the values of the remaining agent parameters.
 
-   @param		pos			    The 2d vector representing the agent's position.
-   @param		agentInit	  The AgentInitializer necessary to parse AgentSet properties.
-   @returns	A pointer to the agent (if initialization was succesful) or NULL if failed.
+   @param    pos          The 2d vector representing the agent's position.
+   @param    agentInit    The AgentInitializer necessary to parse AgentSet properties.
+   @returns  A pointer to the agent (if initialization was succesful) or NULL if failed.
    */
   virtual BaseAgent* addAgent(const Vector2& pos, AgentInitializer* agentInit);
 
@@ -120,50 +120,50 @@ class SimulatorBase : public SimulatorInterface {
   virtual size_t getNumAgents() const { return _agents.size(); }
 
   /*!
-   @brief			Reports if there are non-common Experiment parameters that this simulator requires in
+   @brief      Reports if there are non-common Experiment parameters that this simulator requires in
               the XML file.
 
-   @returns		By default, the simulator base ONLY uses common parameters. Always returns false.
+   @returns    By default, the simulator base ONLY uses common parameters. Always returns false.
    */
   virtual bool hasExpTarget() { return false; }
 
   /*!
-   @brief			Reports if the given Experiment attribute tag name belongs to this simulator.
+   @brief      Reports if the given Experiment attribute tag name belongs to this simulator.
 
-   @param			tagName			The name of the candidate experiment XML tag.
-   @returns		By default, the simulator base ONLY uses common parameters. Always returns false.
+   @param      tagName      The name of the candidate experiment XML tag.
+   @returns    By default, the simulator base ONLY uses common parameters. Always returns false.
    */
   virtual bool isExpTarget(const std::string& tagName) { return false; }
 
   /*!
-   @brief			Given an Experiment parameter name and value, sets the appropriate simulator
+   @brief      Given an Experiment parameter name and value, sets the appropriate simulator
               parameter.
 
    // TODO: Define the conditions of success/failure.
 
-   @param			paramName		A string containing the parameter name for the experiment.
-   @param			value			  A string containing the value for the parameter.
-   @returns		True if the parameter was successfully set, false otherwise.
+   @param      paramName    A string containing the parameter name for the experiment.
+   @param      value        A string containing the value for the parameter.
+   @returns    True if the parameter was successfully set, false otherwise.
    */
   virtual bool setExpParam(const std::string& paramName,
                            const std::string& value) throw(XMLParamException);
 
  protected:
   /*!
-   @brief		Computes the neighbors for the given agent.
+   @brief    Computes the neighbors for the given agent.
 
-   @param		agent		The agent whose neighbors are to be computed.
+   @param    agent    The agent whose neighbors are to be computed.
    */
   void computeNeighbors(Agent* agent);
 
   /*!
-   @brief		The collection of agents in the simulation
+   @brief    The collection of agents in the simulation
    */
   std::vector<Agent> _agents;
 };
 
 ////////////////////////////////////////////////////////////////
-//					Implementation of SimulatorBase
+//          Implementation of SimulatorBase
 ////////////////////////////////////////////////////////////////
 
 template <class Agent>

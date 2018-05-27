@@ -17,8 +17,8 @@
 */
 
 /*!
- @file		HexLatticeGenerator.h
- @brief		An agent generator which creates a set of agents based on the definition of a hexagonal
+ @file    HexLatticeGenerator.h
+ @brief    An agent generator which creates a set of agents based on the definition of a hexagonal
           packed lattice fit into a rectangle. (i.e., rows are offset for maximal packing).
  */
 
@@ -33,7 +33,7 @@ namespace Menge {
 namespace Agents {
 
 /*!
- @brief		Definition of an agent generator class which produces agents based on the positions of
+ @brief    Definition of an agent generator class which produces agents based on the positions of
           intersections on a hexagonal lattice bounded by a rectangle.
 
  Circles can be maximally packed into a hexagonal lattice. In this case, an open rectangular region
@@ -83,7 +83,7 @@ namespace Agents {
 class MENGE_API HexLatticeGenerator : public AgentGenerator {
  public:
   /*!
-   @brief		Enumeration specifying arrangement relative to the anchor point.
+   @brief    Enumeration specifying arrangement relative to the anchor point.
    */
   enum AnchorAlignEnum {
     CENTER,       ///< The front boundary is centered on the anchor
@@ -92,7 +92,7 @@ class MENGE_API HexLatticeGenerator : public AgentGenerator {
   };
 
   /*!
-   @brief		Enumeration indicating which axis the regular rows occur.
+   @brief    Enumeration indicating which axis the regular rows occur.
    */
   enum LatticeRowEnum {
     ROW_X,  ///< The rows run parallel with the local x-axis
@@ -100,96 +100,96 @@ class MENGE_API HexLatticeGenerator : public AgentGenerator {
   };
 
   /*!
-   @brief		Constructor
+   @brief    Constructor
    */
   HexLatticeGenerator();
 
   /*!
-   @brief		Reports the number of agents created.
+   @brief    Reports the number of agents created.
 
-   @returns	The number of agents this generator creates.
+   @returns  The number of agents this generator creates.
    */
   virtual size_t agentCount() { return _totalPop; }
 
   /*!
-   @brief		Sets the ith position to the given agent.
+   @brief    Sets the ith position to the given agent.
 
-   @param		i     The index of the requested position in the sequence.
-   @param		agt   A pointer to the agent whose position is to be set.
-   @throws		AgentGeneratorException if the index, i, is invalid.
+   @param    i     The index of the requested position in the sequence.
+   @param    agt   A pointer to the agent whose position is to be set.
+   @throws    AgentGeneratorException if the index, i, is invalid.
    */
   virtual void setAgentPosition(size_t i, BaseAgent* agt);
 
   /*!
-   @brief		Sets the properties of the generator
+   @brief    Sets the properties of the generator
 
-   @param		anchor          The anchor position of the lattice.
-   @param		align           The target alignment.
-   @param		dir             The desired row direction.
-   @param		width           The width of the bounding region
-   @param		density         The target density (agent /m^2).
-   @param		tgtPopulation   The target population (agents).
-   @param		angle           The rotation angle (in degrees).
+   @param    anchor          The anchor position of the lattice.
+   @param    align           The target alignment.
+   @param    dir             The desired row direction.
+   @param    width           The width of the bounding region
+   @param    density         The target density (agent /m^2).
+   @param    tgtPopulation   The target population (agents).
+   @param    angle           The rotation angle (in degrees).
    */
   void set(const Vector2& anchor, AnchorAlignEnum align, LatticeRowEnum dir, float width,
            float density, size_t tgtPopulation, float angle);
 
   /*!
-   @brief		Sets the lattice rotation.
+   @brief    Sets the lattice rotation.
 
    */
   void setRotationDeg(float angle);
 
  protected:
   /*!
-   @brief		The anchor point of the lattice. One agent will be positioned at this world coordinate.
+   @brief    The anchor point of the lattice. One agent will be positioned at this world coordinate.
    */
   Vector2 _anchor;
 
   /*!
-   @brief		The direction of the row layout.
+   @brief    The direction of the row layout.
    */
   LatticeRowEnum _rowDir;
 
   /*!
-   @brief		The cosine of the amount the lattice is rotated around its anchor point. 
+   @brief    The cosine of the amount the lattice is rotated around its anchor point. 
    
    Positive values represent counter-clockwise rotation.
    */
   float _cosRot;
 
   /*!
-   @brief		The sine of the amount the lattice is rotated around its anchor point.
+   @brief    The sine of the amount the lattice is rotated around its anchor point.
 
    Positive values represent counter-clockwise rotation.
    */
   float _sinRot;
 
   /*!
-   @brief		The actual number of agents to create based on run-time parameters.
+   @brief    The actual number of agents to create based on run-time parameters.
 
    This value is only valid AFTER finalize has been called.
    */
   size_t _totalPop;
 
   /*!
-   @brief		The distance between rows for the given target density.
+   @brief    The distance between rows for the given target density.
    */
   float _rowDist;
 
   /*!
-   @brief		The distance between neighbors in a single row for the given target density.
+   @brief    The distance between neighbors in a single row for the given target density.
    */
   float _nbrDist;
 
   /*!
-   @brief		The population of the major row (interpreted differently depending on lattice row
+   @brief    The population of the major row (interpreted differently depending on lattice row
             direction.
    */
   size_t _rowPop;
 
   /*!
-   @brief		The number of rows to create.
+   @brief    The number of rows to create.
    */
   size_t _rowCount;
 };
@@ -197,31 +197,31 @@ class MENGE_API HexLatticeGenerator : public AgentGenerator {
 //////////////////////////////////////////////////////////////////////////////
 
 /*!
- @brief		Factory for HexLatticeGenerator
+ @brief    Factory for HexLatticeGenerator
  */
 class MENGE_API HexLatticeGeneratorFactory : public AgentGeneratorFactory {
  public:
   /*!
-   @brief		Constructor.
+   @brief    Constructor.
    */
   HexLatticeGeneratorFactory();
 
   /*!
-   @brief		The name of the generator type.
+   @brief    The name of the generator type.
 
    The generator's name must be unique among all registered agent generator components. Each agent
    generator factory must override this function.
 
-   @returns	A string containing the unique elevation name.
+   @returns  A string containing the unique elevation name.
    */
   virtual const char* name() const { return "hex_lattice"; }
 
   /*!
-   @brief		A description of the agent generator.
+   @brief    A description of the agent generator.
 
    Each agent generator factory must override this function.
 
-   @returns	A string containing the agent generator description.
+   @returns  A string containing the agent generator description.
    */
   virtual const char* description() const {
     return "Agent generation is done via the specification of a bounded hexagonal "
@@ -230,19 +230,19 @@ class MENGE_API HexLatticeGeneratorFactory : public AgentGeneratorFactory {
 
  protected:
   /*!
-   @brief		Create an instance of this class's agent generator implementation.
+   @brief    Create an instance of this class's agent generator implementation.
 
    All AgentGeneratorFactory sub-classes must override this by creating (on the heap) a new instance
    of its corresponding generator type. The various field values of the instance will be set in a
    subsequent call to AgentGeneratorFactory::setFromXML(). The caller of this function takes
    ownership of the memory.
 
-   @returns		A pointer to a newly instantiated EleAgentGenerator class.
+   @returns    A pointer to a newly instantiated EleAgentGenerator class.
    */
   AgentGenerator* instance() const { return new HexLatticeGenerator(); }
 
   /*!
-   @brief		Given a pointer to a Goal Selector instance, sets the appropriate fields from the
+   @brief    Given a pointer to a Goal Selector instance, sets the appropriate fields from the
             provided XML node.
 
    It is assumed that the value of the `type` attribute is this Goal Selector's type (i.e.
@@ -250,53 +250,53 @@ class MENGE_API HexLatticeGeneratorFactory : public AgentGeneratorFactory {
    GoalSelectorFactory introduce *new* GoalSelector parameters, then the sub-class should override
    this method but explicitly call the parent class's version.
 
-   @param		gen         A pointer to the goal selector whose attributes are to be set.
-   @param		node        The XML node containing the goal attributes.
-   @param		behaveFldr	The path to the behavior file.  If the condition references resources in
+   @param    gen         A pointer to the goal selector whose attributes are to be set.
+   @param    node        The XML node containing the goal attributes.
+   @param    behaveFldr  The path to the behavior file.  If the condition references resources in
                         the file system, it should be defined relative to the behavior file
                         location. This is the folder containing that path.
-   @returns	A boolean reporting success (true) or failure (false).
+   @returns  A boolean reporting success (true) or failure (false).
    */
   virtual bool setFromXML(AgentGenerator* gen, TiXmlElement* node,
                           const std::string& behaveFldr) const;
 
   /*!
-   @brief		The identifier for the "anchor_x" float parameter.
+   @brief    The identifier for the "anchor_x" float parameter.
    */
   size_t _anchorXID;
 
   /*!
-   @brief		The identifier for the "anchor_y" float parameter.
+   @brief    The identifier for the "anchor_y" float parameter.
    */
   size_t _anchorYID;
 
   /*!
-   @brief		The identifier for the "alignment" string parameter.
+   @brief    The identifier for the "alignment" string parameter.
    */
   size_t _alignID;
 
   /*!
-   @brief		The identifier for the "row_direction" string parameter.
+   @brief    The identifier for the "row_direction" string parameter.
    */
   size_t _rowDirID;
 
   /*!
-   @brief		The identifier for the "density" float parameter.
+   @brief    The identifier for the "density" float parameter.
    */
   size_t _densityID;
 
   /*!
-   @brief		The identifier for the "width" float parameter.
+   @brief    The identifier for the "width" float parameter.
    */
   size_t _widthID;
 
   /*!
-   @brief		The identifier for the "count" size_t parameter.
+   @brief    The identifier for the "count" size_t parameter.
    */
   size_t _popID;
 
   /*!
-   @brief		The identifier for the "rotation" float parameter.
+   @brief    The identifier for the "rotation" float parameter.
    */
   size_t _rotID;
 };

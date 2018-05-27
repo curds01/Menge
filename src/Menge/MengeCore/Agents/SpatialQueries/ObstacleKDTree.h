@@ -42,8 +42,8 @@ class BaseAgent;
 // Forward declarations
 
 // TODO: This chops up obstacles for the kd-tree.  I need to be able to reconstruct them
-//		i.e. if a piece is close to the agent, I'd like to be able to provide the full
-//		original line obstacle.
+//    i.e. if a piece is close to the agent, I'd like to be able to provide the full
+//    original line obstacle.
 
 /*!
  @brief      Defines an obstacle <i>k</i>d-tree node.
@@ -108,8 +108,8 @@ class MENGE_API ObstacleKDTree {
   /*!
    @brief      Does the full work of constructing the <i>k</i>d-tree.
 
-   @param		obstacles		The set of obstacles to construct this tree around
-   @returns	The root of the ObstacleKDTree for this set of obstacles
+   @param    obstacles    The set of obstacles to construct this tree around
+   @returns  The root of the ObstacleKDTree for this set of obstacles
    */
   ObstacleTreeNode* buildTreeRecursive(const std::vector<Obstacle*>& obstacles);
 
@@ -117,39 +117,39 @@ class MENGE_API ObstacleKDTree {
    @brief    Computes the obstacle neighbors of the specified point by doing a recursive search.
 
    @param   query     A pointer to the query being performed.
-   @param		pt				The starting point from the query.
+   @param    pt        The starting point from the query.
    @param   rangeSq   The squared range around the agent.
-   @param   node	    The current node in the obstacle tree.
+   @param   node      The current node in the obstacle tree.
 
    */
   void queryTreeRecursive(ProximityQuery* query, Math::Vector2 pt, float& rangeSq,
                           const ObstacleTreeNode* node) const;
 
   /*!
-   @brief		Perform the work, recursively, to determine if q1 can see q2, w.r.t. the obstacles.
+   @brief    Perform the work, recursively, to determine if q1 can see q2, w.r.t. the obstacles.
 
-   @param		q1				The originating position.
-   @param		q2				The target position.
-   @param		radius		The radius within which visibility is to be tested.
-   @param		node			The root of the tree to recursively search.
-   @returns	True if q1 and q2 are mutually visible within the radius.
+   @param    q1        The originating position.
+   @param    q2        The target position.
+   @param    radius    The radius within which visibility is to be tested.
+   @param    node      The root of the tree to recursively search.
+   @returns  True if q1 and q2 are mutually visible within the radius.
    */
   bool queryVisibilityRecursive(const Math::Vector2& q1, const Math::Vector2& q2, float radius,
                                 const ObstacleTreeNode* node) const;
 
   /*!
-   @brief			Recursively deletes the obstacle tree.
+   @brief      Recursively deletes the obstacle tree.
    */
   void deleteTree();
 
   /*!
-   @brief			Recursively deletes an obstacle sub-tree.
-   @param			node		The root of the tree to delete.
+   @brief      Recursively deletes an obstacle sub-tree.
+   @param      node    The root of the tree to delete.
    */
   void deleteSubTree(ObstacleTreeNode* node);
 
   /*!
-   @brief			The set of obstacles managed by this query structure.
+   @brief      The set of obstacles managed by this query structure.
 
    This is *not* necessarily the same as the obstacles assigned. The set of obstacles can change as
    some obstacles may be sub-divided during the spatial decomposition.  This needs to be corrected.
@@ -157,12 +157,12 @@ class MENGE_API ObstacleKDTree {
   std::vector<Obstacle*> _obstacles;
 
   /*!
-   @brief			The query tree root.
+   @brief      The query tree root.
    */
   ObstacleTreeNode* _tree;
 
   /*!
-   @brief			The maximum number of obstacles allowed in a tree leaf node.
+   @brief      The maximum number of obstacles allowed in a tree leaf node.
    */
   static const size_t MAX_LEAF_SIZE = 10;
 };

@@ -19,11 +19,11 @@ Ultimately, all new elements introduced to the system must be incorporated in on
 	
 The details for writing a shared library depend on the operating system on which the code is compiled.  We suggest the following code snippet be included in your main plug-in definition code to make your code compatible with both windows and linux.
 
-		#if defined(_MSC_VER)
-			#define PLUGIN_EXPORT __declspec(dllexport)
-		#elif defined(__GNUC__)
-			#define PLUGIN_EXPORT __attribute__ ((visibility ("default")))
-		#endif
+    #if defined(_MSC_VER)
+      #define PLUGIN_EXPORT __declspec(dllexport)
+    #elif defined(__GNUC__)
+      #define PLUGIN_EXPORT __attribute__ ((visibility ("default")))
+    #endif
 
 The plug-in name function takes the following form:
 
@@ -37,9 +37,9 @@ When the plug-in is loaded, it needs to report the system the nature of the elem
 
 The function will look like this:
 
-		extern "C" PLUGIN_EXPORT void registerPlugin( PluginEngine * engine ) {
-			engine->register_________( new ___________() );
-		}
+    extern "C" PLUGIN_EXPORT void registerPlugin( PluginEngine * engine ) {
+      engine->register_________( new ___________() );
+    }
 
 The blank spaces should be replaced by the particular plug-in entities.
 

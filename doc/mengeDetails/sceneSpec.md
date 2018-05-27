@@ -33,13 +33,13 @@ The basic scene specification XML has the following form:
 @endcode
 	
 The major elements of the scene specification are:
-	- The header: `<Experiment ... />` (@ref sec_sceneHeader)
-	- Global simulation parameters: `<Common ... />` and `<Modeli ... />` (@ref sec_sceneSimParam )
-	- Agent profile definitions: `<AgentProfile ... />` (@ref sec_sceneAgentProfile)
-	- Agent group definitions: `<AgentGroup ... />` (@ref sec_sceneAgentGroup)
-	- Spatial query object: `<SpatialQuery ... />` (@ref sec_sceneSpaceQuery)
-	- Elevation specification: `<Elevation ... />` (@ref sec_sceneElevation)
-	- Obstacle definition: `<ObstacleSet ... />` (@ref sec_sceneObstacles)
+  - The header: `<Experiment ... />` (@ref sec_sceneHeader)
+  - Global simulation parameters: `<Common ... />` and `<Modeli ... />` (@ref sec_sceneSimParam )
+  - Agent profile definitions: `<AgentProfile ... />` (@ref sec_sceneAgentProfile)
+  - Agent group definitions: `<AgentGroup ... />` (@ref sec_sceneAgentGroup)
+  - Spatial query object: `<SpatialQuery ... />` (@ref sec_sceneSpaceQuery)
+  - Elevation specification: `<Elevation ... />` (@ref sec_sceneElevation)
+  - Obstacle definition: `<ObstacleSet ... />` (@ref sec_sceneObstacles)
 
 The order of the major elements does not matter.  Each section is detailed below.
 
@@ -53,7 +53,7 @@ Each pedestrian model requires values across a certain parameter space.  Some of
 
 Currently, there is only one global simulation parameter: time step.  Thus a typical `<Common>` tag would like this:
 
-		<Common time_step="0.1" />
+    <Common time_step="0.1" />
 
 It is worth noting that this simulation time step can be overridden on the [command line](@ref page_CommandLine) or in the [project specification](@ref page_ProjectSpec).
 

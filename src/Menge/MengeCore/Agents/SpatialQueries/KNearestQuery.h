@@ -35,7 +35,7 @@ namespace Menge {
 namespace Agents {
 
 /*!
- @brief		The K-Nearest query class
+ @brief    The K-Nearest query class
 
  A spatial query which returns the k nearest agents and obstacles in the spatial query. The query
  doesn't know where the point it, it is given distances in this case, K is set to the
@@ -45,7 +45,7 @@ namespace Agents {
 class KNearestQuery : public ProximityQuery {
  public:
   /*!
-   @brief		default Constructor.
+   @brief    default Constructor.
    */
   KNearestQuery()
       : ProximityQuery(),
@@ -141,7 +141,7 @@ class KNearestQuery : public ProximityQuery {
   /*!
    @brief      Gets the ith agent result.
 
-   @param      i		The index of the agent to get.
+   @param      i    The index of the agent to get.
    @returns    The result pair in question.
    */
   NearAgent getAgentResult(size_t i) { return _agentResults[i]; }
@@ -149,7 +149,7 @@ class KNearestQuery : public ProximityQuery {
   /*!
    @brief      Gets the ith obstacle result.
 
-   @param      i		The index of the obstacle to get.
+   @param      i    The index of the obstacle to get.
    @returns    The result pair in question.
    */
   NearObstacle getObstacleResult(size_t i) { return _obstacleResults[i]; }

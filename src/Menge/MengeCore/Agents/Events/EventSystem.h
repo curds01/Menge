@@ -17,8 +17,8 @@
 */
 
 /*!
- @file		EventSystem.h
- @brief		The definition of the core event system.
+ @file    EventSystem.h
+ @brief    The definition of the core event system.
  */
 
 #ifndef __EVENT_SYSTEM_H__
@@ -50,7 +50,7 @@ class ExternalEvtTrigger;
  omitted from the behavior specification. The following example shows the syntax for declaring the
  event system and provides a vague illustration for adding an event.
 
- @code{xml}
+ ```{xml}
  <?xml version="1.0"?>
  <BFSM>
 		<EventSystem conservative="1">
@@ -63,7 +63,7 @@ class ExternalEvtTrigger;
 		</EventSystem>
 	...
 	</BFSM>
-	@endcode
+	```
 
  The `<%EventSystem>` tag has a single property:
  		- `conservative` determines how the event system handles errors in the declaration of events. If
@@ -71,90 +71,91 @@ class ExternalEvtTrigger;
        are treated as *fatal* errors and the program exits (having written the cause of the problem
        to the log). If zero, the program will log a *warning*, omit the event, and proceed with
        simulation.
+
  */
 class MENGE_API EventSystem {
  public:
   /*!
-   @brief		Constructor.
+   @brief    Constructor.
    */
   EventSystem();
 
   /*!
-   @brief		Destructor
+   @brief    Destructor
    */
   ~EventSystem();
 
   /*!
-   @brief		Adds an event to the system.
+   @brief    Adds an event to the system.
 
    The system becomes the owner of the event and will take responsibility for deleting it.
 
-   @param		evt		The event to add to the system.
+   @param    evt    The event to add to the system.
    */
   void addEvent(Event* evt) { _events.push_back(evt); }
 
   /*!
-   @brief		Evaluates the registered events
+   @brief    Evaluates the registered events
    */
   void evaluateEvents();
 
   /*!
-   @brief		Finalize the event system.
+   @brief    Finalize the event system.
    */
   void finalize();
 
   /*!
-   @brief		Parses events from an "Events" tag.
+   @brief    Parses events from an "Events" tag.
 
-   @param		node		    The node containing the event system description.
-   @param		behaveFldr	The folder containing the behavior specification. all event paths are
+   @param    node        The node containing the event system description.
+   @param    behaveFldr  The folder containing the behavior specification. all event paths are
                         defined relative to this folder.
-   @returns	True if parsing was successful.
+   @returns  True if parsing was successful.
    */
   bool parseEvents(TiXmlElement* node, const std::string& behaveFldr);
 
   /*!
-   @brief		Registers an external event trigger with the system.
+   @brief    Registers an external event trigger with the system.
    
    Any external event trigger that is not added explicitly will not be available to external
    systems upon query.
 
-   @param		trigger		The external event trigger to add to the system.
-   @throws		An event exception if the trigger does not have a unique name.
+   @param    trigger    The external event trigger to add to the system.
+   @throws    An event exception if the trigger does not have a unique name.
    @see listExternalTriggers()
    */
   void addExternalEventTrigger(ExternalEvtTrigger* trigger);
 
   /*!
-   @brief		Provides the names of the external events registered with the event system.
+   @brief    Provides the names of the external events registered with the event system.
 
-   @returns	The list of trigger names.
+   @returns  The list of trigger names.
    */
   std::vector<std::string> listExternalTriggers() const;
 
   /*!
-   @brief		Activate the external event trigger indicated by name.
+   @brief    Activate the external event trigger indicated by name.
 
    If the name doesn't refer to a known external trigger, no action will be taken.
 
-   @param name		The name of the trigger to activate.
-   @returns	True if the trigger is activated.
+   @param name    The name of the trigger to activate.
+   @returns  True if the trigger is activated.
    */
   bool activateExternalTrigger(const std::string& name);
 
   /*!
-   @brief		Causes an event exception to be thrown based on the the system's tolerance for event
+   @brief    Causes an event exception to be thrown based on the the system's tolerance for event
             configuration errors.
 
-   @param		msg			The event associated with the problem.
-   @throws		EventException if the system is *not* conservative; i.e., configuration errors will
+   @param    msg      The event associated with the problem.
+   @throws    EventException if the system is *not* conservative; i.e., configuration errors will
               be noted, but simulation will continue.
-   @throws		EventFatalException if the system *is* conservative.
+   @throws    EventFatalException if the system *is* conservative.
    */
   static void finalizeException(const std::string& msg);
 
   /*!
-   @brief		Global variable to indicate how event configuration errors should be handled.
+   @brief    Global variable to indicate how event configuration errors should be handled.
 
    If true, event configuration errors result in fatal exceptions, if false they are merely
    warnings.
@@ -169,22 +170,22 @@ class MENGE_API EventSystem {
 
  protected:
   /*!
-   @brief		The events to process.
+   @brief    The events to process.
    */
   std::vector<Event*> _events;
 
   /*!
-   @brief		A mapping from target names to targets.
+   @brief    A mapping from target names to targets.
    */
   HASH_MAP<std::string, EventTarget*> _targets;
 
   /*!
-   @brief		A mapping from effect names to effects.
+   @brief    A mapping from effect names to effects.
    */
   HASH_MAP<std::string, EventEffect*> _effects;
 
   /*!
-   @brief		The external event triggers.
+   @brief    The external event triggers.
    */
   HASH_MAP<std::string, ExternalEvtTrigger*> _externalTriggers;
 };

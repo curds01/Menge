@@ -56,152 +56,152 @@ class EventTargetFactory;
 namespace PluginEngine {
 
 /*!
- @brief		The definition of the plugin engine for Menge's core simulation functionality.
+ @brief    The definition of the plugin engine for Menge's core simulation functionality.
  */
 class MENGE_API CorePluginEngine
     : public BasePluginEngine<CorePluginEngine, Plugin<CorePluginEngine> > {
  public:
   /*!
-   @brief		Default constructor.
+   @brief    Default constructor.
 
-   @param		simDB		A simulator database for pedestrian model registration
+   @param    simDB    A simulator database for pedestrian model registration
    */
   CorePluginEngine(SimulatorDB* simDB);
 
   /*!
-   @brief		Virtual destructor.
+   @brief    Virtual destructor.
    */
   virtual ~CorePluginEngine();
 
   /*!
-   @brief		Register a simulator database entry.
+   @brief    Register a simulator database entry.
 
-   @param		dbEntry		An instance of a model database entry to register.
+   @param    dbEntry    An instance of a model database entry to register.
    */
   void registerModelDBEntry(SimulatorDBEntry* dbEntry);
 
   /*!
-   @brief		Register an ActionFactory.
+   @brief    Register an ActionFactory.
 
-   @param		factory		An instance of the ActionFactory to register
+   @param    factory    An instance of the ActionFactory to register
    */
   void registerActionFactory(BFSM::ActionFactory* factory);
 
   /*!
-   @brief		Register a ConditionFactory.
+   @brief    Register a ConditionFactory.
 
-   @param		factory		An instance of the ConditionFactory to register
+   @param    factory    An instance of the ConditionFactory to register
    */
   void registerConditionFactory(BFSM::ConditionFactory* factory);
 
   /*!
-   @brief		Register a TargetFactory.
+   @brief    Register a TargetFactory.
 
-   @param		factory		An instance of the TargetFactory to register
+   @param    factory    An instance of the TargetFactory to register
    */
   void registerTargetFactory(BFSM::TargetFactory* factory);
 
   /*!
-   @brief		Register a VelCompFactory.
+   @brief    Register a VelCompFactory.
 
-   @param		factory		An instance of the VelCompFactory to register
+   @param    factory    An instance of the VelCompFactory to register
    */
   void registerVelCompFactory(BFSM::VelCompFactory* factory);
 
   /*!
-   @brief		Register a VelModFactory.
+   @brief    Register a VelModFactory.
 
-   @param		factory		An instance of the VelModifier to register
+   @param    factory    An instance of the VelModifier to register
    */
   void registerVelModFactory(BFSM::VelModFactory* factory);
 
   /*!
-   @brief		Register a TaskFactory.
+   @brief    Register a TaskFactory.
 
-   @param		factory		An instance of the TaskFactory to register
+   @param    factory    An instance of the TaskFactory to register
    */
   void registerTaskFactory(BFSM::TaskFactory* factory);
 
   /*!
-   @brief		Register a GoalFactory.
+   @brief    Register a GoalFactory.
 
-   @param		factory		An instance of the GoalFactory to register
+   @param    factory    An instance of the GoalFactory to register
    */
   void registerGoalFactory(BFSM::GoalFactory* factory);
 
   /*!
-   @brief		Register a GoalSelectorFactory.
+   @brief    Register a GoalSelectorFactory.
 
-   @param		factory		An instance of the GoalSelectorFactory to register
+   @param    factory    An instance of the GoalSelectorFactory to register
    */
   void registerGoalSelectorFactory(BFSM::GoalSelectorFactory* factory);
 
   /*!
-   @brief		Register an ElevationFactory.
+   @brief    Register an ElevationFactory.
 
-   @param		factory		An instance of the ElevationFactory to register
+   @param    factory    An instance of the ElevationFactory to register
    */
   void registerElevationFactory(Agents::ElevationFactory* factory);
 
   /*!
-   @brief		Register an SpatialQueryFactory.
+   @brief    Register an SpatialQueryFactory.
 
-   @param		factory		An instance of the SpatialQueryFactory to register
+   @param    factory    An instance of the SpatialQueryFactory to register
    */
   void registerSpatialQueryFactory(Agents::SpatialQueryFactory* factory);
 
   /*!
-   @brief		Register an AgentGeneratorFactory.
+   @brief    Register an AgentGeneratorFactory.
 
-   @param		factory		An instance of the AgentGeneratorFactory to register
+   @param    factory    An instance of the AgentGeneratorFactory to register
    */
   void registerAgentGeneratorFactory(Agents::AgentGeneratorFactory* factory);
 
   /*!
-   @brief		Register an ObstacleSetFactory.
+   @brief    Register an ObstacleSetFactory.
 
-   @param		factory		An instance of the ObstacleSetFactory to register
+   @param    factory    An instance of the ObstacleSetFactory to register
    */
   void registerObstacleSetFactory(Agents::ObstacleSetFactory* factory);
 
   /*!
-   @brief		Register an ProfileSelectorFactory.
+   @brief    Register an ProfileSelectorFactory.
 
-   @param		factory		An instance of the ProfileSelectorFactory to register
+   @param    factory    An instance of the ProfileSelectorFactory to register
    */
   void registerProfileSelectorFactory(Agents::ProfileSelectorFactory* factory);
 
   /*!
-   @brief		Register an StateSelectorFactory.
+   @brief    Register an StateSelectorFactory.
 
-   @param		factory		An instance of the StateSelectorFactory to register
+   @param    factory    An instance of the StateSelectorFactory to register
    */
   void registerStateSelectorFactory(Agents::StateSelectorFactory* factory);
 
   /*!
-   @brief		Register an EventEffectFactory.
+   @brief    Register an EventEffectFactory.
 
-   @param		factory		An instance of the EventEffectFactory to register
+   @param    factory    An instance of the EventEffectFactory to register
    */
   void registerEventEffectFactory(EventEffectFactory* factory);
 
   /*!
-   @brief		Register an EventTriggerFactory.
+   @brief    Register an EventTriggerFactory.
 
-   @param		factory		An instance of the EventTriggerFactory to register
+   @param    factory    An instance of the EventTriggerFactory to register
    */
   void registerEventTriggerFactory(EventTriggerFactory* factory);
 
   /*!
-   @brief		Register an EventTargetFactory.
+   @brief    Register an EventTargetFactory.
 
-   @param		factory		An instance of the EventTargetFactory to register
+   @param    factory    An instance of the EventTargetFactory to register
    */
   void registerEventTargetFactory(EventTargetFactory* factory);
 
  protected:
   /*!
-   @brief		Provides the string that will be written to the logger as an info at the beginning of
+   @brief    Provides the string that will be written to the logger as an info at the beginning of
             plugin loading.
 
    It should be specialized for each type of plugin engine.
@@ -209,19 +209,19 @@ class MENGE_API CorePluginEngine
   virtual std::string getIntroMessage();
 
   /*!
-   @brief		The simulator database for registration.
+   @brief    The simulator database for registration.
    */
   SimulatorDB* _simDB;
 };
 
 /////////////////////////////////////////////////////////////////////
-//					Specialization of Plugin
+//          Specialization of Plugin
 /////////////////////////////////////////////////////////////////////
 
 /*!
  @brief  Provides the plug-in method name for Menge *core* plug-ins.
 
- @returns	The name of the registration function.
+ @returns  The name of the registration function.
  */
 template <>
 const char* Plugin<CorePluginEngine>::getRegisterName() const;

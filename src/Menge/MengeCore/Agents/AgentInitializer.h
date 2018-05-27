@@ -17,8 +17,8 @@
 */
 
 /*!
- @file		AgentInitializer.h
- @brief		The infrastructure for initializing agent properties from the scene specification file.
+ @file    AgentInitializer.h
+ @brief    The infrastructure for initializing agent properties from the scene specification file.
  */
 
 #ifndef __AGENT_INITIALIZER_H__
@@ -47,7 +47,7 @@ namespace Agents {
 class BaseAgent;
 
 /*!
- @brief		Class which determines the agent properties for each new agent.
+ @brief    Class which determines the agent properties for each new agent.
 
  This base agent intializer class facilitates setting all BaseAgent properties. The property
  values are set using number generators (see RandGenerator.h).
@@ -55,8 +55,8 @@ class BaseAgent;
 class MENGE_API AgentInitializer {
  public:
   /*!
-   @brief		Return type for parsing efforts.  Helps the various derived classes coordinate their
-   work.
+   @brief     Return type for parsing efforts.  Helps the various derived classes coordinate their
+              work.
    */
   enum ParseResult {
     FAILURE = 0,  ///< The parsing ended in failure.
@@ -65,26 +65,26 @@ class MENGE_API AgentInitializer {
   };
 
   /*!
-   @brief		Constructor.
+   @brief    Constructor.
 
    The values for each agent take a hard-coded default values.
    */
   AgentInitializer();
 
   /*!
-   @brief		Copy Constructor.
+   @brief    Copy Constructor.
 
-   @param		init		The AgentInitializer to copy all values from.
+   @param    init    The AgentInitializer to copy all values from.
    */
   AgentInitializer(const AgentInitializer& init);
 
   /*!
-   @brief		Destructor.
+   @brief    Destructor.
    */
   virtual ~AgentInitializer();
 
   /*!
-   @brief		Parses an AgentSet property tag, setting agent values as appropriate.
+   @brief    Parses an AgentSet property tag, setting agent values as appropriate.
 
    This function can be called on *all* AgentSet property tags.  The function is responsible for
    determining which tags have relevant information and which are to be ignored.
@@ -109,28 +109,28 @@ class MENGE_API AgentInitializer {
    </Common>
    ```
 
-   @param		node		    The xml node containing agent properties for an AgentSet.
-   @param		sceneFldr	  Since we now need access to resources at this stage, we pass the base 
-                        folder for resource loading
-   @returns	True if parsing was "successful".
+   @param    node         The xml node containing agent properties for an AgentSet.
+   @param    sceneFldr    Since we now need access to resources at this stage, we pass the base 
+                          folder for resource loading
+   @returns  True if parsing was "successful".
    */
   bool parseProperties(TiXmlElement* node, const std::string& sceneFldr);
 
   /*!
-   @brief		Sets the properties of the given agent based on the initializer's values.
+   @brief    Sets the properties of the given agent based on the initializer's values.
 
    This needs to be overridden by sub-classes.  The first thing the sub-class should do is 
    `dynamic_cast` the argument to its expected type to make sure it is the proper agent type.
    If not, this should be considered failure. Then it should set its unique properties and then
    call the super class's setProperties function.
 
-   @param		agent		The agent whose properties are to be set.
-   @returns	True if the properties were set successfully.
+   @param    agent    The agent whose properties are to be set.
+   @returns  True if the properties were set successfully.
    */
   virtual bool setProperties(BaseAgent* agent);
 
   /*!
-   @brief		Sets all generators to default values.
+   @brief    Sets all generators to default values.
 
    Resets all number generators to default const values.  This assumes that all required number
    generators already exist and will delete them appropriately. *Do not* call this in the
@@ -139,21 +139,21 @@ class MENGE_API AgentInitializer {
   virtual void setDefaults();
 
   /*!
-   @brief		Creates a copy of this AgentInitializer instance.
+   @brief    Creates a copy of this AgentInitializer instance.
 
-   @returns	A pointer to a new AgentInitializer with all of the same values as this.  The caller is
-            responsible for freeing up the new instance.
+   @returns   A pointer to a new AgentInitializer with all of the same values as this. The caller is
+              responsible for freeing up the new instance.
    */
   virtual AgentInitializer* copy() const { return new AgentInitializer(*this); }
 
   /*!
-   @brief		Determines if the agent properties parsing process will be verbose.
+   @brief    Determines if the agent properties parsing process will be verbose.
    */
   static bool VERBOSE;
 
  protected:
   /*!
-   @brief		Reports if this AgentInitializer cares about the given `AgentSet` property XML tag.
+   @brief    Reports if this AgentInitializer cares about the given `AgentSet` property XML tag.
 
    This is the mechanism by which new sub-classes can extend the parameter space. Each
    pedestrian model which introduces new per-agent properties that must override this function.
@@ -162,13 +162,13 @@ class MENGE_API AgentInitializer {
    is the mechanism by which derived classes will also benefit from the `<Common>` parameter
    set.
 
-   @param		tagName		The name of the tag to test.
-   @returns	True if the tag is relevant.
+   @param    tagName    The name of the tag to test.
+   @returns  True if the tag is relevant.
    */
   virtual bool isRelevant(const ::std::string& tagName);
 
   /*!
-   @brief		Defines a constant value for an agent property as specified by the attribute of an
+   @brief    Defines a constant value for an agent property as specified by the attribute of an
    agent property tag.
 
    Derived classes should override this function, but possibly call the parent class's 
@@ -176,27 +176,27 @@ class MENGE_API AgentInitializer {
    If so, the derived class can determine fail or accept. If it is not expected, it should call the
    parent class's implementation and returns its value.
 
-   @param			paramName		A string containing the parameter name.
-   @param			value			  A string containing the value for the parameter.
-   @returns		The result of the parse: failure, ignored, or accepted.
+   @param      paramName    A string containing the parameter name.
+   @param      value        A string containing the value for the parameter.
+   @returns    The result of the parse: failure, ignored, or accepted.
    */
   virtual ParseResult setFromXMLAttribute(const ::std::string& paramName,
                                           const ::std::string& value);
 
   /*!
-   @brief		Parses the Property tag that is the child of an AgentSet Parameter tag.
+   @brief    Parses the Property tag that is the child of an AgentSet Parameter tag.
 
    As with the other parsing code, success is defined by finding an expected, correct field *or*
    an unexpected tag (which is just ignored). Failure occurs when the tags are as expected, but
    the values are invalid.
 
-   @param		node		The xml node containing agent properties for an AgentSet.
-   @returns	True if parsing was "successful".
+   @param    node    The xml node containing agent properties for an AgentSet.
+   @returns  True if parsing was "successful".
    */
   bool parsePropertySpec(TiXmlElement* node);
 
   /*!
-   @brief		Process the given `<Property .../>` tag.
+   @brief    Process the given `<Property .../>` tag.
 
    As a pre-condition to this function, the XML node contains a `<Property.../>` tag and has been
    confirmed to have, at least, a name attribute.  Nothing else about the tag has been validated.
@@ -205,15 +205,15 @@ class MENGE_API AgentInitializer {
    attempt to interpret the XML tag as a number distribution for a valid agent attribute. If it can
    do so, it is successful, if it can't, it fails.
 
-   @param		propName		The extracted "name" attribute from the Property tag.
-   @param		node			  The XML node for the Property tag.
-   @returns	The ParseResult indicating if the property was successful (IGNORED or ACCEPTED) or if
-            it was a malformed tag (FAILURE).
+   @param     propName    The extracted "name" attribute from the Property tag.
+   @param     node        The XML node for the Property tag.
+   @returns   The ParseResult indicating if the property was successful (IGNORED or ACCEPTED) or if
+              it was a malformed tag (FAILURE).
    */
   virtual ParseResult processProperty(::std::string propName, TiXmlElement* node);
 
   /*!
-   @brief		Helper function for setting a property from an xml attribute.
+   @brief    Helper function for setting a property from an xml attribute.
 
    This is used to parse and create a value generator in the case where the attribute is defined on
    the main property tag: e.g.,
@@ -222,22 +222,22 @@ class MENGE_API AgentInitializer {
    <Common property="value.../>
    ```
 
-   @param		gen			  A reference to a pointer to a valid FloatGenerator. The new float generator
-                      will be put into this variable.
-   @param		valueStr	The string representing the attribute value to convert to a const float
-                      generator.
-   @param		scale		  Optional argument for changing the units of the input value. (e.g.,
-                      specification commonly describes angles as degrees, but internal
-                      representation is in radians).
-   @returns	A parse result indicating either ACCEPTED or FAILURE.  IGNORED should never be a
-            result, because it should only be called on expected parameters, so it must either
-            succeed or fail.
+   @param    gen        A reference to a pointer to a valid FloatGenerator. The new float generator
+                        will be put into this variable.
+   @param    valueStr   The string representing the attribute value to convert to a const float
+                        generator.
+   @param    scale      Optional argument for changing the units of the input value. (e.g.,
+                        specification commonly describes angles as degrees, but internal
+                        representation is in radians).
+   @returns   A parse result indicating either ACCEPTED or FAILURE.  IGNORED should never be a
+              result, because it should only be called on expected parameters, so it must either
+              succeed or fail.
    */
   ParseResult constFloatGenerator(FloatGenerator*& gen, const ::std::string& valueStr,
                                   float scale = 1.f);
 
   /*!
-   @brief		Helper function for setting a property from an xml attribute.
+   @brief    Helper function for setting a property from an xml attribute.
 
    This is used to parse and create a value generator in the case where the attribute is defined on
    the main property tag: e.g.,
@@ -246,20 +246,20 @@ class MENGE_API AgentInitializer {
    <Common property="value.../>
    ```
 
-   @param		numValue	The new float will be put into this variable.
-   @param		valueStr	The string representing the attribute value to convert to a const float
-                      generator.
-   @param		scale		  Optional argument for changing the units of the input value. (e.g.,
-                      specification commonly describes angles as degrees, but internal 
-                      representation is in radians).
-   @returns	A parse result indicating either ACCEPTED or FAILURE. IGNORED should never be a
-            result, because it should only be called on expected parameters, so it must either
-            succeed or fail.
+   @param    numValue   The new float will be put into this variable.
+   @param    valueStr   The string representing the attribute value to convert to a const float
+                        generator.
+   @param    scale      Optional argument for changing the units of the input value. (e.g.,
+                        specification commonly describes angles as degrees, but internal 
+                        representation is in radians).
+   @returns   A parse result indicating either ACCEPTED or FAILURE. IGNORED should never be a
+              result, because it should only be called on expected parameters, so it must either
+              succeed or fail.
    */
   ParseResult constFloat(float& numValue, const ::std::string& valueStr, float scale = 1.f);
 
   /*!
-   @brief		Helper function for setting a property from an xml attribute.
+   @brief    Helper function for setting a property from an xml attribute.
 
    This is used to parse and create a value generator in the case where the attribute is defined on
    the main property tag: e.g.,
@@ -268,18 +268,18 @@ class MENGE_API AgentInitializer {
    <Common property="value.../>
    ```
 
-   @param		gen			  A reference to a pointer to a valid IntGenerator. The new int generator will
-                      be put into this variable.
-   @param		valueStr	The string representing the attribute value to convert to a const float
-                      generator.
-   @returns	A parse result indicating either ACCEPTED or FAILURE. IGNORED should never be a result,
-            because it should only be called on expected parameters, so it must either succed or
-            fail.
+   @param    gen        A reference to a pointer to a valid IntGenerator. The new int generator will
+                        be put into this variable.
+   @param    valueStr   The string representing the attribute value to convert to a const float
+                        generator.
+   @returns   A parse result indicating either ACCEPTED or FAILURE. IGNORED should never be a
+              result, because it should only be called on expected parameters, so it must either
+              succed or fail.
    */
   ParseResult constIntGenerator(IntGenerator*& gen, const ::std::string& valueStr);
 
   /*!
-   @brief		Helper function for setting a property from an xml attribute.
+   @brief    Helper function for setting a property from an xml attribute.
 
    This is used to parse and create a value generator in the case where the attribute is defined on
    the main property tag: e.g.,
@@ -288,17 +288,17 @@ class MENGE_API AgentInitializer {
    <Common property="value.../>
    ```
 
-   @param		numValue	The new size_t will be put into this variable.
-   @param		valueStr	The string representing the attribute value to convert to a const float
-                      generator.
-   @returns	A parse result indicating either ACCEPTED or FAILURE. IGNORED should never be a result,
-            because it should only be called on expected parameters, so it must either succed or
-            fail.
+   @param    numValue   The new size_t will be put into this variable.
+   @param    valueStr   The string representing the attribute value to convert to a const float
+                        generator.
+   @returns   A parse result indicating either ACCEPTED or FAILURE. IGNORED should never be a
+              result, because it should only be called on expected parameters, so it must either
+              succed or fail.
    */
   ParseResult constSizet(size_t& numValue, const ::std::string& valueStr);
 
   /*!
-   @brief		Helper function for setting a property from an xml Property node.
+   @brief    Helper function for setting a property from an xml Property node.
 
    This is used to parse and create a value generator in the case where the attribute is defined
    explicitly as a distribution on a Property tag, e.g.,
@@ -307,20 +307,20 @@ class MENGE_API AgentInitializer {
    <Property name="property" dist="x".../>
    ```
 
-   @param		gen			A reference to a pointer to a valid FloatGenerator. The new float generator
-                    will be put into this variable.
-   @param		node		The xml node containing attributes for the distribution specification.
-   @param		scale		Optional argument for changing the units of the input value (e.g.,
-                    specification commonly describes angles as degrees, but internal representation
-                    is in radians).
-   @returns	A parse result indicating either ACCEPTED or FAILURE. IGNORED should never be a result,
-            because it should only be called on expected parameters, so it must either succed or
-            fail.
+   @param    gen      A reference to a pointer to a valid FloatGenerator. The new float generator
+                      will be put into this variable.
+   @param    node     The xml node containing attributes for the distribution specification.
+   @param    scale    Optional argument for changing the units of the input value (e.g.,
+                      specification commonly describes angles as degrees, but internal
+                      representation is in radians).
+   @returns   A parse result indicating either ACCEPTED or FAILURE. IGNORED should never be a
+              result, because it should only be called on expected parameters, so it must either
+              succed or fail.
    */
   ParseResult getFloatGenerator(FloatGenerator*& gen, TiXmlElement* node, float scale = 1.f);
 
   /*!
-   @brief		Helper function for setting a property from an xml Property node.
+   @brief    Helper function for setting a property from an xml Property node.
 
    This is used to parse and create a value generator in the case where the attribute is defined on
    the main property tag: e.g.,
@@ -329,69 +329,69 @@ class MENGE_API AgentInitializer {
    <Common property="value.../>
    ```
 
-   @param		gen			A reference to a pointer to a valid IntGenerator. The new int generator will be
+   @param    gen    A reference to a pointer to a valid IntGenerator. The new int generator will be
                     put into this variable.
-   @param		node		The xml node containing attributes for the distribution specification.
-   @returns	A parse result indicating either ACCEPTED or FAILURE. IGNORED should never be a result,
-            because it should only be called on expected parameters, so it must either succed or
-            fail.
+   @param    node   The xml node containing attributes for the distribution specification.
+   @returns  A parse result indicating either ACCEPTED or FAILURE. IGNORED should never be a result,
+             because it should only be called on expected parameters, so it must either succed or
+             fail.
    */
   ParseResult getIntGenerator(IntGenerator*& gen, TiXmlElement* node);
 
   /*!
-   @brief		The maximum speed the agent can take.
+   @brief    The maximum speed the agent can take.
    */
   FloatGenerator* _maxSpeed;
 
   /*!
-   @brief		The maximum acceleration the agent can experience (interpreted isotropically).
+   @brief    The maximum acceleration the agent can experience (interpreted isotropically).
    */
   FloatGenerator* _maxAccel;
 
   /*!
-   @brief		The preferred speed of the agent
+   @brief    The preferred speed of the agent
    */
   FloatGenerator* _prefSpeed;
 
   /*!
-   @brief		The number of nearby agents used to plan dynamic respones.
+   @brief    The number of nearby agents used to plan dynamic respones.
    */
   IntGenerator* _maxNeighbors;
 
   /*!
-   @brief		The maximum distance at which another agent will be considered for a response.
+   @brief    The maximum distance at which another agent will be considered for a response.
    */
   FloatGenerator* _neighborDist;
 
   /*!
-   @brief		The agent's radius.  See Agents::BaseAgent::_radius for details.
+   @brief    The agent's radius.  See Agents::BaseAgent::_radius for details.
    */
   FloatGenerator* _radius;
 
   /*!
-   @brief		The agent's maximum angular velocity (in radians/sec) -- used for controlling the
+   @brief   The agent's maximum angular velocity (in radians/sec) -- used for controlling the
             changes in agent orientation.
    */
   FloatGenerator* _maxAngVel;
 
   /*!
-   @brief		A mask indicating which obstacles affect the agent. See Agents::BaseAgent::_obstacleSet
+   @brief   A mask indicating which obstacles affect the agent. See Agents::BaseAgent::_obstacleSet
             for details.
    */
   size_t _obstacleSet;
 
   /*!
-   @brief		The priority of each agent.  See Agents::BaseAgent::_priority for details.
+   @brief    The priority of each agent.  See Agents::BaseAgent::_priority for details.
    */
   float _priority;
 
   /*!
-   @brief		The population class for this agent.  See Agents::BaseAgent::_class for details.
+   @brief    The population class for this agent.  See Agents::BaseAgent::_class for details.
    */
   size_t _class;
 
   /*!
-   @brief		Velocity Modifiers to be applied to this class
+   @brief    Velocity Modifiers to be applied to this class
    */
   std::vector<BFSM::VelModifier*> _velModifiers;
 };

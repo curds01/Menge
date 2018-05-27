@@ -17,9 +17,9 @@
 */
 
 /*!
- *	@file		StateContext.h
- *	@brief		The definition of a basic UI context for finite
- *				state machine *states*.
+ *  @file    StateContext.h
+ *  @brief    The definition of a basic UI context for finite
+ *        state machine *states*.
  */
 
 #ifndef __STATE_CONTEXT_H__
@@ -52,90 +52,90 @@ class StateContext;
 typedef HASH_MAP<size_t, Runtime::StateContext*> StateContextMap;
 
 /*!
- *	@brief		Base context for finite state machine states.
+ *  @brief    Base context for finite state machine states.
 
- *	This differs from the standard scene graph context by being
- *	dependent on an input agent.
+ *  This differs from the standard scene graph context by being
+ *  dependent on an input agent.
  */
 class StateContext : public SceneGraph::Context {
  public:
   /*!
-   *	@brief		Default constructor.
+   *  @brief    Default constructor.
    */
   StateContext();
 
   /*!
-   *	@brief		Destructor.
+   *  @brief    Destructor.
    */
   virtual ~StateContext();
 
   /*!
-   *	@brief		Sets the state this context works on.
+   *  @brief    Sets the state this context works on.
 
-   *	@param		state		The state to represent with this context.
+   *  @param    state    The state to represent with this context.
    */
   void setState(Menge::BFSM::State* state);
 
   /*!
-   *	@brief		Give the context the opportunity to respond to a keyboard
-   *				event.
+   *  @brief    Give the context the opportunity to respond to a keyboard
+   *        event.
 
-   *	@param		e		The SDL event with the keyboard event data.
-   *	@returns	A ContextResult instance reporting if the event was handled and
-   *				if redrawing is necessary.
+   *  @param    e    The SDL event with the keyboard event data.
+   *  @returns  A ContextResult instance reporting if the event was handled and
+   *        if redrawing is necessary.
    */
   virtual SceneGraph::ContextResult handleKeyboard(SDL_Event& e);
 
   /*!
-   *	@brief		Provides a string to be printed in the display as a UI element
-   *				detailing state information.
+   *  @brief    Provides a string to be printed in the display as a UI element
+   *        detailing state information.
 
-   *	@param		indent		An optional string representing indentation to be
-   *							applied to the text.  It is prefixed at the
+   *  @param    indent    An optional string representing indentation to be
+   *              applied to the text.  It is prefixed at the
    *start
-   *							of each line.
-   *	@returns	The string for printing on the UI layer.
+   *              of each line.
+   *  @returns  The string for printing on the UI layer.
    */
   std::string getUIText(const std::string& indent = "") const;
 
   /*!
-   *	@brief		Draw context elements into the 3D world.
+   *  @brief    Draw context elements into the 3D world.
 
-   *	@param		agt			The particular agent for which the FSM is being
+   *  @param    agt      The particular agent for which the FSM is being
    *visualized.
-   *	@param		drawVC		Draw the velocity component
-   *	@param		drawTrans	Draw the transition
+   *  @param    drawVC    Draw the velocity component
+   *  @param    drawTrans  Draw the transition
    */
   virtual void draw3DGL(const Menge::Agents::BaseAgent* agt, bool drawVC, bool drawTrans);
 
  protected:
   /*!
-   *	@brief		The underlying finite state machine state.
+   *  @brief    The underlying finite state machine state.
    */
   Menge::BFSM::State* _state;
 
   /*!
-   *	@brief		The value used to indicate that no id is selected.
+   *  @brief    The value used to indicate that no id is selected.
 
-   *	Used in conjunction with the _activeVC and _activeTransition
+   *  Used in conjunction with the _activeVC and _activeTransition
    */
   static size_t NO_ACTIVE_ID;
 
   /*!
-   *	@brief		The velocity component context for this state.
+   *  @brief    The velocity component context for this state.
    */
   VCContext::VelCompContext* _vcContext;
 
   /*!
-   *	@brief		The goal renderer for this state.
+   *  @brief    The goal renderer for this state.
    */
   GoalVis::GoalRenderer* _goalRenderer;
 
   /*!
-   *	@brief		The id of the "active" transition.
+   *  @brief    The id of the "active" transition.
 
-   *	This is the index of the transition which is currently being
-   *	visualized in the context.
+   *  This is the index of the transition which is currently being
+   *  visualized in the context.
    */
   size_t _activeTransition;
 };

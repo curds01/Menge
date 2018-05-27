@@ -24,7 +24,7 @@ using MengeVis::Runtime::VisAgent;
 using MengeVis::Runtime::VisAgentDB;
 
 /////////////////////////////////////////////////////////////////////
-//					Implementation of VisPluginEngine
+//          Implementation of VisPluginEngine
 /////////////////////////////////////////////////////////////////////
 
 VisPluginEngine::VisPluginEngine() : BasePluginEngine<VisPluginEngine, Plugin<VisPluginEngine> >() {

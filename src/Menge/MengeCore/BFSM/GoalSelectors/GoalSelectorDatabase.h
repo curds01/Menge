@@ -17,8 +17,8 @@
 */
 
 /*!
- @file		GoalSelectorDatabase.h
- @brief		Central database for querying available agent goals.
+ @file    GoalSelectorDatabase.h
+ @brief    Central database for querying available agent goals.
  */
 
 #ifndef __GOAL_SELECTOR_DATABASE_H__
@@ -41,13 +41,13 @@ typedef ElementDB<GoalSelectorFactory, GoalSelector> GoalSelectorDB;
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
 
 /*!
- @brief		Explicit specialization of addBuiltins for the GoalSelector Database
+ @brief    Explicit specialization of addBuiltins for the GoalSelector Database
  */
 template <>
 void ElementDB<BFSM::GoalSelectorFactory, BFSM::GoalSelector>::addBuiltins();
 
 /*!
- @brief		Explicit specialization of getElementName for the GoalSelector Database
+ @brief    Explicit specialization of getElementName for the GoalSelector Database
  */
 template <>
 std::string ElementDB<BFSM::GoalSelectorFactory, BFSM::GoalSelector>::getElementName();

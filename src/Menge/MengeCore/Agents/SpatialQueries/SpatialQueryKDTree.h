@@ -39,7 +39,7 @@ namespace Menge {
 namespace Agents {
 
 /*!
- @brief		Spatial query object.
+ @brief    Spatial query object.
  
  Used to determine obstacles and agents near an agent -- based on a <i>k</i>d-tree.
  */
@@ -55,7 +55,7 @@ class MENGE_API BergKDTree : public SpatialQuery {
   /*!
    @brief      Define the set of agents on which <i>k</i>d-tree will query.
 
-   @param		agents		The set of agents in the simulator to be managed.
+   @param    agents    The set of agents in the simulator to be managed.
    */
   virtual void setAgents(const std::vector<BaseAgent*>& agents) { _agentTree.setAgents(agents); }
 
@@ -113,26 +113,26 @@ class MENGE_API BergKDTree : public SpatialQuery {
 //////////////////////////////////////////////////////////////////////////////
 
 /*!
- @brief		Factory for the BergKDTree.
+ @brief    Factory for the BergKDTree.
  */
 class MENGE_API BergKDTreeFactory : public SpatialQueryFactory {
  public:
   /*!
-   @brief		The name of the spatial query implemenation.
+   @brief    The name of the spatial query implemenation.
 
    The spatial query's name must be unique among all registered spatial query components. Each
    spatial query factory must override this function.
 
-   @returns	A string containing the unique spatial query name.
+   @returns  A string containing the unique spatial query name.
    */
   virtual const char* name() const { return "kd-tree"; }
 
   /*!
-   @brief		A description of the spatial query.
+   @brief    A description of the spatial query.
 
    Each spatial query factory must override this function.
 
-   @returns	A string containing the spatial query description.
+   @returns  A string containing the spatial query description.
    */
   virtual const char* description() const {
     return "Performs spatial queries by creating a kd-tree on the agents and a bsp "
@@ -141,14 +141,14 @@ class MENGE_API BergKDTreeFactory : public SpatialQueryFactory {
 
  protected:
   /*!
-   @brief		Create an instance of this class's spatial query implementation.
+   @brief    Create an instance of this class's spatial query implementation.
 
    All SpatialQueryFactory sub-classes must override this by creating (on the heap) a new instance
    of its corresponding spatial query type. The various field values of the instance will be set in
    a subsequent call to SpatialQueryFactory::setFromXML. The caller of this function takes ownership
    of the memory.
 
-   @returns		A pointer to a newly instantiated SpatialQuery class.
+   @returns    A pointer to a newly instantiated SpatialQuery class.
    */
   SpatialQuery* instance() const { return new BergKDTree(); }
 };

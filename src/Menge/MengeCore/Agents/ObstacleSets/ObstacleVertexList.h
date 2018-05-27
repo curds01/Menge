@@ -17,8 +17,8 @@
 */
 
 /*!
- *	@file		ObstacleVertexList.h
- *	@brief		The definition of the set of vertices for an explicit obstacle definition.
+ *  @file    ObstacleVertexList.h
+ *  @brief    The definition of the set of vertices for an explicit obstacle definition.
  */
 
 #ifndef __OBSTACLE_VERTEX_LIST__
@@ -40,12 +40,12 @@ namespace Agents {
  */
 struct ObstacleVertexList {
   /*!
-   *	@brief		The list of vertices for the obstacle.
+   *  @brief    The list of vertices for the obstacle.
    */
   std::vector<Math::Vector2> vertices;
 
   /*!
-   *	@brief		Indicates if the obstacle is closed (true) or open (false).
+   *  @brief    Indicates if the obstacle is closed (true) or open (false).
    */
   bool closed;
 };

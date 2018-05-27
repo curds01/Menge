@@ -60,7 +60,7 @@ namespace Menge {
 namespace Agents {
 
 ////////////////////////////////////////////////////////////////////
-//			Implementation of SimXMLLoader
+//      Implementation of SimXMLLoader
 ////////////////////////////////////////////////////////////////////
 
 SimXMLLoader::SimXMLLoader(XMLSimulatorBase* sim) : _sceneFldr("."), _sim(sim), _agtCount(0) {}
@@ -70,9 +70,9 @@ SimXMLLoader::SimXMLLoader(XMLSimulatorBase* sim) : _sceneFldr("."), _sim(sim), 
 bool SimXMLLoader::loadFromXML(const std::string& filename, AgentInitializer* agentInit,
                                bool verbose) {
   // COnfirms file is
-  //	a) available for reading
-  //	b) valid xml
-  //	c) An "Experiment"
+  //  a) available for reading
+  //  b) valid xml
+  //  c) An "Experiment"
   if (verbose) logger << Logger::INFO_MSG << "Loading from xml: " << filename << ".";
   TiXmlDocument xml(filename);
   bool loadOkay = xml.LoadFile();
@@ -111,7 +111,7 @@ bool SimXMLLoader::loadFromXML(const std::string& filename, AgentInitializer* ag
   bool spatialQueryDone = false;
 
   // Tags I'm not ready to parse - only parse agent sets and obstacles AFTER experiment
-  //	parameters
+  //  parameters
   std::list<TiXmlElement*> tagQueue;
 
   TiXmlElement* child;
@@ -221,7 +221,7 @@ bool SimXMLLoader::loadFromXML(const std::string& filename, AgentInitializer* ag
     return false;
   }
   // Now parse any of the tags that were skipped while waiting for experiment
-  //	configuration
+  //  configuration
   std::list<TiXmlElement*>::iterator tagItr = tagQueue.begin();
   for (; tagItr != tagQueue.end(); ++tagItr) {
     TiXmlElement* child = *tagItr;
@@ -242,14 +242,14 @@ bool SimXMLLoader::loadFromXML(const std::string& filename, AgentInitializer* ag
 
   if (_agtCount == 0) {
     // TODO: Change this test when agent sources are introduced
-    //	in this case, it is possible to start with no agents and then add them
-    //	w.r.t. time.
+    //  in this case, it is possible to start with no agents and then add them
+    //  w.r.t. time.
     logger << Logger::ERR_MSG << "No agents defined in simulation.";
     return false;
   }
 
   // free up the profiles
-  //	TODO: I'll need to save these when I have AgentSources.
+  //  TODO: I'll need to save these when I have AgentSources.
   for (HASH_MAP<std::string, AgentInitializer*>::iterator itr = _profiles.begin();
        itr != _profiles.end(); ++itr) {
     delete itr->second;
@@ -297,7 +297,7 @@ bool SimXMLLoader::parseAgentGroup(TiXmlElement* node, AgentInitializer* agentIn
     } else if (child->ValueStr() == "StateSelector") {
       if (stateSel != 0x0) {
         // There should be only one.  If there are multiple, only the first will
-        //	have an effect.
+        //  have an effect.
         logger << Logger::WARN_MSG << "Found multiple StateSelector tags in the "
                                       "AgentGroup on line "
                << node->Row() << ".  "

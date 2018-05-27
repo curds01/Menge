@@ -17,8 +17,8 @@
 */
 
 /*!
- @file		EventTarget.h
- @brief		The definition of the base event target class.  Defines what an event effect operates on.
+ @file    EventTarget.h
+ @brief    The definition of the base event target class.  Defines what an event effect operates on.
  */
 
 #ifndef __EVENT_TARGET_H__
@@ -35,7 +35,7 @@ class BaseAgent;
 }
 
 /*!
- @brief		The base class for all event targets.
+ @brief    The base class for all event targets.
 
  An event target defines the operand of an event effect i.e., if the event effect defines how
  things change, the target defines which elements undergo the effect.
@@ -43,20 +43,20 @@ class BaseAgent;
 class MENGE_API EventTarget : public Element {
  public:
   /*!
-   @brief		Constructor.
+   @brief    Constructor.
    */
   EventTarget() : Element(), _lastUpdate(-1.f) {}
 
   /*!
-   @brief		Allows the event target to finish initializing itself from its parsed state to its
+   @brief    Allows the event target to finish initializing itself from its parsed state to its
             running state.
 
-   @throws		EventException if there is a problem finalizing.
+   @throws    EventException if there is a problem finalizing.
    */
   virtual void finalize() {}
 
   /*!
-   @brief		Gives the target a chance to update its knowledge of the target entities.
+   @brief    Gives the target a chance to update its knowledge of the target entities.
 
    If a sub-class needs to do particular computation to evaluate the target, it should be
    implemented here.
@@ -65,7 +65,7 @@ class MENGE_API EventTarget : public Element {
 
  protected:
   /*!
-   @brief		The global time that the target was last updated.
+   @brief    The global time that the target was last updated.
    */
   float _lastUpdate;
 };

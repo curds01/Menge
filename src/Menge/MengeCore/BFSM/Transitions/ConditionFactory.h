@@ -17,8 +17,8 @@
 */
 
 /*!
- @file		ConditionFactory.h
- @brief		The factory for parsing xml data for transition conditions and instantiating the
+ @file    ConditionFactory.h
+ @brief    The factory for parsing xml data for transition conditions and instantiating the
           appropriate class.
  */
 
@@ -35,7 +35,7 @@ namespace Menge {
 
 namespace BFSM {
 /*!
- @brief		The class for parsing the xml description of a Condition and instantiating particular
+ @brief    The class for parsing the xml description of a Condition and instantiating particular
           instances.
  */
 class MENGE_API ConditionFactory : public ElementFactory<Condition> {};

@@ -17,8 +17,8 @@
 */
 
 /*!
- @file		CoreConfig.h
- @brief		Sets up the proper compiler directives for platform and dll export/import.
+ @file    CoreConfig.h
+ @brief    Sets up the proper compiler directives for platform and dll export/import.
  */
 
 #ifndef __CORE_CONFIG_H__

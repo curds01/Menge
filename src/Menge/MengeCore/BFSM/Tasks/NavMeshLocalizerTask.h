@@ -20,8 +20,8 @@
 #define __NAV_MESH_LOCALIZER_TASK_H__
 
 /*!
- @file	NavMeshLocalizerTask.h
- @brief	A task based on the NavMeshLocalizer so that it updates its tracked agent positions at every
+ @file  NavMeshLocalizerTask.h
+ @brief  A task based on the NavMeshLocalizer so that it updates its tracked agent positions at every
         FSM time step.
  */
 
@@ -42,49 +42,49 @@ typedef ResourcePtr<NavMeshLocalizer> NavMeshLocalizerPtr;
 
 namespace BFSM {
 /*!
- @brief	Sub-class of NavMeshLocalizer that can be run as an FSM task
+ @brief  Sub-class of NavMeshLocalizer that can be run as an FSM task
  */
 class MENGE_API NavMeshLocalizerTask : public Task {
  public:
   /*!
-   @brief		Constructor from a localizer.
+   @brief    Constructor from a localizer.
 
-   @param		navMeshName		The name of the navigation mesh which the task depends on.
-   @param		usePlanner		Indicates if the localizer should use a planner (true) or not (false).
+   @param    navMeshName    The name of the navigation mesh which the task depends on.
+   @param    usePlanner    Indicates if the localizer should use a planner (true) or not (false).
    */
   NavMeshLocalizerTask(const std::string& navMeshName, bool usePlanner);
 
   /*!
-   @brief		The work performed by the task.
+   @brief    The work performed by the task.
 
-   @param		fsm		The finite state machine for the task to operate on.
-   @throws		A TaskException if there was some non-fatal error in execution. It should be logged.
-   @throws		A TaskFatalException if there is a fatal error that should arrest execution of the
+   @param    fsm    The finite state machine for the task to operate on.
+   @throws    A TaskException if there was some non-fatal error in execution. It should be logged.
+   @throws    A TaskFatalException if there is a fatal error that should arrest execution of the
               simulation.
    */
   virtual void doWork(const FSM* fsm) throw(TaskException);
 
   /*!
-   @brief		String representation of the task
+   @brief    String representation of the task
 
-   @returns	A string containing task information.
+   @returns  A string containing task information.
    */
   virtual std::string toString() const;
 
   /*!
-   @brief		Reports if this task is "equivalent" to the given task.
+   @brief    Reports if this task is "equivalent" to the given task.
 
    This makes it possible for a task to be redundantly added to the fsm without fear of duplication
    as the equivalent duplicates will be culled.
 
-   @param		task		The task to test against this one.
-   @returns	A boolean reporting if the two tasks are equivalent (true) or unique (false).
+   @param    task    The task to test against this one.
+   @returns  A boolean reporting if the two tasks are equivalent (true) or unique (false).
    */
   virtual bool isEquivalent(const Task* task) const;
 
  protected:
   /*!
-   @brief		The localizer used by this task.
+   @brief    The localizer used by this task.
    */
   NavMeshLocalizerPtr _localizer;
 };

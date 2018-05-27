@@ -17,8 +17,8 @@
 */
 
 /*!
- @file		GoalSelectorFactory.h
- @brief		The factory for parsing xml data and instantiating goals.
+ @file    GoalSelectorFactory.h
+ @brief    The factory for parsing xml data and instantiating goals.
  */
 
 #ifndef __GOAL_SELECTOR_FACTORY_H__
@@ -36,19 +36,19 @@ namespace Menge {
 
 namespace BFSM {
 /*!
- @brief		A class for parsing the xml description of a goal selector and instantiating particular
+ @brief    A class for parsing the xml description of a goal selector and instantiating particular
           instances.
  */
 class MENGE_API GoalSelectorFactory : public ElementFactory<GoalSelector> {
  public:
   /*!
-   @brief		Constructor.
+   @brief    Constructor.
    */
   GoalSelectorFactory();
 
  protected:
   /*!
-   @brief		Given a pointer to a Goal Selector instance, sets the appropriate fields from the
+   @brief    Given a pointer to a Goal Selector instance, sets the appropriate fields from the
             provided XML node.
 
    It is assumed that the value of the `type` attribute is this Goal Selector's type (i.e.
@@ -56,18 +56,18 @@ class MENGE_API GoalSelectorFactory : public ElementFactory<GoalSelector> {
    GoalSelectorFactory introduce *new* GoalSelector parameters, then the sub-class should override
    this method but explicitly call the parent class's version.
 
-   @param		selector      A pointer to the goal selector whose attributes are to be set.
-   @param		node          The XML node containing the goal attributes.
-   @param		behaveFldr		The path to the behavior file. If the condition references resources in
+   @param    selector      A pointer to the goal selector whose attributes are to be set.
+   @param    node          The XML node containing the goal attributes.
+   @param    behaveFldr    The path to the behavior file. If the condition references resources in
                           the file system, it should be defined relative to the behavior file
                           location. This is the folder containing that path.
-   @returns	A boolean reporting success (true) or failure (false).
+   @returns  A boolean reporting success (true) or failure (false).
    */
   virtual bool setFromXML(GoalSelector* selector, TiXmlElement* node,
                           const std::string& behaveFldr) const;
 
   /*!
-   @brief		The identifier for the "persistent" bool attribute.
+   @brief    The identifier for the "persistent" bool attribute.
    */
   size_t _persistentID;
 };

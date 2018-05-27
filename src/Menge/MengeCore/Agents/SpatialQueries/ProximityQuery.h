@@ -41,7 +41,7 @@ Forward Declaration
 class BaseAgent;
 
 /*!
- @brief		The base class for filtering spatial queries according to proximity
+ @brief    The base class for filtering spatial queries according to proximity
 
  There are different types of spatial queries: nearest, k-nearest, k-nearest with minimum range,
  etc. The ProximityQuery class works in conjunction with a SpatialQuery implementation to define one
@@ -55,13 +55,13 @@ class BaseAgent;
 class MENGE_API ProximityQuery {
  public:
   /*!
-   @brief		Default constructor.
+   @brief    Default constructor.
    */
   ProximityQuery() {}
 
  protected:
   /*!
-   @brief		Virtual destructor.
+   @brief    Virtual destructor.
    */
   virtual ~ProximityQuery() {}
 
@@ -82,7 +82,7 @@ class MENGE_API ProximityQuery {
    @brief      Updates the max agent query range if conditions inside the Query are met typically,
                we don't shrink the query range until the result set is full.
 
-   @returns	the current max query range
+   @returns  the current max query range
    */
   virtual float getMaxAgentRange() = 0;
 
@@ -90,7 +90,7 @@ class MENGE_API ProximityQuery {
    @brief     Updates the max query obstacle range if conditions inside the Query are met
               typically, we don't shrink the query range until the result set is full.
 
-   @returns	  The current max query range.
+   @returns    The current max query range.
    */
   virtual float getMaxObstacleRange() = 0;
 

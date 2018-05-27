@@ -17,8 +17,8 @@
 */
 
 /*!
- @file		Event.h
- @brief		The definition of the Menge Event.
+ @file    Event.h
+ @brief    The definition of the Menge Event.
  */
 
 #ifndef __EVENT_H__
@@ -40,14 +40,14 @@ class EventSystem;
 ///////////////////////////////////////////////////////////////////////
 
 /*!
- @brief		Parses the xml specification of an event and returns a parsed event.
+ @brief    Parses the xml specification of an event and returns a parsed event.
 
  The event instance will still need to be finalized.
 
- @param		node		  The tiny xml node containing the event specification.
- @param		specFldr	The path to the specification file. All external resource references in the
+ @param    node      The tiny xml node containing the event specification.
+ @param    specFldr  The path to the specification file. All external resource references in the
                     spec file are defined relative to this folder.
- @returns	A new instance of an Event.  Null if there is a parsing error. The caller assumes
+ @returns  A new instance of an Event.  Null if there is a parsing error. The caller assumes
           responsibility to delete the instance.
  */
 Event* parseEvent(TiXmlElement* node, const std::string& specFldr);
@@ -55,7 +55,7 @@ Event* parseEvent(TiXmlElement* node, const std::string& specFldr);
 ///////////////////////////////////////////////////////////////////////
 
 /*!
- @brief		The definition of a Menge event.
+ @brief    The definition of a Menge event.
 
  An event is defined by two components: a trigger, and a list of event *responses*. The trigger
  defines the circumstances which cause the event to "fire". The event can have multiple respones
@@ -64,28 +64,28 @@ Event* parseEvent(TiXmlElement* node, const std::string& specFldr);
 class Event {
  public:
   /*!
-   @brief		Constructor.
+   @brief    Constructor.
 
-   @param		name		The name of the event.
+   @param    name    The name of the event.
    */
   Event(const std::string& name);
 
   /*!
-   @brief		Destructor.
+   @brief    Destructor.
    */
   ~Event();
 
   /*!
-   @brief		Allows the event to finish initializing itself from its parsed state to its running
+   @brief    Allows the event to finish initializing itself from its parsed state to its running
             state.
 
-   @throws		EventFatalException if the event system has conservative configuration and there is a
+   @throws    EventFatalException if the event system has conservative configuration and there is a
               problem in the event specification.
    */
   void finalize();
 
   /*!
-   @brief		Evaluates the event (and triggers handlers as necessary).
+   @brief    Evaluates the event (and triggers handlers as necessary).
    */
   void evaluate();
 
@@ -94,17 +94,17 @@ class Event {
 
  protected:
   /*!
-   @brief		The name of the event.
+   @brief    The name of the event.
    */
   std::string _name;
 
   /*!
-   @brief		The trigger for the event.
+   @brief    The trigger for the event.
    */
   EventTrigger* _trigger;
 
   /*!
-   @brief		The effects registered to this event.
+   @brief    The effects registered to this event.
    */
   std::vector<EventResponse*> _responses;
 };

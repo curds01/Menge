@@ -17,8 +17,8 @@
 */
 
 /*!
- @file		EventEffect.h
- @brief		The definition of the event effect -- defines the response to a triggered response.
+ @file    EventEffect.h
+ @brief    The definition of the event effect -- defines the response to a triggered response.
  */
 
 #ifndef __EVENT_EFFECT_H__
@@ -34,7 +34,7 @@ class EventTarget;
 class EventEffectFactory;
 
 /*!
- @brief		The definition of a response to an event.
+ @brief    The definition of a response to an event.
 
 	Event effects determine how the simulation changes due to a triggered event. The %EventEffect
   works in conjunction with the EventTarget class. The effect is the *operator* and the target is
@@ -49,36 +49,36 @@ class EventEffectFactory;
 class MENGE_API EventEffect : public Element {
  public:
   /*!
-   @brief		Constructor.
+   @brief    Constructor.
    */
   EventEffect() : Element() {}
 
   /*!
-   @brief		Reports if the given target is compatible with this effect.
+   @brief    Reports if the given target is compatible with this effect.
 
    Each effect can only work on certain types of targets. This function reports if the given target
    works with this effect.
 
-   @param		target		The target instance to test.
-   @returns	True if the target is a valid argument to EventEffect::apply.
+   @param    target    The target instance to test.
+   @returns  True if the target is a valid argument to EventEffect::apply.
    */
   virtual bool isCompatible(EventTarget* target) = 0;
 
   /*!
-   @brief		Applies the effect to the simulation target.
+   @brief    Applies the effect to the simulation target.
 
    Not all targets work with all effects.  The target passed here must have previously passed the
    EventEffect::isCompatible test to work.
 
-   @param		target		The target to apply the event to.
+   @param    target    The target to apply the event to.
    */
   virtual void apply(EventTarget* target) = 0;
 
   /*!
-   @brief		Allows the event effect to finish initializing itself from its parsed state to its
+   @brief    Allows the event effect to finish initializing itself from its parsed state to its
             running state.
 
-   @throws		EventException if there is a problem finalizing.
+   @throws    EventException if there is a problem finalizing.
    */
   virtual void finalize() {}
 

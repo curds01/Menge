@@ -17,8 +17,8 @@
 */
 
 /*!
- @file		TaskFactory.h
- @brief		The factory for parsing xml data and instantiating tasks.
+ @file    TaskFactory.h
+ @brief    The factory for parsing xml data and instantiating tasks.
  */
 
 #ifndef __TASK_FACTORY_H__
@@ -34,7 +34,7 @@ namespace Menge {
 
 namespace BFSM {
 /*!
- @brief		A class for parsing the xml description of a task and instantiating particular instances.
+ @brief    A class for parsing the xml description of a task and instantiating particular instances.
  */
 class MENGE_API TaskFactory : public ElementFactory<Task> {};
 }  // namespace BFSM

@@ -17,8 +17,8 @@
 */
 
 /*!
- @file		ConditionDatabase.h
- @brief		Central database for querying available behavior conditions.
+ @file    ConditionDatabase.h
+ @brief    Central database for querying available behavior conditions.
 
  For conditions to be used in the finite state machine, they must register themselves into the
  ConditionDatabase.  This is done via the PluginEngine.
@@ -35,7 +35,7 @@ namespace Menge {
 
 namespace BFSM {
 /*!
- @brief		The database of registered condition implementations.
+ @brief    The database of registered condition implementations.
  */
 typedef ElementDB<ConditionFactory, Condition> ConditionDB;
 
@@ -44,13 +44,13 @@ typedef ElementDB<ConditionFactory, Condition> ConditionDB;
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
 
 /*!
- @brief		Explicit specialization of addBuiltins for the Condition Database
+ @brief    Explicit specialization of addBuiltins for the Condition Database
  */
 template <>
 void ElementDB<BFSM::ConditionFactory, BFSM::Condition>::addBuiltins();
 
 /*!
- @brief		Explicit specialization of getElementName for the Condition Database
+ @brief    Explicit specialization of getElementName for the Condition Database
  */
 template <>
 std::string ElementDB<BFSM::ConditionFactory, BFSM::Condition>::getElementName();

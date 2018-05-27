@@ -17,8 +17,8 @@
 */
 
 /*!
- @file		RectGridGenerator.h
- @brief		An agent generator which creates a set of agents based on the definition of a rectangular
+ @file    RectGridGenerator.h
+ @brief    An agent generator which creates a set of agents based on the definition of a rectangular
           lattice, with an agent at each point.
  */
 
@@ -35,7 +35,7 @@ namespace Menge {
 namespace Agents {
 
 /*!
- @brief		Definition of an agent generator class which produces agents based on the positions of
+ @brief    Definition of an agent generator class which produces agents based on the positions of
           intersections on a lattice--one agent per intersection.
 
  To specify an rectangular grid generator, use the following syntax:
@@ -64,59 +64,59 @@ namespace Agents {
 class MENGE_API RectGridGenerator : public AgentGenerator {
  public:
   /*!
-   @brief		Constructor
+   @brief    Constructor
    */
   RectGridGenerator();
 
   /*!
-   @brief		Reports the number of agents created.
+   @brief    Reports the number of agents created.
 
-   @returns	The number of agents this generator creates.
+   @returns  The number of agents this generator creates.
    */
   virtual size_t agentCount() { return _xCount * _yCount; }
 
   /*!
-   @brief		Sets the ith position to the given agent.
+   @brief    Sets the ith position to the given agent.
 
-   @param		i		  The index of the requested position in the sequence.
-   @param		agt		A pointer to the agent whose position is to be set.
-   @throws		AgentGeneratorException if the index, i, is invalid.
+   @param    i      The index of the requested position in the sequence.
+   @param    agt    A pointer to the agent whose position is to be set.
+   @throws    AgentGeneratorException if the index, i, is invalid.
    */
   virtual void setAgentPosition(size_t i, BaseAgent* agt);
 
   /*!
-   @brief		Sets the anchor position.
+   @brief    Sets the anchor position.
 
-   @param		p		The anchor position.
+   @param    p    The anchor position.
    */
   void setAnchor(const Vector2& p) { _anchor.set(p); }
 
   /*!
-   @brief		Sets the offset value.
+   @brief    Sets the offset value.
 
-   @param		o		The offset value.
+   @param    o    The offset value.
    */
   void setOffset(const Vector2& o) { _offset.set(o); }
 
   /*!
-   @brief		Sets the number of agents in the local x-direction.
+   @brief    Sets the number of agents in the local x-direction.
 
-   @param		count		The count of agents.
+   @param    count    The count of agents.
    */
   void setXCount(size_t count) { _xCount = count; }
 
   /*!
-   @brief		Sets the number of agents in the local y-direction.
+   @brief    Sets the number of agents in the local y-direction.
 
-   @param		count		The count of agents.
+   @param    count    The count of agents.
    */
   void setYCount(size_t count) { _yCount = count; }
 
   /*!
-   @brief		Sets the number of agents in the local x- and y-directions.
+   @brief    Sets the number of agents in the local x- and y-directions.
 
-   @param		xCount		The count of agents in the x-direction.
-   @param		yCount		The count of agents in the y-direction.
+   @param    xCount    The count of agents in the x-direction.
+   @param    yCount    The count of agents in the y-direction.
    */
   void setAgentCounts(size_t xCount, size_t yCount) {
     _xCount = xCount;
@@ -124,45 +124,45 @@ class MENGE_API RectGridGenerator : public AgentGenerator {
   }
 
   /*!
-   @brief		Sets the lattice rotation.
+   @brief    Sets the lattice rotation.
 
-   @param		angle		The rotation angle (in degrees).
+   @param    angle    The rotation angle (in degrees).
    */
   void setRotationDeg(float angle);
 
  protected:
   /*!
-   @brief		The anchor point of the lattice.
+   @brief    The anchor point of the lattice.
    
    One agent will be positioned at this world coordainte.
    */
   Vector2 _anchor;
 
   /*!
-   @brief		The offset from one agent to the next agent (along the local x- and y-axes,
+   @brief    The offset from one agent to the next agent (along the local x- and y-axes,
             respectively.
    */
   Vector2 _offset;
 
   /*!
-   @brief		The number of agents along the local x-axis.
+   @brief    The number of agents along the local x-axis.
    */
   size_t _xCount;
 
   /*!
-   @brief		The number of agents along the local y-axis.
+   @brief    The number of agents along the local y-axis.
    */
   size_t _yCount;
 
   /*!
-   @brief		The cosine of the amount the lattice is rotated around its anchor point.
+   @brief    The cosine of the amount the lattice is rotated around its anchor point.
    
    Positive rotation values are counter-clockwise rotation.
    */
   float _cosRot;
 
   /*!
-   @brief		The sine of the amount the lattice is rotated around its anchor point.
+   @brief    The sine of the amount the lattice is rotated around its anchor point.
 
    Positive rotation values are counter-clockwise rotation.
    */
@@ -172,31 +172,31 @@ class MENGE_API RectGridGenerator : public AgentGenerator {
 //////////////////////////////////////////////////////////////////////////////
 
 /*!
- @brief		Factory for RectGridGenerator
+ @brief    Factory for RectGridGenerator
  */
 class MENGE_API RectGridGeneratorFactory : public AgentGeneratorFactory {
  public:
   /*!
-   @brief		Constructor.
+   @brief    Constructor.
    */
   RectGridGeneratorFactory();
 
   /*!
-   @brief		The name of the generator type.
+   @brief    The name of the generator type.
 
    The generator's name must be unique among all registered agent generator components. Each agent
    generator factory must override this function.
 
-   @returns	A string containing the unique elevation name.
+   @returns  A string containing the unique elevation name.
    */
   virtual const char* name() const { return "rect_grid"; }
 
   /*!
-   @brief		A description of the agent generator.
+   @brief    A description of the agent generator.
 
    Each agent generator factory must override this function.
 
-   @returns	A string containing the agent generator description.
+   @returns  A string containing the agent generator description.
    */
   virtual const char* description() const {
     return "Agent generation is done via the specification of a rectangular grid.";
@@ -204,19 +204,19 @@ class MENGE_API RectGridGeneratorFactory : public AgentGeneratorFactory {
 
  protected:
   /*!
-   @brief		Create an instance of this class's agent generator implementation.
+   @brief    Create an instance of this class's agent generator implementation.
 
    All AgentGeneratorFactory sub-classes must override this by creating (on the heap) a new instance
    of its corresponding generator type. The various field values of the instance will be set in a
    subsequent call to AgentGeneratorFactory::setFromXML. The caller of this function takes ownership
    of the memory.
 
-   @returns		A pointer to a newly instantiated EleAgentGenerator class.
+   @returns    A pointer to a newly instantiated EleAgentGenerator class.
    */
   AgentGenerator* instance() const { return new RectGridGenerator(); }
 
   /*!
-   @brief		Given a pointer to a Goal Selector instance, sets the appropriate fields from the
+   @brief    Given a pointer to a Goal Selector instance, sets the appropriate fields from the
             provided XML node.
 
    It is assumed that the value of the `type` attribute is this Goal Selector's type (i.e.
@@ -224,48 +224,48 @@ class MENGE_API RectGridGeneratorFactory : public AgentGeneratorFactory {
    GoalSelectorFactory introduce *new* GoalSelector parameters, then the sub-class should override
    this method but explicitly call the parent class's version.
 
-   @param		gen				    A pointer to the goal selector whose attributes are to be set.
-   @param		node			    The XML node containing the goal attributes.
-   @param		behaveFldr		The path to the behavior file.  If the condition references resources in
+   @param    gen            A pointer to the goal selector whose attributes are to be set.
+   @param    node          The XML node containing the goal attributes.
+   @param    behaveFldr    The path to the behavior file.  If the condition references resources in
                           the file system, it should be defined relative to the behavior file
                           location. This is the folder containing that path.
-   @returns	A boolean reporting success (true) or failure (false).
+   @returns  A boolean reporting success (true) or failure (false).
    */
   virtual bool setFromXML(AgentGenerator* gen, TiXmlElement* node,
                           const std::string& behaveFldr) const;
 
   /*!
-   @brief		The identifier for the "anchor_x" float parameter.
+   @brief    The identifier for the "anchor_x" float parameter.
    */
   size_t _anchorXID;
 
   /*!
-   @brief		The identifier for the "anchor_y" float parameter.
+   @brief    The identifier for the "anchor_y" float parameter.
    */
   size_t _anchorYID;
 
   /*!
-   @brief		The identifier for the "offset_x" float parameter.
+   @brief    The identifier for the "offset_x" float parameter.
    */
   size_t _offsetXID;
 
   /*!
-   @brief		The identifier for the "offset_y" float parameter.
+   @brief    The identifier for the "offset_y" float parameter.
    */
   size_t _offsetYID;
 
   /*!
-   @brief		The identifier for the "count_x" size_t parameter.
+   @brief    The identifier for the "count_x" size_t parameter.
    */
   size_t _xCountID;
 
   /*!
-   @brief		The identifier for the "count_y" size_t parameter.
+   @brief    The identifier for the "count_y" size_t parameter.
    */
   size_t _yCountID;
 
   /*!
-   @brief		The identifier for the "rotation" float parameter.
+   @brief    The identifier for the "rotation" float parameter.
    */
   size_t _rotID;
 };

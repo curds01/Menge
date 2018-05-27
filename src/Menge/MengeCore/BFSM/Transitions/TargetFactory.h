@@ -17,8 +17,8 @@
 */
 
 /*!
- @file		TargetFactory.h
- @brief		The factory for parsing xml data for TransitionTarget and instantiating the appropriate
+ @file    TargetFactory.h
+ @brief    The factory for parsing xml data for TransitionTarget and instantiating the appropriate
           class.
  */
 
@@ -35,7 +35,7 @@ namespace Menge {
 
 namespace BFSM {
 /*!
- @brief		A class for parsing the xml description of a TransitionTarget and instantiating particular
+ @brief    A class for parsing the xml description of a TransitionTarget and instantiating particular
           instances.
  */
 class MENGE_API TargetFactory : public ElementFactory<TransitionTarget> {};

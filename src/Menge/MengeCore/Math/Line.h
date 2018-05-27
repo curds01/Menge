@@ -36,34 +36,34 @@ namespace Math {
 class MENGE_API Line {
  public:
   /*!
-   @brief		Default constructor.
+   @brief    Default constructor.
    */
   Line();
 
   /*!
-   @brief		Explicit constructor.
+   @brief    Explicit constructor.
 
-   @param		p		A point on the line.
-   @param		d		A unit-length vector defining the direction of the line. The line is defined by p +
+   @param    p    A point on the line.
+   @param    d    A unit-length vector defining the direction of the line. The line is defined by p +
                 dt, where t in the range [-infinity, infinity].
    */
   Line(const Vector2& p, const Vector2& d);
 
   /*!
-   @brief		Returns the nearest point on the line to p
+   @brief    Returns the nearest point on the line to p
 
-   @param		p			The point to which we want to find the nearest point.
-   @returns	A point on the line that is closest to p.
+   @param    p      The point to which we want to find the nearest point.
+   @returns  A point on the line that is closest to p.
    */
   Vector2 nearestPt(const Vector2& p) const;
 
   /*!
-   @brief		A point on the directed line.
+   @brief    A point on the directed line.
    */
   Vector2 _point;
 
   /*!
-   @brief		The direction of the directed line.
+   @brief    The direction of the directed line.
    */
   Vector2 _direction;
 };

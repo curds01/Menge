@@ -21,11 +21,11 @@ The preferred velocity computed by the Velocity Component is fed into the single
 
 Multiple velocity modifiers can be provided.  For example, an agent profile could specify two velocity modifiers as follows:
 
-	<AgentProfile>
-		...
-		<VelModifer type="firstMod" ... />
-		<VelModifer type="secondMod" ... />
-	</AgentProfile>
+  <AgentProfile>
+    ...
+    <VelModifer type="firstMod" ... />
+    <VelModifer type="secondMod" ... />
+  </AgentProfile>
 
 In this case, the velocity modifiers are composed in the order given:
 

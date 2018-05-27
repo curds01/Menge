@@ -17,8 +17,8 @@
 */
 
 /*!
- @file		EventTriggerDB.h
- @brief		Central database for querying available event trigger implementations.
+ @file    EventTriggerDB.h
+ @brief    Central database for querying available event trigger implementations.
 
  For event triggers to be used in simulation, they must register themselves into the
  EventTriggerDB. This is done via the PluginEngine.
@@ -33,7 +33,7 @@
 
 namespace Menge {
 /*!
- @brief		The database of registered event triggers implementations.
+ @brief    The database of registered event triggers implementations.
  */
 typedef ElementDB<EventTriggerFactory, EventTrigger> EventTriggerDB;
 

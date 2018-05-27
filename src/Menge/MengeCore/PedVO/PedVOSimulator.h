@@ -29,8 +29,8 @@
 #include "MengeCore/mengeCommon.h"
 
 /*!
- @namespace		PedVO
- @brief			Contains the specification of the pedestrian model based on Pedestrian Velocity
+ @namespace    PedVO
+ @brief      Contains the specification of the pedestrian model based on Pedestrian Velocity
             Obstacles.
  */
 namespace PedVO {
@@ -48,7 +48,7 @@ class Simulator : public Menge::Agents::SimulatorBase<Agent> {
   friend class Agent;
 
   /*!
-   @brief		The cosine of the threshold angle beyond which the constraints should be tilted.
+   @brief    The cosine of the threshold angle beyond which the constraints should be tilted.
    
    If the dot product between the preferred *direction* and the constraint's normal is greater than
    or equal then this threshhold, the obstacle is tilted.
@@ -58,7 +58,7 @@ class Simulator : public Menge::Agents::SimulatorBase<Agent> {
   static float COS_OBST_TURN;
 
   /*!
-   @brief		The sine of the threshold angle beyond which the constraints should be tilted.
+   @brief    The sine of the threshold angle beyond which the constraints should be tilted.
    
    Used in conjunction with COS_OBST_TURN to perform the minmum tilt.
    */

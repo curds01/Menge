@@ -29,8 +29,8 @@
 #include "MengeCore/mengeCommon.h"
 
 /*!
- @namespace	ORCA
- @brief		The namespace for the ORCA local collision avoidance model.
+ @namespace  ORCA
+ @brief    The namespace for the ORCA local collision avoidance model.
  */
 namespace ORCA {
 /*!

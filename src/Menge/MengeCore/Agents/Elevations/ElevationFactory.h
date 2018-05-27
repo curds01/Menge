@@ -17,8 +17,8 @@
 */
 
 /*!
- @file		ElevationFactory.h
- @brief		The factory for parsing xml data and instantiating
+ @file    ElevationFactory.h
+ @brief    The factory for parsing xml data and instantiating
  elevation implementations.
  */
 
@@ -33,7 +33,7 @@ namespace Menge {
 
 namespace Agents {
 /*!
- @brief		A class for parsing the xml description of an action and instantiating particular
+ @brief    A class for parsing the xml description of an action and instantiating particular
           instances.
  */
 class MENGE_API ElevationFactory : public ElementFactory<Elevation> {};

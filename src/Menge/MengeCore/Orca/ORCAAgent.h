@@ -36,7 +36,7 @@ namespace ORCA {
 class MENGE_API Agent : public Menge::Agents::BaseAgent {
  public:
   /*!
-   @brief		Constructor
+   @brief    Constructor
    */
   Agent();
 
@@ -51,7 +51,7 @@ class MENGE_API Agent : public Menge::Agents::BaseAgent {
   void computeNewVelocity();
 
   /*!
-   @brief		Used by the plugin system to know what artifacts to associate with agents of this type.
+   @brief    Used by the plugin system to know what artifacts to associate with agents of this type.
    
    Every sub-class of must return a globally unique value if it should be associated with unique
    artifacts.
@@ -59,53 +59,53 @@ class MENGE_API Agent : public Menge::Agents::BaseAgent {
   virtual std::string getStringId() const;
 
   /*!
-   @brief			Based on the neighbors, computes the ORCA lines
+   @brief      Based on the neighbors, computes the ORCA lines
 
-   @returns		The total number of obstacle lines
+   @returns    The total number of obstacle lines
    */
   size_t computeORCALines();
 
   /*!
-   @brief		The set of ORCA constraints.
+   @brief    The set of ORCA constraints.
    */
   std::vector<Menge::Math::Line> _orcaLines;
 
   /*!
-   @brief		The time horizon for inter-agent interactions.
+   @brief    The time horizon for inter-agent interactions.
    */
   float _timeHorizon;
 
   /*!
-   @brief		The time horizon for agent-obstacle interactions.
+   @brief    The time horizon for agent-obstacle interactions.
    */
   float _timeHorizonObst;
 
   // DEFAULT VALUES FOR THE AGENT PARAMTERS
   /*!
-   @brief		The default time horizon for inter-agent interactions.
+   @brief    The default time horizon for inter-agent interactions.
    */
   static const float TAU;
 
   /*!
-   @brief		The default time horizon for agent-obstacle interactions.
+   @brief    The default time horizon for agent-obstacle interactions.
    */
   static const float TAU_OBST;
 
-  /*! @brief	The name identifier for this agent type. */
+  /*! @brief  The name identifier for this agent type. */
   static const std::string NAME;
 
   friend class Simulator;
 
  protected:
   /*!
-   @brief		Constructs an ORCA line for the given obstacle under the assumption that the agent is on
+   @brief    Constructs an ORCA line for the given obstacle under the assumption that the agent is on
             its right side.
 
    If appropriate, it adds the obstacle to the set of orca lines.
 
-   @param		obstNbrID		The index of the near-by obstacle to test.
-   @param		invTau			1 / _timeHorizonObst - the inverse of the time horizon for obstacles.
-   @param		flip			  The agent is on the left side of this obstacle.
+   @param    obstNbrID    The index of the near-by obstacle to test.
+   @param    invTau      1 / _timeHorizonObst - the inverse of the time horizon for obstacles.
+   @param    flip        The agent is on the left side of this obstacle.
    */
   void obstacleLine(size_t obstNbrID, const float invTau, bool flip);
 };

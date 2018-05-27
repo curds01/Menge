@@ -17,8 +17,8 @@
 */
 
 /*!
- @file		StateSelectorFactory.h
- @brief		The factory for parsing xml data and instantiating profile selector implementations.
+ @file    StateSelectorFactory.h
+ @brief    The factory for parsing xml data and instantiating profile selector implementations.
  */
 
 #ifndef __STATE_SELECTOR_FACTORY_H__
@@ -32,7 +32,7 @@ namespace Menge {
 
 namespace Agents {
 /*!
- @brief		A class for parsing the xml description of an initial state selector element and
+ @brief    A class for parsing the xml description of an initial state selector element and
           instantiating particular instances.
  */
 class MENGE_API StateSelectorFactory : public ElementFactory<StateSelector> {};

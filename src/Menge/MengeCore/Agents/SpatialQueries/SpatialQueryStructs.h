@@ -38,24 +38,24 @@ class BaseAgent;
 class Obstacle;
 
 /*!
- @brief	The definition of a proximal agent -- an agent "near" a point.
+ @brief  The definition of a proximal agent -- an agent "near" a point.
  */
 struct NearAgent {
   /*!
-   @brief		The squared distance from the query point to the agent.
+   @brief    The squared distance from the query point to the agent.
    */
   float distanceSquared;
 
   /*!
-   @brief		A pointer to the agent at the indicated distance.
+   @brief    A pointer to the agent at the indicated distance.
    */
   const BaseAgent* agent;
 
   /*!
-   @brief		Constructor
+   @brief    Constructor
 
-   @param		sqdDist			The squared distance of the agent from a test point.
-   @param		agt				  The agent.
+   @param    sqdDist      The squared distance of the agent from a test point.
+   @param    agt          The agent.
    */
   NearAgent(float sqdDist, const BaseAgent* agt) : distanceSquared(sqdDist), agent(agt){};
 };
@@ -65,20 +65,20 @@ struct NearAgent {
  */
 struct NearObstacle {
   /*!
-   @brief		The squared distance from the query point to the obstacle.
+   @brief    The squared distance from the query point to the obstacle.
    */
   float distanceSquared;
 
   /*!
-   @brief		A pointer to the obstacle at the indicated distance.
+   @brief    A pointer to the obstacle at the indicated distance.
    */
   const Obstacle* obstacle;
 
   /*!
-   @brief		Constructor
+   @brief    Constructor
 
-   @param		sqdDist		The squared distance of the obstacle from a test point.
-   @param		obs			  The obstacle.
+   @param    sqdDist    The squared distance of the obstacle from a test point.
+   @param    obs        The obstacle.
    */
   NearObstacle(float sqdDist, const Obstacle* obs) : distanceSquared(sqdDist), obstacle(obs){};
 };

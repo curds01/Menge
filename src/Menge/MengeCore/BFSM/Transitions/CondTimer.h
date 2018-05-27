@@ -17,8 +17,8 @@
 */
 
 /*!
- @file		CondTimer.h
- @brief		The definition of the timer-based condition.
+ @file    CondTimer.h
+ @brief    The definition of the timer-based condition.
  */
 
 #ifndef __COND_TIMER_H__
@@ -41,7 +41,7 @@ class TimerCondFactory;
 ///////////////////////////////////////////////////////////////////////////
 
 /*!
- @brief		The definition of the timer condition.
+ @brief    The definition of the timer condition.
 
  The time condition becomes active when the agent has been in the state at least the amount of time
  specified by the transition properties. The amount of time can be specified globally or per agent
@@ -51,19 +51,19 @@ class TimerCondFactory;
 class MENGE_API TimerCondition : public Condition {
  public:
   /*!
-   @brief		Constructor.
+   @brief    Constructor.
    */
   TimerCondition();
 
   /*!
-   @brief		Copy Constructor.
+   @brief    Copy Constructor.
 
-   @param		cond		The condition to copy from.
+   @param    cond    The condition to copy from.
    */
   TimerCondition(const TimerCondition& cond);
 
   /*!
-   @brief		Create a copy of this condition.
+   @brief    Create a copy of this condition.
 
    It is the responsibility of the caller to delete the object.
 
@@ -74,33 +74,33 @@ class MENGE_API TimerCondition : public Condition {
 
  protected:
   /*!
-   @brief		Constructor.
+   @brief    Constructor.
    */
   ~TimerCondition();
 
  public:
   /*!
-   @brief		Called when an agent enters a state with this exiting transition.
+   @brief    Called when an agent enters a state with this exiting transition.
 
    Sub-classes should use this function as the opportunity to cache any particular per-agent data.
 
-   @param		agent		The agent who has entered the state which uses this transition.
+   @param    agent    The agent who has entered the state which uses this transition.
    */
   virtual void onEnter(Agents::BaseAgent* agent);
 
   /*!
-   @brief		Called when an agent exits the state with this transition.
+   @brief    Called when an agent exits the state with this transition.
 
-   @param		agent		The agent who left the state.
+   @param    agent    The agent who left the state.
    */
   virtual void onLeave(Agents::BaseAgent* agent);
 
   /*!
-   @brief		The AutoCondition is always met -- it is a tautology.
+   @brief    The AutoCondition is always met -- it is a tautology.
 
-   @param		agent		The agent to test the transition for.
-   @param		goal		The agent's goal (although this may be ignored).
-   @returns	True if the condition has been met.
+   @param    agent    The agent to test the transition for.
+   @param    goal    The agent's goal (although this may be ignored).
+   @returns  True if the condition has been met.
    */
   virtual bool conditionMet(Agents::BaseAgent* agent, const Goal* goal);
 
@@ -108,17 +108,17 @@ class MENGE_API TimerCondition : public Condition {
 
  protected:
   /*!
-   @brief		The trigger time for agents currently effected by this transition.
+   @brief    The trigger time for agents currently effected by this transition.
    */
   std::map<size_t, float> _triggerTimes;
 
   /*!
-   @brief		The generator for determining the per-agent duration.
+   @brief    The generator for determining the per-agent duration.
    */
   FloatGenerator* _durGen;
 
   /*!
-   @brief		Lock to protect _triggerTimes;
+   @brief    Lock to protect _triggerTimes;
    */
   ReadersWriterLock _lock;
 };
@@ -126,31 +126,31 @@ class MENGE_API TimerCondition : public Condition {
 ///////////////////////////////////////////////////////////////////////////
 
 /*!
- @brief		The factory for creating the TimerCondition
+ @brief    The factory for creating the TimerCondition
  */
 class MENGE_API TimerCondFactory : public ConditionFactory {
  public:
   /*!
-   @brief		Constructor.
+   @brief    Constructor.
    */
   TimerCondFactory();
 
   /*!
-   @brief		The name of the action.
+   @brief    The name of the action.
 
    The action's name must be unique among all registered actions. Each action factory must override
    this function.
 
-   @returns	A string containing the unique action name.
+   @returns  A string containing the unique action name.
    */
   virtual const char* name() const { return "timer"; }
 
   /*!
-   @brief		A description of the action.
+   @brief    A description of the action.
 
    Each action factory must override this function.
 
-   @returns	A string containing the action description.
+   @returns  A string containing the action description.
    */
   virtual const char* description() const {
     return "The timer condition.  It becomes active when the agent has "
@@ -159,19 +159,19 @@ class MENGE_API TimerCondFactory : public ConditionFactory {
 
  protected:
   /*!
-   @brief		Create an instance of this class's condition.
+   @brief    Create an instance of this class's condition.
 
    All ConditionFactory sub-classes must override this by creating (on the heap) a new instance of
    its corresponding condition type. The various field values of the instance will be set in a
    subsequent call to ConditionFactory::setFromXML. The caller of this function takes ownership of
    the memory.
 
-   @returns		A pointer to a newly instantiated Action class.
+   @returns    A pointer to a newly instantiated Action class.
    */
   virtual Condition* instance() const { return new TimerCondition(); }
 
   /*!
-   @brief		Given a pointer to an Condition instance, sets the appropriate fields from the provided
+   @brief    Given a pointer to an Condition instance, sets the appropriate fields from the provided
             XML node.
 
    It is assumed that the value of the `type` attribute is this Tarnsitions's type (i.e.
@@ -179,23 +179,23 @@ class MENGE_API TimerCondFactory : public ConditionFactory {
    ConditionFactory introduce *new* Condition parameters, then the sub-class should override this
    method but explicitly call the parent class's version.
 
-   @param		condition		A pointer to the condition whose attributes are to be set.
-   @param		node			  The XML node containing the condition attributes.
-   @param		behaveFldr  The path to the behavior file. If the condition references resources in the
+   @param    condition    A pointer to the condition whose attributes are to be set.
+   @param    node        The XML node containing the condition attributes.
+   @param    behaveFldr  The path to the behavior file. If the condition references resources in the
                         file system, it should be defined relative to the behavior file location.
                         This is the folder containing that path.
-   @returns	A boolean reporting success (true) or failure (false).
+   @returns  A boolean reporting success (true) or failure (false).
    */
   virtual bool setFromXML(Condition* condition, TiXmlElement* node,
                           const std::string& behaveFldr) const;
 
   /*!
-   @brief		The identifier for the "per_agent" boolean attribute.
+   @brief    The identifier for the "per_agent" boolean attribute.
    */
   size_t _perAgentID;
 
   /*!
-   @brief		The identifier for the duration float distribution attribute.
+   @brief    The identifier for the duration float distribution attribute.
    */
   size_t _durGenID;
 };

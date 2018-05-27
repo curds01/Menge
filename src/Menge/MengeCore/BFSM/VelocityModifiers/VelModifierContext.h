@@ -17,8 +17,8 @@
 */
 
 /*!
- @file		VelModifierContext.h
- @brief		The definition of a basic UI context for finite state machine *velocity modifiers*.
+ @file    VelModifierContext.h
+ @brief    The definition of a basic UI context for finite state machine *velocity modifiers*.
  */
 
 #if 0
@@ -32,8 +32,8 @@
 namespace Menge {
 
 namespace Agents {
-	class BaseAgent;
-	class PrefVelocity;
+  class BaseAgent;
+  class PrefVelocity;
 }
 
 namespace BFSM {
@@ -42,58 +42,58 @@ namespace BFSM {
 class VelModifier;
 
 /*!
-	@brief		Base context for finite state machine velocity modifiers.
+  @brief    Base context for finite state machine velocity modifiers.
 
-	This differs from the standard scene graph context by being dependent on an input agent.  
-	*/
+  This differs from the standard scene graph context by being dependent on an input agent.  
+  */
 class MENGE_API VelModContext : public SceneGraph::Context {
 public:
-	/*!
-		*	@brief		Constructor.
-		*/
-	VelModContext(){}
+  /*!
+    *  @brief    Constructor.
+    */
+  VelModContext(){}
 
-	/*!
-		@brief		This supplants the destructor.
+  /*!
+    @brief    This supplants the destructor.
 
-		In order to preserve potential problems in windows when dlls do not share the same c-runtime
+    In order to preserve potential problems in windows when dlls do not share the same c-runtime
     library, the destructor is held to be private. To garbage collect an Velmodifier, the destroy
     method should be called (which in turn, will call the destructor from its own memory space,
     averting run-time crashes).
 
-		Once this has been called, the VelModifier no longer exists. Calling methods or accessing
+    Once this has been called, the VelModifier no longer exists. Calling methods or accessing
     members will produce indetermine behavior (most likely errors).
-		*/
-	void destroy() { delete this; }
+    */
+  void destroy() { delete this; }
 
 protected:
-	/*!
-	 @brief		Destructor.
-	 */
-	virtual ~VelModContext(){}
+  /*!
+   @brief    Destructor.
+   */
+  virtual ~VelModContext(){}
 
 public:
   /*!
-   @brief		Provides a string to be printed in the display as a UI element detailing velocity
+   @brief    Provides a string to be printed in the display as a UI element detailing velocity
             modifier information.
 
-   @param		indent		An optional string representing indentation to be applied to the text. It is
+   @param    indent    An optional string representing indentation to be applied to the text. It is
                       prefixed at the start of each line.
-	 @returns	The string for printing on the UI layer.
-	 */
-	virtual std::string getUIText( const std::string & indent="" ) const;
+   @returns  The string for printing on the UI layer.
+   */
+  virtual std::string getUIText( const std::string & indent="" ) const;
 
-	/*!
-	 @brief		Draw context elements into the 3D world.
+  /*!
+   @brief    Draw context elements into the 3D world.
 
    This should never be called in select mode.
 
-   @param		agt			The particular agent for which the FSM is being visualized.
+   @param    agt      The particular agent for which the FSM is being visualized.
    */
-	virtual void draw3DGL( const Agents::BaseAgent * agt){}
+  virtual void draw3DGL( const Agents::BaseAgent * agt){}
 };
 
-}	// namespace BFSM
-}	// namespace Menge
+}  // namespace BFSM
+}  // namespace Menge
 #endif  // __VEL_MOD_CONTEXT_H__
 #endif  // 0

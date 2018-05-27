@@ -17,8 +17,8 @@
 */
 
 /*!
- @file		ElevationDatabase.h
- @brief		Central database for querying available elevation implementations.
+ @file    ElevationDatabase.h
+ @brief    Central database for querying available elevation implementations.
 
  For elevations to be used in simulation, they must register themselves into the ElevationDatabase.
  This is done via the PluginEngine.
@@ -35,7 +35,7 @@ namespace Menge {
 
 namespace Agents {
 /*!
- @brief		The database of registered elevation implementations.
+ @brief    The database of registered elevation implementations.
  */
 typedef ElementDB<ElevationFactory, Elevation> ElevationDB;
 
