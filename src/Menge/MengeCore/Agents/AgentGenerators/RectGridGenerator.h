@@ -1,4 +1,4 @@
-/*
+﻿/*
  Menge Crowd Simulation Framework
 
  Copyright and trademark 2012-17 University of North Carolina at Chapel Hill
@@ -18,9 +18,8 @@
 
 /*!
  @file    RectGridGenerator.h
- @brief    An agent generator which creates a set of agents based on the definition of a rectangular
-          lattice, with an agent at each point.
- */
+ An agent generator which creates a set of agents based on the definition of a rectangular lattice,
+ with an agent at each point. */
 
 #ifndef __RECT_GRID_GENERATOR_H__
 #define __RECT_GRID_GENERATOR_H__
@@ -34,239 +33,185 @@
 namespace Menge {
 
 namespace Agents {
-/*!
- @brief    Definition of an agent generator class which produces agents based on the positions of
-          intersections on a lattice--one agent per intersection.
+/*! Definition of an agent generator class which produces agents based on the positions of
+ intersections on a regular grid.
+
+ Conceptually, the %RectGridGenerator defines a rectangular region. The region is implicitly defined
+ by the position of the _anchor_ agent, counts of agents in the x- and y-directions, and spacing
+ between agents. Finally, this rectangular region can be arbitrarily oriented by rotating it around
+ the anchor agent.
+
+ <h3>Defining the grid</h3>
+
+ The rectangular region is defined parallel with its local xy-axes. One corner of the grid rectangle
+ will always be the anchor position `a = [xₐ, yₐ]`. An agent is always located at the anchor
+ position. _Which_ corner the anchor is depends on the offset values (`Δx` and `Δy`). It is the
+ distance between adjacent agents in the local x- and y-directions, respectively. Depending on the
+ _sign_, the anchor point can be any of the four corners.
+
+ <!--
+              ┌┄┄┄┄┄┄┄┄┄┄┄┄┐    a → ○┄┄┄┄┄┄┄┄┄┄┄┄┐      ┌┄┄┄┄┄┄┄┄┄┄┄┄○ ← a     ┌┄┄┄┄┄┄┄┄┄┄┄┄┐
+              ┆            ┆        ┆            ┆      ┆            ┆         ┆            ┆
+              ┆            ┆        ┆            ┆      ┆            ┆         ┆            ┆
+  ↑ y         ┆            ┆        ┆            ┆      ┆            ┆         ┆            ┆
+  ┆           ┆            ┆        ┆            ┆      ┆            ┆         ┆            ┆
+  ┆           ┆            ┆        ┆            ┆      ┆            ┆         ┆            ┆
+  └┄┄→    a → ○┄┄┄┄┄┄┄┄┄┄┄┄┘        └┄┄┄┄┄┄┄┄┄┄┄┄┘      └┄┄┄┄┄┄┄┄┄┄┄┄┘         └┄┄┄┄┄┄┄┄┄┄┄┄○ ← a
+     x       Δx > 0, Δy > 0         Δx > 0, Δy < 0      Δx < 0, Δy < 0         Δx < 0, Δy > 0
+ -->
+ @image html Agents/AgentGenerators/image/rect_grid_1.png
+
+ The _size_ of the rectangle depends on the count of the agents to be used in each direction. It is
+ always the case that for values `count_x` and `count_y`, there will be exactly `count_x * count_y`
+ total agents generated and positioned. They will span a region that is
+ `(count_x - 1)Δx` wide and `(count_y - 1)Δy` tall.
+
+ <!--
+              ○┄┄○┄┄○┄┄○┄┄○ ┬
+              ┆           ┆ │
+              ┆           ┆ │ Δy
+  ↑ y         ○  ○  ○  ○  ○ ┼
+  ┆           ┆           ┆ │
+  ┆           ┆           ┆ │ Δy
+  └┄┄→    a → ○┄┄○┄┄○┄┄○┄┄○ ┴
+     x        ├──┼──┼──┼──┤
+               Δx Δx Δx Δx
+ -->
+ @image html Agents/AgentGenerators/image/rect_grid_2.png
+
+ <h3>Rotating the grid</h3>
+
+ The grid is defined parallel to a local frame. But that frame can be rotated relative to the
+ simulation frame via the `rotation` parameter. It represents the amount of rotation in degrees.
+ Positive values lead to counter-clockwise rotation. The rectangular region rotates around the
+ anchor position.
+ <!--                ○               ╱ ╲              ○   ○
+             ╱     ╲
+            ○   ○   ○
+  ↑ y      ╱       ╱
+  │       ○   ○   ○
+  │        ╲     ╱
+  └──→      ○   ○
+     x       ╲ ╱╮ θ-degrees
+          a → ○┈┈┈┈┈┈┈┈┈
+ -->
+  @image html Agents/AgentGenerators/image/rect_grid_3.png
+
+ <h3>XML specification</h3>
 
  To specify an rectangular grid generator, use the following syntax:
 
- ```xml
+ @code{xml}
  <Generator type="rect_grid"
    anchor_x="float" anchor_y="float"
    offset_x="float" offset_y="float"
    count_x="int" count_y="int"
    rotation="float"
  />
- ```
+ @endcode
 
  The various parameters have the following interpretation:
- - `anchor_x` and `anchor_y` represent the *anchor* point of a rectangular area. All other
-    parameters are defined relative to this point.
- - `offset_x` and `offset_y` represent the distance between adjacent agents in the grid along the x-
-    and y-axes, respectively. The first agent will be placed at the anchor point. The rest of the
-    agents will be offset from this point, by the given amounts.
- - `count_x` and `count_y` determine the number of rows and columns of agents in the grid. The total
-    number of agents will be `count_x` * `count_y`.
- - `rotation` rotates the rectangle off of the world axes the given number of *degrees*. This
-    parameter is optional and, if excluded, defaults to a zero-degree rotation. The rotation is
-    counter-clockwise for positive values of rotation.
- */
+ - `anchor_x` and `anchor_y` defined the anchor position `a = [xₐ, yₐ]`.
+ - `offset_x` and `offset_y` are the `Δx` and `Δy` values defining the spacing between neighboring
+    agents.
+ - `count_x` and `count_y` determine the number of rows and columns of agents in the grid.
+ - `rotation` is the amount of rotation (in degrees) around the _anchor position_, the grid gets
+    rotated. */
 class MENGE_API RectGridGenerator : public AgentGenerator {
  public:
-  /*!
-   @brief    Constructor
-   */
   RectGridGenerator();
 
-  /*!
-   @brief    Reports the number of agents created.
-
-   @returns  The number of agents this generator creates.
-   */
+  // Inherits docs from AgentGenerator::agentCount().
   virtual size_t agentCount() { return _xCount * _yCount; }
 
-  /*!
-   @brief    Sets the ith position to the given agent.
-
-   @param    i      The index of the requested position in the sequence.
-   @param    agt    A pointer to the agent whose position is to be set.
-   @throws    AgentGeneratorException if the index, i, is invalid.
-   */
+  // Inherits docs from AgentGenerator::setAgentPosition().
   virtual void setAgentPosition(size_t i, BaseAgent* agt);
 
-  /*!
-   @brief    Sets the anchor position.
-
-   @param    p    The anchor position.
-   */
+  /*! Sets the anchor position to `p`. */
   void setAnchor(const Vector2& p) { _anchor.set(p); }
 
-  /*!
-   @brief    Sets the offset value.
-
-   @param    o    The offset value.
-   */
+  /*! Sets the offset value to `o`. */
   void setOffset(const Vector2& o) { _offset.set(o); }
 
-  /*!
-   @brief    Sets the number of agents in the local x-direction.
-
-   @param    count    The count of agents.
-   */
+  /*! Sets the number of agents in the local x-direction to `count`. */
   void setXCount(size_t count) { _xCount = count; }
 
-  /*!
-   @brief    Sets the number of agents in the local y-direction.
-
-   @param    count    The count of agents.
-   */
+  /*! Sets the number of agents in the local y-direction to `count`. */
   void setYCount(size_t count) { _yCount = count; }
 
-  /*!
-   @brief    Sets the number of agents in the local x- and y-directions.
-
-   @param    xCount    The count of agents in the x-direction.
-   @param    yCount    The count of agents in the y-direction.
-   */
+  /*! Sets the number of agents in the local x- and y-directions to `xCount` and `yCount`,
+   respectively. */
   void setAgentCounts(size_t xCount, size_t yCount) {
     _xCount = xCount;
     _yCount = yCount;
   }
 
-  /*!
-   @brief    Sets the lattice rotation.
-
-   @param    angle    The rotation angle (in degrees).
+  /*! Sets the grid rotation to `angle` degrees; positive values lead to counter-clockwise rotation.
    */
   void setRotationDeg(float angle);
 
  protected:
-  /*!
-   @brief    The anchor point of the lattice.
-   
-   One agent will be positioned at this world coordainte.
-   */
+  /*! The anchor point of the grid rectangle. */
   Vector2 _anchor;
 
-  /*!
-   @brief    The offset from one agent to the next agent (along the local x- and y-axes,
-            respectively.
-   */
+  /*! The offset from one agent to the next agent (along the local x- and y-axes, respectively). */
   Vector2 _offset;
 
-  /*!
-   @brief    The number of agents along the local x-axis.
-   */
+  /*! The number of columns of agents along the local x-axis. */
   size_t _xCount;
 
-  /*!
-   @brief    The number of agents along the local y-axis.
-   */
+  /*! The number of rows of agents along the local y-axis. */
   size_t _yCount;
 
-  /*!
-   @brief    The cosine of the amount the lattice is rotated around its anchor point.
-   
-   Positive rotation values are counter-clockwise rotation.
-   */
+  /*! The cosine of the rotation angle around the anchor point. */
   float _cosRot;
 
-  /*!
-   @brief    The sine of the amount the lattice is rotated around its anchor point.
-
-   Positive rotation values are counter-clockwise rotation.
-   */
+  /*! The sine of the rotation angle around the anchor point.  */
   float _sinRot;
 };
 
 //////////////////////////////////////////////////////////////////////////////
 
-/*!
- @brief    Factory for RectGridGenerator
- */
+/*! The ElementFactory for the RectGridGenerator. */
 class MENGE_API RectGridGeneratorFactory : public AgentGeneratorFactory {
  public:
-  /*!
-   @brief    Constructor.
-   */
   RectGridGeneratorFactory();
 
-  /*!
-   @brief    The name of the generator type.
-
-   The generator's name must be unique among all registered agent generator components. Each agent
-   generator factory must override this function.
-
-   @returns  A string containing the unique elevation name.
-   */
+  // Inherits from AgentGeneratorFactory::name().
   virtual const char* name() const { return "rect_grid"; }
 
-  /*!
-   @brief    A description of the agent generator.
-
-   Each agent generator factory must override this function.
-
-   @returns  A string containing the agent generator description.
-   */
+  // Inherits from AgentGeneratorFactory::description().
   virtual const char* description() const {
     return "Agent generation is done via the specification of a rectangular grid.";
   };
 
  protected:
-  /*!
-   @brief    Create an instance of this class's agent generator implementation.
-
-   All AgentGeneratorFactory sub-classes must override this by creating (on the heap) a new instance
-   of its corresponding generator type. The various field values of the instance will be set in a
-   subsequent call to AgentGeneratorFactory::setFromXML. The caller of this function takes ownership
-   of the memory.
-
-   @returns    A pointer to a newly instantiated EleAgentGenerator class.
-   */
+  // Inherits from AgentGeneratorFactory::instance().
   AgentGenerator* instance() const { return new RectGridGenerator(); }
 
-  /*!
-   @brief    Given a pointer to a Goal Selector instance, sets the appropriate fields from the
-            provided XML node.
-
-   It is assumed that the value of the `type` attribute is this Goal Selector's type (i.e.
-   GoalSelectorFactory::thisFactory has already been called and returned true). If sub-classes of
-   GoalSelectorFactory introduce *new* GoalSelector parameters, then the sub-class should override
-   this method but explicitly call the parent class's version.
-
-   @param    gen            A pointer to the goal selector whose attributes are to be set.
-   @param    node          The XML node containing the goal attributes.
-   @param    behaveFldr    The path to the behavior file.  If the condition references resources in
-                          the file system, it should be defined relative to the behavior file
-                          location. This is the folder containing that path.
-   @returns  A boolean reporting success (true) or failure (false).
-   */
+  // Inherits from AgentGeneratorFactory::setFromXML().
   virtual bool setFromXML(AgentGenerator* gen, TiXmlElement* node,
                           const std::string& behaveFldr) const;
 
-  /*!
-   @brief    The identifier for the "anchor_x" float parameter.
-   */
+  /*! The identifier for the "anchor_x" float parameter. */
   size_t _anchorXID;
 
-  /*!
-   @brief    The identifier for the "anchor_y" float parameter.
-   */
+  /*! The identifier for the "anchor_y" float parameter. */
   size_t _anchorYID;
 
-  /*!
-   @brief    The identifier for the "offset_x" float parameter.
-   */
+  /*! The identifier for the "offset_x" float parameter. */
   size_t _offsetXID;
 
-  /*!
-   @brief    The identifier for the "offset_y" float parameter.
-   */
+  /*! The identifier for the "offset_y" float parameter. */
   size_t _offsetYID;
 
-  /*!
-   @brief    The identifier for the "count_x" size_t parameter.
-   */
+  /*! The identifier for the "count_x" size_t parameter. */
   size_t _xCountID;
 
-  /*!
-   @brief    The identifier for the "count_y" size_t parameter.
-   */
+  /*! The identifier for the "count_y" size_t parameter. */
   size_t _yCountID;
 
-  /*!
-   @brief    The identifier for the "rotation" float parameter.
-   */
+  /*! The identifier for the "rotation" float parameter. */
   size_t _rotID;
 };
 }  // namespace Agents

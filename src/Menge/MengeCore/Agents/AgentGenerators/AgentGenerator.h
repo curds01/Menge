@@ -1,4 +1,4 @@
-/*
+﻿/*
  Menge Crowd Simulation Framework
 
  Copyright and trademark 2012-17 University of North Carolina at Chapel Hill
@@ -18,9 +18,8 @@
 
 /*!
  @file    AgentGenerator.h
- @brief   The definition of the agent generator element. Defines the intial numbers and positions
-          of agents in the simulation.
- */
+ The definition of the agent generator element. Defines the intial numbers and positions of agents
+ in the simulation. */
 #ifndef __AGENT_GENERATOR_H__
 #define __AGENT_GENERATOR_H__
 
@@ -33,126 +32,100 @@ namespace Agents {
 // forward declaration
 class BaseAgent;
 
-/*!
- @brief    Exception class for agent generator computation.
- */
+/*! Exception class for agent generator computation; interpreted as *non*-fatal.  */
 class MENGE_API AgentGeneratorException : public virtual MengeException {
  public:
-  /*!
-   @brief    Default constructor.
-   */
   AgentGeneratorException() : MengeException() {}
 
-  /*!
-   @brief    Constructor with message.
-
-   @param    s    The exception-specific message.
-   */
-  AgentGeneratorException(const std::string& s) : MengeException(s) {}
+  /*! Constructs exception with the given `message`. */
+  AgentGeneratorException(const std::string& message) : MengeException(message) {}
 };
 
-/*!
- @brief    The fatal agent generator exception.
- */
+/*! The *fatal* agent generator exception.  */
 class MENGE_API AgentGeneratorFatalException : public AgentGeneratorException,
                                                public MengeFatalException {
  public:
-  /*!
-   @brief    Default constructor.
-   */
   AgentGeneratorFatalException()
       : MengeException(), AgentGeneratorException(), MengeFatalException() {}
 
-  /*!
-   @brief    Constructor with message.
-
-   @param    s    The exception-specific message.
-   */
-  AgentGeneratorFatalException(const std::string& s)
-      : MengeException(s), AgentGeneratorException(), MengeFatalException() {}
+  /*! Constructs exception with the given `message`. */
+  AgentGeneratorFatalException(const std::string& message)
+      : MengeException(message), AgentGeneratorException(), MengeFatalException() {}
 };
 
-/*!
- @brief    The base class inital agent generation.
+/*! The base class for elements that generate agents and their initial positions for simulation
+    initialization.
 
- This is an abstract class, primarily defining the agent generation abstraction. Essentially,
- the AgentGenerator produces a set of agent positions.  Its properties should be sufficient to
- produce a count of agents with defined positions.
+ This is an abstract class for defining the agent generation abstraction. Essentially,
+ the AgentGenerator produces a set of agent positions. Its properties should be sufficient to
+ produce a count of agents with defined positions. Derived classes provide their own logic for
+ determining the number of agents and their positions.
 
- The base class provides the definition (parsing and utilization) of a noise parameter which can
- be applied on top of the sub-class's implementation. The direction of perturbation is uniformly
- distributed on the plane; the user defines the magnitude of the perturbation. To make use of
- the spatial noise, the AgentGenerator must be instantiated in the scene specification file as
- in the following example:
+ The base class provides a further mechanism for applying noise to the initial positions of the
+ generated agents. This noise is applied "on top" of the derived class's logic -- therefore it is
+ not necessary for derived classes to define noise models.
 
- ```xml
+ The displacement is defined by two distributions: 
+
+   - `θ ∈ U(0, 360)`, the direction of displacement is drawn from a uniform distribution of angles.
+   - `d ∈ Dist`, the distance of displacement is drawn from a user-specified distribution of
+     distances.
+
+ The distance distribution is defined in the XML as a standard, scalar distribution using the 
+ prefix "displace_" as shown below:
+
+ @anchor agent_generator_noise
+ <h3>XML Specification</h3>
+
+@code{xml}
  <Generator type="TYPE_NAME" ...
-  displace_dist="u" displace_min="0.0" displace_max="0.5"
+            displace_dist="u" displace_min="0.0" displace_max="0.5"
  />
- ```
+ @endcode
 
- The noise is a standard Menge distribution with a "displace_" prefix.  In this example, a 
- uniform noise is applied to the computed position.  (The ellipses take the place of the 
- type-specific parameters for the TYPE_NAME generator class.)
- */
+ In this example, the displacement distance is drawn from the uniform distribution `u(0, 0.5)`.
+ (The ellipses take the place of the type-specific parameters for the `TYPE_NAME` generator class.) */
 class MENGE_API AgentGenerator : public Element {
  public:
-  /*!
-   @brief    Constructor
-   */
   AgentGenerator();
 
  protected:
-  /*!
-   @brief    Virtual destructor.
-   */
+  /*! Virtual destructor. */
   virtual ~AgentGenerator();
 
  public:
-  /*!
-   @brief    Reports the number of agents created.
-
-   @returns  The number of agents this generator creates.
-   */
+  /*! Reports the number of agents that this generator has positions for. */
   virtual size_t agentCount() = 0;
 
-  /*!
-   @brief    Sets the ith position to the given agent.
+  /*! Sets the position of the given @p agent from the `i`ᵗʰ agent position from this generator.
 
-   @param    i      The index of the requested position in the sequence.
-   @param    agt    A pointer to the agent whose position is to be set.
-   @throws   AgentGeneratorException if the index, i, is invalid.
-   */
-  virtual void setAgentPosition(size_t i, BaseAgent* agt) = 0;
+   @param    i        The index of the requested position in the sequence. Must be in the range
+                      [0, agentCount() - 1].
+   @param    agent    A pointer to the agent whose position is to be set.
+   @throws   AgentGeneratorException if the index, `i`, is invalid. */
+  virtual void setAgentPosition(size_t i, BaseAgent* agent) = 0;
 
-  /*!
-   @brief    Sets the Generators noise generation.
+  /*! Sets the distribution for the generator's displacement *distance*.
 
-   The AgentGenerator takse position of the float generator provided and will delete it up on
-   its destruction.
+   The %AgentGenerator takes ownership of the float generator provided and is responsible for its
+   destruction.
 
-   @param    gen    The generator.
-   */
-  void setNoiseGenerator(Math::FloatGenerator* gen);
+   @param    generator    The generator for displacement distance. */
+  void setNoiseGenerator(Math::FloatGenerator* generator);
 
-  /*!
-   @brief    Perturbs the given point according to the given noise generator.
+  /*! Creates a perturbed position value from the given `position` by adding nose from `this`
+      generator's displacement distribution.
 
-   @param    pos    The position to perturb.
-   @returns  The perturbed point.
-   */
-  Math::Vector2 addNoise(const Math::Vector2& pos);
+   @param   position   The position to perturb.
+   @returns `position + Dist(x, y)`, the perturbed point. */
+  Math::Vector2 addNoise(const Math::Vector2& position);
 
  protected:
-  /*!
-   @brief    The generator for displacement amount (defaults to zero).
-   */
+  // The generator for displacement distance; defaults to the distribution `U(0, 0)`.
   Math::FloatGenerator* _disp;
 
-  /*!
-   @brief    The generator for angular displacement.
-   */
-  Math::FloatGenerator* _dir;
+  // The generator for direction of displacement; set to the distribution `U(0, 2π)`.
+  Math::UniformFloatGenerator _dir;
 };
 
 }  // namespace Agents

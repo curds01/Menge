@@ -46,7 +46,6 @@ namespace Menge {
 namespace Agents {
 
 using Math::FloatGenerator;
-using Math::UniformFloatGenerator;
 using Math::Vector2;
 
 /////////////////////////////////////////////////////////////////////
@@ -59,29 +58,21 @@ AgentGeneratorException AGENT_GENERATOR_EXCEPTION;
 //          Implementation of AgentGenerator
 /////////////////////////////////////////////////////////////////////
 
-AgentGenerator::AgentGenerator() : Element(), _disp(0x0), _dir(0x0) {}
+AgentGenerator::AgentGenerator() : Element(), _disp(0x0), _dir(0.f, TWOPI) {}
 
 /////////////////////////////////////////////////////////////////////
 
 AgentGenerator::~AgentGenerator() {
   if (_disp) {
     delete _disp;
-    delete _dir;
   }
 }
 
 /////////////////////////////////////////////////////////////////////
 
-void AgentGenerator::setNoiseGenerator(FloatGenerator* gen) {
+void AgentGenerator::setNoiseGenerator(FloatGenerator* generator) {
   if (_disp) delete _disp;
-  _disp = gen;
-  if (!_dir) {
-    // NOTE: This isn't perfect uniform probability
-    //  The closed interval means that 0 degrees is SLIGHTLY
-    //  more probably than any other direction (but the skew
-    //  is considered negligible in practice).
-    _dir = new UniformFloatGenerator(0.f, TWOPI);
-  }
+  _disp = generator;
 }
 
 /////////////////////////////////////////////////////////////////////
@@ -89,7 +80,7 @@ void AgentGenerator::setNoiseGenerator(FloatGenerator* gen) {
 Vector2 AgentGenerator::addNoise(const Vector2& pos) {
   if (_disp) {
     float disp = _disp->getValue();
-    float dir = _dir->getValue();
+    float dir = _dir.getValue();
     float x = cos(dir) * disp;
     float y = sin(dir) * disp;
     return pos + Vector2(x, y);

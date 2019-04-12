@@ -34,9 +34,7 @@
 namespace Menge {
 
 namespace Agents {
-/*!
- @brief    The database of registered agent generator implementations.
- */
+/*! The database of registered agent generator implementations. */
 typedef ElementDB<AgentGeneratorFactory, AgentGenerator> AgentGeneratorDB;
 
 }  // namespace Agents

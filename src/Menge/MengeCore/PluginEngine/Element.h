@@ -18,7 +18,7 @@
 
 /*!
  @file    Element.h
- @brief    Base class for all Menge elements.
+ Base class for all %Menge elements.
  */
 
 #ifndef __ELEMENT_H__
@@ -28,6 +28,8 @@
 
 namespace Menge {
 
+// TODO(curds01): Remove this after I've confirmed that I've fully decoupled visualization from
+// simulation.
 //// forward declarations
 // namespace SceneGraph {
 //  class GLNode;
@@ -37,46 +39,38 @@ namespace BFSM {
 class Task;
 }
 
-/*!
- @brief    The basic interface of extendible Menge Elements.
+/*! The basic interface of extendible %Menge Elements.
 
- A Menge element is a component of the Menge framework. A particular crowd simulator is defined by
- the instantiation of various types of elements.
- */
+ A %Menge element is a component of the %Menge framework. These elements can be combined at runtime
+ to create a unique simulation, or even a unique simulator. Novel element implementations can be
+ created in plugins and dynamically loaded. All such elements of %Menge ultimately derive from this
+ base class. */
 class MENGE_API Element {
  protected:
-  /*!
-   @brief    Protected destructor; virtual to work with subclassing.
-   */
   virtual ~Element() {}
 
  public:
-  /*!
-   @brief    This supplants the destructor.
+  /*! Destroys `this` element instance. The destructor is _not_ publicly available. Instead, they
+    must be explicitly _destroyed_ via invocation of this method.
 
-   In order to avoid potential problems in windows when dlls do not share the same c-runtime
-   library, the destructor is held to be protected.  To garbage collect an Element, the destroy
-   method should be called (which in turn, will call the destructor from its own memory space,
-   averting run-time crashes).
-
-   Once this has been called, the Element no longer exists. Calling methods or accessing members
-   will produce indetermine behavior (most likely errors).
-   */
+    This is largely an artficat of Windows dlls and C-runtime libraries. Each runtime library has
+    its own heap. Depending on a how a dll is compiled, it may be allocated in a different heap than
+    the thread that attempts to destroy it. The introduction of this method allows the derivec class
+    free itself from its appropriate heap. */
   void destroy() { delete this; }
 
-  /*!
-   @brief    Return an optional task associated with this element.
+  /*! Return an optional task associated with this element.
 
    An element can have an accompanying Task for performing synchronized work. Most element
    implementations will not have a task.  If a task is required, override this function to return
-   an appropriate instance of the required task.
+   an appropriate instance of the corresponding task.
 
-   @returns    A pointer to the required task. It is the responsibility of the caller to free the
-              memory of the provided task by calling its destroy method.
+   @returns A pointer to the required task. If not nullptr, the caller takes ownership of the Task.
    */
   virtual BFSM::Task* getTask() { return 0x0; }
 
 #if 0
+  // TODO(curds01): Delete with the commented out forward declaration.
   /*!
     @brief    Returns an optional visualization element associated with the element.
 

@@ -592,6 +592,12 @@ dl.reflist dd {
         padding: 5px;
 }
 
+code {
+    font-weight: bold;
+    font-family: monospace;
+    color: #118;
+}
+
 .paramkey {
 	text-align: right;
 }
@@ -1133,7 +1139,7 @@ dl.section dd {
 
 .image
 {
-        text-align: center;
+        text-align: left;
 }
 
 .dotgraph

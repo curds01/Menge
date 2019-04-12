@@ -55,18 +55,17 @@ ExplicitGenerator::ExplicitGenerator() : AgentGenerator(), _positions() {}
 
 ////////////////////////////////////////////////////////////////////////////
 
-void ExplicitGenerator::setAgentPosition(size_t i, BaseAgent* agt) {
+void ExplicitGenerator::setAgentPosition(size_t i, BaseAgent* agent) {
   if (i >= _positions.size()) {
     throw AgentGeneratorFatalException(
-        "ExplicitGenerator trying to access an agent "
-        "outside of the specified population");
+        "ExplicitGenerator trying to access an agent  outside of the specified population");
   }
-  agt->_pos = addNoise(_positions[i]);
+  agent->_pos = addNoise(_positions[i]);
 }
 
 ////////////////////////////////////////////////////////////////////////////
 
-void ExplicitGenerator::addPosition(const Vector2& p) { _positions.push_back(p); }
+void ExplicitGenerator::addPosition(const Vector2& position) { _positions.push_back(position); }
 
 ////////////////////////////////////////////////////////////////////////////
 //      Implementation of ExplicitGeneratorFactory
@@ -76,8 +75,8 @@ bool ExplicitGeneratorFactory::setFromXML(AgentGenerator* gen, TiXmlElement* nod
                                           const std::string& specFldr) const {
   ExplicitGenerator* eGen = dynamic_cast<ExplicitGenerator*>(gen);
   assert(eGen != 0x0 &&
-         "Trying to set attributes of an explicit agent generator component on an "
-         "incompatible object");
+         "Trying to set attributes of an explicit agent generator component on an incompatible "
+         "object");
 
   if (!AgentGeneratorFactory::setFromXML(eGen, node, specFldr)) return false;
 
@@ -117,11 +116,8 @@ Vector2 ExplicitGeneratorFactory::parseAgent(TiXmlElement* node) const {
     valid = false;
   }
   if (!valid) {
-    logger << Logger::ERR_MSG << "Agent on line " << node->Row();
-    logger << " didn't define position!";
-    throw AgentGeneratorFatalException(
-        "Agent in explicit generator didn't "
-        "define a position");
+    logger << Logger::ERR_MSG << "Agent on line " << node->Row() << " didn't define position!";
+    throw AgentGeneratorFatalException( "Agent in explicit generator didn't  define a position");
   }
   return Vector2(x, y);
 }

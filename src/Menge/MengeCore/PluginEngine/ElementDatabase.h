@@ -112,15 +112,16 @@ class ElementDB {
    */
   static void addBuiltins();
 
-  /*!
-   @brief    Adds a new Target factory to the database.
+  /*! Adds a new `Factory` instance to `this` database.
 
-   The database takes ownership of the data pointed to. To be added, the new factory must have a
-   unique name to all previous actions.  If the factory *cannot* be added, it will be deleted.
+   The database takes ownership of given `factory`. To be successfully added, the new factory must
+   have a unique name (see ElementFactory::name()) relative to all other factories in this database.
+   If the factory *cannot* be added, it will be immediately deleted.
+
+   Failure to add the given `factory` will be logged.
 
    @param    factory    A pointer to the factory to add.
-   @returns  True if the factory is successfully added.
-   */
+   @returns  True if the factory is successfully added. */
   static bool addFactory(Factory* factory) {
     std::string testName(factory->name());
     typename std::list<Factory*>::iterator itr = _factories.begin();
