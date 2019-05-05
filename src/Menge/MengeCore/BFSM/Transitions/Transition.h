@@ -45,7 +45,7 @@ class Goal;
  condition is met, the transition is active and that reports to the state (which then "follows" the
  transition).
  */
-class Transition {
+class MENGE_API Transition {
  public:
   /*!
    @brief    Copy constructor.

@@ -96,7 +96,7 @@ class StateFatalException : public StateException, public MengeFatalException {
  State's can be marked as "final". Agents *can* transition out of final states. However, in any
  given time step, when all agents are in final states the simulation stops.
  */
-class State {
+class MENGE_API State {
   /*!
    @brief    Counter on total states created.
 
