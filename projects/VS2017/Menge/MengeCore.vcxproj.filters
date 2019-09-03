@@ -642,6 +642,12 @@
     <ClCompile Include="$(SrcDir)\MengeCore\Agents\Events\AgentEventTargetSetOp.cpp">
       <Filter>Source Files\Agents\Events</Filter>
     </ClCompile>
+    <ClCompile Include="$(SrcDir)\MengeCore\BFSM\Goals\GoalAgent.cpp">
+      <Filter>Source Files\BFSM\Goals</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SrcDir)\MengeCore\BFSM\GoalSelectors\GoalSelectorAgent.cpp">
+      <Filter>Source Files\BFSM\GoalSelectors</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(SrcDir)\mengeCore\Core.h">
@@ -1255,6 +1261,12 @@
     </ClInclude>
     <ClInclude Include="$(SrcDir)\MengeCore\Agents\Events\AgentEventTargetSetOp.h">
       <Filter>Header Files\Agents\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SrcDir)\MengeCore\BFSM\Goals\GoalAgent.h">
+      <Filter>Header Files\BFSM\Goals</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SrcDir)\MengeCore\BFSM\GoalSelectors\GoalSelectorAgent.h">
+      <Filter>Header Files\BFSM\GoalSelectors</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
