@@ -38,6 +38,7 @@ Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 
 #include "MengeCore/Agents/Events/EventTargetDB.h"
 
+#include "MengeCore/Agents/Events/AgentEventTargetSetOp.h"
 #include "MengeCore/Agents/Events/StateMemberTarget.h"
 #include "MengeCore/Agents/Events/TargetAgentById.h"
 
@@ -63,6 +64,8 @@ template <>
 void ElementDB<EventTargetFactory, EventTarget>::addBuiltins() {
   addFactory(new NamedStateMemberTargetFactory());
   addFactory(new TargetAgentByIdFactory());
+  addFactory(new AgentSetUnionTargetFactory());
+  addFactory(new AgentSetIntersectionTargetFactory());
 }
 
 }  // namespace Menge

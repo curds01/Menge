@@ -44,17 +44,12 @@ class MENGE_API TargetAgentById : public AgentEventTarget {
    */
   TargetAgentById() : AgentEventTarget() {}
 
-  /*!
-   @brief    Gives the target a chance to update its knowledge of the target entities.
-
-   If a sub-class needs to do particular computation to evaluate the target, it should be
-   implemented here.
-   */
-  virtual void update();
-
   friend class TargetAgentByIdFactory;
 
  protected:
+  // Inherits docs from AgentEventTarget::doUpdate().
+  void doUpdate() override;
+
   /*!
    @brief    The id of the agent to target.
    */

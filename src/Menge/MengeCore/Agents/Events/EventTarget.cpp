@@ -35,3 +35,16 @@ TO PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 Any questions or comments should be sent to the authors {menge,geom}@cs.unc.edu
 
 */
+
+#include "MengeCore/Agents/Events/EventTarget.h"
+
+namespace Menge {
+
+void EventTarget::update() {
+  if (_lastUpdate != SIM_TIME) {
+    _lastUpdate = SIM_TIME;
+    doUpdate();
+  }
+}
+
+}  // namespace Menge

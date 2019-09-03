@@ -61,9 +61,14 @@ class MENGE_API EventTarget : public Element {
    If a sub-class needs to do particular computation to evaluate the target, it should be
    implemented here.
    */
-  virtual void update() { _lastUpdate = SIM_TIME; }
+  void update();
 
  protected:
+  /*!
+    @brief  The action that implementations of the %EventTarget take when update() is invoked.
+   */
+  virtual void doUpdate() = 0;
+
   /*!
    @brief    The global time that the target was last updated.
    */

@@ -47,25 +47,15 @@ class MENGE_API NamedStateMemberTarget : public AgentEventTarget {
    */
   NamedStateMemberTarget() : AgentEventTarget() {}
 
-  /*!
-   @brief    Allows the event target to finish initializing itself from its parsed state to its
-            running state.
-
-   @throws    EventException if there is a problem finalizing.
-   */
+  // Inherits docs from EventTarget::finalize().
   virtual void finalize();
-
-  /*!
-   @brief    Gives the target a chance to update its knowledge of the target entities.
-
-   If a sub-class needs to do particular computation to evaluate the target, it should be
-   implemented here.
-   */
-  virtual void update();
 
   friend class NamedStateMemberTargetFactory;
 
  protected:
+  // Inherits docs from EventTarget::doUpdate().
+  void doUpdate() override;
+
   /*!
    @brief    The name of the state to operate on.
    */

@@ -63,18 +63,15 @@ void NamedStateMemberTarget::finalize() {
 
 /////////////////////////////////////////////////////////////////////
 
-void NamedStateMemberTarget::update() {
-  if (_lastUpdate != SIM_TIME) {
-    _elements.clear();
-    const size_t AGENT_COUNT = SIMULATOR->getNumAgents();
-    for (size_t i = 0; i < AGENT_COUNT; ++i) {
-      Agents::BaseAgent* agent = SIMULATOR->getAgent(i);
-      BFSM::State* state = ACTIVE_FSM->getCurrentState(agent);
-      if ((state != _state) ^ _inState) {
-        _elements.push_back(agent);
-      }
+void NamedStateMemberTarget::doUpdate() {
+  _elements.clear();
+  const size_t AGENT_COUNT = SIMULATOR->getNumAgents();
+  for (size_t i = 0; i < AGENT_COUNT; ++i) {
+    Agents::BaseAgent* agent = SIMULATOR->getAgent(i);
+    BFSM::State* state = ACTIVE_FSM->getCurrentState(agent);
+    if ((state != _state) ^ _inState) {
+      _elements.push_back(agent);
     }
-    AgentEventTarget::update();
   }
 }
 
